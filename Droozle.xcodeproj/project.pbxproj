@@ -16,6 +16,9 @@
 		A8166A7E1B99E84700F47146 /* DroozleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A8166A7D1B99E84700F47146 /* DroozleTests.m */; };
 		A8166A891B99E86300F47146 /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = A8166A881B99E86300F47146 /* Board.m */; };
 		A8166A8C1B99E8C200F47146 /* Space.m in Sources */ = {isa = PBXBuildFile; fileRef = A8166A8B1B99E8C200F47146 /* Space.m */; };
+		A8166A921B99EE2D00F47146 /* orangeSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = A8166A8F1B99EE2D00F47146 /* orangeSquare.png */; };
+		A8166A951B99EEB200F47146 /* blueSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = A8166A941B99EEB200F47146 /* blueSquare.png */; };
+		A8166A971B99EEF800F47146 /* redSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = A8166A961B99EEF800F47146 /* redSquare.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		A8166A8A1B99E8C200F47146 /* Space.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Space.h; sourceTree = "<group>"; };
 		A8166A8B1B99E8C200F47146 /* Space.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Space.m; sourceTree = "<group>"; };
 		A8166A8D1B99E8FC00F47146 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		A8166A8F1B99EE2D00F47146 /* orangeSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeSquare.png; sourceTree = "<group>"; };
+		A8166A941B99EEB200F47146 /* blueSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueSquare.png; sourceTree = "<group>"; };
+		A8166A961B99EEF800F47146 /* redSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redSquare.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,9 @@
 		A8166A611B99E84700F47146 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A8166A8F1B99EE2D00F47146 /* orangeSquare.png */,
+				A8166A941B99EEB200F47146 /* blueSquare.png */,
+				A8166A961B99EEF800F47146 /* redSquare.png */,
 				A8166A621B99E84700F47146 /* Info.plist */,
 				A8166A631B99E84700F47146 /* main.m */,
 			);
@@ -212,8 +221,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8166A6D1B99E84700F47146 /* Main.storyboard in Resources */,
+				A8166A921B99EE2D00F47146 /* orangeSquare.png in Resources */,
+				A8166A971B99EEF800F47146 /* redSquare.png in Resources */,
 				A8166A721B99E84700F47146 /* LaunchScreen.xib in Resources */,
 				A8166A6F1B99E84700F47146 /* Images.xcassets in Resources */,
+				A8166A951B99EEB200F47146 /* blueSquare.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
