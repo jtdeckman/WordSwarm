@@ -14,6 +14,8 @@
 		A8166A6F1B99E84700F47146 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8166A6E1B99E84700F47146 /* Images.xcassets */; };
 		A8166A721B99E84700F47146 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8166A701B99E84700F47146 /* LaunchScreen.xib */; };
 		A8166A7E1B99E84700F47146 /* DroozleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A8166A7D1B99E84700F47146 /* DroozleTests.m */; };
+		A8166A891B99E86300F47146 /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = A8166A881B99E86300F47146 /* Board.m */; };
+		A8166A8C1B99E8C200F47146 /* Space.m in Sources */ = {isa = PBXBuildFile; fileRef = A8166A8B1B99E8C200F47146 /* Space.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,11 @@
 		A8166A771B99E84700F47146 /* DroozleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DroozleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8166A7C1B99E84700F47146 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8166A7D1B99E84700F47146 /* DroozleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DroozleTests.m; sourceTree = "<group>"; };
+		A8166A871B99E86300F47146 /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
+		A8166A881B99E86300F47146 /* Board.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
+		A8166A8A1B99E8C200F47146 /* Space.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Space.h; sourceTree = "<group>"; };
+		A8166A8B1B99E8C200F47146 /* Space.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Space.m; sourceTree = "<group>"; };
+		A8166A8D1B99E8FC00F47146 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +93,11 @@
 				A8166A681B99E84700F47146 /* ViewController.h */,
 				A8166A691B99E84700F47146 /* ViewController.m */,
 				A8166A6B1B99E84700F47146 /* Main.storyboard */,
+				A8166A871B99E86300F47146 /* Board.h */,
+				A8166A881B99E86300F47146 /* Board.m */,
+				A8166A8A1B99E8C200F47146 /* Space.h */,
+				A8166A8B1B99E8C200F47146 /* Space.m */,
+				A8166A8D1B99E8FC00F47146 /* Constants.h */,
 				A8166A6E1B99E84700F47146 /* Images.xcassets */,
 				A8166A701B99E84700F47146 /* LaunchScreen.xib */,
 				A8166A611B99E84700F47146 /* Supporting Files */,
@@ -219,8 +231,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8166A8C1B99E8C200F47146 /* Space.m in Sources */,
 				A8166A6A1B99E84700F47146 /* ViewController.m in Sources */,
 				A8166A671B99E84700F47146 /* AppDelegate.m in Sources */,
+				A8166A891B99E86300F47146 /* Board.m in Sources */,
 				A8166A641B99E84700F47146 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
