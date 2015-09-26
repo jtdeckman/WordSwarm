@@ -7,8 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Display.h"
+#import "Constants.h"
+#import "Board.h"
+#import "GamePlay.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+
+    Display *display;
+    Board *board;
+    GamePlay *gamePlay;
+    
+    GameState gameState;
+}
 
 
 @end

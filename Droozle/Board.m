@@ -102,6 +102,7 @@
             
             inbr = i;
             jnbr = j-1;
+            
             if(jnbr > -1) {
                 [space.nearestNbrs addObject:[self getSpaceForIndices:inbr :jnbr]];
                 [space.neighbors addObject:[self getSpaceForIndices:inbr :jnbr]];

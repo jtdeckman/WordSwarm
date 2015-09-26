@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 JDeckman. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
 #ifndef Droozle_Constants_h
 #define Droozle_Constants_h
 

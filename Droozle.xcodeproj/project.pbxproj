@@ -19,6 +19,9 @@
 		A8166A921B99EE2D00F47146 /* orangeSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = A8166A8F1B99EE2D00F47146 /* orangeSquare.png */; };
 		A8166A951B99EEB200F47146 /* blueSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = A8166A941B99EEB200F47146 /* blueSquare.png */; };
 		A8166A971B99EEF800F47146 /* redSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = A8166A961B99EEF800F47146 /* redSquare.png */; };
+		A831F60D1BB0B0190001E1BC /* Display.m in Sources */ = {isa = PBXBuildFile; fileRef = A831F60C1BB0B0190001E1BC /* Display.m */; };
+		A831F6111BB0B8B70001E1BC /* Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = A831F6101BB0B8B70001E1BC /* Colors.m */; };
+		A8699DD01BB6FD9B00CCC1FD /* GamePlay.m in Sources */ = {isa = PBXBuildFile; fileRef = A8699DCF1BB6FD9B00CCC1FD /* GamePlay.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,12 @@
 		A8166A8F1B99EE2D00F47146 /* orangeSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeSquare.png; sourceTree = "<group>"; };
 		A8166A941B99EEB200F47146 /* blueSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueSquare.png; sourceTree = "<group>"; };
 		A8166A961B99EEF800F47146 /* redSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redSquare.png; sourceTree = "<group>"; };
+		A831F60B1BB0B0190001E1BC /* Display.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Display.h; sourceTree = "<group>"; };
+		A831F60C1BB0B0190001E1BC /* Display.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Display.m; sourceTree = "<group>"; };
+		A831F60F1BB0B8B70001E1BC /* Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
+		A831F6101BB0B8B70001E1BC /* Colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colors.m; sourceTree = "<group>"; };
+		A8699DCE1BB6FD9B00CCC1FD /* GamePlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlay.h; sourceTree = "<group>"; };
+		A8699DCF1BB6FD9B00CCC1FD /* GamePlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlay.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,12 +107,18 @@
 				A8166A661B99E84700F47146 /* AppDelegate.m */,
 				A8166A681B99E84700F47146 /* ViewController.h */,
 				A8166A691B99E84700F47146 /* ViewController.m */,
+				A831F60B1BB0B0190001E1BC /* Display.h */,
+				A831F60C1BB0B0190001E1BC /* Display.m */,
+				A8699DCE1BB6FD9B00CCC1FD /* GamePlay.h */,
+				A8699DCF1BB6FD9B00CCC1FD /* GamePlay.m */,
 				A8166A6B1B99E84700F47146 /* Main.storyboard */,
 				A8166A871B99E86300F47146 /* Board.h */,
 				A8166A881B99E86300F47146 /* Board.m */,
 				A8166A8A1B99E8C200F47146 /* Space.h */,
 				A8166A8B1B99E8C200F47146 /* Space.m */,
 				A8166A8D1B99E8FC00F47146 /* Constants.h */,
+				A831F60F1BB0B8B70001E1BC /* Colors.h */,
+				A831F6101BB0B8B70001E1BC /* Colors.m */,
 				A8166A6E1B99E84700F47146 /* Images.xcassets */,
 				A8166A701B99E84700F47146 /* LaunchScreen.xib */,
 				A8166A611B99E84700F47146 /* Supporting Files */,
@@ -184,7 +199,7 @@
 		A8166A561B99E84700F47146 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = JDeckman;
 				TargetAttributes = {
 					A8166A5D1B99E84700F47146 = {
@@ -245,7 +260,10 @@
 			files = (
 				A8166A8C1B99E8C200F47146 /* Space.m in Sources */,
 				A8166A6A1B99E84700F47146 /* ViewController.m in Sources */,
+				A831F6111BB0B8B70001E1BC /* Colors.m in Sources */,
+				A831F60D1BB0B0190001E1BC /* Display.m in Sources */,
 				A8166A671B99E84700F47146 /* AppDelegate.m in Sources */,
+				A8699DD01BB6FD9B00CCC1FD /* GamePlay.m in Sources */,
 				A8166A891B99E86300F47146 /* Board.m in Sources */,
 				A8166A641B99E84700F47146 /* main.m in Sources */,
 			);
@@ -310,6 +328,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -377,6 +396,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Droozle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JTD.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -387,6 +407,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Droozle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JTD.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -405,6 +426,7 @@
 				);
 				INFOPLIST_FILE = DroozleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JTD.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Droozle.app/Droozle";
 			};
@@ -420,6 +442,7 @@
 				);
 				INFOPLIST_FILE = DroozleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JTD.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Droozle.app/Droozle";
 			};
@@ -444,6 +467,7 @@
 				A8166A831B99E84700F47146 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A8166A841B99E84700F47146 /* Build configuration list for PBXNativeTarget "DroozleTests" */ = {
 			isa = XCConfigurationList;
@@ -452,6 +476,7 @@
 				A8166A861B99E84700F47146 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
