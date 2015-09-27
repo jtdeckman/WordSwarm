@@ -16,16 +16,27 @@
     
     board = brd;
     
-    dimx = 7;
-    dimy = 10;
+    dimx = 10;
+    dimy = 7;
     
     maxVal = 100;
-    
 }
 
-- (void)addBottomRow {
+- (void)rowOfValues {
 
+    NSMutableArray *vals = [[NSMutableArray alloc] initWithCapacity:dimx];
     
+    NSNumber *value;
+    
+    for(int i=0; i<dimy; i++) {
+        value = [NSNumber numberWithInt:rand() % maxVal];
+        [vals addObject:value];
+    }
+    
+    value = [NSNumber numberWithInt:maxVal];
+    [vals addObject:value];
+    
+    [board addBottomRow:vals];
 }
 
 @end

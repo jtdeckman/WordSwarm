@@ -14,6 +14,7 @@
     
     NSMutableArray *spaces;
     NSMutableArray *rows;
+    NSMutableArray *rowTypes;
     
     int dimx;
     int dimy;
@@ -37,10 +38,12 @@
 @property (nonatomic) uint cFlagPos2;
 
 - (void)initBoard: (CGRect)bvFrame : (int)dimx : (int)dimy : (CGFloat)offset;
-- (void)addPiece: (int)ival : (int)jval : (int)val : (JDColor)clr;
+- (void)addPiece: (int)ival : (int)jval : (int)val;
+- (void)addBottomRow: (NSMutableArray*)vals;
 
 - (Space*)getSpaceForIndices: (int)ival : (int)jval;
 - (Space*)getSpaceFromPoint: (CGPoint)loc;
+- (Space*)getRefSpaceFromIndex: (int)loc;
 
 - (int)nbrNearestOccupied: (Space*)space;
 - (int)nbrOccupied: (Space*)space;

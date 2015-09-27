@@ -29,8 +29,8 @@
     
     numSpaces = dimx*dimy;
     
-    spaceWidth = (bvFrame.size.width - offset)/(CGFloat)dx;
-    spaceHeight = (bvFrame.size.height - offset)/(CGFloat)dy;
+    spaceWidth = (bvFrame.size.width - offset)/(CGFloat)dy;
+    spaceHeight = (bvFrame.size.height - offset)/(CGFloat)dx;
     
     pieceWidth = spaceWidth - offset;
     pieceHeight = spaceHeight - offset;
@@ -45,9 +45,10 @@
     pcFrm.size.height = pieceHeight;
     
     spaces = [[NSMutableArray alloc] initWithCapacity:dimx];
+    rowTypes = [[NSMutableArray alloc] initWithCapacity:dimx];
     
-    xini = os2;
-    yini = os2;
+    xini = bvFrame.origin.x;
+    yini = bvFrame.origin.y;
     
     for(int i=0; i<dimx; i++) {
         
@@ -69,6 +70,21 @@
         }
         
         [spaces addObject:row];
+    }
+    
+    
+    for(int i=0; i<dimx; i++) {
+    
+        newSpace = spaces[i][dimy-1];
+        
+        spcFrm.origin.x = newSpace.piece.frame.origin.x + 1.25*newSpace.piece.frame.size.width;
+        spcFrm.origin.y = newSpace.piece.frame.origin.y;
+        
+        newSpace = [[Space alloc] init];
+        
+        [newSpace initSpace:i :-1 :spcFrm :spcFrm];
+        
+        [rowTypes addObject:newSpace];
     }
     
     [self findNeighbors];
@@ -135,22 +151,53 @@
     }
 }
 
-- (void)addPiece: (int)ival : (int)jval : (int)val : (JDColor)clr {
+- (void)addPiece: (int)ival : (int)jval : (int)val {
     
     Space *space = spaces[ival][jval];
     
     space.isOccupied = YES;
     space.value = val;
     
-    [space configurePiece];
+    [space configurePiece:NO];
     
     space.piece.hidden = false;
     
 }
 
+- (void)addRefPiece: (int)ival :(int)val {
+    
+    Space *space = rowTypes[ival];
+    
+    space.isOccupied = YES;
+    space.value = val;
+    
+    [space configurePiece:YES];
+    
+    space.piece.hidden = false;
+    
+}
+
+- (void)addBottomRow: (NSMutableArray*)vals {
+
+    NSNumber *value;
+    
+    for(int i=0; i<dimy; i++) {
+        value = [vals objectAtIndex:i];
+        [self addPiece:dimx-1 :i :(int)[value integerValue]];
+    }
+    
+    value = [vals objectAtIndex:dimy];
+    [self addRefPiece:dimx-1 :(int)[value integerValue]];
+}
+
 - (Space*)getSpaceForIndices: (int)ii : (int)ji {
     
     return spaces[ii][ji];
+}
+
+- (Space*)getRefSpaceFromIndex:(int)loc {
+
+    return rowTypes[loc];
 }
 
 - (Space*)getSpaceFromPoint: (CGPoint)loc {

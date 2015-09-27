@@ -44,7 +44,7 @@
 
 - (void)initSpace: (int)ival : (int)jval : (CGRect)spaceFrm : (CGRect)labelframe;
 - (void)setColor: (CGFloat)red : (CGFloat)green : (CGFloat)blue : (CGFloat)alpha;
-- (void)configurePiece;
+- (void)configurePiece: (bool)isRefPiece;
 - (bool)isNearestNearestNbrOf: (Space*)space;
 
 - (void)deconstruct;

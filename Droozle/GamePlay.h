@@ -23,6 +23,6 @@
 @property (nonatomic) int dimy;
 
 - (void) setUp:(Board*)brd;
-- (void) addBottomRow;
+- (void) rowOfValues;
 
 @end

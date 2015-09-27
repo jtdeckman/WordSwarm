@@ -44,11 +44,14 @@
     color.blue = blue;
 }
 
-- (void)configurePiece {
+- (void)configurePiece: (bool)isRefPiece {
     
     UIImage *img;
 
-    img = p1Img;
+    if(isRefPiece)
+        img = p2Img;
+    else
+        img = p1Img;
     
     CGSize imgSize = piece.frame.size;
     UIGraphicsBeginImageContext(imgSize);
