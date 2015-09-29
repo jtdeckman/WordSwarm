@@ -45,22 +45,18 @@
 
 - (void)setUpViewController {
 
+    CGRect boardFrm;
+    
     display = [[Display alloc] init];
     [display initDisplay:self.view.frame :self];
     
     board = [[Board alloc] init];
-    
     gamePlay = [[GamePlay alloc] init];
-    [gamePlay setUp:board];
     
-    CGRect frm;
+    boardFrm = [display initBoardView:self.view.frame];
     
-    frm.origin.x = 0.10*self.view.frame.size.width;
-    frm.origin.y = display.boardView.frame.origin.y + 0.1*display.boardView.frame.size.height;
-    frm.size.height = 0.8*display.boardView.frame.size.height;
-    frm.size.width = 0.7*self.view.frame.size.width;
-
-    [board initBoard:frm :gamePlay.dimx :gamePlay.dimy :0];
+    [gamePlay setUp:board :boardFrm];
+    [board initBoard:boardFrm :gamePlay.dimx :gamePlay.dimy :0];
     
     [self addPiecesToView];
     

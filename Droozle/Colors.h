@@ -12,6 +12,7 @@
 @interface Colors : NSObject
     
 @property (nonatomic) JDColor topBarBackgroundColor;
+@property (nonatomic) JDColor bottomBarBackgroundColor;
 @property (nonatomic) JDColor boardViewBackgroundColor;
 
 - (void)setUpColors;

@@ -22,7 +22,7 @@
 @property (nonatomic) int dimx;
 @property (nonatomic) int dimy;
 
-- (void) setUp:(Board*)brd;
+- (void) setUp:(Board*)brd :(CGRect)frm;
 - (void) rowOfValues;
 
 @end

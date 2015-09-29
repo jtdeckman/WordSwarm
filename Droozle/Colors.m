@@ -11,12 +11,17 @@
 @implementation Colors
 
 @synthesize topBarBackgroundColor, boardViewBackgroundColor;
+@synthesize bottomBarBackgroundColor;
 
 - (void)setUpColors {
     
     topBarBackgroundColor.red = 0.2f;
     topBarBackgroundColor.green = 0.4f;
     topBarBackgroundColor.blue = 0.5f;
+    
+    bottomBarBackgroundColor.red = 0.3f;
+    bottomBarBackgroundColor.green = 0.4f;
+    bottomBarBackgroundColor.blue = 0.5f;
     
     boardViewBackgroundColor.red = 0.9f;
     boardViewBackgroundColor.green = 0.9f;

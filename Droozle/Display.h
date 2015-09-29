@@ -13,14 +13,17 @@
 @interface Display : NSObject {
     
     UIView *topBar;
+    UIView *bottomBar;
     UIView *boardView;
-
 }
 
 @property (nonatomic, strong) UIView *topBar;
 @property (nonatomic, strong) UIView *boardView;
+@property (nonatomic, strong) UIView *bottomBar;
 
 - (void)initDisplay:(CGRect)viewFrame :(UIViewController*)rootViewCont;
 - (void)setUpColors;
+
+- (CGRect)initBoardView:(CGRect)viewFrame;
 
 @end

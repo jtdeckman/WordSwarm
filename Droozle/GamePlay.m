@@ -12,12 +12,17 @@
 
 @synthesize dimx, dimy;
 
-- (void)setUp:(Board*)brd {
+- (void)setUp:(Board*)brd :(CGRect)frm {
+   
+    CGFloat pw;
+    
+    dimy = 5;
+    
+    pw = frm.size.width/dimy;
+    
+    dimx = (int)frm.size.height/pw;
     
     board = brd;
-    
-    dimx = 10;
-    dimy = 7;
     
     maxVal = 100;
 }
