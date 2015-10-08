@@ -11,6 +11,7 @@
 @implementation GamePlay
 
 @synthesize dimx, dimy;
+@synthesize gameState, gameData;
 
 - (void)setUp:(Board*)brd :(CGRect)frm {
    
@@ -26,10 +27,18 @@
     
     maxVal = 100;
     
+    [self newGame];
+}
+
+- (void)newGame {
+
     gameData.level = 1;
+    gameData.timer = 0;
     gameData.lives = 3;
     gameData.score = 0;
     gameData.highScore = 0;
+    
+    gameState = gameRunning;
 }
 
 - (void)rowOfValues {
@@ -47,6 +56,11 @@
     [vals addObject:value];
     
     [board addBottomRow:vals];
+}
+
+- (void)incrementTimer {
+
+    ++gameData.timer;
 }
 
 @end

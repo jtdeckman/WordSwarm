@@ -19,6 +19,8 @@
     GamePlay *gamePlay;
     
     GameState gameState;
+    
+    NSTimer *gameTimer;
 }
 
 

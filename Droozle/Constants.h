@@ -41,6 +41,7 @@ typedef struct {
 typedef struct {
     
     int level;
+    int timer;
     int lives;
     int score;
     int highScore;

@@ -27,6 +27,28 @@
     
 }
 
+- (void)gameLoop {
+    
+    if(gamePlay.gameState == gameRunning) {
+     
+        int intervalFactor = (int)(TIME_FACTOR*(1/gamePlay.gameData.level));
+        
+        if(gamePlay.gameData.timer % intervalFactor == 0) {
+
+            if([board shiftRowsUp] == YES) {
+                
+                gamePlay.gameState = gameOver;
+            }
+            else {
+                [gamePlay rowOfValues];
+            }
+        }
+        
+        [gamePlay incrementTimer];
+
+    }
+}
+
 - (void)addPiecesToView {
     
     Space *space;
@@ -60,15 +82,10 @@
     
     [self addPiecesToView];
     
-    [gamePlay rowOfValues];
+    gameTimer = [NSTimer scheduledTimerWithTimeInterval:1/1 target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
+
+ //   [gamePlay rowOfValues];
     
-    if([board shiftRowsUp] == YES) {
-        
-    }
-    else {
-        
-        [gamePlay rowOfValues];
-    }
     
     
 }

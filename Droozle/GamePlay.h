@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Board.h"
 
+#define TIME_FACTOR 7
+
 @interface GamePlay : NSObject {
     
     int dimx;
@@ -26,7 +28,12 @@
 @property (nonatomic) int dimx;
 @property (nonatomic) int dimy;
 
+@property (nonatomic) GameState gameState;
+@property (nonatomic) GameData gameData;
+
 - (void) setUp:(Board*)brd :(CGRect)frm;
 - (void) rowOfValues;
+- (void) newGame;
+- (void) incrementTimer;
 
 @end
