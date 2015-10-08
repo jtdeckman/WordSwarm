@@ -62,6 +62,14 @@
     
     [gamePlay rowOfValues];
     
+    if([board shiftRowsUp] == YES) {
+        
+    }
+    else {
+        
+        [gamePlay rowOfValues];
+    }
+    
     
 }
 

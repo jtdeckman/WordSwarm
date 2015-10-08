@@ -25,6 +25,11 @@
     board = brd;
     
     maxVal = 100;
+    
+    gameData.level = 1;
+    gameData.lives = 3;
+    gameData.score = 0;
+    gameData.highScore = 0;
 }
 
 - (void)rowOfValues {
@@ -34,7 +39,7 @@
     NSNumber *value;
     
     for(int i=0; i<dimy; i++) {
-        value = [NSNumber numberWithInt:rand() % maxVal];
+        value = [NSNumber numberWithInt:arc4random() % maxVal];
         [vals addObject:value];
     }
     

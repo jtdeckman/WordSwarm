@@ -53,4 +53,6 @@
 
 - (void)deconstruct;
 
+- (BOOL)shiftRowsUp;
+
 @end

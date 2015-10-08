@@ -273,4 +273,51 @@
     spaces = nil;
 }
 
+- (BOOL)shiftRowsUp {
+
+    if([self topRowOccupied])
+        return YES;
+    
+    Space *space, *spaceBelow;
+    
+    for(int i=0; i<dimx-1; i++) {
+     
+        for(int j=0; j<dimy; j++) {
+            space = spaces[i][j];
+            spaceBelow = spaces[i+1][j];
+            space.value = spaceBelow.value;
+            space.isOccupied = spaceBelow.isOccupied;
+            space.piece.hidden = spaceBelow.piece.hidden;
+            [space configurePiece:NO];
+         //   if(!space.piece.hidden)
+           //     NSLog(@"%d %d",i,j);
+        }
+        
+        space = rowTypes[i];
+        spaceBelow = rowTypes[i+1];
+        
+        space.value = spaceBelow.value;
+        space.isOccupied = spaceBelow.isOccupied;
+        space.piece.hidden = spaceBelow.piece.hidden;
+        [space configurePiece:YES];
+    }
+    
+    return NO;
+}
+
+- (BOOL)topRowOccupied {
+    
+    Space *space;
+    
+    for(int i=0; i<dimy; i++) {
+
+        space = spaces[0][i];
+        if(space.isOccupied) return YES;
+    }
+
+    return NO;
+}
+
+
+
 @end

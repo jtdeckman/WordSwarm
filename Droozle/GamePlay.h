@@ -17,6 +17,10 @@
     int maxVal;
     
     Board *board;
+    
+    GameState gameState;
+    GameData gameData;
+    
 }
 
 @property (nonatomic) int dimx;

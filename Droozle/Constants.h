@@ -38,6 +38,15 @@ typedef struct {
     
 } JDColor;
 
+typedef struct {
+    
+    int level;
+    int lives;
+    int score;
+    int highScore;
+    
+} GameData;
+
 typedef enum : NSUInteger {
     
     gameRunning,
@@ -51,6 +60,8 @@ typedef enum : NSUInteger {
     howToPlay
     
 } GameState;
+
+
 
 typedef enum : NSUInteger {
     
