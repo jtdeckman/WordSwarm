@@ -15,14 +15,21 @@
     UIView *topBar;
     UIView *bottomBar;
     UIView *boardView;
+    
+    UILabel *floatPiece;
+    UILabel *addPiece;
 }
 
-@property (nonatomic, strong) UIView *topBar;
-@property (nonatomic, strong) UIView *boardView;
-@property (nonatomic, strong) UIView *bottomBar;
+@property(nonatomic, strong) UIView *topBar;
+@property(nonatomic, strong) UIView *boardView;
+@property(nonatomic, strong) UIView *bottomBar;
+
+@property (nonatomic, strong) UILabel *floatPiece;
+@property (nonatomic, strong) UILabel *addPiece;
 
 - (void)initDisplay:(CGRect)viewFrame :(UIViewController*)rootViewCont;
 - (void)setUpColors;
+- (void)setUpFloatPieces:(CGRect)pcFrm;
 
 - (CGRect)initBoardView:(CGRect)viewFrame;
 

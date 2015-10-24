@@ -11,6 +11,7 @@
 @implementation Display
 
 @synthesize topBar, bottomBar, boardView;
+@synthesize floatPiece, addPiece;
 
 - (void)initDisplay:(CGRect)viewFrame : (UIViewController*)rootViewCont {
 
@@ -64,11 +65,21 @@
     CGRect boardFrm;
     
     boardFrm.origin.x = 0.05*viewFrame.size.width;
-    boardFrm.origin.y = boardView.frame.origin.y + 0.1*boardView.frame.size.height;
+    boardFrm.origin.y = boardView.frame.origin.y + 0.05*viewFrame.size.width;
     boardFrm.size.height = 0.95*boardView.frame.size.height;
-    boardFrm.size.width = 0.7*viewFrame.size.width;
+    boardFrm.size.width = viewFrame.size.width - 2.0*boardFrm.origin.x;
 
     return boardFrm;
+}
+
+- (void)setUpFloatPieces:(CGRect)pcFrm {
+
+    UIImage *tmpImg, *floatBackImg = [UIImage imageNamed:@"orangeSquare"];
+    
+    UIGraphicsBeginImageContext(pcFrm.size);
+    [floatBackImg drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
+    
+    
 }
 
 @end

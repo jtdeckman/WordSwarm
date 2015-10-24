@@ -22,6 +22,7 @@
     
     GameState gameState;
     GameData gameData;
+    PlaceMode placeMode;
     
 }
 
@@ -30,10 +31,12 @@
 
 @property (nonatomic) GameState gameState;
 @property (nonatomic) GameData gameData;
+@property (nonatomic) PlaceMode placeMode;
 
-- (void) setUp:(Board*)brd :(CGRect)frm;
-- (void) rowOfValues;
-- (void) newGame;
-- (void) incrementTimer;
+- (CGFloat)setUp:(Board*)brd :(CGRect)frm;
+
+- (void)rowOfValues;
+- (void)newGame;
+- (void)incrementTimer;
 
 @end

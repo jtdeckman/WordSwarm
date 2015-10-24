@@ -13,13 +13,14 @@
 @synthesize dimx, dimy;
 @synthesize gameState, gameData;
 
-- (void)setUp:(Board*)brd :(CGRect)frm {
+- (CGFloat)setUp:(Board*)brd :(CGRect)frm {
    
+    CGFloat buffer = frm.size.width*PIECE_BUFFER;
     CGFloat pw;
     
-    dimy = 5;
+    dimy = 6;
     
-    pw = frm.size.width/dimy;
+    pw = (frm.size.width-buffer)/dimy;
     
     dimx = (int)frm.size.height/pw;
     
@@ -28,6 +29,8 @@
     maxVal = 100;
     
     [self newGame];
+    
+    return buffer;
 }
 
 - (void)newGame {
@@ -39,6 +42,7 @@
     gameData.highScore = 0;
     
     gameState = gameRunning;
+    placeMode = freeState;
 }
 
 - (void)rowOfValues {
@@ -52,7 +56,7 @@
         [vals addObject:value];
     }
     
-    value = [NSNumber numberWithInt:maxVal];
+    value = [NSNumber numberWithInt:arc4random() % dimy*maxVal + maxVal + arc4random() % 10];
     [vals addObject:value];
     
     [board addBottomRow:vals];

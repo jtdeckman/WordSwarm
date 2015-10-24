@@ -35,6 +35,7 @@
    
     p1Img = [UIImage imageNamed:@"orangeSquare.png"];
     p2Img = [UIImage imageNamed:@"blueSquare.png"];
+    p3Img = [UIImage imageNamed:@"redSquare.png"];
 }
 
 - (void)setColor: (CGFloat)red : (CGFloat)green : (CGFloat)blue : (CGFloat)alpha {
@@ -44,12 +45,14 @@
     color.blue = blue;
 }
 
-- (void)configurePiece: (bool)isRefPiece {
+- (void)configurePiece: (bool)isRefPiece : (bool)isSumPiece{
     
     UIImage *img;
 
     if(isRefPiece)
         img = p2Img;
+    else if(isSumPiece)
+        img = p3Img;
     else
         img = p1Img;
     

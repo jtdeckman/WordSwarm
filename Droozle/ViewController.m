@@ -49,6 +49,24 @@
     }
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint location = [touch locationInView:touch.view];
+    
+    if(gamePlay.gameState == gameRunning) {
+        
+        if(touch.view == display.boardView && gamePlay.placeMode == freeState) {
+            
+            touchedSpace = [board getSpaceFromPoint:location];
+            
+            if(touchedSpace.isOccupied) {
+                
+            }
+        }
+    }
+}
+
 - (void)addPiecesToView {
     
     Space *space;
@@ -56,6 +74,9 @@
     for(int i=0; i<gamePlay.dimx; i++) {
         
         space = [board getRefSpaceFromIndex:i];
+        [self.view addSubview:space.piece];
+        
+        space = [board getSumSpaceFromIndex:i];
         [self.view addSubview:space.piece];
         
         for(int j=0; j<gamePlay.dimy; j++) {
@@ -68,7 +89,7 @@
 - (void)setUpViewController {
 
     CGRect boardFrm;
-    
+
     display = [[Display alloc] init];
     [display initDisplay:self.view.frame :self];
     
@@ -77,8 +98,8 @@
     
     boardFrm = [display initBoardView:self.view.frame];
     
-    [gamePlay setUp:board :boardFrm];
-    [board initBoard:boardFrm :gamePlay.dimx :gamePlay.dimy :0];
+    CGFloat buffer = [gamePlay setUp:board :boardFrm];
+    [board initBoard:boardFrm :gamePlay.dimx :gamePlay.dimy :0 :buffer];
     
     [self addPiecesToView];
     

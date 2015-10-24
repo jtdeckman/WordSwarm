@@ -20,7 +20,7 @@
 #define BUTTON_SPACING_FACT 0.1
 
 #define SPACING_FACT 0.025
-
+#define PIECE_BUFFER 0.30
 #define LINE_THICK_FACT 0.015
 
 #define DIMX 10
@@ -72,5 +72,16 @@ typedef enum : NSUInteger {
     overtakeMove
     
 } MoveType;
+
+typedef enum : NSUInteger {
+    
+    freeState,
+    pieceSelected,
+    spaceSelected,
+    overTake,
+    placeTile,
+    swipeMove,
+    
+} PlaceMode;
 
 #endif

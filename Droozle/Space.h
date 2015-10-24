@@ -24,8 +24,10 @@
     CGRect spaceFrame;
     
     UILabel *piece;
+    
     UIImage *p1Img;
     UIImage *p2Img;
+    UIImage *p3Img;
     
     JDColor color;
 }
@@ -44,7 +46,7 @@
 
 - (void)initSpace: (int)ival : (int)jval : (CGRect)spaceFrm : (CGRect)labelframe;
 - (void)setColor: (CGFloat)red : (CGFloat)green : (CGFloat)blue : (CGFloat)alpha;
-- (void)configurePiece: (bool)isRefPiece;
+- (void)configurePiece: (bool)isRefPiece : (bool)isSumPiece;
 - (bool)isNearestNearestNbrOf: (Space*)space;
 
 - (void)deconstruct;

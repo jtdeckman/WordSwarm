@@ -17,8 +17,7 @@
     Display *display;
     Board *board;
     GamePlay *gamePlay;
-    
-    GameState gameState;
+    Space *touchedSpace;
     
     NSTimer *gameTimer;
 }
