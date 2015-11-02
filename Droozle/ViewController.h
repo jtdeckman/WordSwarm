@@ -20,6 +20,8 @@
     Space *touchedSpace;
     
     NSTimer *gameTimer;
+    
+    int rowOrig, rowNew;
 }
 
 

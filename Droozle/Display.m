@@ -86,20 +86,25 @@
     floatPiece.layer.cornerRadius = 10.0f;
     floatPiece.clipsToBounds = YES;
    // floatPiece.opaque = NO;
-    floatPiece.hidden = NO;
+    floatPiece.hidden = YES;
     
     [floatPiece setTextAlignment:NSTextAlignmentCenter];
     [floatPiece setFont:[UIFont fontWithName:@"Arial" size:1.0*FONT_FACT*pcFrm.size.width]];
     floatPiece.textColor = [UIColor whiteColor];
     
     [rootView addSubview:floatPiece];
+    
+    floatPieceOffSet.width = pcFrm.size.width/2.0;
+    floatPieceOffSet.height = pcFrm.size.height/2.0;
 }
 
 - (void)changeFloatPieceLoc: (CGPoint)newLoc {
 
     CGRect frm;
     
-    frm.origin = newLoc;
+    frm.origin.x = newLoc.x - floatPieceOffSet.width;
+    frm.origin.y = newLoc.y - floatPieceOffSet.height;
+    
     frm.size = floatPiece.frame.size;
     
     [floatPiece setFrame:frm];

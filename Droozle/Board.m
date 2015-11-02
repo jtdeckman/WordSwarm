@@ -172,7 +172,6 @@
     [space configurePiece:NO :NO];
     
     space.piece.hidden = false;
-    
 }
 
 - (void)addRefPiece: (int)ival :(int)val {
@@ -343,7 +342,9 @@
     
     for(int i=0; i<dimy; i++) {
         space = spaces[row][i];
-        sum += space.value;
+        
+        if(space.isOccupied)
+            sum += space.value;
     }
     
     return sum;
@@ -362,6 +363,14 @@
     return NO;
 }
 
+- (void)checkRow:(uint)row {
+
+    Space *space = rowSumPieces[row];
+    space.isOccupied = YES;
+    space.value = [self sumRow:row];
+    
+    space.piece.text = [NSString stringWithFormat:@"%d", space.value];
+}
 
 
 @end

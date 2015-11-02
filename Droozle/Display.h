@@ -21,6 +21,8 @@
     UILabel *addPiece;
     
     UIImage *floatBackImage;
+    
+    CGSize floatPieceOffSet;
 }
 
 @property(nonatomic, strong) UIView *topBar;

@@ -52,6 +52,7 @@
 
 - (void)removePiece: (Space*)space;
 - (void)clearBoard;
+- (void)checkRow:(uint)row;
 
 - (void)deconstruct;
 

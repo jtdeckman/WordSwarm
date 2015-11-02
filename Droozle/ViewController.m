@@ -37,7 +37,7 @@
 
             if([board shiftRowsUp] == YES) {
                 
-                gamePlay.gameState = gameOver;
+              //  gamePlay.gameState = gameOver;
             }
             else {
                 [gamePlay rowOfValues];
@@ -93,8 +93,37 @@
       
         if(gamePlay.placeMode == swipeMove) {
             
-            display.floatPiece.hidden = YES;
+            Space *selectedSpace = [board getSpaceFromPoint:location];
             
+            if([selectedSpace isNearestNearestNbrOf:touchedSpace]) {
+            
+                rowNew = selectedSpace.iind;
+                rowOrig = touchedSpace.iind;
+                
+                if(selectedSpace.isOccupied) {
+                    
+                    selectedSpace.value += touchedSpace.value;
+                    selectedSpace.piece.text = [NSString stringWithFormat:@"%d", selectedSpace.value];
+                    
+                    [board removePiece:touchedSpace];
+                }
+                
+                else if(touchedSpace.value > 1){
+                    
+                    touchedSpace.value = (int)((float)touchedSpace.value/2.0);
+                    touchedSpace.piece.text = [NSString stringWithFormat:@"%d", touchedSpace.value];
+                    
+                    [board addPiece:selectedSpace.iind :selectedSpace.jind :touchedSpace.value];
+                }
+                
+                [board checkRow:rowNew];
+                
+                if(rowNew != rowOrig)
+                    [board checkRow:rowOrig];
+            }
+            
+            display.floatPiece.hidden = YES;
+            touchedSpace = NULL;
             gamePlay.placeMode = freeState;
         }
     }
