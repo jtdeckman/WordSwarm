@@ -52,7 +52,7 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 
     UITouch *touch = [[event allTouches] anyObject];
-    CGPoint location = [touch locationInView:touch.view];
+    CGPoint location = [touch locationInView:self.view];
     
     if(gamePlay.gameState == gameRunning) {
         
@@ -62,7 +62,40 @@
             
             if(touchedSpace.isOccupied) {
                 
+                gamePlay.placeMode = swipeMove;
+                [display configureFloatPiece:touchedSpace :self.view];
             }
+        }
+    }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint location = [touch locationInView:self.view];
+    
+    if(gamePlay.gameState ==  gameRunning) {
+        
+        if(gamePlay.placeMode == swipeMove) {
+            
+            [display changeFloatPieceLoc:location];
+        }
+    }
+}
+
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint location = [touch locationInView:self.view];
+    
+    if(gamePlay.gameState == gameRunning) {
+      
+        if(gamePlay.placeMode == swipeMove) {
+            
+            display.floatPiece.hidden = YES;
+            
+            gamePlay.placeMode = freeState;
         }
     }
 }
@@ -103,12 +136,11 @@
     
     [self addPiecesToView];
     
+    Space *space = [board getSpaceForIndices:0 :0];
+    
+    [display setUpFloatPieces:space.piece.frame :self.view];
+    
     gameTimer = [NSTimer scheduledTimerWithTimeInterval:1/1 target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
-
- //   [gamePlay rowOfValues];
-    
-    
-    
 }
 
 @end

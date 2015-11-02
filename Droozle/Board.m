@@ -233,11 +233,8 @@
             space = spaces[i][j];
             
             if(CGRectContainsPoint(space.spaceFrame, loc)) return space;
-          //  if((loc.x >= space.spaceFrame.origin.x && loc.x < space.spaceFrame.origin.x + space.spaceFrame.size.width) && (loc.y >= space.spaceFrame.origin.y && loc.y < space.spaceFrame.origin.y + space.spaceFrame.size.height)) return space;
         }
     }
-    
-    
     
     return NULL;
 }

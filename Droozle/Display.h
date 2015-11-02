@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "Colors.h"
+#import "Space.h"
 
 @interface Display : NSObject {
     
@@ -18,6 +19,8 @@
     
     UILabel *floatPiece;
     UILabel *addPiece;
+    
+    UIImage *floatBackImage;
 }
 
 @property(nonatomic, strong) UIView *topBar;
@@ -29,7 +32,9 @@
 
 - (void)initDisplay:(CGRect)viewFrame :(UIViewController*)rootViewCont;
 - (void)setUpColors;
-- (void)setUpFloatPieces:(CGRect)pcFrm;
+- (void)setUpFloatPieces:(CGRect)pcFrm :(UIView*)rootView;
+- (void)changeFloatPieceLoc: (CGPoint)newLoc;
+- (void)configureFloatPiece: (Space*)space :(UIView*)rootView;
 
 - (CGRect)initBoardView:(CGRect)viewFrame;
 

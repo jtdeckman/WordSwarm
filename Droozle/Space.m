@@ -33,9 +33,19 @@
     nearestNbrs = [[NSMutableSet alloc] initWithCapacity:4];
     neighbors = [[NSMutableSet alloc] initWithCapacity:10];
    
-    p1Img = [UIImage imageNamed:@"orangeSquare.png"];
-    p2Img = [UIImage imageNamed:@"blueSquare.png"];
-    p3Img = [UIImage imageNamed:@"redSquare.png"];
+    UIGraphicsBeginImageContext(piece.frame.size);
+    
+    UIImage *tmpImage = [UIImage imageNamed:@"orangeSquare.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, piece.frame.size.width, piece.frame.size.height)];
+    p1Img = UIGraphicsGetImageFromCurrentImageContext();
+    
+    tmpImage = [UIImage imageNamed:@"blueSquare.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, piece.frame.size.width, piece.frame.size.height)];
+    p2Img = UIGraphicsGetImageFromCurrentImageContext();
+    
+    tmpImage = [UIImage imageNamed:@"redSquare.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, piece.frame.size.width, piece.frame.size.height)];
+    p3Img = UIGraphicsGetImageFromCurrentImageContext();
 }
 
 - (void)setColor: (CGFloat)red : (CGFloat)green : (CGFloat)blue : (CGFloat)alpha {
@@ -56,14 +66,8 @@
     else
         img = p1Img;
     
-    CGSize imgSize = piece.frame.size;
-    UIGraphicsBeginImageContext(imgSize);
-    [img drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
     piece.text = [NSString stringWithFormat:@"%d", value];
-    piece.backgroundColor = [UIColor colorWithPatternImage:newImage];
+    piece.backgroundColor = [UIColor colorWithPatternImage:img];
     piece.textColor = [UIColor whiteColor];
     piece.layer.borderColor = [[UIColor clearColor] CGColor];
 }

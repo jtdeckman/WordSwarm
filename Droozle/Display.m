@@ -72,14 +72,56 @@
     return boardFrm;
 }
 
-- (void)setUpFloatPieces:(CGRect)pcFrm {
+- (void)setUpFloatPieces:(CGRect)pcFrm :(UIView*)rootView {
 
-    UIImage *tmpImg, *floatBackImg = [UIImage imageNamed:@"orangeSquare"];
-    
     UIGraphicsBeginImageContext(pcFrm.size);
-    [floatBackImg drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
     
+    UIImage *tmpImage = [UIImage imageNamed:@"orangeSquare.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
+    floatBackImage = UIGraphicsGetImageFromCurrentImageContext();
+
+    floatPiece = [[UILabel alloc] initWithFrame:pcFrm];
+    [floatPiece setBackgroundColor:[UIColor colorWithPatternImage:floatBackImage]];
     
+    floatPiece.layer.cornerRadius = 10.0f;
+    floatPiece.clipsToBounds = YES;
+   // floatPiece.opaque = NO;
+    floatPiece.hidden = NO;
+    
+    [floatPiece setTextAlignment:NSTextAlignmentCenter];
+    [floatPiece setFont:[UIFont fontWithName:@"Arial" size:1.0*FONT_FACT*pcFrm.size.width]];
+    floatPiece.textColor = [UIColor whiteColor];
+    
+    [rootView addSubview:floatPiece];
+}
+
+- (void)changeFloatPieceLoc: (CGPoint)newLoc {
+
+    CGRect frm;
+    
+    frm.origin = newLoc;
+    frm.size = floatPiece.frame.size;
+    
+    [floatPiece setFrame:frm];
+}
+
+- (void)configureFloatPiece: (Space*)space :(UIView*)rootView {
+    
+    CGRect frm;
+    
+    frm.origin.x = space.piece.frame.origin.x;
+    frm.origin.y = space.piece.frame.origin.y;
+    
+    frm.size = space.piece.frame.size;
+    
+    floatPiece.hidden = NO;
+    
+    floatPiece.text = [NSString stringWithFormat:@"%d", space.value];
+    floatPiece.layer.borderColor = [[UIColor clearColor] CGColor];
+    
+    [floatPiece setFrame:frm];
+    
+    [rootView bringSubviewToFront:floatPiece];
 }
 
 @end

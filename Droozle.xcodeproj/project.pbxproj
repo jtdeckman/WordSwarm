@@ -20,7 +20,7 @@
 		A8166A971B99EEF800F47146 /* redSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = A8166A961B99EEF800F47146 /* redSquare.png */; };
 		A831F60D1BB0B0190001E1BC /* Display.m in Sources */ = {isa = PBXBuildFile; fileRef = A831F60C1BB0B0190001E1BC /* Display.m */; };
 		A831F6111BB0B8B70001E1BC /* Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = A831F6101BB0B8B70001E1BC /* Colors.m */; };
-		A8699DD01BB6FD9B00CCC1FD /* GamePlay.m in Sources */ = {isa = PBXBuildFile; fileRef = A8699DCF1BB6FD9B00CCC1FD /* GamePlay.m */; settings = {ASSET_TAGS = (); }; };
+		A8699DD01BB6FD9B00CCC1FD /* GamePlay.m in Sources */ = {isa = PBXBuildFile; fileRef = A8699DCF1BB6FD9B00CCC1FD /* GamePlay.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
