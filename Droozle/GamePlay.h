@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Board.h"
 
-#define TIME_FACTOR 7
+#define TIME_FACTOR 10
 
 @interface GamePlay : NSObject {
     

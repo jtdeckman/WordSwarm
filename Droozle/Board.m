@@ -354,23 +354,88 @@
     
     Space *space;
     
-    for(int i=0; i<dimy; i++) {
+  //  for(int i=0; i<dimy; i++) {
 
-        space = spaces[0][i];
+        space = rowTypes[0];
         if(space.isOccupied) return YES;
-    }
+  //  }
 
     return NO;
 }
 
 - (void)checkRow:(uint)row {
 
-    Space *space = rowSumPieces[row];
+    Space *refSpace, *space = rowSumPieces[row];
+    
+    int rowVal = 0;
+    
     space.isOccupied = YES;
     space.value = [self sumRow:row];
     
     space.piece.text = [NSString stringWithFormat:@"%d", space.value];
+    
+    refSpace = rowTypes[row];
+    
+    if (space.value == refSpace.value) {
+        
+        rowVal = space.value;
+        
+        [self eliminateRow:row];
+    }
+    
 }
+
+- (void)eliminateRow:(uint)row {
+    
+    Space *space, *spaceAbove;
+    
+    for(int i=row; i>0; i--) {
+        
+        for(int j=0; j<dimy; j++) {
+            space = spaces[i][j];
+            spaceAbove = spaces[i-1][j];
+            space.value = spaceAbove.value;
+            space.isOccupied = spaceAbove.isOccupied;
+            space.piece.hidden = spaceAbove.piece.hidden;
+            [space configurePiece:NO : NO];
+        }
+
+        space = rowTypes[i];
+        spaceAbove = rowTypes[i-1];
+        
+        space.value = spaceAbove.value;
+        space.isOccupied = spaceAbove.isOccupied;
+        space.piece.hidden = spaceAbove.piece.hidden;
+        [space configurePiece:YES: NO];
+        
+        space = rowSumPieces[i];
+        spaceAbove = rowSumPieces[i-1];
+        space.value = spaceAbove.value;
+        space.isOccupied = spaceAbove.isOccupied;
+        space.piece.hidden = spaceAbove.piece.hidden;
+        [space configurePiece:NO :YES];
+
+    }
+    
+    for(int j=0; j<dimy; j++) {
+        
+        space = spaces[0][j];
+        space.value = 0;
+        space.isOccupied = NO;
+        space.piece.hidden = YES;
+    }
+    
+    space = rowTypes[0];
+    space.value = 0;
+    space.isOccupied = NO;
+    space.piece.hidden = YES;
+    
+    space = rowSumPieces[0];
+    space.value = 0;
+    space.isOccupied = NO;
+    space.piece.hidden = YES;
+}
+
 
 
 @end
