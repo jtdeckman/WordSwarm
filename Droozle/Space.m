@@ -68,7 +68,7 @@
     else
         img = p1Img;
     
-    piece.text = [NSString stringWithFormat:@"%d", value];
+    piece.text = [self value];
     piece.backgroundColor = [UIColor colorWithPatternImage:img];
     piece.textColor = [UIColor whiteColor];
     piece.layer.borderColor = [[UIColor clearColor] CGColor];

@@ -72,7 +72,7 @@
         [spaces addObject:row];
     }
     
-    spcFrm.size.width = 0.8*buffer;
+    spcFrm.size.width = 1.5*spcFrm.size.width;
     
     for(int i=0; i<dimx; i++) {
     
@@ -84,15 +84,6 @@
         newSpace = [[Space alloc] init];
         
         [newSpace initSpace:i :-1 :spcFrm :spcFrm];
-        
-        spcFrm.origin.x += spcFrm.size.width + 0.025*spcFrm.size.width;
-        
-        newSpace = [[Space alloc] init];
-        
-        [newSpace initSpace:i :-1 :spcFrm :spcFrm];
-        
-        [rowTypes addObject:newSpace];
-        
     }
     
     [self findNeighbors];

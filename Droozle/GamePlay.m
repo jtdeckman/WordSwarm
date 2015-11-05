@@ -30,6 +30,7 @@
     maxVal = 100;
     
     wordLogic = [[WordLogic alloc] init];
+    [wordLogic initLetters];
     
     [self newGame];
     
