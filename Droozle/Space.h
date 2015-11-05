@@ -12,7 +12,8 @@
 
 @interface Space : NSObject {
     
-    int value;
+    NSString *value;
+    
     int iind;
     int jind;
     
@@ -34,7 +35,8 @@
 
 @property (nonatomic) BOOL isOccupied;
 
-@property (nonatomic) int value;
+@property (nonatomic, strong)  NSString *value;
+
 @property (nonatomic) int iind;
 @property (nonatomic) int jind;
 

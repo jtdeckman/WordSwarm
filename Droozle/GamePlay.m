@@ -29,6 +29,8 @@
     
     maxVal = 100;
     
+    wordLogic = [[WordLogic alloc] init];
+    
     [self newGame];
     
     return buffer;
@@ -50,15 +52,10 @@
 
     NSMutableArray *vals = [[NSMutableArray alloc] initWithCapacity:dimx];
     
-    NSNumber *value;
+    for(int i=0; i<dimy; i++)
+        [vals addObject:[wordLogic getLetter]];
     
-    for(int i=0; i<dimy; i++) {
-        value = [NSNumber numberWithInt:arc4random() % maxVal];
-        [vals addObject:value];
-    }
-    
-    value = [NSNumber numberWithInt:arc4random() % dimy*maxVal + maxVal + arc4random() % 10];
-    [vals addObject:value];
+    [vals addObject:@"NOUN"];
     
     [board addBottomRow:vals];
 }

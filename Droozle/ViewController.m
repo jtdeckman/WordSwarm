@@ -102,18 +102,24 @@
                 
                 if(selectedSpace.isOccupied) {
                     
-                    selectedSpace.value += touchedSpace.value;
-                    selectedSpace.piece.text = [NSString stringWithFormat:@"%d", selectedSpace.value];
+                    NSString *val = selectedSpace.value;
                     
-                    [board removePiece:touchedSpace];
+                    val = selectedSpace.value;
+                    
+                    selectedSpace.value = touchedSpace.value;
+                    selectedSpace.piece.text = selectedSpace.value;
+                    
+                    touchedSpace.value = selectedSpace.value;
+                    touchedSpace.piece.text = touchedSpace.value;
                 }
                 
-                else if(touchedSpace.value > 1){
+                else {
                     
-                    touchedSpace.value = (int)((float)touchedSpace.value/2.0);
-                    touchedSpace.piece.text = [NSString stringWithFormat:@"%d", touchedSpace.value];
+                    selectedSpace.value = touchedSpace.value;
+                    selectedSpace.piece.text = selectedSpace.value;
                     
                     [board addPiece:selectedSpace.iind :selectedSpace.jind :touchedSpace.value];
+                    [board removePiece:touchedSpace];
                 }
                 
                 [board checkRow:rowNew];
@@ -136,9 +142,6 @@
     for(int i=0; i<gamePlay.dimx; i++) {
         
         space = [board getRefSpaceFromIndex:i];
-        [self.view addSubview:space.piece];
-        
-        space = [board getSumSpaceFromIndex:i];
         [self.view addSubview:space.piece];
         
         for(int j=0; j<gamePlay.dimy; j++) {

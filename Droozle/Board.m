@@ -46,7 +46,6 @@
     
     spaces = [[NSMutableArray alloc] initWithCapacity:dimx];
     rowTypes = [[NSMutableArray alloc] initWithCapacity:dimx];
-    rowSumPieces = [[NSMutableArray alloc] initWithCapacity:dimx];
     
     xini = bvFrame.origin.x;
     yini = bvFrame.origin.y;
@@ -73,7 +72,7 @@
         [spaces addObject:row];
     }
     
-    spcFrm.size.width = 0.4*buffer;
+    spcFrm.size.width = 0.8*buffer;
     
     for(int i=0; i<dimx; i++) {
     
@@ -85,8 +84,6 @@
         newSpace = [[Space alloc] init];
         
         [newSpace initSpace:i :-1 :spcFrm :spcFrm];
-        
-        [rowSumPieces addObject:newSpace];
         
         spcFrm.origin.x += spcFrm.size.width + 0.025*spcFrm.size.width;
         
@@ -162,7 +159,7 @@
     }
 }
 
-- (void)addPiece: (int)ival : (int)jval : (int)val {
+- (void)addPiece: (int)ival : (int)jval : (NSString*)val {
     
     Space *space = spaces[ival][jval];
     
@@ -174,7 +171,7 @@
     space.piece.hidden = false;
 }
 
-- (void)addRefPiece: (int)ival :(int)val {
+- (void)addRefPiece: (int)ival :(NSString*)val {
     
     Space *space = rowTypes[ival];
     
@@ -184,11 +181,6 @@
     [space configurePiece:YES :NO];
     
     space.piece.hidden = false;
-    
-    space = rowSumPieces[ival];
-    space.isOccupied = YES;
-    space.value = [self sumRow:ival];
-    
     [space configurePiece:NO :YES];
     
     space.piece.hidden = NO;
@@ -196,15 +188,15 @@
 
 - (void)addBottomRow: (NSMutableArray*)vals {
 
-    NSNumber *value;
+    NSString *value;
     
     for(int i=0; i<dimy; i++) {
         value = [vals objectAtIndex:i];
-        [self addPiece:dimx-1 :i :(int)[value integerValue]];
+        [self addPiece:dimx-1 :i :value];
     }
     
     value = [vals objectAtIndex:dimy];
-    [self addRefPiece:dimx-1 :(int)[value integerValue]];
+    [self addRefPiece:dimx-1 :value];
 }
 
 - (Space*)getSpaceForIndices: (int)ii : (int)ji {
@@ -215,11 +207,6 @@
 - (Space*)getRefSpaceFromIndex:(int)loc {
 
     return rowTypes[loc];
-}
-
-- (Space*)getSumSpaceFromIndex: (int)loc {
-
-    return rowSumPieces[loc];
 }
 
 - (Space*)getSpaceFromPoint: (CGPoint)loc {
@@ -311,8 +298,6 @@
             space.isOccupied = spaceBelow.isOccupied;
             space.piece.hidden = spaceBelow.piece.hidden;
             [space configurePiece:NO : NO];
-         //   if(!space.piece.hidden)
-           //     NSLog(@"%d %d",i,j);
         }
         
         space = rowTypes[i];
@@ -322,67 +307,24 @@
         space.isOccupied = spaceBelow.isOccupied;
         space.piece.hidden = spaceBelow.piece.hidden;
         [space configurePiece:YES: NO];
-        
-        space = rowSumPieces[i];
-        spaceBelow = rowSumPieces[i+1];
-        space.value = spaceBelow.value;
-        space.isOccupied = spaceBelow.isOccupied;
-        space.piece.hidden = spaceBelow.piece.hidden;
-        [space configurePiece:NO :YES];
     }
     
     return NO;
 }
 
-- (int)sumRow:(int)row {
-
-    int sum = 0;
-    
-    Space *space;
-    
-    for(int i=0; i<dimy; i++) {
-        space = spaces[row][i];
-        
-        if(space.isOccupied)
-            sum += space.value;
-    }
-    
-    return sum;
-}
-
 - (BOOL)topRowOccupied {
     
     Space *space;
-    
-  //  for(int i=0; i<dimy; i++) {
 
-        space = rowTypes[0];
+    space = rowTypes[0];
         if(space.isOccupied) return YES;
-  //  }
 
     return NO;
 }
 
 - (void)checkRow:(uint)row {
 
-    Space *refSpace, *space = rowSumPieces[row];
-    
-    int rowVal = 0;
-    
-    space.isOccupied = YES;
-    space.value = [self sumRow:row];
-    
-    space.piece.text = [NSString stringWithFormat:@"%d", space.value];
-    
-    refSpace = rowTypes[row];
-    
-    if (space.value == refSpace.value) {
-        
-        rowVal = space.value;
-        
-        [self eliminateRow:row];
-    }
-    
+   // Space *refSpace;
 }
 
 - (void)eliminateRow:(uint)row {
@@ -407,14 +349,6 @@
         space.isOccupied = spaceAbove.isOccupied;
         space.piece.hidden = spaceAbove.piece.hidden;
         [space configurePiece:YES: NO];
-        
-        space = rowSumPieces[i];
-        spaceAbove = rowSumPieces[i-1];
-        space.value = spaceAbove.value;
-        space.isOccupied = spaceAbove.isOccupied;
-        space.piece.hidden = spaceAbove.piece.hidden;
-        [space configurePiece:NO :YES];
-
     }
     
     for(int j=0; j<dimy; j++) {
@@ -429,13 +363,6 @@
     space.value = 0;
     space.isOccupied = NO;
     space.piece.hidden = YES;
-    
-    space = rowSumPieces[0];
-    space.value = 0;
-    space.isOccupied = NO;
-    space.piece.hidden = YES;
 }
-
-
 
 @end

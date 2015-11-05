@@ -15,7 +15,6 @@
     NSMutableArray *spaces;
     NSMutableArray *rows;
     NSMutableArray *rowTypes;
-    NSMutableArray *rowSumPieces;
     
     int dimx;
     int dimy;
@@ -35,11 +34,8 @@
 @property (nonatomic) int dimx;
 @property (nonatomic) int dimy;
 
-@property (nonatomic) uint cFlagPos1;
-@property (nonatomic) uint cFlagPos2;
-
 - (void)initBoard: (CGRect)bvFrame : (int)dimx : (int)dimy : (CGFloat)offset : (CGFloat)buffer;
-- (void)addPiece: (int)ival : (int)jval : (int)val;
+- (void)addPiece: (int)ival : (int)jval : (NSString*)val;
 - (void)addBottomRow: (NSMutableArray*)vals;
 
 - (Space*)getSpaceForIndices: (int)ival : (int)jval;

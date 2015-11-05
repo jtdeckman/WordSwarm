@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8CF7E9781BEBED1F00BF3D4B /* WordLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF7E9771BEBED1F00BF3D4B /* WordLogic.m */; };
 		A8166A641B99E84700F47146 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8166A631B99E84700F47146 /* main.m */; };
 		A8166A671B99E84700F47146 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8166A661B99E84700F47146 /* AppDelegate.m */; };
 		A8166A6A1B99E84700F47146 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8166A691B99E84700F47146 /* ViewController.m */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8CF7E9761BEBED1F00BF3D4B /* WordLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordLogic.h; sourceTree = "<group>"; };
+		8CF7E9771BEBED1F00BF3D4B /* WordLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordLogic.m; sourceTree = "<group>"; };
 		A8166A5E1B99E84700F47146 /* Droozle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Droozle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8166A621B99E84700F47146 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8166A631B99E84700F47146 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 				A8166A881B99E86300F47146 /* Board.m */,
 				A8166A8A1B99E8C200F47146 /* Space.h */,
 				A8166A8B1B99E8C200F47146 /* Space.m */,
+				8CF7E9761BEBED1F00BF3D4B /* WordLogic.h */,
+				8CF7E9771BEBED1F00BF3D4B /* WordLogic.m */,
 				A8166A8D1B99E8FC00F47146 /* Constants.h */,
 				A831F60F1BB0B8B70001E1BC /* Colors.h */,
 				A831F6101BB0B8B70001E1BC /* Colors.m */,
@@ -261,6 +266,7 @@
 				A8166A6A1B99E84700F47146 /* ViewController.m in Sources */,
 				A831F6111BB0B8B70001E1BC /* Colors.m in Sources */,
 				A831F60D1BB0B0190001E1BC /* Display.m in Sources */,
+				8CF7E9781BEBED1F00BF3D4B /* WordLogic.m in Sources */,
 				A8166A671B99E84700F47146 /* AppDelegate.m in Sources */,
 				A8699DD01BB6FD9B00CCC1FD /* GamePlay.m in Sources */,
 				A8166A891B99E86300F47146 /* Board.m in Sources */,

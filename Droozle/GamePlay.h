@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Board.h"
+#import "WordLogic.h"
 
 #define TIME_FACTOR 10
 
@@ -24,6 +25,7 @@
     GameData gameData;
     PlaceMode placeMode;
     
+    WordLogic *wordLogic;
 }
 
 @property (nonatomic) int dimx;

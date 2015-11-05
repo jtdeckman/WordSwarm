@@ -85,7 +85,6 @@
     
     floatPiece.layer.cornerRadius = 10.0f;
     floatPiece.clipsToBounds = YES;
-   // floatPiece.opaque = NO;
     floatPiece.hidden = YES;
     
     [floatPiece setTextAlignment:NSTextAlignmentCenter];
@@ -121,7 +120,7 @@
     
     floatPiece.hidden = NO;
     
-    floatPiece.text = [NSString stringWithFormat:@"%d", space.value];
+    floatPiece.text = space.value;
     floatPiece.layer.borderColor = [[UIColor clearColor] CGColor];
     
     [floatPiece setFrame:frm];

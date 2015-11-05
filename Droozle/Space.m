@@ -16,6 +16,8 @@
 
 - (void)initSpace : (int)ival : (int)jval : (CGRect)spaceFrm : (CGRect)labelframe {
     
+    value = @"";
+    
     iind = ival;
     jind = jval;
 
