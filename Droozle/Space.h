@@ -18,6 +18,7 @@
     int jind;
     
     BOOL isOccupied;
+    BOOL refPiece;
     
     NSMutableSet *nearestNbrs;
     NSMutableSet *neighbors;
@@ -34,6 +35,7 @@
 }
 
 @property (nonatomic) BOOL isOccupied;
+@property (nonatomic) BOOL refPiece;
 
 @property (nonatomic, strong)  NSString *value;
 
@@ -48,7 +50,7 @@
 
 - (void)initSpace: (int)ival : (int)jval : (CGRect)spaceFrm : (CGRect)labelframe;
 - (void)setColor: (CGFloat)red : (CGFloat)green : (CGFloat)blue : (CGFloat)alpha;
-- (void)configurePiece: (bool)isRefPiece : (bool)isSumPiece;
+- (void)configurePiece: (bool)isRefPiece;
 - (bool)isNearestNearestNbrOf: (Space*)space;
 
 - (void)deconstruct;

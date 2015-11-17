@@ -41,4 +41,6 @@
 - (void)newGame;
 - (void)incrementTimer;
 
+- (NSString*)getARandomLetter;
+
 @end

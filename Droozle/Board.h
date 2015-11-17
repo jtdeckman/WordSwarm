@@ -41,7 +41,6 @@
 - (Space*)getSpaceForIndices: (int)ival : (int)jval;
 - (Space*)getSpaceFromPoint: (CGPoint)loc;
 - (Space*)getRefSpaceFromIndex: (int)loc;
-- (Space*)getSumSpaceFromIndex: (int)loc;
 
 - (int)nbrNearestOccupied: (Space*)space;
 - (int)nbrOccupied: (Space*)space;

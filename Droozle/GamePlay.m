@@ -66,4 +66,9 @@
     ++gameData.timer;
 }
 
+- (NSString*)getARandomLetter {
+
+    return [wordLogic randomLetter];
+}
+
 @end

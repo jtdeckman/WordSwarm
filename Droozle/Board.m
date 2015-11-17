@@ -19,7 +19,7 @@
     
     Space *newSpace;
     
-    CGFloat os2 = offset/2.0;
+    CGFloat os2 = 0;//offset/2.0;
     CGFloat xini, yini;
     
     CGRect spcFrm, pcFrm;
@@ -29,10 +29,10 @@
     
     numSpaces = dimx*dimy;
     
-    spaceWidth = (bvFrame.size.width - offset - buffer)/(CGFloat)dy;
+    spaceWidth = (bvFrame.size.width - buffer)/(CGFloat)dy;
     spaceHeight = spaceWidth;//(bvFrame.size.height - offset)/(CGFloat)dx;
     
-    pieceWidth = spaceWidth - offset;
+    pieceWidth = spaceWidth;
     pieceHeight = pieceWidth; //spaceHeight - offset;
     
     pw2 = pieceWidth/2.0;
@@ -72,18 +72,21 @@
         [spaces addObject:row];
     }
     
-    spcFrm.size.width = 1.5*spcFrm.size.width;
+    spcFrm.size.width = 2.0*spcFrm.size.width;
+    spcFrm.size.height -= offset;
     
     for(int i=0; i<dimx; i++) {
     
         newSpace = spaces[i][dimy-1];
         
-        spcFrm.origin.x = newSpace.piece.frame.origin.x + newSpace.piece.frame.size.width + 0.1*buffer;
-        spcFrm.origin.y = newSpace.piece.frame.origin.y;
+        spcFrm.origin.x = newSpace.piece.frame.origin.x + newSpace.piece.frame.size.width + 0.1*buffer + os2;
+        spcFrm.origin.y = newSpace.piece.frame.origin.y + os2;
       
         newSpace = [[Space alloc] init];
         
         [newSpace initSpace:i :-1 :spcFrm :spcFrm];
+        
+        [rowTypes addObject:newSpace];
     }
     
     [self findNeighbors];
@@ -157,7 +160,7 @@
     space.isOccupied = YES;
     space.value = val;
     
-    [space configurePiece:NO :NO];
+    [space configurePiece:NO];
     
     space.piece.hidden = false;
 }
@@ -169,10 +172,7 @@
     space.isOccupied = YES;
     space.value = val;
     
-    [space configurePiece:YES :NO];
-    
-    space.piece.hidden = false;
-    [space configurePiece:NO :YES];
+    [space configurePiece:YES];
     
     space.piece.hidden = NO;
 }
@@ -288,7 +288,7 @@
             space.value = spaceBelow.value;
             space.isOccupied = spaceBelow.isOccupied;
             space.piece.hidden = spaceBelow.piece.hidden;
-            [space configurePiece:NO : NO];
+            [space configurePiece:NO];
         }
         
         space = rowTypes[i];
@@ -297,7 +297,7 @@
         space.value = spaceBelow.value;
         space.isOccupied = spaceBelow.isOccupied;
         space.piece.hidden = spaceBelow.piece.hidden;
-        [space configurePiece:YES: NO];
+        [space configurePiece:YES];
     }
     
     return NO;
@@ -330,7 +330,7 @@
             space.value = spaceAbove.value;
             space.isOccupied = spaceAbove.isOccupied;
             space.piece.hidden = spaceAbove.piece.hidden;
-            [space configurePiece:NO : NO];
+            [space configurePiece:NO];
         }
 
         space = rowTypes[i];
@@ -339,7 +339,7 @@
         space.value = spaceAbove.value;
         space.isOccupied = spaceAbove.isOccupied;
         space.piece.hidden = spaceAbove.piece.hidden;
-        [space configurePiece:YES: NO];
+        [space configurePiece:YES];
     }
     
     for(int j=0; j<dimy; j++) {

@@ -60,10 +60,22 @@
             
             touchedSpace = [board getSpaceFromPoint:location];
             
-            if(touchedSpace.isOccupied) {
+            if(touchedSpace.refPiece) {
+                
+            }
+            
+            else if(touchedSpace.isOccupied) {
                 
                 gamePlay.placeMode = swipeMove;
                 [display configureFloatPiece:touchedSpace :self.view];
+            }
+        }
+        
+        else if(touch.view == display.bottomBar && gamePlay.placeMode == freeState) {
+            
+            if(CGRectContainsPoint(display.addPiece.frame, location)) {
+                
+                gamePlay.placeMode = addMove;
             }
         }
     }
@@ -79,6 +91,11 @@
         if(gamePlay.placeMode == swipeMove) {
             
             [display changeFloatPieceLoc:location];
+        }
+        
+        else if(gamePlay.placeMode == addMove) {
+            
+            [display changeAddPieceLoc:location];
         }
     }
 }
@@ -109,7 +126,7 @@
                     selectedSpace.value = touchedSpace.value;
                     selectedSpace.piece.text = selectedSpace.value;
                     
-                    touchedSpace.value = selectedSpace.value;
+                    touchedSpace.value = val;
                     touchedSpace.piece.text = touchedSpace.value;
                 }
                 
@@ -129,6 +146,26 @@
             }
             
             display.floatPiece.hidden = YES;
+            touchedSpace = NULL;
+            gamePlay.placeMode = freeState;
+        }
+        
+        else if(gamePlay.placeMode == addMove) {
+            
+            Space *selectedSpace = [board getSpaceFromPoint:location];
+            
+            if(selectedSpace.isOccupied && !selectedSpace.refPiece) {
+                
+                selectedSpace.piece.text = display.addPiece.text;
+                display.addPiece.text = [gamePlay getARandomLetter];
+            }
+            
+            else {
+                
+                
+            }
+            
+            [display resetAddPiece];
             touchedSpace = NULL;
             gamePlay.placeMode = freeState;
         }
@@ -164,7 +201,7 @@
     boardFrm = [display initBoardView:self.view.frame];
     
     CGFloat buffer = [gamePlay setUp:board :boardFrm];
-    [board initBoard:boardFrm :gamePlay.dimx :gamePlay.dimy :0 :buffer];
+    [board initBoard:boardFrm :gamePlay.dimx :gamePlay.dimy :0.0025*self.view.frame.size.width :buffer];
     
     [self addPiecesToView];
     
@@ -173,6 +210,8 @@
     [display setUpFloatPieces:space.piece.frame :self.view];
     
     gameTimer = [NSTimer scheduledTimerWithTimeInterval:1/1 target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
+    
+    display.addPiece.text = [gamePlay getARandomLetter];
 }
 
 @end

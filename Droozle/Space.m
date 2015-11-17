@@ -10,7 +10,8 @@
 
 @implementation Space
 
-@synthesize isOccupied, value, piece;
+@synthesize isOccupied, refPiece;
+@synthesize value, piece;
 @synthesize spaceFrame, iind, jind;
 @synthesize neighbors, nearestNbrs;
 
@@ -21,6 +22,8 @@
     iind = ival;
     jind = jval;
 
+    refPiece = NO;
+    
     spaceFrame = spaceFrm;
     
     piece = [[UILabel alloc] initWithFrame:labelframe];
@@ -57,14 +60,17 @@
     color.blue = blue;
 }
 
-- (void)configurePiece: (bool)isRefPiece : (bool)isSumPiece{
+- (void)configurePiece: (bool)isRefPiece {
     
     UIImage *img;
 
-    if(isRefPiece)
+    refPiece = isRefPiece;
+    
+    if(isRefPiece) {
+        
         img = p2Img;
-    else if(isSumPiece)
-        img = p3Img;
+        [piece setFont:[UIFont fontWithName:@"Arial" size:0.7*FONT_FACT*spaceFrame.size.width]];
+    }
     else
         img = p1Img;
     

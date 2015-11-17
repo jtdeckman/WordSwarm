@@ -95,6 +95,35 @@
     
     floatPieceOffSet.width = pcFrm.size.width/2.0;
     floatPieceOffSet.height = pcFrm.size.height/2.0;
+    
+    pcFrm.size.width *= 1.25;
+    pcFrm.size.height *= 1.25;
+    pcFrm.origin.x = 0.75*bottomBar.frame.size.width;
+    pcFrm.origin.y = bottomBar.frame.origin.y + (bottomBar.frame.size.height - pcFrm.size.height)/2.0;
+    
+    baseAddPiece = pcFrm;
+    
+    UIGraphicsBeginImageContext(pcFrm.size);
+    tmpImage = [UIImage imageNamed:@"orangeSquare.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
+    
+    floatBackImage = UIGraphicsGetImageFromCurrentImageContext();
+
+    addPiece = [[UILabel alloc] initWithFrame:pcFrm];
+    [addPiece setBackgroundColor:[UIColor colorWithPatternImage:floatBackImage]];
+    
+    addPiece.layer.cornerRadius = 10.0f;
+    addPiece.clipsToBounds = YES;
+    addPiece.hidden = NO;
+    
+    [addPiece setTextAlignment:NSTextAlignmentCenter];
+    [addPiece setFont:[UIFont fontWithName:@"Arial" size:1.0*FONT_FACT*pcFrm.size.width]];
+    addPiece.textColor = [UIColor whiteColor];
+    
+    [rootView addSubview:addPiece];
+    
+    addPieceOffSet.width = pcFrm.size.width/2.0;
+    addPieceOffSet.height = pcFrm.size.height/2.0;
 }
 
 - (void)changeFloatPieceLoc: (CGPoint)newLoc {
@@ -107,6 +136,18 @@
     frm.size = floatPiece.frame.size;
     
     [floatPiece setFrame:frm];
+}
+
+- (void)changeAddPieceLoc: (CGPoint)newLoc {
+
+    CGRect frm;
+    
+    frm.origin.x = newLoc.x - addPieceOffSet.width;
+    frm.origin.y = newLoc.y - addPieceOffSet.height;
+
+    frm.size = addPiece.frame.size;
+    
+    [addPiece setFrame:frm];
 }
 
 - (void)configureFloatPiece: (Space*)space :(UIView*)rootView {
@@ -126,6 +167,11 @@
     [floatPiece setFrame:frm];
     
     [rootView bringSubviewToFront:floatPiece];
+}
+
+- (void)resetAddPiece {
+
+    [addPiece setFrame:baseAddPiece];
 }
 
 @end

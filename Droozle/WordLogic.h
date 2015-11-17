@@ -20,5 +20,6 @@
 - (void)initLetters;
 
 - (NSString*)getLetter;
+- (NSString*)randomLetter;
 
 @end

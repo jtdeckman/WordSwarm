@@ -23,6 +23,9 @@
     UIImage *floatBackImage;
     
     CGSize floatPieceOffSet;
+    CGSize addPieceOffSet;
+    
+    CGRect baseAddPiece;
 }
 
 @property(nonatomic, strong) UIView *topBar;
@@ -37,6 +40,8 @@
 - (void)setUpFloatPieces:(CGRect)pcFrm :(UIView*)rootView;
 - (void)changeFloatPieceLoc: (CGPoint)newLoc;
 - (void)configureFloatPiece: (Space*)space :(UIView*)rootView;
+- (void)changeAddPieceLoc: (CGPoint)newLoc;
+- (void)resetAddPiece;
 
 - (CGRect)initBoardView:(CGRect)viewFrame;
 

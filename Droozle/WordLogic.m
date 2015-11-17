@@ -10,6 +10,8 @@
 
 @implementation WordLogic
 
+@synthesize nArraySelections;
+
 - (void)initLetters {
 
     letters = [[NSMutableArray alloc] initWithObjects:@"A",
@@ -110,9 +112,15 @@
                @"Y",
                @"Y",
                @"Z",
+               @"",
+               @"",
+               @"",
+               @"",
+               @"",
                nil];
     
     nArraySelections = (int)[letters count];
+   
 }
 
 - (NSString*)getLetter {
@@ -120,6 +128,13 @@
     int index;
 
     index = arc4random() % nArraySelections;
+    
+    return letters[index];
+}
+
+- (NSString*)randomLetter {
+    
+    int index = arc4random() % nArraySelections;
     
     return letters[index];
 }
