@@ -45,12 +45,15 @@
 - (int)nbrNearestOccupied: (Space*)space;
 - (int)nbrOccupied: (Space*)space;
 
-- (void)removePiece: (Space*)space;
+- (void)removePiece:(Space*)space;
 - (void)clearBoard;
-- (void)checkRow:(uint)row;
 
 - (void)deconstruct;
 
 - (BOOL)shiftRowsUp;
+
+- (void)eliminateRow:(uint)row;
+
+- (NSString*)makeWordFromRow: (uint)row;
 
 @end

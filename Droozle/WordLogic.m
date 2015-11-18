@@ -14,6 +14,10 @@
 
 - (void)initLetters {
 
+    dictionary = [Lexicontext sharedDictionary];
+    
+    wordTypes = [[NSMutableArray alloc] initWithObjects:@"Word", @"Noun", @"Verb", @"Adj", nil];
+    
     letters = [[NSMutableArray alloc] initWithObjects:@"A",
                @"A",
                @"A",
@@ -137,6 +141,34 @@
     int index = arc4random() % nArraySelections;
     
     return letters[index];
+}
+
+- (NSString*)getType {
+
+    int index = arc4random() % [wordTypes count];
+    
+    return wordTypes[index];
+}
+
+- (BOOL)isWord:(NSString*)word {
+
+    NSString *result = [dictionary definitionFor:word];
+    
+    NSString *subString = [result substringToIndex:20];
+    NSArray *components = [subString componentsSeparatedByString:@" "];
+    
+    NSString *wrd1 = components[1];
+    NSString *wrd2 = components[2];
+    
+    if([wrd1 isEqualToString:@"definition"] && [wrd2 isEqualToString:@"not"])
+        return NO;
+    
+    else {
+        
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end

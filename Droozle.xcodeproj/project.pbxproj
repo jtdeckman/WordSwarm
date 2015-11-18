@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8CF092C81BFBEE1A00AC3599 /* LexicontextAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8CF092C71BFBEE1A00AC3599 /* LexicontextAssets.bundle */; };
+		8CF092CA1BFBEE4600AC3599 /* libLexicontext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF092C91BFBEE4600AC3599 /* libLexicontext.a */; };
 		8CF7E9781BEBED1F00BF3D4B /* WordLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF7E9771BEBED1F00BF3D4B /* WordLogic.m */; };
 		A8166A641B99E84700F47146 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8166A631B99E84700F47146 /* main.m */; };
 		A8166A671B99E84700F47146 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8166A661B99E84700F47146 /* AppDelegate.m */; };
@@ -35,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8CF092C61BFBEE1A00AC3599 /* Lexicontext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lexicontext.h; path = ../lexicontext/Lexicontext.h; sourceTree = "<group>"; };
+		8CF092C71BFBEE1A00AC3599 /* LexicontextAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = LexicontextAssets.bundle; path = lexicontext/LexicontextAssets.bundle; sourceTree = "<group>"; };
+		8CF092C91BFBEE4600AC3599 /* libLexicontext.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLexicontext.a; path = lexicontext/libLexicontext.a; sourceTree = "<group>"; };
 		8CF7E9761BEBED1F00BF3D4B /* WordLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordLogic.h; sourceTree = "<group>"; };
 		8CF7E9771BEBED1F00BF3D4B /* WordLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordLogic.m; sourceTree = "<group>"; };
 		A8166A5E1B99E84700F47146 /* Droozle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Droozle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CF092CA1BFBEE4600AC3599 /* libLexicontext.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,9 +93,11 @@
 		A8166A551B99E84700F47146 = {
 			isa = PBXGroup;
 			children = (
+				8CF092C71BFBEE1A00AC3599 /* LexicontextAssets.bundle */,
 				A8166A601B99E84700F47146 /* Droozle */,
 				A8166A7A1B99E84700F47146 /* DroozleTests */,
 				A8166A5F1B99E84700F47146 /* Products */,
+				8CF092C91BFBEE4600AC3599 /* libLexicontext.a */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,6 +128,7 @@
 				A8166A8B1B99E8C200F47146 /* Space.m */,
 				8CF7E9761BEBED1F00BF3D4B /* WordLogic.h */,
 				8CF7E9771BEBED1F00BF3D4B /* WordLogic.m */,
+				8CF092C61BFBEE1A00AC3599 /* Lexicontext.h */,
 				A8166A8D1B99E8FC00F47146 /* Constants.h */,
 				A831F60F1BB0B8B70001E1BC /* Colors.h */,
 				A831F6101BB0B8B70001E1BC /* Colors.m */,
@@ -240,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8166A6D1B99E84700F47146 /* Main.storyboard in Resources */,
+				8CF092C81BFBEE1A00AC3599 /* LexicontextAssets.bundle in Resources */,
 				A8166A921B99EE2D00F47146 /* orangeSquare.png in Resources */,
 				A8166A971B99EEF800F47146 /* redSquare.png in Resources */,
 				A8166A721B99E84700F47146 /* LaunchScreen.xib in Resources */,
@@ -399,7 +409,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Droozle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lexicontext",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "JTD.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -410,7 +425,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Droozle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lexicontext",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "JTD.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

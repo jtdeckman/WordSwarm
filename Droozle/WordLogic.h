@@ -7,12 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Lexicontext.h"
 
 @interface WordLogic : NSObject {
     
     NSMutableArray *letters;
+    NSMutableArray *wordTypes;
     
     int nArraySelections;
+    
+    Lexicontext *dictionary;
 }
 
 @property (nonatomic) int nArraySelections;
@@ -21,5 +25,8 @@
 
 - (NSString*)getLetter;
 - (NSString*)randomLetter;
+- (NSString*)getType;
+
+- (BOOL)isWord:(NSString*)word;
 
 @end

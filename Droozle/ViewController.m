@@ -62,6 +62,12 @@
             
             if(touchedSpace.refPiece) {
                 
+                NSString *word = [board makeWordFromRow:touchedSpace.iind];
+                NSString *type = touchedSpace.piece.text;
+                
+                if([gamePlay checkWord:word :type]) {
+                    [board eliminateRow:touchedSpace.iind];
+                }
             }
             
             else if(touchedSpace.isOccupied) {
@@ -139,10 +145,6 @@
                     [board removePiece:touchedSpace];
                 }
                 
-                [board checkRow:rowNew];
-                
-                if(rowNew != rowOrig)
-                    [board checkRow:rowOrig];
             }
             
             display.floatPiece.hidden = YES;

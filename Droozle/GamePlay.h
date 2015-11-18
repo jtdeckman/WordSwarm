@@ -43,4 +43,6 @@
 
 - (NSString*)getARandomLetter;
 
+- (BOOL)checkWord:(NSString*)word :(NSString*)wrdType;
+
 @end

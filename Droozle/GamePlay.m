@@ -56,7 +56,7 @@
     for(int i=0; i<dimy; i++)
         [vals addObject:[wordLogic getLetter]];
     
-    [vals addObject:@"NOUN"];
+    [vals addObject:[wordLogic getType]];
     
     [board addBottomRow:vals];
 }
@@ -69,6 +69,11 @@
 - (NSString*)getARandomLetter {
 
     return [wordLogic randomLetter];
+}
+
+- (BOOL)checkWord: (NSString*)word :(NSString*)wrdType {
+    
+    return [wordLogic isWord:word];
 }
 
 @end

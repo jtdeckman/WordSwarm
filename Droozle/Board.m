@@ -213,6 +213,13 @@
         }
     }
     
+    for(int i=0; i<dimx; i++) {
+            
+            space = rowTypes[i];
+            
+            if(CGRectContainsPoint(space.spaceFrame, loc)) return space;
+    }
+
     return NULL;
 }
 
@@ -313,11 +320,6 @@
     return NO;
 }
 
-- (void)checkRow:(uint)row {
-
-   // Space *refSpace;
-}
-
 - (void)eliminateRow:(uint)row {
     
     Space *space, *spaceAbove;
@@ -355,5 +357,21 @@
     space.isOccupied = NO;
     space.piece.hidden = YES;
 }
+
+- (NSString*)makeWordFromRow: (uint)row {
+    
+    NSMutableString *word = [[NSMutableString alloc] initWithString:@""];
+    
+    Space *space;
+    
+    for(int i=0; i<dimy; i++) {
+        
+        space = spaces[row][i];
+        [word appendString:space.piece.text];
+    }
+    
+    return word;
+}
+
 
 @end
