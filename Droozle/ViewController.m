@@ -144,7 +144,6 @@
                     [board addPiece:selectedSpace.iind :selectedSpace.jind :touchedSpace.value];
                     [board removePiece:touchedSpace];
                 }
-                
             }
             
             display.floatPiece.hidden = YES;
@@ -158,6 +157,7 @@
             
             if(selectedSpace.isOccupied && !selectedSpace.refPiece) {
                 
+                selectedSpace.value = display.addPiece.text;
                 selectedSpace.piece.text = display.addPiece.text;
                 display.addPiece.text = [gamePlay getARandomLetter];
             }
