@@ -18,14 +18,14 @@
     CGRect frm;
     
     frm = viewFrame;
-    frm.size.height *= 0.20;
+    frm.size.height *= 0.15;
     
     topBar = [[UIView alloc] initWithFrame:frm];
     
     [rootViewCont.view addSubview:topBar];
     
     frm = topBar.frame;
-    frm.size.height *= 0.75;
+    frm.size.height *= 1.25;
     frm.origin.y = viewFrame.size.height - frm.size.height;
     
     bottomBar = [[UIView alloc] initWithFrame:frm];
@@ -64,8 +64,8 @@
 
     CGRect boardFrm;
     
-    boardFrm.origin.x = 0.05*viewFrame.size.width;
-    boardFrm.origin.y = boardView.frame.origin.y + 0.05*viewFrame.size.width;
+    boardFrm.origin.x = 0.04*viewFrame.size.width;
+    boardFrm.origin.y = boardView.frame.origin.y + 0.04*viewFrame.size.width;
     boardFrm.size.height = 0.95*boardView.frame.size.height;
     boardFrm.size.width = viewFrame.size.width - 2.0*boardFrm.origin.x;
 

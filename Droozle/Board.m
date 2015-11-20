@@ -72,7 +72,7 @@
         [spaces addObject:row];
     }
     
-    spcFrm.size.width = 2.0*spcFrm.size.width;
+    spcFrm.size.width = 1.25*spcFrm.size.width;
     spcFrm.size.height -= offset;
     
     for(int i=0; i<dimx; i++) {
@@ -367,7 +367,9 @@
     for(int i=0; i<dimy; i++) {
         
         space = spaces[row][i];
-        [word appendString:space.piece.text];
+        
+        if(space.isOccupied)
+            [word appendString:space.piece.text];
     }
     
     return word;

@@ -20,13 +20,13 @@
 #define BUTTON_SPACING_FACT 0.1
 
 #define SPACING_FACT 0.025
-#define PIECE_BUFFER 0.30
+#define PIECE_BUFFER 0.2
 #define LINE_THICK_FACT 0.015
 
 #define DIMX 10
 #define DIMY 10
 
-#define FONT_FACT 0.3
+#define FONT_FACT 0.4
 
 #define MAX_NEARBY_NEIGHBORS 8
 

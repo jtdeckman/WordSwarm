@@ -69,7 +69,7 @@
     if(isRefPiece) {
         
         img = p2Img;
-        [piece setFont:[UIFont fontWithName:@"Arial" size:0.7*FONT_FACT*spaceFrame.size.width]];
+        [piece setFont:[UIFont fontWithName:@"Arial" size:0.6*FONT_FACT*spaceFrame.size.width]];
     }
     else
         img = p1Img;

@@ -118,8 +118,9 @@
             
             Space *selectedSpace = [board getSpaceFromPoint:location];
             
-            if([selectedSpace isNearestNearestNbrOf:touchedSpace]) {
-            
+         //   if([selectedSpace isNearestNearestNbrOf:touchedSpace]) {
+             if(selectedSpace != NULL && !selectedSpace.refPiece) {
+                 
                 rowNew = selectedSpace.iind;
                 rowOrig = touchedSpace.iind;
                 
@@ -132,6 +133,7 @@
                     selectedSpace.value = touchedSpace.value;
                     selectedSpace.piece.text = selectedSpace.value;
                     
+                  //  [board removePiece:touchedSpace];
                     touchedSpace.value = val;
                     touchedSpace.piece.text = touchedSpace.value;
                 }
