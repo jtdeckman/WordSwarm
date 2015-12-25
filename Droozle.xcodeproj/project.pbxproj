@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C8DA7101C2DD0870083CCE1 /* menuBars2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C8DA70F1C2DD0870083CCE1 /* menuBars2.png */; };
+		8C8DA7131C2DEB590083CCE1 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8DA7121C2DEB590083CCE1 /* MenuView.m */; };
 		8CF092C81BFBEE1A00AC3599 /* LexicontextAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8CF092C71BFBEE1A00AC3599 /* LexicontextAssets.bundle */; };
 		8CF092CA1BFBEE4600AC3599 /* libLexicontext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF092C91BFBEE4600AC3599 /* libLexicontext.a */; };
 		8CF7E9781BEBED1F00BF3D4B /* WordLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF7E9771BEBED1F00BF3D4B /* WordLogic.m */; };
@@ -37,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C8DA70F1C2DD0870083CCE1 /* menuBars2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menuBars2.png; path = Images/menuBars2.png; sourceTree = SOURCE_ROOT; };
+		8C8DA7111C2DEB590083CCE1 /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
+		8C8DA7121C2DEB590083CCE1 /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
 		8CF092C61BFBEE1A00AC3599 /* Lexicontext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lexicontext.h; path = ../lexicontext/Lexicontext.h; sourceTree = "<group>"; };
 		8CF092C71BFBEE1A00AC3599 /* LexicontextAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = LexicontextAssets.bundle; path = lexicontext/LexicontextAssets.bundle; sourceTree = "<group>"; };
 		8CF092C91BFBEE4600AC3599 /* libLexicontext.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLexicontext.a; path = lexicontext/libLexicontext.a; sourceTree = "<group>"; };
@@ -132,6 +137,8 @@
 				A8166A8D1B99E8FC00F47146 /* Constants.h */,
 				A831F60F1BB0B8B70001E1BC /* Colors.h */,
 				A831F6101BB0B8B70001E1BC /* Colors.m */,
+				8C8DA7111C2DEB590083CCE1 /* MenuView.h */,
+				8C8DA7121C2DEB590083CCE1 /* MenuView.m */,
 				A8166A6E1B99E84700F47146 /* Images.xcassets */,
 				A8166A701B99E84700F47146 /* LaunchScreen.xib */,
 				A8166A611B99E84700F47146 /* Supporting Files */,
@@ -142,6 +149,7 @@
 		A8166A611B99E84700F47146 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8C8DA70F1C2DD0870083CCE1 /* menuBars2.png */,
 				A8166A8F1B99EE2D00F47146 /* orangeSquare.png */,
 				A8166A941B99EEB200F47146 /* blueSquare.png */,
 				A8166A961B99EEF800F47146 /* redSquare.png */,
@@ -255,6 +263,7 @@
 				A8166A721B99E84700F47146 /* LaunchScreen.xib in Resources */,
 				A8166A6F1B99E84700F47146 /* Images.xcassets in Resources */,
 				A8166A951B99EEB200F47146 /* blueSquare.png in Resources */,
+				8C8DA7101C2DD0870083CCE1 /* menuBars2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +290,7 @@
 				A8699DD01BB6FD9B00CCC1FD /* GamePlay.m in Sources */,
 				A8166A891B99E86300F47146 /* Board.m in Sources */,
 				A8166A641B99E84700F47146 /* main.m in Sources */,
+				8C8DA7131C2DEB590083CCE1 /* MenuView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

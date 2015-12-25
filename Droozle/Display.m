@@ -12,6 +12,7 @@
 
 @synthesize topBar, bottomBar, boardView;
 @synthesize floatPiece, addPiece;
+@synthesize menuBar, menuView;
 
 - (void)initDisplay:(CGRect)viewFrame : (UIViewController*)rootViewCont {
 
@@ -32,16 +33,27 @@
     
     [rootViewCont.view addSubview:bottomBar];
     
-    frm.size.height = viewFrame.size.height - topBar.frame.size.height- bottomBar.frame.size.height;
+    frm.size.height = viewFrame.size.height - topBar.frame.size.height - bottomBar.frame.size.height;
     frm.origin.y = topBar.frame.size.height;
     
     boardView = [[UIView alloc] initWithFrame:frm];
     
     [rootViewCont.view addSubview:boardView];
     
+    frm.size.height = 0.7*rootViewCont.view.frame.size.height;
+    frm.origin.y = rootViewCont.view.frame.size.height - frm.size.height;
+    
+    menuView = [[MenuView alloc] initWithFrame:frm];
+    
+    [menuView setUpView];
+    
+    [rootViewCont.view addSubview:menuView];
+    [rootViewCont.view bringSubviewToFront:menuView];
+    
     topBar.hidden = NO;
     bottomBar.hidden = NO;
     boardView.hidden = NO;
+    menuView.hidden = YES;
     
     [self setUpColors];
 }
@@ -57,7 +69,8 @@
     bottomBar.backgroundColor = [UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
     
     boardView.backgroundColor = [UIColor colorWithRed:colors.boardViewBackgroundColor.red green:colors.boardViewBackgroundColor.green blue:colors.boardViewBackgroundColor.blue alpha:1.0f];
-
+    
+    menuView.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.99];
 }
 
 - (CGRect)initBoardView: (CGRect)viewFrame{
@@ -124,6 +137,23 @@
     
     addPieceOffSet.width = pcFrm.size.width/2.0;
     addPieceOffSet.height = pcFrm.size.height/2.0;
+    
+    pcFrm.size.width *= 0.80;
+    pcFrm.size.height = pcFrm.size.width;
+    pcFrm.origin.y = bottomBar.frame.origin.y + (bottomBar.frame.size.height - pcFrm.size.height)/2.0;
+    pcFrm.origin.x = bottomBar.frame.size.width - addPiece.frame.size.width - addPiece.frame.origin.x;
+    
+    UIGraphicsBeginImageContext(pcFrm.size);
+   
+    tmpImage = [UIImage imageNamed:@"menuBars2.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
+    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    menuBar = [[UIImageView alloc] initWithImage:tmpImage];
+    
+    [menuBar setFrame:pcFrm];
+    
+    [rootView addSubview:menuBar];
 }
 
 - (void)changeFloatPieceLoc: (CGPoint)newLoc {
@@ -172,6 +202,14 @@
 - (void)resetAddPiece {
 
     [addPiece setFrame:baseAddPiece];
+}
+
+- (void)deconstruct {
+
+    topBar = nil;
+    floatPiece = nil;
+    bottomBar = nil;
+    menuView = nil;
 }
 
 @end

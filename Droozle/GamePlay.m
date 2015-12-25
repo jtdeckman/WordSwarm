@@ -76,4 +76,9 @@
     return [wordLogic isWord:word];
 }
 
+- (void)deconstruct {
+    
+    [wordLogic deconstruct];
+}
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
 
@@ -54,6 +55,25 @@
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint location = [touch locationInView:self.view];
     
+    if(gamePlay.gameState == gameMenu) {
+    
+        if(touch.view == display.menuView) {
+            
+            location = [touch locationInView:display.menuView];
+            
+            if(CGRectContainsPoint(display.menuView.nwGameLabel.frame, location)) {
+                
+                [self setUpNewGame];
+            }
+        }
+        
+        else {
+            
+            display.menuView.hidden = YES;
+            gamePlay.gameState = gameRunning;
+        }
+    }
+    
     if(gamePlay.gameState == gameRunning) {
         
         if(touch.view == display.boardView && gamePlay.placeMode == freeState) {
@@ -79,7 +99,17 @@
         
         else if(touch.view == display.bottomBar && gamePlay.placeMode == freeState) {
             
-            if(CGRectContainsPoint(display.addPiece.frame, location)) {
+            if(CGRectContainsPoint(display.menuBar.frame, location)) {
+                
+                gamePlay.gameState = gameMenu;
+                
+                display.menuView.hidden = NO;
+                
+                [self.view bringSubviewToFront:display.menuView];
+        
+            }
+            
+            else if(gamePlay.placeMode == freeState && CGRectContainsPoint(display.addPiece.frame, location)) {
                 
                 gamePlay.placeMode = addMove;
             }
@@ -161,7 +191,8 @@
                 
                 selectedSpace.value = display.addPiece.text;
                 selectedSpace.piece.text = display.addPiece.text;
-                display.addPiece.text = [gamePlay getARandomLetter];
+              //  display.addPiece.text = [gamePlay getARandomLetter];
+                display.addPiece.text = @"";
             }
             
             else {
@@ -215,7 +246,18 @@
     
     gameTimer = [NSTimer scheduledTimerWithTimeInterval:1/1 target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
     
-    display.addPiece.text = [gamePlay getARandomLetter];
+    display.addPiece.text = @""; //[gamePlay getARandomLetter];
+}
+
+- (void)setUpNewGame {
+    
+    [board deconstruct];
+    [display deconstruct];
+    [gamePlay deconstruct];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    [appDelegate resetApp];
 }
 
 @end

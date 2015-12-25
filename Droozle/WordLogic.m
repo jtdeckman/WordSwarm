@@ -171,4 +171,11 @@
     return NO;
 }
 
+- (void)deconstruct {
+    
+    dictionary = nil;
+    wordTypes = nil;
+    letters = nil;
+}
+
 @end

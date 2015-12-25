@@ -45,4 +45,6 @@
 
 - (BOOL)checkWord:(NSString*)word :(NSString*)wrdType;
 
+- (void)deconstruct;
+
 @end

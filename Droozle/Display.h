@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "Colors.h"
 #import "Space.h"
+#import "MenuView.h"
 
 @interface Display : NSObject {
     
@@ -17,10 +18,14 @@
     UIView *bottomBar;
     UIView *boardView;
     
+    MenuView *menuView;
+    
     UILabel *floatPiece;
     UILabel *addPiece;
     
     UIImage *floatBackImage;
+    
+    UIImageView *menuBar;
     
     CGSize floatPieceOffSet;
     CGSize addPieceOffSet;
@@ -32,8 +37,12 @@
 @property(nonatomic, strong) UIView *boardView;
 @property(nonatomic, strong) UIView *bottomBar;
 
-@property (nonatomic, strong) UILabel *floatPiece;
-@property (nonatomic, strong) UILabel *addPiece;
+@property(nonatomic, strong) MenuView *menuView;
+
+@property(nonatomic, strong) UILabel *floatPiece;
+@property(nonatomic, strong) UILabel *addPiece;
+
+@property(nonatomic, strong) UIImageView *menuBar;
 
 - (void)initDisplay:(CGRect)viewFrame :(UIViewController*)rootViewCont;
 - (void)setUpColors;
@@ -42,6 +51,7 @@
 - (void)configureFloatPiece: (Space*)space :(UIView*)rootView;
 - (void)changeAddPieceLoc: (CGPoint)newLoc;
 - (void)resetAddPiece;
+- (void)deconstruct;
 
 - (CGRect)initBoardView:(CGRect)viewFrame;
 

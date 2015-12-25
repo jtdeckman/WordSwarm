@@ -29,4 +29,6 @@
 
 - (BOOL)isWord:(NSString*)word;
 
+- (void)deconstruct;
+
 @end
