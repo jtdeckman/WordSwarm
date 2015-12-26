@@ -45,7 +45,7 @@
 @property(nonatomic, strong) UIImageView *menuBar;
 
 - (void)initDisplay:(CGRect)viewFrame :(UIViewController*)rootViewCont;
-- (void)setUpColors;
+- (void)setUpColors:(UIView*)rootView;
 - (void)setUpFloatPieces:(CGRect)pcFrm :(UIView*)rootView;
 - (void)changeFloatPieceLoc: (CGPoint)newLoc;
 - (void)configureFloatPiece: (Space*)space :(UIView*)rootView;

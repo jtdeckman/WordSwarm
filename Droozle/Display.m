@@ -55,22 +55,36 @@
     boardView.hidden = NO;
     menuView.hidden = YES;
     
-    [self setUpColors];
+    [self setUpColors:rootViewCont.view];
 }
 
-- (void)setUpColors {
+- (void)setUpColors:(UIView*)rootView {
 
     Colors *colors = [[Colors alloc] init];
     
     [colors setUpColors];
     
-    topBar.backgroundColor = [UIColor colorWithRed:colors.topBarBackgroundColor.red green:colors.topBarBackgroundColor.green blue:colors.topBarBackgroundColor.blue alpha:1.0f];
+  //  topBar.backgroundColor = [UIColor colorWithRed:colors.topBarBackgroundColor.red green:colors.topBarBackgroundColor.green blue:colors.topBarBackgroundColor.blue alpha:1.0f];
     
-    bottomBar.backgroundColor = [UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
+  //  bottomBar.backgroundColor = [UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
     
-    boardView.backgroundColor = [UIColor colorWithRed:colors.boardViewBackgroundColor.red green:colors.boardViewBackgroundColor.green blue:colors.boardViewBackgroundColor.blue alpha:1.0f];
+  //  boardView.backgroundColor = [UIColor colorWithRed:colors.boardViewBackgroundColor.red green:colors.boardViewBackgroundColor.green blue:colors.boardViewBackgroundColor.blue alpha:1.0f];
     
-    menuView.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.99];
+   //   menuView.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.99];
+    
+    topBar.backgroundColor = [UIColor clearColor];
+    bottomBar.backgroundColor = [UIColor clearColor];
+    boardView.backgroundColor = [UIColor clearColor];
+    
+    menuView.backgroundColor = [UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
+    
+    UIGraphicsBeginImageContext(rootView.frame.size);
+    
+    UIImage *tmpImage = [UIImage imageNamed:@"stars1.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, rootView.frame.size.width, rootView.frame.size.height)];
+    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    rootView.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
 }
 
 - (CGRect)initBoardView: (CGRect)viewFrame{
