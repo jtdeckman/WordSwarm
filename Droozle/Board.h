@@ -51,6 +51,7 @@
 
 - (int)nbrNearestOccupied: (Space*)space;
 - (int)nbrOccupied: (Space*)space;
+- (int)sumRow:(uint)row;
 
 - (void)removePiece:(Space*)space;
 - (void)clearBoard;

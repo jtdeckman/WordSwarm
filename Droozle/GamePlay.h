@@ -42,6 +42,7 @@
 - (void)rowOfValues;
 - (void)newGame;
 - (void)incrementTimer;
+- (void)updateScore:(int)newPoints;
 
 - (NSString*)getARandomLetter;
 

@@ -86,6 +86,9 @@
                 NSString *type = touchedSpace.piece.text;
                 
                 if([gamePlay checkWord:word :type]) {
+                    
+                    [gamePlay updateScore:[board sumRow:touchedSpace.iind]];
+                    [display updateScore:gamePlay.gameData.score];
                     [board eliminateRow:touchedSpace.iind];
                 }
             }
@@ -258,6 +261,8 @@
     gameTimer = [NSTimer scheduledTimerWithTimeInterval:1/1 target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
     
     display.addPiece.text = @""; //[gamePlay getARandomLetter];
+    
+    [display updateScore:gamePlay.gameData.score];
 }
 
 - (void)setUpNewGame {

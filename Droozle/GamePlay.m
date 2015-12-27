@@ -76,6 +76,11 @@
     return [wordLogic isWord:word];
 }
 
+- (void)updateScore:(int)newPoints {
+
+    gameData.score += newPoints;
+}
+
 - (void)deconstruct {
     
     [wordLogic deconstruct];

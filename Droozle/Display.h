@@ -22,6 +22,8 @@
     
     UILabel *floatPiece;
     UILabel *addPiece;
+    UILabel *scoreLabel;
+    UILabel *score;
     
     UIImage *floatBackImage;
     
@@ -52,6 +54,7 @@
 - (void)changeAddPieceLoc: (CGPoint)newLoc;
 - (void)resetAddPiece;
 - (void)deconstruct;
+- (void)updateScore:(int)newScore;
 
 - (CGRect)initBoardView:(CGRect)viewFrame;
 

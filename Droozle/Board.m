@@ -399,6 +399,21 @@
     return word;
 }
 
+- (int)sumRow:(uint)row {
+
+    Space* space;
+    
+    int sum = 0;
+    
+    for(int i=0; i<dimy; i++) {
+        
+        space = spaces[row][i];
+        sum += space.pointValue;
+    }
+    
+    return sum;
+}
+
 - (bool)prefersStatusBarHidden {
     
     return YES;

@@ -55,6 +55,40 @@
     boardView.hidden = NO;
     menuView.hidden = YES;
     
+    frm.size.height = 0.35*topBar.frame.size.height;
+    frm.size.width = 0.35*topBar.frame.size.width;
+    frm.origin.x = 0.05*topBar.frame.size.width;
+    frm.origin.y = topBar.frame.origin.y + (topBar.frame.size.height - frm.size.height)/2.0;
+    
+    scoreLabel = [[UILabel alloc] initWithFrame:frm];
+    scoreLabel.hidden = NO;
+    scoreLabel.layer.cornerRadius = 10.0;
+    scoreLabel.clipsToBounds = YES;
+    scoreLabel.opaque = NO;
+    
+    [scoreLabel setTextAlignment:NSTextAlignmentLeft];
+    [scoreLabel setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:1.5*FONT_FACT*frm.size.height]];
+    
+    [rootViewCont.view addSubview:scoreLabel];
+    
+    scoreLabel.text = @"Score:";
+    
+    frm.origin.x += 0.65*scoreLabel.frame.size.width;
+    frm.origin.y += 0.01*frm.origin.y;
+    
+    score = [[UILabel alloc] initWithFrame:frm];
+    score.hidden = NO;
+    score.layer.cornerRadius = 10.0;
+    score.clipsToBounds = YES;
+    score.opaque = NO;
+    
+    [score setTextAlignment:NSTextAlignmentLeft];
+    [score setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:1.35*FONT_FACT*frm.size.height]];
+    
+    [rootViewCont.view addSubview:score];
+    
+    score.text = @"34678";
+    
     [self setUpColors:rootViewCont.view];
 }
 
@@ -93,6 +127,16 @@
     tmpImage = UIGraphicsGetImageFromCurrentImageContext();
     
     boardView.backgroundColor = [UIColor colorWithPatternImage:tmpImage]; */
+    
+    
+   // scoreLabel.textColor = [UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
+
+    scoreLabel.textColor = [UIColor orangeColor];
+    scoreLabel.backgroundColor = [UIColor clearColor];
+                                  
+    score.textColor = [UIColor whiteColor];
+    score.backgroundColor = [UIColor clearColor];
+
 }
 
 - (CGRect)initBoardView: (CGRect)viewFrame{
@@ -116,7 +160,8 @@
     floatBackImage = UIGraphicsGetImageFromCurrentImageContext();
 
     floatPiece = [[UILabel alloc] initWithFrame:pcFrm];
-    [floatPiece setBackgroundColor:[UIColor colorWithPatternImage:floatBackImage]];
+   // [floatPiece setBackgroundColor:[UIColor colorWithPatternImage:floatBackImage]];
+    floatPiece.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.5];//[UIColor lightGrayColor];
     
     floatPiece.layer.cornerRadius = 10.0f;
     floatPiece.clipsToBounds = YES;
@@ -145,8 +190,9 @@
     floatBackImage = UIGraphicsGetImageFromCurrentImageContext();
 
     addPiece = [[UILabel alloc] initWithFrame:pcFrm];
-    [addPiece setBackgroundColor:[UIColor colorWithPatternImage:floatBackImage]];
-    
+   // [addPiece setBackgroundColor:[UIColor colorWithPatternImage:floatBackImage]];
+    addPiece.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.5];
+
     addPiece.layer.cornerRadius = 10.0f;
     addPiece.clipsToBounds = YES;
     addPiece.hidden = NO;
@@ -190,6 +236,11 @@
     [floatPiece setFrame:frm];
 }
 
+- (void)updateScore: (int)newScore {
+    
+    score.text = [NSString stringWithFormat:@"%d",newScore];
+}
+
 - (void)changeAddPieceLoc: (CGPoint)newLoc {
 
     CGRect frm;
@@ -215,6 +266,7 @@
     
     floatPiece.text = space.value;
     floatPiece.layer.borderColor = [[UIColor clearColor] CGColor];
+    floatPiece.backgroundColor = space.piece.backgroundColor;
     
     [floatPiece setFrame:frm];
     
