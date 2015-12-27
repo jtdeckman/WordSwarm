@@ -31,24 +31,30 @@
 - (void)gameLoop {
     
     if(gamePlay.gameState == gameRunning) {
-     
-      //  int intervalFactor = (int)(TIME_FACTOR);//*(1/gamePlay.gameData.level));
         
-        if([board numRowsOccupied] < 1) [gamePlay rowOfValues];
+        uint nRowsOcc = [board numRowsOccupied];
         
-        else if(gamePlay.gameData.timer % gamePlay.timeInterval == 0) {
+        if(nRowsOcc < 1) [gamePlay rowOfValues];
+        
+        else {
+            
+            if(nRowsOcc >= board.dimx - 2) [display animateAlertView];
+            
+            else [display hideAlertView];
+            
+            if(gamePlay.gameData.timer % gamePlay.timeInterval == 0) {
 
-            if([board shiftRowsUp] == YES) {
+                if([board shiftRowsUp] == YES) {
                 
-              //  gamePlay.gameState = gameOver;
-            }
-            else {
-                [gamePlay rowOfValues];
+                    //  gamePlay.gameState = gameOver;
+                }
+            
+                else
+                    [gamePlay rowOfValues];
             }
         }
         
         [gamePlay incrementTimer];
-
     }
 }
 
@@ -107,7 +113,7 @@
             else if(touchedSpace.isOccupied) {
                 
                 gamePlay.placeMode = swipeMove;
-                [display configureFloatPiece:touchedSpace :self.view];
+                [display configureFloatPiece:touchedSpace];
             }
         }
         
@@ -190,14 +196,14 @@
                     touchedSpace.piece.text = touchedSpace.value;
                 }
                 
-                else {
+             /*   else if([selectedSpace isNearestNearestNbrOf:touchedSpace]){
                     
                     selectedSpace.value = touchedSpace.value;
                     selectedSpace.piece.text = selectedSpace.value;
                     
                     [board addPiece:selectedSpace.iind :selectedSpace.jind :touchedSpace.value];
                     [board removePiece:touchedSpace];
-                }
+                } */
             }
             
             display.floatPiece.hidden = YES;
@@ -268,7 +274,7 @@
     
     Space *space = [board getSpaceForIndices:0 :0];
     
-    [display setUpFloatPieces:space.piece.frame :self.view];
+    [display setUpFloatPieces:space.piece.frame];
     
     gameTimer = [NSTimer scheduledTimerWithTimeInterval:1/1 target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
     

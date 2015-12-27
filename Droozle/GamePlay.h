@@ -10,7 +10,7 @@
 #import "Board.h"
 #import "WordLogic.h"
 
-#define TIME_FACTOR 2
+#define TIME_FACTOR 10
 
 @interface GamePlay : NSObject {
     
@@ -27,6 +27,8 @@
     PlaceMode placeMode;
     
     WordLogic *wordLogic;
+    
+    BOOL criticalState;
 }
 
 @property (nonatomic) int dimx;
@@ -39,6 +41,8 @@
 @property (nonatomic) PlaceMode placeMode;
 
 @property (nonatomic, strong) WordLogic *wordLogic;
+
+@property (nonatomic) BOOL criticalState;
 
 - (CGFloat)setUp:(Board*)brd :(CGRect)frm;
 

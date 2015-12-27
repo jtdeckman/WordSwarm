@@ -11,7 +11,7 @@
 @implementation GamePlay
 
 @synthesize dimx, dimy, timeInterval;
-@synthesize gameState, gameData;
+@synthesize gameState, gameData, criticalState;
 @synthesize placeMode, wordLogic;
 
 - (CGFloat)setUp:(Board*)brd :(CGRect)frm {
@@ -49,6 +49,8 @@
     placeMode = freeState;
     
     timeInterval = TIME_FACTOR;
+    
+    criticalState = NO;
 }
 
 - (void)rowOfValues {

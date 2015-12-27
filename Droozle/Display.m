@@ -18,12 +18,14 @@
 
     CGRect frm;
     
+    rootView = rootViewCont.view;
+    
     frm = viewFrame;
     frm.size.height *= 0.125;
     
     topBar = [[UIView alloc] initWithFrame:frm];
     
-    [rootViewCont.view addSubview:topBar];
+    [rootView addSubview:topBar];
     
     frm = topBar.frame;
     frm.size.height *= 1.1;
@@ -31,14 +33,14 @@
     
     bottomBar = [[UIView alloc] initWithFrame:frm];
     
-    [rootViewCont.view addSubview:bottomBar];
+    [rootView addSubview:bottomBar];
     
     frm.size.height = viewFrame.size.height - topBar.frame.size.height - bottomBar.frame.size.height;
     frm.origin.y = topBar.frame.size.height;
     
     boardView = [[UIView alloc] initWithFrame:frm];
     
-    [rootViewCont.view addSubview:boardView];
+    [rootView addSubview:boardView];
     
     frm.size.height = 0.7*rootViewCont.view.frame.size.height;
     frm.origin.y = rootViewCont.view.frame.size.height - frm.size.height;
@@ -47,13 +49,20 @@
     
     [menuView setUpView];
     
-    [rootViewCont.view addSubview:menuView];
-    [rootViewCont.view bringSubviewToFront:menuView];
+    [rootView addSubview:menuView];
+    [rootView bringSubviewToFront:menuView];
+    
+    alertView = [[UIView alloc] initWithFrame:rootView.frame];
+    alertView.backgroundColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:0.75];
+    
+    [rootView addSubview:alertView];
     
     topBar.hidden = NO;
     bottomBar.hidden = NO;
     boardView.hidden = NO;
+    
     menuView.hidden = YES;
+    alertView.hidden = YES;
     
     frm.size.height = 0.35*topBar.frame.size.height;
     frm.size.width = 0.35*topBar.frame.size.width;
@@ -69,7 +78,7 @@
     [scoreLabel setTextAlignment:NSTextAlignmentLeft];
     [scoreLabel setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:1.5*FONT_FACT*frm.size.height]];
     
-    [rootViewCont.view addSubview:scoreLabel];
+    [rootView addSubview:scoreLabel];
     
     scoreLabel.text = @"Score:";
     
@@ -85,14 +94,14 @@
     [score setTextAlignment:NSTextAlignmentLeft];
     [score setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:1.35*FONT_FACT*frm.size.height]];
     
-    [rootViewCont.view addSubview:score];
+    [rootView addSubview:score];
     
     score.text = @"34678";
     
-    [self setUpColors:rootViewCont.view];
+    [self setUpColors] ;
 }
 
-- (void)setUpColors:(UIView*)rootView {
+- (void)setUpColors {
 
     Colors *colors = [[Colors alloc] init];
     
@@ -106,8 +115,8 @@
     
    //   menuView.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.99];
     
-    topBar.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.2];//[UIColor clearColor];
-    bottomBar.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.2];//[UIColor clearColor];
+    topBar.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.4];//[UIColor clearColor];
+    bottomBar.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.4];//[UIColor clearColor];
     boardView.backgroundColor = [UIColor clearColor];
     
   //  menuView.backgroundColor = [UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
@@ -122,13 +131,13 @@
     
     rootView.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
     
-    UIGraphicsBeginImageContext(boardView.frame.size);
+  /*  UIGraphicsBeginImageContext(boardView.frame.size);
    
     tmpImage = [UIImage imageNamed:@"topBar.png"];
     [tmpImage drawInRect:CGRectMake(0, 0, boardView.frame.size.width, boardView.frame.size.height)];
     tmpImage = UIGraphicsGetImageFromCurrentImageContext();
     
-    boardView.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
+    boardView.backgroundColor = [UIColor colorWithPatternImage:tmpImage]; */
     
     
    // scoreLabel.textColor = [UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
@@ -153,7 +162,7 @@
     return boardFrm;
 }
 
-- (void)setUpFloatPieces:(CGRect)pcFrm :(UIView*)rootView {
+- (void)setUpFloatPieces:(CGRect)pcFrm {
 
     UIGraphicsBeginImageContext(pcFrm.size);
     
@@ -255,7 +264,7 @@
     [addPiece setFrame:frm];
 }
 
-- (void)configureFloatPiece: (Space*)space :(UIView*)rootView {
+- (void)configureFloatPiece: (Space*)space {
     
     CGRect frm;
     
@@ -280,12 +289,38 @@
     [addPiece setFrame:baseAddPiece];
 }
 
+- (void)animateAlertView {
+    
+    alertView.hidden = NO;
+    alertView.alpha = 0.90;
+    
+    [rootView sendSubviewToBack:alertView];
+    
+    [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+        alertView.alpha = 0.25;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            alertView.alpha = 0.90;
+        } completion:nil];
+    }];
+}
+
+- (void)hideAlertView {
+
+    alertView.hidden = YES;
+}
+
 - (void)deconstruct {
 
     topBar = nil;
     floatPiece = nil;
     bottomBar = nil;
     menuView = nil;
+    addPiece = nil;
+    
+    alertView = nil;
+    scoreLabel = nil;
+    score = nil;
 }
 
 @end

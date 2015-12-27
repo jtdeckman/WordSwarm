@@ -17,6 +17,8 @@
     UIView *topBar;
     UIView *bottomBar;
     UIView *boardView;
+    UIView *rootView;
+    UIView *alertView;
     
     MenuView *menuView;
     
@@ -47,14 +49,17 @@
 @property(nonatomic, strong) UIImageView *menuBar;
 
 - (void)initDisplay:(CGRect)viewFrame :(UIViewController*)rootViewCont;
-- (void)setUpColors:(UIView*)rootView;
-- (void)setUpFloatPieces:(CGRect)pcFrm :(UIView*)rootView;
+- (void)setUpColors;
+- (void)setUpFloatPieces:(CGRect)pcFrm;
 - (void)changeFloatPieceLoc: (CGPoint)newLoc;
-- (void)configureFloatPiece: (Space*)space :(UIView*)rootView;
+- (void)configureFloatPiece: (Space*)space;
 - (void)changeAddPieceLoc: (CGPoint)newLoc;
 - (void)resetAddPiece;
 - (void)deconstruct;
 - (void)updateScore:(int)newScore;
+- (void)hideAlertView;
+
+- (void)animateAlertView;
 
 - (CGRect)initBoardView:(CGRect)viewFrame;
 
