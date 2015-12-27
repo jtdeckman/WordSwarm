@@ -13,7 +13,7 @@
 @synthesize selectedSpace, spaces;
 @synthesize rows, dimx, dimy;
 
-- (void)initBoard: (CGRect)bvFrame : (int)dx : (int)dy : (CGFloat)offset : (CGFloat)buffer {
+- (void)initBoard: (CGRect)bvFrame : (int)dx : (int)dy : (CGFloat)offset : (CGFloat)buffer :(WordLogic*)wl {
     
     NSMutableArray *row;
     
@@ -90,6 +90,11 @@
     }
     
     [self findNeighbors];
+    
+    tileImages = [[TileImages alloc] init];
+    [tileImages setUp:spcFrm.size];
+    
+    wLPointer = wl;
 }
 
 
@@ -153,14 +158,19 @@
     }
 }
 
-- (void)addPiece: (int)ival : (int)jval : (NSString*)val {
+- (void)addPiece: (int)ival :(int)jval :(NSString*)val {
     
     Space *space = spaces[ival][jval];
     
+    int pVal = [wLPointer pointValueForLetter:val];
+    
+    if(pVal < 0) pVal = 0;
+    
     space.isOccupied = YES;
     space.value = val;
+    space.pointValue = pVal;
     
-    [space configurePiece:NO];
+    [space configurePiece:NO :[tileImages backgroundImageForIndex:pVal]];
     
     space.piece.hidden = false;
 }
@@ -172,7 +182,7 @@
     space.isOccupied = YES;
     space.value = val;
     
-    [space configurePiece:YES];
+    [space configurePiece:YES :nil];
     
     space.piece.hidden = NO;
 }
@@ -249,6 +259,8 @@
     
     space.isOccupied = NO;
     space.piece.hidden = YES;
+    space.value = @"-";
+    space.pointValue = 0;
 }
 
 - (void)clearBoard {
@@ -283,6 +295,9 @@
     [spaces removeAllObjects];
     
     spaces = nil;
+    
+    [tileImages deconstruct];
+    tileImages = nil;
 }
 
 - (BOOL)shiftRowsUp {
@@ -300,7 +315,9 @@
             space.value = spaceBelow.value;
             space.isOccupied = spaceBelow.isOccupied;
             space.piece.hidden = spaceBelow.piece.hidden;
-            [space configurePiece:NO];
+            space.pointValue = spaceBelow.pointValue;
+            
+            [space configurePiece:NO :[tileImages backgroundImageForIndex:space.pointValue]];
         }
         
         space = rowTypes[i];
@@ -309,7 +326,7 @@
         space.value = spaceBelow.value;
         space.isOccupied = spaceBelow.isOccupied;
         space.piece.hidden = spaceBelow.piece.hidden;
-        [space configurePiece:YES];
+        [space configurePiece:YES :nil];
     }
     
     return NO;
@@ -337,7 +354,9 @@
             space.value = spaceAbove.value;
             space.isOccupied = spaceAbove.isOccupied;
             space.piece.hidden = spaceAbove.piece.hidden;
-            [space configurePiece:NO];
+            space.pointValue = spaceAbove.pointValue;
+            
+            [space configurePiece:NO :[tileImages backgroundImageForIndex:space.pointValue]];
         }
 
         space = rowTypes[i];
@@ -346,7 +365,7 @@
         space.value = spaceAbove.value;
         space.isOccupied = spaceAbove.isOccupied;
         space.piece.hidden = spaceAbove.piece.hidden;
-        [space configurePiece:YES];
+        [space configurePiece:YES :nil];
     }
     
     for(int j=0; j<dimy; j++) {

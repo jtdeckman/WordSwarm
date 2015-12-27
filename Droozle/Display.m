@@ -85,6 +85,14 @@
     tmpImage = UIGraphicsGetImageFromCurrentImageContext();
     
     rootView.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
+    
+  /*  UIGraphicsBeginImageContext(boardView.frame.size);
+    /Users/jasondeckman/Dropbox/Code/iOS/Droozle/Images/Letters/imgs/N.png
+    tmpImage = [UIImage imageNamed:@"topBotBars.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, boardView.frame.size.width, boardView.frame.size.height)];
+    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    boardView.backgroundColor = [UIColor colorWithPatternImage:tmpImage]; */
 }
 
 - (CGRect)initBoardView: (CGRect)viewFrame{

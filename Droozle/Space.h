@@ -17,6 +17,8 @@
     int iind;
     int jind;
     
+    uint pointValue;
+    
     BOOL isOccupied;
     BOOL refPiece;
     
@@ -42,6 +44,8 @@
 @property (nonatomic) int iind;
 @property (nonatomic) int jind;
 
+@property (nonatomic) uint pointValue;
+
 @property (nonatomic) CGRect spaceFrame;
 
 @property (nonatomic, strong) UILabel *piece;
@@ -50,7 +54,8 @@
 
 - (void)initSpace: (int)ival : (int)jval : (CGRect)spaceFrm : (CGRect)labelframe;
 - (void)setColor: (CGFloat)red : (CGFloat)green : (CGFloat)blue : (CGFloat)alpha;
-- (void)configurePiece: (bool)isRefPiece;
+- (void)configurePiece: (bool)isRefPiece :(UIColor*)bckImg;
+
 - (bool)isNearestNearestNbrOf: (Space*)space;
 
 - (void)deconstruct;

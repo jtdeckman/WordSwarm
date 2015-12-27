@@ -14,6 +14,8 @@
     NSMutableArray *letters;
     NSMutableArray *wordTypes;
     
+    NSMutableDictionary *pointsForLetters;
+    
     int nArraySelections;
     
     Lexicontext *dictionary;
@@ -30,5 +32,7 @@
 - (BOOL)isWord:(NSString*)word;
 
 - (void)deconstruct;
+
+- (int)pointValueForLetter:(NSString*)letter;
 
 @end

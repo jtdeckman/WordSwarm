@@ -35,6 +35,8 @@
 @property (nonatomic) GameData gameData;
 @property (nonatomic) PlaceMode placeMode;
 
+@property (nonatomic, strong) WordLogic *wordLogic;
+
 - (CGFloat)setUp:(Board*)brd :(CGRect)frm;
 
 - (void)rowOfValues;

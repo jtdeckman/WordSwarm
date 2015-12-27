@@ -236,7 +236,7 @@
     boardFrm = [display initBoardView:self.view.frame];
     
     CGFloat buffer = [gamePlay setUp:board :boardFrm];
-    [board initBoard:boardFrm :gamePlay.dimx :gamePlay.dimy :0.0025*self.view.frame.size.width :buffer];
+    [board initBoard:boardFrm :gamePlay.dimx :gamePlay.dimy :0.0025*self.view.frame.size.width :buffer :gamePlay.wordLogic];
     
     [self addPiecesToView];
     

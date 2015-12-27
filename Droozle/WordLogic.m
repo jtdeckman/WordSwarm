@@ -124,7 +124,46 @@
                nil];
     
     nArraySelections = (int)[letters count];
-   
+    
+    NSNumber *p0 = [NSNumber numberWithInt:0];
+    NSNumber *p1 = [NSNumber numberWithInt:1];
+    NSNumber *p2 = [NSNumber numberWithInt:2];
+    NSNumber *p3 = [NSNumber numberWithInt:3];
+    NSNumber *p4 = [NSNumber numberWithInt:4];
+    NSNumber *p5 = [NSNumber numberWithInt:5];
+    NSNumber *p7 = [NSNumber numberWithInt:7];
+    NSNumber *p10 = [NSNumber numberWithInt:10];
+    NSNumber *p12 = [NSNumber numberWithInt:12];
+
+    pointsForLetters = [[NSMutableDictionary alloc]  initWithObjectsAndKeys:
+                        p1,@"A",
+                        p4,@"B",
+                        p5,@"C",
+                        p2,@"D",
+                        p1,@"E",
+                        p4,@"F",
+                        p3,@"G",
+                        p3,@"H",
+                        p1,@"I",
+                        p10,@"J",
+                        p5,@"K",
+                        p2,@"L",
+                        p4,@"M",
+                        p2,@"N",
+                        p1,@"O",
+                        p4,@"P",
+                        p10,@"Q",
+                        p1,@"R",
+                        p1,@"S",
+                        p1,@"T",
+                        p2,@"U",
+                        p7,@"V",
+                        p7,@"W",
+                        p10,@"X",
+                        p4,@"Y",
+                        p12,@"Z",
+                        p0,@"",
+                        nil];
 }
 
 - (NSString*)getLetter {
@@ -171,11 +210,23 @@
     return NO;
 }
 
+- (int)pointValueForLetter:(NSString*)letter {
+
+    
+    if(letter.length > 1) return  -1;
+    
+    NSNumber *val = [pointsForLetters objectForKey:letter];
+    
+    return (int)[val integerValue];
+}
+
 - (void)deconstruct {
     
     dictionary = nil;
     wordTypes = nil;
     letters = nil;
+    
+    pointsForLetters = nil;
 }
 
 @end

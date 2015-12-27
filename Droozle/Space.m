@@ -11,7 +11,7 @@
 @implementation Space
 
 @synthesize isOccupied, refPiece;
-@synthesize value, piece;
+@synthesize value, piece, pointValue;
 @synthesize spaceFrame, iind, jind;
 @synthesize neighbors, nearestNbrs;
 
@@ -41,6 +41,7 @@
     UIGraphicsBeginImageContext(piece.frame.size);
     
     UIImage *tmpImage = [UIImage imageNamed:@"orangeSquare.png"];
+
     [tmpImage drawInRect:CGRectMake(0, 0, piece.frame.size.width, piece.frame.size.height)];
     p1Img = UIGraphicsGetImageFromCurrentImageContext();
     
@@ -60,7 +61,7 @@
     color.blue = blue;
 }
 
-- (void)configurePiece: (bool)isRefPiece {
+- (void)configurePiece: (bool)isRefPiece :(UIColor*)bckImg {
     
     UIImage *img;
 
@@ -70,12 +71,12 @@
         
         img = p2Img;
         [piece setFont:[UIFont fontWithName:@"Arial" size:0.6*FONT_FACT*spaceFrame.size.width]];
+        piece.backgroundColor = [UIColor colorWithPatternImage:img];
     }
     else
-        img = p1Img;
+        piece.backgroundColor = bckImg;
     
     piece.text = [self value];
-    piece.backgroundColor = [UIColor colorWithPatternImage:img];
     piece.textColor = [UIColor whiteColor];
     piece.layer.borderColor = [[UIColor clearColor] CGColor];
 }

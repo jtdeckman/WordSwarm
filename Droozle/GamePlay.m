@@ -12,7 +12,7 @@
 
 @synthesize dimx, dimy;
 @synthesize gameState, gameData;
-@synthesize placeMode;
+@synthesize placeMode, wordLogic;
 
 - (CGFloat)setUp:(Board*)brd :(CGRect)frm {
    
