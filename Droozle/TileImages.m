@@ -30,7 +30,7 @@
   //  tmpImage = UIGraphicsGetImageFromCurrentImageContext();
     
   //  [images addObject:[UIColor colorWithPatternImage:tmpImage]];
-    [images addObject:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.5]];//colorWithPatternImage:tmpImage]];
+    [images addObject:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.4]];//colorWithPatternImage:tmpImage]];
     
     tmpImage = [UIImage imageNamed:@"p1.png"];
     [tmpImage drawInRect:CGRectMake(0, 0, pieceSize.width, pieceSize.height)];

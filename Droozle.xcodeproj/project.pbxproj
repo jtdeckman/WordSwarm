@@ -11,7 +11,6 @@
 		8C8DA7131C2DEB590083CCE1 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8DA7121C2DEB590083CCE1 /* MenuView.m */; };
 		8CD640911C2F4F8800C9E6CF /* stars1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD640901C2F4F8800C9E6CF /* stars1.png */; };
 		8CD640931C2F5BBC00C9E6CF /* whiteBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD640921C2F5BBC00C9E6CF /* whiteBorder.png */; };
-		8CD640951C2F5D1400C9E6CF /* topBotBars.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD640941C2F5D1400C9E6CF /* topBotBars.png */; };
 		8CD640A31C2F6A4A00C9E6CF /* N.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD640A21C2F6A4A00C9E6CF /* N.png */; };
 		8CD640AD1C2F7D8F00C9E6CF /* p1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD640A51C2F7D8F00C9E6CF /* p1.png */; };
 		8CD640AE1C2F7D8F00C9E6CF /* p2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD640A61C2F7D8F00C9E6CF /* p2.png */; };
@@ -22,6 +21,7 @@
 		8CD640B31C2F7D8F00C9E6CF /* p10.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD640AB1C2F7D8F00C9E6CF /* p10.png */; };
 		8CD640B51C2F7DA300C9E6CF /* p12.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD640B41C2F7DA300C9E6CF /* p12.png */; };
 		8CD640B81C2F7E4A00C9E6CF /* TileImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD640B71C2F7E4A00C9E6CF /* TileImages.m */; };
+		8CEBF8E51C305BE70055861A /* topBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBF8E41C305BE70055861A /* topBar.png */; };
 		8CF092C81BFBEE1A00AC3599 /* LexicontextAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8CF092C71BFBEE1A00AC3599 /* LexicontextAssets.bundle */; };
 		8CF092CA1BFBEE4600AC3599 /* libLexicontext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF092C91BFBEE4600AC3599 /* libLexicontext.a */; };
 		8CF7E9781BEBED1F00BF3D4B /* WordLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF7E9771BEBED1F00BF3D4B /* WordLogic.m */; };
@@ -57,7 +57,6 @@
 		8C8DA7121C2DEB590083CCE1 /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
 		8CD640901C2F4F8800C9E6CF /* stars1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars1.png; sourceTree = "<group>"; };
 		8CD640921C2F5BBC00C9E6CF /* whiteBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteBorder.png; sourceTree = "<group>"; };
-		8CD640941C2F5D1400C9E6CF /* topBotBars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topBotBars.png; sourceTree = "<group>"; };
 		8CD640A21C2F6A4A00C9E6CF /* N.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = N.png; sourceTree = "<group>"; };
 		8CD640A51C2F7D8F00C9E6CF /* p1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p1.png; sourceTree = "<group>"; };
 		8CD640A61C2F7D8F00C9E6CF /* p2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p2.png; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		8CD640B41C2F7DA300C9E6CF /* p12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p12.png; sourceTree = "<group>"; };
 		8CD640B61C2F7E4A00C9E6CF /* TileImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileImages.h; sourceTree = "<group>"; };
 		8CD640B71C2F7E4A00C9E6CF /* TileImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileImages.m; sourceTree = "<group>"; };
+		8CEBF8E41C305BE70055861A /* topBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topBar.png; sourceTree = "<group>"; };
 		8CF092C61BFBEE1A00AC3599 /* Lexicontext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lexicontext.h; path = ../lexicontext/Lexicontext.h; sourceTree = "<group>"; };
 		8CF092C71BFBEE1A00AC3599 /* LexicontextAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = LexicontextAssets.bundle; path = lexicontext/LexicontextAssets.bundle; sourceTree = "<group>"; };
 		8CF092C91BFBEE4600AC3599 /* libLexicontext.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLexicontext.a; path = lexicontext/libLexicontext.a; sourceTree = "<group>"; };
@@ -178,8 +178,8 @@
 		A8166A611B99E84700F47146 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8CEBF8E41C305BE70055861A /* topBar.png */,
 				8CD640A21C2F6A4A00C9E6CF /* N.png */,
-				8CD640941C2F5D1400C9E6CF /* topBotBars.png */,
 				8CD640921C2F5BBC00C9E6CF /* whiteBorder.png */,
 				8CD640901C2F4F8800C9E6CF /* stars1.png */,
 				8C8DA70F1C2DD0870083CCE1 /* menuBars2.png */,
@@ -302,6 +302,7 @@
 				A8166A6D1B99E84700F47146 /* Main.storyboard in Resources */,
 				8CD640B21C2F7D8F00C9E6CF /* p7.png in Resources */,
 				8CF092C81BFBEE1A00AC3599 /* LexicontextAssets.bundle in Resources */,
+				8CEBF8E51C305BE70055861A /* topBar.png in Resources */,
 				8CD640B51C2F7DA300C9E6CF /* p12.png in Resources */,
 				8CD640B01C2F7D8F00C9E6CF /* p4.png in Resources */,
 				A8166A921B99EE2D00F47146 /* orangeSquare.png in Resources */,
@@ -311,7 +312,6 @@
 				A8166A6F1B99E84700F47146 /* Images.xcassets in Resources */,
 				8CD640A31C2F6A4A00C9E6CF /* N.png in Resources */,
 				8CD640911C2F4F8800C9E6CF /* stars1.png in Resources */,
-				8CD640951C2F5D1400C9E6CF /* topBotBars.png in Resources */,
 				8CD640931C2F5BBC00C9E6CF /* whiteBorder.png in Resources */,
 				8CD640AF1C2F7D8F00C9E6CF /* p3.png in Resources */,
 				A8166A951B99EEB200F47146 /* blueSquare.png in Resources */,

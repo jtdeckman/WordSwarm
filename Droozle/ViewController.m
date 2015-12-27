@@ -32,11 +32,11 @@
     
     if(gamePlay.gameState == gameRunning) {
      
-        int intervalFactor = (int)(TIME_FACTOR*(1/gamePlay.gameData.level));
+      //  int intervalFactor = (int)(TIME_FACTOR);//*(1/gamePlay.gameData.level));
         
         if([board numRowsOccupied] < 1) [gamePlay rowOfValues];
         
-        else if(gamePlay.gameData.timer % intervalFactor == 0) {
+        else if(gamePlay.gameData.timer % gamePlay.timeInterval == 0) {
 
             if([board shiftRowsUp] == YES) {
                 
@@ -67,11 +67,20 @@
                 
                 [self setUpNewGame];
             }
+            else {
+                
+                display.menuView.hidden = YES;
+                [board unHideOccupiedPieces];
+                
+                gamePlay.gameState = gameRunning;
+            }
         }
         
         else {
             
             display.menuView.hidden = YES;
+            [board unHideOccupiedPieces];
+            
             gamePlay.gameState = gameRunning;
         }
     }
@@ -110,6 +119,7 @@
                 
                 display.menuView.hidden = NO;
                 
+                [board hideOccupiedPieces];
                 [self.view bringSubviewToFront:display.menuView];
         
             }

@@ -25,8 +25,8 @@
     clr.green = 0.8;
     clr.blue = 0.8;
     
-    viewFrame.size.width = 0.4*self.frame.size.width;
-    viewFrame.size.height = 0.14*self.frame.size.height;
+    viewFrame.size.width = 0.3*self.frame.size.width;
+    viewFrame.size.height = 0.12*self.frame.size.height;
     viewFrame.origin.x = (self.frame.size.width - viewFrame.size.width)/2.0;
     viewFrame.origin.y = 0.075*self.frame.size.height;
     

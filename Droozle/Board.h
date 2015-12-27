@@ -57,6 +57,8 @@
 
 - (void)removePiece:(Space*)space;
 - (void)clearBoard;
+- (void)hideOccupiedPieces;
+- (void)unHideOccupiedPieces;
 
 - (void)deconstruct;
 

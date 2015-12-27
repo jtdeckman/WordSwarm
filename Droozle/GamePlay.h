@@ -10,14 +10,15 @@
 #import "Board.h"
 #import "WordLogic.h"
 
-#define TIME_FACTOR 15
+#define TIME_FACTOR 2
 
 @interface GamePlay : NSObject {
     
     int dimx;
     int dimy;
-    
+
     int maxVal;
+    int timeInterval;
     
     Board *board;
     
@@ -30,6 +31,8 @@
 
 @property (nonatomic) int dimx;
 @property (nonatomic) int dimy;
+
+@property (nonatomic) int timeInterval;
 
 @property (nonatomic) GameState gameState;
 @property (nonatomic) GameData gameData;

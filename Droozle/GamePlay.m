@@ -10,7 +10,7 @@
 
 @implementation GamePlay
 
-@synthesize dimx, dimy;
+@synthesize dimx, dimy, timeInterval;
 @synthesize gameState, gameData;
 @synthesize placeMode, wordLogic;
 
@@ -23,7 +23,7 @@
     
     pw = (frm.size.width-buffer)/dimy;
     
-    dimx = (int)frm.size.height/pw;
+    dimx = (int)(frm.size.height/pw);
     
     board = brd;
     
@@ -47,6 +47,8 @@
     
     gameState = gameRunning;
     placeMode = freeState;
+    
+    timeInterval = TIME_FACTOR;
 }
 
 - (void)rowOfValues {
@@ -78,7 +80,7 @@
 
 - (void)updateScore:(int)newPoints {
 
-    gameData.score += newPoints;
+    gameData.score += newPoints*gameData.level;
 }
 
 - (void)deconstruct {

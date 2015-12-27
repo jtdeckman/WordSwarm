@@ -19,14 +19,14 @@
     CGRect frm;
     
     frm = viewFrame;
-    frm.size.height *= 0.15;
+    frm.size.height *= 0.125;
     
     topBar = [[UIView alloc] initWithFrame:frm];
     
     [rootViewCont.view addSubview:topBar];
     
     frm = topBar.frame;
-    frm.size.height *= 1.25;
+    frm.size.height *= 1.1;
     frm.origin.y = viewFrame.size.height - frm.size.height;
     
     bottomBar = [[UIView alloc] initWithFrame:frm];
@@ -98,19 +98,21 @@
     
     [colors setUpColors];
     
-  //  topBar.backgroundColor = [UIColor colorWithRed:colors.topBarBackgroundColor.red green:colors.topBarBackgroundColor.green blue:colors.topBarBackgroundColor.blue alpha:1.0f];
+  //  topBar.backgroundColor = [UIColor colorWithRed:colors.topBarBackgroundColor.red green:colors.topBarBackgroundColor.green blue:colors.topBarBackgroundColor.blue alpha:0.2f];
     
-  //  bottomBar.backgroundColor = [UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
+ //   bottomBar.backgroundColor = [UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:0.2f];
     
   //  boardView.backgroundColor = [UIColor colorWithRed:colors.boardViewBackgroundColor.red green:colors.boardViewBackgroundColor.green blue:colors.boardViewBackgroundColor.blue alpha:1.0f];
     
    //   menuView.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.99];
     
-    topBar.backgroundColor = [UIColor clearColor];
-    bottomBar.backgroundColor = [UIColor clearColor];
+    topBar.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.2];//[UIColor clearColor];
+    bottomBar.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.2];//[UIColor clearColor];
     boardView.backgroundColor = [UIColor clearColor];
     
-    menuView.backgroundColor = [UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
+  //  menuView.backgroundColor = [UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
+    
+    menuView.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.7];
     
     UIGraphicsBeginImageContext(rootView.frame.size);
     
@@ -120,13 +122,13 @@
     
     rootView.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
     
-  /*  UIGraphicsBeginImageContext(boardView.frame.size);
-    /Users/jasondeckman/Dropbox/Code/iOS/Droozle/Images/Letters/imgs/N.png
-    tmpImage = [UIImage imageNamed:@"topBotBars.png"];
+    UIGraphicsBeginImageContext(boardView.frame.size);
+   
+    tmpImage = [UIImage imageNamed:@"topBar.png"];
     [tmpImage drawInRect:CGRectMake(0, 0, boardView.frame.size.width, boardView.frame.size.height)];
     tmpImage = UIGraphicsGetImageFromCurrentImageContext();
     
-    boardView.backgroundColor = [UIColor colorWithPatternImage:tmpImage]; */
+    boardView.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
     
     
    // scoreLabel.textColor = [UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
@@ -161,7 +163,7 @@
 
     floatPiece = [[UILabel alloc] initWithFrame:pcFrm];
    // [floatPiece setBackgroundColor:[UIColor colorWithPatternImage:floatBackImage]];
-    floatPiece.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.5];//[UIColor lightGrayColor];
+    floatPiece.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.4];//[UIColor lightGrayColor];
     
     floatPiece.layer.cornerRadius = 10.0f;
     floatPiece.clipsToBounds = YES;
@@ -176,8 +178,8 @@
     floatPieceOffSet.width = pcFrm.size.width/2.0;
     floatPieceOffSet.height = pcFrm.size.height/2.0;
     
-    pcFrm.size.width *= 1.25;
-    pcFrm.size.height *= 1.25;
+    pcFrm.size.width *= 1.05;
+    pcFrm.size.height *= 1.05;
     pcFrm.origin.x = 0.75*bottomBar.frame.size.width;
     pcFrm.origin.y = bottomBar.frame.origin.y + (bottomBar.frame.size.height - pcFrm.size.height)/2.0;
     
@@ -191,7 +193,7 @@
 
     addPiece = [[UILabel alloc] initWithFrame:pcFrm];
    // [addPiece setBackgroundColor:[UIColor colorWithPatternImage:floatBackImage]];
-    addPiece.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.5];
+    addPiece.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.4];
 
     addPiece.layer.cornerRadius = 10.0f;
     addPiece.clipsToBounds = YES;

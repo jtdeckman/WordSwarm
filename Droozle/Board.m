@@ -430,9 +430,42 @@
     return nOcc;
 }
 
-- (bool)prefersStatusBarHidden {
+- (void)hideOccupiedPieces {
+
+    Space *space;
     
-    return YES;
+    for(int i=0; i<dimx; i++) {
+        
+        space = rowTypes[i];
+        
+        if(space.isOccupied) space.piece.hidden = YES;
+        
+        for(int j=0; j<dimy; j++) {
+            
+            space = spaces[i][j];
+            
+            if(space.isOccupied) space.piece.hidden = YES;
+        }
+    }
+}
+
+- (void)unHideOccupiedPieces {
+    
+    Space *space;
+    
+    for(int i=0; i<dimx; i++) {
+        
+        space = rowTypes[i];
+        
+        if(space.isOccupied) space.piece.hidden = NO;
+        
+        for(int j=0; j<dimy; j++) {
+            
+            space = spaces[i][j];
+            
+            if(space.isOccupied) space.piece.hidden = NO;
+        }
+    }
 }
 
 @end
