@@ -34,7 +34,9 @@
      
         int intervalFactor = (int)(TIME_FACTOR*(1/gamePlay.gameData.level));
         
-        if(gamePlay.gameData.timer % intervalFactor == 0) {
+        if([board numRowsOccupied] < 1) [gamePlay rowOfValues];
+        
+        else if(gamePlay.gameData.timer % intervalFactor == 0) {
 
             if([board shiftRowsUp] == YES) {
                 
@@ -274,6 +276,11 @@
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
     [appDelegate resetApp];
+}
+
+- (BOOL)prefersStatusBarHidden {
+    
+    return YES;
 }
 
 @end

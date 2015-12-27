@@ -414,6 +414,22 @@
     return sum;
 }
 
+- (uint)numRowsOccupied {
+    
+    Space *space;
+    
+    uint nOcc = 0;
+    
+    for(int i=0; i<dimx; i++) {
+        
+        space = rowTypes[i];
+        
+        if(space.isOccupied && !space.piece.hidden) ++nOcc;
+    }
+    
+    return nOcc;
+}
+
 - (bool)prefersStatusBarHidden {
     
     return YES;

@@ -53,6 +53,8 @@
 - (int)nbrOccupied: (Space*)space;
 - (int)sumRow:(uint)row;
 
+- (uint)numRowsOccupied;
+
 - (void)removePiece:(Space*)space;
 - (void)clearBoard;
 
