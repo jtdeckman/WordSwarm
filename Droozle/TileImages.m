@@ -29,6 +29,8 @@
     [tmpImage drawInRect:CGRectMake(0, 0, pieceSize.width, pieceSize.height)];
     tmpImage = UIGraphicsGetImageFromCurrentImageContext();
     
+    [images addObject:[UIColor colorWithPatternImage:tmpImage]];
+    
     tmpImage = [UIImage imageNamed:@"p1.png"];
     [tmpImage drawInRect:CGRectMake(0, 0, pieceSize.width, pieceSize.height)];
     tmpImage = UIGraphicsGetImageFromCurrentImageContext();

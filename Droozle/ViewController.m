@@ -157,8 +157,15 @@
                 if(selectedSpace.isOccupied) {
                     
                     NSString *val = selectedSpace.value;
+                    uint pVal = selectedSpace.pointValue;
                     
-                    val = selectedSpace.value;
+                    tmpColor = selectedSpace.piece.backgroundColor;
+                    
+                    selectedSpace.piece.backgroundColor = touchedSpace.piece.backgroundColor;
+                    selectedSpace.pointValue = touchedSpace.pointValue;
+                    
+                    touchedSpace.pointValue = pVal;
+                    touchedSpace.piece.backgroundColor = tmpColor;
                     
                     selectedSpace.value = touchedSpace.value;
                     selectedSpace.piece.text = selectedSpace.value;
@@ -191,6 +198,10 @@
                 
                 selectedSpace.value = display.addPiece.text;
                 selectedSpace.piece.text = display.addPiece.text;
+                
+                selectedSpace.piece.backgroundColor = display.addPiece.backgroundColor;
+                selectedSpace.pointValue = 0;
+                
               //  display.addPiece.text = [gamePlay getARandomLetter];
                 display.addPiece.text = @"";
             }

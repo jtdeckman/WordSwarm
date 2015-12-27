@@ -22,6 +22,8 @@
     NSTimer *gameTimer;
     
     int rowOrig, rowNew;
+    
+    UIColor *tmpColor;
 }
 
 

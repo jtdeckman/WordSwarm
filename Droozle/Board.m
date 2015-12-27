@@ -92,7 +92,7 @@
     [self findNeighbors];
     
     tileImages = [[TileImages alloc] init];
-    [tileImages setUp:spcFrm.size];
+    [tileImages setUp:pcFrm.size];
     
     wLPointer = wl;
 }
@@ -397,6 +397,11 @@
     }
     
     return word;
+}
+
+- (bool)prefersStatusBarHidden {
+    
+    return YES;
 }
 
 @end
