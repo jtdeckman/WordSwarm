@@ -19,7 +19,7 @@
     
     Space *newSpace;
     
-    CGFloat os2 = 0;//offset/2.0;
+    CGFloat os2;// = offset;///2.0;
     CGFloat xini, yini;
     
     CGRect spcFrm, pcFrm;

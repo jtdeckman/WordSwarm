@@ -111,7 +111,7 @@
 
     UIGraphicsBeginImageContext(pcFrm.size);
     
-    UIImage *tmpImage = [UIImage imageNamed:@"orangeSquare.png"];
+    UIImage *tmpImage = [UIImage imageNamed:@"redSquare.png"];
     [tmpImage drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
     floatBackImage = UIGraphicsGetImageFromCurrentImageContext();
 
@@ -139,7 +139,7 @@
     baseAddPiece = pcFrm;
     
     UIGraphicsBeginImageContext(pcFrm.size);
-    tmpImage = [UIImage imageNamed:@"orangeSquare.png"];
+    tmpImage = [UIImage imageNamed:@"redSquare.png"];
     [tmpImage drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
     
     floatBackImage = UIGraphicsGetImageFromCurrentImageContext();

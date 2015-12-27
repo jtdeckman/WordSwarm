@@ -25,7 +25,7 @@
     
     UIGraphicsBeginImageContext(pieceSize);
     
-    UIImage *tmpImage = [UIImage imageNamed:@"orangeSquare.png"];
+    UIImage *tmpImage = [UIImage imageNamed:@"redSquare.png"];
     [tmpImage drawInRect:CGRectMake(0, 0, pieceSize.width, pieceSize.height)];
     tmpImage = UIGraphicsGetImageFromCurrentImageContext();
     
