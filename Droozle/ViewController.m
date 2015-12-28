@@ -38,7 +38,7 @@
         
         else {
             
-            if(nRowsOcc >= board.dimx - 5) [display animateAlertView];
+            if(nRowsOcc >= board.dimx - 2) [display animateAlertView];
             
             else [display hideAlertView];
             
@@ -114,7 +114,14 @@
                     
                     [gamePlay updateScore:[board sumRow:touchedSpace.iind]];
                     [display updateScore:gamePlay.gameData.score];
-                    [board eliminateRow:touchedSpace.iind];
+                    
+                    [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind];
+                    [display makePiecesFlash];
+                    
+                    [self performSelector:@selector(eliminateRowFromBoard) withObject:nil afterDelay:0.4];
+                    
+                
+                   // [board eliminateRow:touchedSpace.iind];
                 }
             }
             
@@ -276,7 +283,7 @@
     boardFrm = [display initBoardView:self.view.frame];
     
     CGFloat buffer = [gamePlay setUp:board :boardFrm];
-    [board initBoard:boardFrm :gamePlay.dimx :gamePlay.dimy :0.0025*self.view.frame.size.width :buffer :gamePlay.wordLogic];
+    [board initBoard:boardFrm :gamePlay.dimx :gamePlay.dimy :0.0005*self.view.frame.size.width :buffer :gamePlay.wordLogic];
     
     [self addPiecesToView];
     
@@ -294,6 +301,13 @@
     [display updateLevelValues];
     
   //  [gamePlay rowOfValues];
+}
+
+- (void)eliminateRowFromBoard {
+    
+    [display resetAnimatedPieces];
+    
+    [board eliminateRow:touchedSpace.iind];
 }
 
 - (void)setUpNewGame {

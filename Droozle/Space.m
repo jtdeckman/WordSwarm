@@ -35,6 +35,8 @@
     [piece setTextAlignment:NSTextAlignmentCenter];
     [piece setFont:[UIFont fontWithName:@"Arial" size:1.0*FONT_FACT*spaceFrame.size.width]];
     
+    piece.backgroundColor = [UIColor clearColor];
+    
     nearestNbrs = [[NSMutableSet alloc] initWithCapacity:4];
     neighbors = [[NSMutableSet alloc] initWithCapacity:10];
    

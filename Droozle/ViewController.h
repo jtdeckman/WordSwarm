@@ -27,6 +27,5 @@
     UIColor *tmpColor;
 }
 
-
 @end
 

@@ -19,7 +19,7 @@
     
     Space *newSpace;
     
-    CGFloat os2;// = offset;///2.0;
+    CGFloat os2 = offset/2.0;
     CGFloat xini, yini;
     
     CGRect spcFrm, pcFrm;
@@ -41,8 +41,8 @@
     spcFrm.size.width = spaceWidth;
     spcFrm.size.height = spaceHeight;
     
-    pcFrm.size.width = pieceWidth;
-    pcFrm.size.height = pieceHeight;
+    pcFrm.size.width = pieceWidth - offset;
+    pcFrm.size.height = pieceHeight - offset;
     
     spaces = [[NSMutableArray alloc] initWithCapacity:dimx];
     rowTypes = [[NSMutableArray alloc] initWithCapacity:dimx];
@@ -470,6 +470,20 @@
             
             if(space.isOccupied) space.piece.hidden = NO;
         }
+    }
+}
+
+- (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row {
+
+    Space *space;
+    
+    [pieces removeAllObjects];
+    
+    for(int j=0; j<dimy; j++) {
+        
+        space = spaces[row][j];
+        
+        [pieces addObject:space.piece];
     }
 }
 

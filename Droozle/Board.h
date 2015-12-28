@@ -65,6 +65,7 @@
 - (BOOL)shiftRowsUp;
 
 - (void)eliminateRow:(uint)row;
+- (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row;
 
 - (NSString*)makeWordFromRow: (uint)row;
 

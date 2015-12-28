@@ -12,6 +12,7 @@
 #import "Space.h"
 #import "MenuView.h"
 #import "GamePlay.h"
+#import "AnimationPieces.h"
 
 @interface Display : NSObject {
     
@@ -48,6 +49,10 @@
     CGRect baseAddPiece;
     
     GamePlay *gamePlay;
+    
+    NSMutableArray *piecesToAnimate;
+    
+    AnimationPieces *animationPieces;
 }
 
 @property(nonatomic, strong) UIView *topBar;
@@ -55,13 +60,14 @@
 @property(nonatomic, strong) UIView *bottomBar;
 
 @property(nonatomic, strong) MenuView *menuView;
+@property(nonatomic, strong) GamePlay *gamePlay;
 
 @property(nonatomic, strong) UILabel *floatPiece;
 @property(nonatomic, strong) UILabel *addPiece;
 
 @property(nonatomic, strong) UIImageView *menuBar;
 
-@property(nonatomic, strong) GamePlay *gamePlay;
+@property(nonatomic, strong) NSMutableArray *piecesToAnimate;
 
 - (void)initDisplay:(CGRect)viewFrame :(UIViewController*)rootViewCont;
 - (void)setUpColors;
@@ -75,6 +81,8 @@
 - (void)hideAlertView;
 - (void)updateLevelValues;
 - (void)animateAlertView;
+- (void)makePiecesFlash;
+- (void)resetAnimatedPieces;
 
 - (CGRect)initBoardView:(CGRect)viewFrame;
 

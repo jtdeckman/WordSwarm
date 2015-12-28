@@ -13,12 +13,18 @@
 @synthesize topBar, bottomBar, boardView;
 @synthesize floatPiece, addPiece;
 @synthesize menuBar, menuView, gamePlay;
+@synthesize piecesToAnimate;
 
 - (void)initDisplay:(CGRect)viewFrame : (UIViewController*)rootViewCont {
 
     CGRect frm;
     
     rootView = rootViewCont.view;
+    
+    piecesToAnimate = [[NSMutableArray alloc] initWithCapacity:500];
+    
+    animationPieces = [[AnimationPieces alloc] init];
+    [animationPieces setUpPieces];
     
     frm = viewFrame;
     frm.size.height *= 0.125;
@@ -326,7 +332,7 @@
     
     UIGraphicsBeginImageContext(pcFrm.size);
    
-    tmpImage = [UIImage imageNamed:@"menuBars4.png"];
+    tmpImage = [UIImage imageNamed:@"menuBars.png"];
     [tmpImage drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
     tmpImage = UIGraphicsGetImageFromCurrentImageContext();
     
@@ -406,10 +412,15 @@
     [rootView sendSubviewToBack:alertView];
     
     [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
         alertView.alpha = 0.25;
+        
     } completion:^(BOOL finished) {
+        
         [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
             alertView.alpha = 0.80;
+            
         } completion:nil];
     }];
 
@@ -418,6 +429,62 @@
 - (void)hideAlertView {
     
     alertView.hidden = YES;
+}
+
+- (void)makePiecesFlash {
+    
+    NSArray *pieces = [[NSArray alloc] initWithArray:piecesToAnimate];
+    
+    UILabel *savedPiece, *iPiece;
+    
+    for(uint i=0; i<[pieces count]; i++) {
+    
+        savedPiece = [animationPieces.pieces objectAtIndex:i];
+        iPiece = [pieces objectAtIndex:i];
+        
+        savedPiece.frame = iPiece.frame;
+        savedPiece.backgroundColor = iPiece.backgroundColor;
+        savedPiece.alpha = iPiece.alpha;
+        
+        iPiece.backgroundColor = [UIColor whiteColor];
+        iPiece.alpha = 0.8;
+    }
+    
+   [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        for(UILabel* piece in pieces)
+            piece.alpha = 0.0;
+        
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+            for(UILabel* piece in pieces)
+                piece.alpha = 0.8;
+            
+        } completion:nil];
+    }];
+}
+
+- (void)resetAnimatedPieces {
+    
+    NSArray *pieces = [[NSArray alloc] initWithArray:piecesToAnimate];
+    
+    UILabel *savedPiece, *iPiece;
+
+    for(uint i=0; i<[pieces count]; i++) {
+        
+        savedPiece = [animationPieces.pieces objectAtIndex:i];
+        iPiece = [pieces objectAtIndex:i];
+        
+        iPiece.hidden = YES;
+        
+        iPiece.frame = savedPiece.frame;
+        iPiece.backgroundColor = savedPiece.backgroundColor;
+        iPiece.alpha = savedPiece.alpha;
+    }
+
 }
 
 - (void)deconstruct {
@@ -441,6 +508,9 @@
     scoreLabel = nil;
     levelLabel = nil;
     nextScoreLabel = nil;
+    
+    [animationPieces deconstruct];
 }
+
 
 @end
