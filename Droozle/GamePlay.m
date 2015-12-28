@@ -32,6 +32,8 @@
     wordLogic = [[WordLogic alloc] init];
     [wordLogic initLetters];
     
+    [self setUpPointsForLevel];
+    
     [self newGame];
     
     return buffer;
@@ -88,6 +90,38 @@
 - (void)deconstruct {
     
     [wordLogic deconstruct];
+}
+
+- (NSString*)getPointsForLevel:(uint)level {
+
+    if(level >= [pointsForLevel count]) {
+     
+        NSString *points = [pointsForLevel objectAtIndex:[pointsForLevel count]-1];
+        
+        return points;
+    }
+    
+    return [pointsForLevel objectAtIndex:level];
+}
+
+- (void)setUpPointsForLevel {
+    
+    pointsForLevel = [[NSMutableArray alloc] initWithObjects:
+                      @"500",
+                      @"500",
+                      @"1500",
+                      @"5000",
+                      @"25000",
+                      @"50000",
+                      @"100000",
+                      @"150000",
+                      @"200000",
+                      @"250000",
+                      @"350000",
+                      @"500000",
+                      @"750000",
+                      @"1000000",
+                      nil];
 }
 
 @end

@@ -14,6 +14,8 @@
 @property (nonatomic) JDColor topBarBackgroundColor;
 @property (nonatomic) JDColor bottomBarBackgroundColor;
 @property (nonatomic) JDColor boardViewBackgroundColor;
+@property (nonatomic) JDColor scoreColor;
+@property (nonatomic) JDColor levelColor;
 
 - (void)setUpColors;
 

@@ -28,6 +28,8 @@
     
     WordLogic *wordLogic;
     
+    NSMutableArray *pointsForLevel;
+    
     BOOL criticalState;
 }
 
@@ -52,6 +54,7 @@
 - (void)updateScore:(int)newPoints;
 
 - (NSString*)getARandomLetter;
+- (NSString*)getPointsForLevel:(uint)level;
 
 - (BOOL)checkWord:(NSString*)word :(NSString*)wrdType;
 

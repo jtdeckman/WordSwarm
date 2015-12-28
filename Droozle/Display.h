@@ -11,6 +11,7 @@
 #import "Colors.h"
 #import "Space.h"
 #import "MenuView.h"
+#import "GamePlay.h"
 
 @interface Display : NSObject {
     
@@ -24,8 +25,18 @@
     
     UILabel *floatPiece;
     UILabel *addPiece;
-    UILabel *scoreLabel;
+    
+    UILabel *scoreBox;
+    UILabel *levelBox;
+    UILabel *nextBox;
+    
     UILabel *score;
+    UILabel *level;
+    UILabel *nextScore;
+    
+    UILabel *scoreLabel;
+    UILabel *levelLabel;
+    UILabel *nextScoreLabel;
     
     UIImage *floatBackImage;
     
@@ -35,6 +46,8 @@
     CGSize addPieceOffSet;
     
     CGRect baseAddPiece;
+    
+    GamePlay *gamePlay;
 }
 
 @property(nonatomic, strong) UIView *topBar;
@@ -48,6 +61,8 @@
 
 @property(nonatomic, strong) UIImageView *menuBar;
 
+@property(nonatomic, strong) GamePlay *gamePlay;
+
 - (void)initDisplay:(CGRect)viewFrame :(UIViewController*)rootViewCont;
 - (void)setUpColors;
 - (void)setUpFloatPieces:(CGRect)pcFrm;
@@ -58,7 +73,7 @@
 - (void)deconstruct;
 - (void)updateScore:(int)newScore;
 - (void)hideAlertView;
-
+- (void)updateLevelValues;
 - (void)animateAlertView;
 
 - (CGRect)initBoardView:(CGRect)viewFrame;

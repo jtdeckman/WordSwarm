@@ -278,9 +278,12 @@
     
     gameTimer = [NSTimer scheduledTimerWithTimeInterval:1/1 target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
     
+    display.gamePlay = gamePlay;
+    
     display.addPiece.text = @""; //[gamePlay getARandomLetter];
     
     [display updateScore:gamePlay.gameData.score];
+    [display updateLevelValues];
 }
 
 - (void)setUpNewGame {
