@@ -242,6 +242,11 @@
         if([word containsString:@"(adj)"]) return YES;
     }
     
+    else if([cat isEqualToString:@"Adv"]) {
+        
+        if([word containsString:@"(adv)"]) return YES;
+    }
+    
     else {
         
     }
@@ -255,7 +260,7 @@
     
     if(level == 0 || level == 1) {
         
-        [wordTypes addObject:@"Adj"];
+        [wordTypes addObject:@"Word"];
         [wordTypes addObject:@"Word"];
     }
     

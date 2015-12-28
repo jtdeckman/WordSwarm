@@ -268,6 +268,11 @@
     Space *space;
     
     for(int i=0; i<dimx; i++) {
+        
+        space = rowTypes[i];
+        space.isOccupied = NO;
+        space.piece.hidden = YES;
+        
         for(int j=0; j<dimy; j++) {
             
             space = spaces[i][j];

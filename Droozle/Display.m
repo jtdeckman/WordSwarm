@@ -52,7 +52,7 @@
     [rootView addSubview:menuView];
     [rootView bringSubviewToFront:menuView];
     
-    alertView = [[UIView alloc] initWithFrame:rootView.frame];
+    alertView = [[UIView alloc] initWithFrame:boardView.frame];
     alertView.backgroundColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:0.75];
     
     [rootView addSubview:alertView];
@@ -178,7 +178,7 @@
     score.opaque = NO;
     
     [score setTextAlignment:NSTextAlignmentCenter];
-    [score setFont:[UIFont fontWithName:@"Helvetica" size:1.0*FONT_FACT*score.frame.size.height]];
+    [score setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:1.15*FONT_FACT*score.frame.size.height]];
 
     score.textColor = [UIColor colorWithRed:colors.scoreColor.red green:colors.scoreColor.green blue:colors.scoreColor.blue alpha:1.0f];//whiteColor];
     score.backgroundColor = [UIColor clearColor];
@@ -189,7 +189,7 @@
     level.opaque = NO;
     
     [level setTextAlignment:NSTextAlignmentCenter];
-    [level setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:1.35*FONT_FACT*score.frame.size.height]];
+    [level setFont:[UIFont fontWithName:@"Helvetica-Bold" size:1.35*FONT_FACT*score.frame.size.height]];
     
     level.textColor = [UIColor colorWithRed:colors.levelColor.red green:colors.levelColor.green blue:colors.levelColor.blue alpha:1.0f];
     
@@ -201,7 +201,7 @@
     nextScore.opaque = NO;
     
     [nextScore setTextAlignment:NSTextAlignmentCenter];
-    [nextScore setFont:[UIFont fontWithName:@"Helvetica" size:1.0*FONT_FACT*score.frame.size.height]];
+    [nextScore setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:1.15*FONT_FACT*score.frame.size.height]];
     
     nextScore.textColor = score.textColor; //[UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
     
@@ -352,14 +352,12 @@
 - (void)updateScore: (int)newScore {
     
     score.text = [NSString stringWithFormat:@"%d",newScore];
-    
-    score.text = @"1327591";
 }
 
 - (void)updateLevelValues {
 
     level.text = [NSString stringWithFormat:@"%d",gamePlay.gameData.level];
-    nextScore.text = [gamePlay getPointsForLevel:gamePlay.gameData.level];
+    nextScore.text = [gamePlay getPointsForLevel:gamePlay.gameData.level + 1];
 }
 
 - (void)changeAddPieceLoc: (CGPoint)newLoc {
@@ -401,8 +399,9 @@
 
 - (void)animateAlertView {
     
+    
     alertView.hidden = NO;
-    alertView.alpha = 0.90;
+    alertView.alpha = 0.80;
     
     [rootView sendSubviewToBack:alertView];
     
@@ -410,13 +409,14 @@
         alertView.alpha = 0.25;
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            alertView.alpha = 0.90;
+            alertView.alpha = 0.80;
         } completion:nil];
     }];
+
 }
 
 - (void)hideAlertView {
-
+    
     alertView.hidden = YES;
 }
 

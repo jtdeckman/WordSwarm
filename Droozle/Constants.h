@@ -58,7 +58,8 @@ typedef enum : NSUInteger {
     winMenu,
     preWin,
     newGame,
-    howToPlay
+    howToPlay,
+    levelUp
     
 } GameState;
 

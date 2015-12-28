@@ -87,6 +87,16 @@
 - (void)updateScore:(int)newPoints {
 
     gameData.score += newPoints*gameData.level;
+    
+    NSString *pointsForNextLevel = [self getPointsForLevel:gameData.level + 1];
+    
+    if(gameData.score >= [pointsForNextLevel intValue]) {
+        
+        gameState = levelUp;
+        gameData.level += 1;
+        
+        [wordLogic initWordTypesForLevel:gameData.level];
+    }
 }
 
 - (void)deconstruct {
@@ -109,20 +119,20 @@
 - (void)setUpPointsForLevel {
     
     pointsForLevel = [[NSMutableArray alloc] initWithObjects:
+                      @"25",
+                      @"50",
+                      @"50",
+                      @"150",
+                      @"200",
+                      @"250",
                       @"500",
-                      @"500",
-                      @"1500",
+                      @"1000",
+                      @"2500",
                       @"5000",
+                      @"10000",
                       @"25000",
                       @"50000",
                       @"100000",
-                      @"150000",
-                      @"200000",
-                      @"250000",
-                      @"350000",
-                      @"500000",
-                      @"750000",
-                      @"1000000",
                       nil];
 }
 

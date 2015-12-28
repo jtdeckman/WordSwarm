@@ -10,7 +10,7 @@
 #import "Board.h"
 #import "WordLogic.h"
 
-#define TIME_FACTOR 10
+#define TIME_FACTOR 15
 
 @interface GamePlay : NSObject {
     

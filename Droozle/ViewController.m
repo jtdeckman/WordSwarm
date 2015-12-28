@@ -38,7 +38,7 @@
         
         else {
             
-            if(nRowsOcc >= board.dimx - 2) [display animateAlertView];
+            if(nRowsOcc >= board.dimx - 5) [display animateAlertView];
             
             else [display hideAlertView];
             
@@ -55,6 +55,14 @@
         }
         
         [gamePlay incrementTimer];
+    }
+    
+    if(gamePlay.gameState == levelUp) {
+        
+        [board clearBoard];
+        [display updateLevelValues];
+        
+        gamePlay.gameState = gameRunning;
     }
 }
 
@@ -284,6 +292,8 @@
     
     [display updateScore:gamePlay.gameData.score];
     [display updateLevelValues];
+    
+  //  [gamePlay rowOfValues];
 }
 
 - (void)setUpNewGame {
