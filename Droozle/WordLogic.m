@@ -16,9 +16,10 @@
 
     dictionary = [Lexicontext sharedDictionary];
     
-    wordTypes = [[NSMutableArray alloc] initWithObjects:@"Word", @"Noun", @"Verb", @"Adj", nil];
+    wordTypes = [[NSMutableArray alloc] initWithCapacity:100];
     
-    letters = [[NSMutableArray alloc] initWithObjects:@"A",
+    letters = [[NSMutableArray alloc] initWithObjects:
+               @"A",
                @"A",
                @"A",
                @"A",
@@ -187,7 +188,7 @@
     return wordTypes[index];
 }
 
-- (BOOL)isWord:(NSString*)word {
+- (BOOL)isWord:(NSString*)word inCategory:(NSString*)cat {
 
     NSString *result = [dictionary definitionFor:word];
     
@@ -202,7 +203,13 @@
     
     else {
         
-        return YES;
+        if([cat isEqualToString:@"Word"])
+            return YES;
+        
+        else {
+            
+            if([self checkWord:result forCategory:cat]) return YES;
+        }
     }
     
     return NO;
@@ -216,6 +223,132 @@
     NSNumber *val = [pointsForLetters objectForKey:letter];
     
     return (int)[val integerValue];
+}
+
+- (BOOL)checkWord:(NSString*)word forCategory:(NSString*)cat {
+
+    if([cat isEqualToString:@"Noun"]) {
+
+        if([word containsString:@"(noun)"]) return YES;
+    }
+    
+    else if([cat isEqualToString:@"Verb"]) {
+        
+        if([word containsString:@"(verb)"]) return YES;
+    }
+    
+    else if([cat isEqualToString:@"Adj"]) {
+        
+        if([word containsString:@"(adj)"]) return YES;
+    }
+    
+    else {
+        
+    }
+    
+    return NO;
+}
+
+- (void)initWordTypesForLevel:(uint)level {
+
+    [wordTypes removeAllObjects];
+    
+    if(level == 0 || level == 1) {
+        
+        [wordTypes addObject:@"Adj"];
+        [wordTypes addObject:@"Word"];
+    }
+    
+    else if(level == 2) {
+        
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Noun"];
+        [wordTypes addObject:@"Word"];
+    }
+    
+    else if(level == 3) {
+        
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Noun"];
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Noun"];
+    }
+    
+    else if(level == 4) {
+        
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Noun"];
+        [wordTypes addObject:@"Verb"];
+    }
+    
+    else if(level == 5) {
+        
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Noun"];
+        [wordTypes addObject:@"Verb"];
+    }
+    
+    else if(level == 6) {
+        
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Noun"];
+        [wordTypes addObject:@"Noun"];
+        [wordTypes addObject:@"Verb"];
+        [wordTypes addObject:@"Verb"];
+    }
+    
+    else if(level == 7) {
+        
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Noun"];
+        [wordTypes addObject:@"Verb"];
+        [wordTypes addObject:@"Verb"];
+    }
+    
+    else if(level == 8) {
+        
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Noun"];
+        [wordTypes addObject:@"Verb"];
+        [wordTypes addObject:@"Adj"];
+    }
+    
+    else if(level == 9) {
+        
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Noun"];
+        [wordTypes addObject:@"Noun"];
+        [wordTypes addObject:@"Verb"];
+        [wordTypes addObject:@"Adj"];
+    }
+    
+    else if(level == 10) {
+        
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Noun"];
+        [wordTypes addObject:@"Verb"];
+        [wordTypes addObject:@"Adj"];
+    }
+    
+    else if(level == 11) {
+        
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Noun"];
+        [wordTypes addObject:@"Verb"];
+        [wordTypes addObject:@"Verb"];
+        [wordTypes addObject:@"Adj"];
+    }
+    
+    else if(level > 11) {
+        
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Noun"];
+        [wordTypes addObject:@"Verb"];
+        [wordTypes addObject:@"Adj"];
+        [wordTypes addObject:@"Adj"];
+    }
 }
 
 - (void)deconstruct {

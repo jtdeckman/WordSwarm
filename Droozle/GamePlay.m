@@ -53,6 +53,8 @@
     timeInterval = TIME_FACTOR;
     
     criticalState = NO;
+    
+    [wordLogic initWordTypesForLevel:gameData.level];
 }
 
 - (void)rowOfValues {
@@ -79,7 +81,7 @@
 
 - (BOOL)checkWord: (NSString*)word :(NSString*)wrdType {
     
-    return [wordLogic isWord:word];
+    return [wordLogic isWord:word inCategory:wrdType];
 }
 
 - (void)updateScore:(int)newPoints {

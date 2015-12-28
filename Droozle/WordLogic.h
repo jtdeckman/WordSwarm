@@ -29,9 +29,11 @@
 - (NSString*)randomLetter;
 - (NSString*)getType;
 
-- (BOOL)isWord:(NSString*)word;
+- (BOOL)isWord:(NSString*)word inCategory:(NSString*)cat;
+- (BOOL)checkWord:(NSString*)word forCategory:(NSString*)cat;
 
 - (void)deconstruct;
+- (void)initWordTypesForLevel:(uint)level;
 
 - (int)pointValueForLetter:(NSString*)letter;
 
