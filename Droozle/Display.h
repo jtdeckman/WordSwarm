@@ -41,7 +41,8 @@
     
     UILabel *floatScore;
     UILabel *bombPiece;
-    UILabel *strikePiece;
+    UILabel *bonusLabel1;
+    UILabel *bonusLabel2;
     
     UIImage *floatBackImage;
     
@@ -57,6 +58,8 @@
     NSMutableArray *piecesToAnimate;
     
     AnimationPieces *animationPieces;
+    
+    Colors *colors;
 }
 
 @property(nonatomic, strong) UIView *topBar;
@@ -88,12 +91,11 @@
 - (void)hideAlertView;
 - (void)updateLevelValues;
 
-- (void)makePiecesFlash;
+- (void)makePiecesFlash:(BOOL)wrongWord;
 - (void)resetAnimatedPieces;
 - (void)animateAlertView;
 
-- (void)animatePlusScore:(int)addedPoints;
-- (void)animateMinusScore:(int)subtractedPoints;
+- (void)animateScore:(int)addedPoints;
 
 - (CGRect)initBoardView:(CGRect)viewFrame;
 

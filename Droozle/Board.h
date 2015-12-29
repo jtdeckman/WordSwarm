@@ -63,6 +63,7 @@
 - (void)deconstruct;
 
 - (BOOL)shiftRowsUp;
+- (BOOL)isCategoryRow:(uint)row;
 
 - (void)eliminateRow:(uint)row;
 - (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row;

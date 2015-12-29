@@ -12,6 +12,7 @@
 
 @synthesize topBarBackgroundColor, boardViewBackgroundColor;
 @synthesize bottomBarBackgroundColor, scoreColor, levelColor;
+@synthesize redFlashColor;
 
 - (void)setUpColors {
     
@@ -28,12 +29,16 @@
     boardViewBackgroundColor.blue = 0.9f;
     
     scoreColor.red = 1.0f;
-    scoreColor.green = 0.35f;
+    scoreColor.green = 0.75f;
     scoreColor.blue = 0.2f;
     
     levelColor.red = 0.55f;
     levelColor.green = 0.7;
     levelColor.blue = 1.0;
+    
+    redFlashColor.red = 0.8f;
+    redFlashColor.green = 0.2f;
+    redFlashColor.blue = 0.15f;
 }
 
 @end

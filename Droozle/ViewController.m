@@ -46,11 +46,13 @@
 
                 if([board shiftRowsUp] == YES) {
                 
-                    //  gamePlay.gameState = gameOver;
+                    gamePlay.gameState = gameOver;
                 }
             
-                else
+                else if(!animating) {
+                
                     [gamePlay rowOfValues];
+                }
             }
         }
         
@@ -99,7 +101,7 @@
         }
     }
     
-    if(gamePlay.gameState == gameRunning) {
+    else if(gamePlay.gameState == gameRunning) {
         
         if(touch.view == display.boardView && gamePlay.placeMode == freeState) {
             
@@ -110,19 +112,30 @@
                 NSString *word = [board makeWordFromRow:touchedSpace.iind];
                 NSString *type = touchedSpace.piece.text;
                 
+                animating = YES;
+                
                 if([gamePlay checkWord:word :type]) {
                     
                     int newScore = [gamePlay updateScore:[board sumRow:touchedSpace.iind]];
                     
                     [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind];
                     
-                    [display animatePlusScore:newScore];
-                    [display makePiecesFlash];
+                    [display animateScore:newScore];
+                    [display makePiecesFlash:NO];
                     
                     [self performSelector:@selector(eliminateRowFromBoard) withObject:nil afterDelay:0.4];
-                    
+                }
                 
-                   // [board eliminateRow:touchedSpace.iind];
+                else {
+                    
+                    int newScore = [gamePlay updateScore:-1.0*[board sumRow:touchedSpace.iind]];
+                    
+                    [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind];
+                    
+                    [display animateScore:newScore];
+                    [display makePiecesFlash:YES];
+                    
+                    [self performSelector:@selector(resetRow) withObject:nil afterDelay:0.4];
                 }
             }
             
@@ -149,6 +162,42 @@
             else if(gamePlay.placeMode == freeState && CGRectContainsPoint(display.addPiece.frame, location)) {
                 
                 gamePlay.placeMode = addMove;
+            }
+        }
+    }
+    
+    else if(gamePlay.gameState == gameOver) {
+     
+        if(touch.view == display.menuView) {
+            
+            location = [touch locationInView:display.menuView];
+            
+            if(CGRectContainsPoint(display.menuView.nwGameLabel.frame, location)) {
+                
+                [self setUpNewGame];
+            }
+            else {
+                
+                display.menuView.hidden = YES;
+                [board unHideOccupiedPieces];
+            }
+        }
+        
+        else {
+            
+            display.menuView.hidden = YES;
+            [board unHideOccupiedPieces];
+        }
+
+        if(touch.view == display.bottomBar && display.menuView.hidden == YES) {
+            
+            if(CGRectContainsPoint(display.menuBar.frame, location)) {
+                
+                display.menuView.hidden = NO;
+                
+                [board hideOccupiedPieces];
+                [self.view bringSubviewToFront:display.menuView];
+                
             }
         }
     }
@@ -210,16 +259,26 @@
                   //  [board removePiece:touchedSpace];
                     touchedSpace.value = val;
                     touchedSpace.piece.text = touchedSpace.value;
+                    
+                    if(![board isCategoryRow:touchedSpace.iind] && touchedSpace.pointValue == 0)
+                        [board removePiece:touchedSpace];
                 }
                 
-             /*   else if([selectedSpace isNearestNearestNbrOf:touchedSpace]){
+                else if([selectedSpace isNearestNearestNbrOf:touchedSpace]){
                     
                     selectedSpace.value = touchedSpace.value;
                     selectedSpace.piece.text = selectedSpace.value;
                     
                     [board addPiece:selectedSpace.iind :selectedSpace.jind :touchedSpace.value];
-                    [board removePiece:touchedSpace];
-                } */
+                    
+                    touchedSpace.piece.backgroundColor = display.addPiece.backgroundColor;
+                    touchedSpace.piece.text = @"";
+                    
+                    touchedSpace.value = @"";
+                    touchedSpace.pointValue = 0;
+                    
+                    //[board removePiece:touchedSpace];
+                }
             }
             
             display.floatPiece.hidden = YES;
@@ -301,7 +360,9 @@
     [display updateScore];
     [display updateLevelValues];
     
-  //  [gamePlay rowOfValues];
+    [gamePlay rowOfValues];
+    
+    animating = NO;
 }
 
 - (void)eliminateRowFromBoard {
@@ -309,6 +370,15 @@
     [display resetAnimatedPieces];
     
     [board eliminateRow:touchedSpace.iind];
+    
+    animating = NO;
+}
+
+- (void)resetRow {
+
+    [display resetAnimatedPieces];
+    
+    animating = NO;
 }
 
 - (void)setUpNewGame {

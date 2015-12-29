@@ -25,6 +25,8 @@
     int rowOrig, rowNew;
     
     UIColor *tmpColor;
+    
+    BOOL animating;
 }
 
 @end

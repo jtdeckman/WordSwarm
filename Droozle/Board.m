@@ -485,6 +485,20 @@
         
         [pieces addObject:space.piece];
     }
+    
+    space = [rowTypes objectAtIndex:row];
+    
+    [pieces addObject:space.piece];
+}
+
+- (BOOL)isCategoryRow:(uint)row {
+
+    Space *space = rowTypes[row];
+    
+    if(!space.isOccupied && space.piece.hidden == YES)
+        return NO;
+    
+    return YES;
 }
 
 @end

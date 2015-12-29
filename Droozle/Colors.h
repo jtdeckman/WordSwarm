@@ -16,6 +16,7 @@
 @property (nonatomic) JDColor boardViewBackgroundColor;
 @property (nonatomic) JDColor scoreColor;
 @property (nonatomic) JDColor levelColor;
+@property (nonatomic) JDColor redFlashColor;
 
 - (void)setUpColors;
 

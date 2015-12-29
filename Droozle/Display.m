@@ -14,7 +14,6 @@
 @synthesize floatPiece, addPiece;
 @synthesize menuBar, menuView, gamePlay;
 @synthesize piecesToAnimate, bombPiece;
-@synthesize strikePiece;
 
 - (void)initDisplay:(CGRect)viewFrame : (UIViewController*)rootViewCont {
 
@@ -27,6 +26,9 @@
     animationPieces = [[AnimationPieces alloc] init];
     [animationPieces setUpPieces];
     
+    colors = [[Colors alloc] init];
+    [colors setUpColors];
+
     frm = viewFrame;
     frm.size.height *= 0.125;
     
@@ -100,7 +102,7 @@
     
     frm = levelBox.frame;
     frm.size.height *= 0.8;
-    frm.origin.y = levelBox.frame.origin.y + 1.25*(levelBox.frame.size.height - frm.size.height);
+    frm.origin.y = levelBox.frame.origin.y + 1.5*(levelBox.frame.size.height - frm.size.height);
     
     level = [[UILabel alloc] initWithFrame:frm];
     [rootView addSubview:level];
@@ -135,10 +137,6 @@
 
 - (void)setUpColors {
 
-    Colors *colors = [[Colors alloc] init];
-    
-    [colors setUpColors];
-    
     topBar.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.4];
     bottomBar.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.4];
     boardView.backgroundColor = [UIColor clearColor];
@@ -185,9 +183,11 @@
     score.opaque = NO;
     
     [score setTextAlignment:NSTextAlignmentCenter];
-    [score setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:1.15*FONT_FACT*score.frame.size.height]];
+    [score setFont:[UIFont fontWithName:@"Helvetica" size:1.15*FONT_FACT*score.frame.size.height]];
 
-    score.textColor = [UIColor colorWithRed:colors.scoreColor.red green:colors.scoreColor.green blue:colors.scoreColor.blue alpha:1.0f];//whiteColor];
+  //  score.textColor = [UIColor colorWithRed:colors.scoreColor.red green:colors.scoreColor.green blue:colors.scoreColor.blue alpha:0.8f];//whiteColor];
+    
+    score.textColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.8f];//whiteColor];
     score.backgroundColor = [UIColor clearColor];
     
     level.hidden = NO;
@@ -196,9 +196,9 @@
     level.opaque = NO;
     
     [level setTextAlignment:NSTextAlignmentCenter];
-    [level setFont:[UIFont fontWithName:@"Helvetica-Bold" size:1.35*FONT_FACT*score.frame.size.height]];
+    [level setFont:[UIFont fontWithName:@"Helvetica" size:1.2*FONT_FACT*score.frame.size.height]];
     
-    level.textColor = [UIColor colorWithRed:colors.levelColor.red green:colors.levelColor.green blue:colors.levelColor.blue alpha:1.0f];
+    level.textColor = [UIColor colorWithRed:colors.levelColor.red green:colors.levelColor.green blue:colors.levelColor.blue alpha:0.8f];
     
     level.backgroundColor = [UIColor clearColor];
     
@@ -208,7 +208,7 @@
     nextScore.opaque = NO;
     
     [nextScore setTextAlignment:NSTextAlignmentCenter];
-    [nextScore setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:1.15*FONT_FACT*score.frame.size.height]];
+    [nextScore setFont:[UIFont fontWithName:@"Helvetica" size:1.15*FONT_FACT*score.frame.size.height]];
     
     nextScore.textColor = score.textColor; //[UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
     
@@ -382,10 +382,31 @@
     floatScore.opaque = NO;
     
     [floatScore setTextAlignment:NSTextAlignmentCenter];
-    [floatScore setFont:[UIFont fontWithName:@"MarkerFelt-THin" size:1.25*FONT_FACT*floatScore.frame.size.height]];
+    [floatScore setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.25*FONT_FACT*floatScore.frame.size.height]];
     
     floatScore.textColor = [UIColor whiteColor];
     floatScore.backgroundColor = [UIColor clearColor];
+    
+    
+ // Bonus Float Piece 1
+    
+    pcFrm = floatScore.frame;
+    pcFrm.size.width *= 2;
+    
+    bonusLabel1 = [[UILabel alloc] initWithFrame:pcFrm];
+    
+    [rootView addSubview:bonusLabel1];
+    
+    bonusLabel1.hidden = YES;
+    bonusLabel1.layer.cornerRadius = 5.0;
+    bonusLabel1.clipsToBounds = YES;
+    bonusLabel1.opaque = NO;
+    
+    [bonusLabel1 setTextAlignment:NSTextAlignmentCenter];
+    [bonusLabel1 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.0*FONT_FACT*bonusLabel1.frame.size.height]];
+    
+    bonusLabel1.textColor = [UIColor purpleColor];
+    bonusLabel1.backgroundColor = [UIColor clearColor];
 }
 
 - (void)changeFloatPieceLoc: (CGPoint)newLoc {
@@ -476,7 +497,7 @@
     alertView.hidden = YES;
 }
 
-- (void)makePiecesFlash {
+- (void)makePiecesFlash:(BOOL)wrongWord {
     
     NSArray *pieces = [[NSArray alloc] initWithArray:piecesToAnimate];
     
@@ -491,7 +512,11 @@
         savedPiece.backgroundColor = iPiece.backgroundColor;
         savedPiece.alpha = iPiece.alpha;
         
-        iPiece.backgroundColor = [UIColor whiteColor];
+        if(!wrongWord)
+            iPiece.backgroundColor = [UIColor whiteColor];
+        else
+            iPiece.backgroundColor = [UIColor colorWithRed:colors.redFlashColor.red green:colors.redFlashColor.green blue:colors.redFlashColor.blue alpha:0.8f];
+        
         iPiece.alpha = 0.8;
     }
     
@@ -523,7 +548,7 @@
         savedPiece = [animationPieces.pieces objectAtIndex:i];
         iPiece = [pieces objectAtIndex:i];
         
-        iPiece.hidden = YES;
+        //iPiece.hidden = YES;
         
         iPiece.frame = savedPiece.frame;
         iPiece.backgroundColor = savedPiece.backgroundColor;
@@ -540,7 +565,7 @@
     floatScore.hidden = YES;
 }
 
-- (void)animatePlusScore:(int)addedPoints {
+- (void)animateScore:(int)addedPoints {
     
     uint rnd = arc4random() % [piecesToAnimate count];
     
@@ -553,9 +578,19 @@
     
     [floatScore setFrame:frm];
     floatScore.hidden = NO;
-    floatScore.textColor = [UIColor whiteColor];
     
-    floatScore.text = [NSString stringWithFormat:@"+ %d",addedPoints];
+    if(addedPoints < 0) {
+        
+        floatScore.textColor = [UIColor colorWithRed:colors.redFlashColor.red green:colors.redFlashColor.green blue:colors.redFlashColor.blue alpha:1.0f];
+        
+        floatScore.text = [NSString stringWithFormat:@"- %d",addedPoints];
+    }
+    
+    else {
+        
+        floatScore.textColor = [UIColor whiteColor];
+        floatScore.text = [NSString stringWithFormat:@"+ %d",addedPoints];
+    }
     
     frm = score.frame;
     frm.origin.y = score.frame.origin.y + score.frame.size.height;
@@ -567,10 +602,6 @@
     } completion:^(BOOL finished) {
         
     }];
-}
-
-- (void)animateMinusScore:(int)subtractedPoints {
-    
 }
 
 - (void)deconstruct {
@@ -598,7 +629,10 @@
     floatScore = nil;
     bombPiece = nil;
     
+    colors = nil;
+    
     [animationPieces deconstruct];
+    animationPieces = nil;
 }
 
 
