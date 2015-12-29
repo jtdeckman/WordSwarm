@@ -38,12 +38,13 @@
     
     piece.backgroundColor = [UIColor clearColor];
     
-    backPiece = [[UILabel alloc] initWithFrame:spaceFrame];
+    backPiece = [[UILabel alloc] initWithFrame:labelframe];
     backPiece.hidden = YES;
-    backPiece.layer.cornerRadius = 2.0;
+    backPiece.layer.cornerRadius = 10.0;
     backPiece.clipsToBounds = YES;
     backPiece.opaque = NO;
     backPiece.layer.borderWidth = 3.0;
+    backPiece.alpha = 1.0;
     
     backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:0.1 blue:0.1 alpha:0.8] CGColor];
     backPiece.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];;
@@ -59,17 +60,21 @@
    
     UIGraphicsBeginImageContext(piece.frame.size);
     
-    UIImage *tmpImage = [UIImage imageNamed:@"orangeSquare.png"];
+    UIImage *tmpImage = [UIImage imageNamed:@"blueSquare.png"];
 
     [tmpImage drawInRect:CGRectMake(0, 0, piece.frame.size.width, piece.frame.size.height)];
     p1Img = UIGraphicsGetImageFromCurrentImageContext();
     
-    tmpImage = [UIImage imageNamed:@"blueSquare.png"];
-    [tmpImage drawInRect:CGRectMake(0, 0, piece.frame.size.width, piece.frame.size.height)];
+    UIGraphicsBeginImageContext(piece.frame.size);
+    
+    tmpImage = [UIImage imageNamed:@"times2.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, piece.frame.size.width, backPiece.frame.size.height)];
     p2Img = UIGraphicsGetImageFromCurrentImageContext();
     
-    tmpImage = [UIImage imageNamed:@"redSquare.png"];
-    [tmpImage drawInRect:CGRectMake(0, 0, piece.frame.size.width, piece.frame.size.height)];
+    UIGraphicsBeginImageContext(piece.frame.size);
+
+    tmpImage = [UIImage imageNamed:@"times3.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, piece.frame.size.width, backPiece.frame.size.height)];
     p3Img = UIGraphicsGetImageFromCurrentImageContext();
 }
 
@@ -81,16 +86,13 @@
 }
 
 - (void)configurePiece: (bool)isRefPiece :(UIColor*)bckImg {
-    
-    UIImage *img;
 
     refPiece = isRefPiece;
     
     if(isRefPiece) {
         
-        img = p2Img;
         [piece setFont:[UIFont fontWithName:@"Arial" size:0.6*FONT_FACT*spaceFrame.size.width]];
-        piece.backgroundColor = [UIColor colorWithPatternImage:img];
+        piece.backgroundColor = [UIColor colorWithPatternImage:p1Img];
         
         backPiece = nil;
     }
@@ -100,19 +102,18 @@
         if(backPieceVal == 2) {
          
             backPiece.hidden = NO;
-            backPiece.text = @"2X";
             backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.8] CGColor];
-            backPiece.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
-            backPiece.alpha = 1.0;
+            backPiece.textColor = [UIColor clearColor];
+            backPiece.backgroundColor = [UIColor colorWithPatternImage:p2Img];
+        
         }
         
         else if(backPieceVal == 3) {
         
             backPiece.hidden = NO;
-            backPiece.text = @"3X";
-            backPiece.layer.borderColor = [[UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.8] CGColor];
-            backPiece.textColor = [UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.5];
-            backPiece.alpha = 1.0;
+            backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.8] CGColor];
+            backPiece.textColor = [UIColor clearColor];
+            backPiece.backgroundColor = [UIColor colorWithPatternImage:p3Img];
         }
         
         else {

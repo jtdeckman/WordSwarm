@@ -329,7 +329,7 @@
             [self.view addSubview:space.piece];
             [self.view addSubview:space.backPiece];
             
-            [self.view bringSubviewToFront:space.piece];
+          //  [self.view bringSubviewToFront:space.piece];
         }
     }
 }

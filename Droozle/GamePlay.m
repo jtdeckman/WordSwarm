@@ -152,7 +152,7 @@
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    gameData.level = 1;
+    gameData.level = 5;
     gameData.score = 0;
     
     gameData.gamePlay = (uint)[defaults integerForKey:@"gamePlay"];
