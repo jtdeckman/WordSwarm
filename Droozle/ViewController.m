@@ -323,8 +323,13 @@
         [self.view addSubview:space.piece];
         
         for(int j=0; j<gamePlay.dimy; j++) {
+            
             space = [board getSpaceForIndices:i :j];
+            
             [self.view addSubview:space.piece];
+            [self.view addSubview:space.backPiece];
+            
+            [self.view bringSubviewToFront:space.piece];
         }
     }
 }

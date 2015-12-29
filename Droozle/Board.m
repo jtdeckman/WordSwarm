@@ -164,11 +164,20 @@
     
     int pVal = [wLPointer pointValueForLetter:val];
     
+    uint rnum = arc4random() % 30;
+    
     if(pVal < 0) pVal = 0;
     
     space.isOccupied = YES;
     space.value = val;
     space.pointValue = pVal;
+    
+    if(rnum == 7 || rnum == 19)
+        space.backPieceVal = 2;
+    else if(rnum == 25)
+        space.backPieceVal = 3;
+    else
+        space.backPieceVal = 1;
     
     [space configurePiece:NO :[tileImages backgroundImageForIndex:pVal]];
     
@@ -321,6 +330,7 @@
             space.isOccupied = spaceBelow.isOccupied;
             space.piece.hidden = spaceBelow.piece.hidden;
             space.pointValue = spaceBelow.pointValue;
+            space.backPieceVal = spaceBelow.backPieceVal;
             
             [space configurePiece:NO :[tileImages backgroundImageForIndex:space.pointValue]];
         }
@@ -360,6 +370,7 @@
             space.isOccupied = spaceAbove.isOccupied;
             space.piece.hidden = spaceAbove.piece.hidden;
             space.pointValue = spaceAbove.pointValue;
+            space.backPieceVal = spaceAbove.backPieceVal;
             
             [space configurePiece:NO :[tileImages backgroundImageForIndex:space.pointValue]];
         }

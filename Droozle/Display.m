@@ -631,6 +631,8 @@
     
     colors = nil;
     
+    piecesToAnimate = nil;
+    
     [animationPieces deconstruct];
     animationPieces = nil;
 }

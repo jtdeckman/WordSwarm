@@ -14,6 +14,7 @@
 @synthesize value, piece, pointValue;
 @synthesize spaceFrame, iind, jind;
 @synthesize neighbors, nearestNbrs;
+@synthesize backPiece, backPieceVal;
 
 - (void)initSpace : (int)ival : (int)jval : (CGRect)spaceFrm : (CGRect)labelframe {
     
@@ -36,6 +37,22 @@
     [piece setFont:[UIFont fontWithName:@"Arial" size:1.0*FONT_FACT*spaceFrame.size.width]];
     
     piece.backgroundColor = [UIColor clearColor];
+    
+    backPiece = [[UILabel alloc] initWithFrame:spaceFrame];
+    backPiece.hidden = YES;
+    backPiece.layer.cornerRadius = 2.0;
+    backPiece.clipsToBounds = YES;
+    backPiece.opaque = NO;
+    backPiece.layer.borderWidth = 3.0;
+    
+    backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:0.1 blue:0.1 alpha:0.8] CGColor];
+    backPiece.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];;
+    
+    [backPiece setTextAlignment:NSTextAlignmentCenter];
+    [backPiece setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:1.0*FONT_FACT*spaceFrame.size.width]];
+    
+    backPiece.backgroundColor = [UIColor clearColor];
+    backPieceVal = 1;
     
     nearestNbrs = [[NSMutableSet alloc] initWithCapacity:4];
     neighbors = [[NSMutableSet alloc] initWithCapacity:10];
@@ -74,9 +91,36 @@
         img = p2Img;
         [piece setFont:[UIFont fontWithName:@"Arial" size:0.6*FONT_FACT*spaceFrame.size.width]];
         piece.backgroundColor = [UIColor colorWithPatternImage:img];
+        
+        backPiece = nil;
     }
-    else
+    else {
         piece.backgroundColor = bckImg;
+        
+        if(backPieceVal == 2) {
+         
+            backPiece.hidden = NO;
+            backPiece.text = @"2X";
+            backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.8] CGColor];
+            backPiece.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
+            backPiece.alpha = 1.0;
+        }
+        
+        else if(backPieceVal == 3) {
+        
+            backPiece.hidden = NO;
+            backPiece.text = @"3X";
+            backPiece.layer.borderColor = [[UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.8] CGColor];
+            backPiece.textColor = [UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.5];
+            backPiece.alpha = 1.0;
+        }
+        
+        else {
+            
+            backPiece.hidden = YES;
+            backPieceVal = 1;
+        }
+    }
     
     piece.text = [self value];
     piece.textColor = [UIColor whiteColor];
@@ -106,6 +150,9 @@
     [piece removeFromSuperview];
     piece = nil;
     
+    [backPiece removeFromSuperview];
+    backPiece = nil;
+    
     [nearestNbrs removeAllObjects];
     [neighbors removeAllObjects];
     
@@ -114,6 +161,7 @@
     
     p1Img = nil;
     p2Img = nil;
+    p3Img = nil;
 }
 
 @end

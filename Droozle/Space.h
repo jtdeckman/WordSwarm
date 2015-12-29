@@ -18,6 +18,7 @@
     int jind;
     
     uint pointValue;
+    uint backPieceVal;
     
     BOOL isOccupied;
     BOOL refPiece;
@@ -28,6 +29,7 @@
     CGRect spaceFrame;
     
     UILabel *piece;
+    UILabel *backPiece;
     
     UIImage *p1Img;
     UIImage *p2Img;
@@ -45,10 +47,13 @@
 @property (nonatomic) int jind;
 
 @property (nonatomic) uint pointValue;
+@property (nonatomic) uint backPieceVal;
 
 @property (nonatomic) CGRect spaceFrame;
 
 @property (nonatomic, strong) UILabel *piece;
+@property (nonatomic, strong) UILabel *backPiece;
+
 @property (nonatomic, strong) NSMutableSet *neighbors;
 @property (nonatomic, strong) NSMutableSet *nearestNbrs;
 
