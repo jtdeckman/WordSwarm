@@ -39,6 +39,10 @@
     UILabel *levelLabel;
     UILabel *nextScoreLabel;
     
+    UILabel *floatScore;
+    UILabel *bombPiece;
+    UILabel *strikePiece;
+    
     UIImage *floatBackImage;
     
     UIImageView *menuBar;
@@ -65,6 +69,9 @@
 @property(nonatomic, strong) UILabel *floatPiece;
 @property(nonatomic, strong) UILabel *addPiece;
 
+@property(nonatomic, strong) UILabel *bombPiece;
+@property(nonatomic, strong) UILabel *strikePiece;
+
 @property(nonatomic, strong) UIImageView *menuBar;
 
 @property(nonatomic, strong) NSMutableArray *piecesToAnimate;
@@ -77,12 +84,16 @@
 - (void)changeAddPieceLoc: (CGPoint)newLoc;
 - (void)resetAddPiece;
 - (void)deconstruct;
-- (void)updateScore:(int)newScore;
+- (void)updateScore;
 - (void)hideAlertView;
 - (void)updateLevelValues;
-- (void)animateAlertView;
+
 - (void)makePiecesFlash;
 - (void)resetAnimatedPieces;
+- (void)animateAlertView;
+
+- (void)animatePlusScore:(int)addedPoints;
+- (void)animateMinusScore:(int)subtractedPoints;
 
 - (CGRect)initBoardView:(CGRect)viewFrame;
 

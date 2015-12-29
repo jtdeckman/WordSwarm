@@ -51,7 +51,8 @@
 - (void)rowOfValues;
 - (void)newGame;
 - (void)incrementTimer;
-- (void)updateScore:(int)newPoints;
+
+- (int)updateScore:(int)newPoints;
 
 - (NSString*)getARandomLetter;
 - (NSString*)getPointsForLevel:(uint)level;

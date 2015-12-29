@@ -47,6 +47,9 @@
     gameData.score = 0;
     gameData.highScore = 0;
     
+    gameData.numBombs = 1;
+    gameData.numKnockouts = 1;
+    
     gameState = gameRunning;
     placeMode = freeState;
     
@@ -84,9 +87,11 @@
     return [wordLogic isWord:word inCategory:wrdType];
 }
 
-- (void)updateScore:(int)newPoints {
+- (int)updateScore:(int)newPoints {
 
-    gameData.score += newPoints*gameData.level;
+    int newScore = newPoints*gameData.level;
+    
+    gameData.score += newScore;
     
     NSString *pointsForNextLevel = [self getPointsForLevel:gameData.level + 1];
     
@@ -97,6 +102,8 @@
         
         [wordLogic initWordTypesForLevel:gameData.level];
     }
+    
+    return newScore;
 }
 
 - (void)deconstruct {

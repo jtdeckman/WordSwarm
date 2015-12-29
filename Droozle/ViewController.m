@@ -112,10 +112,11 @@
                 
                 if([gamePlay checkWord:word :type]) {
                     
-                    [gamePlay updateScore:[board sumRow:touchedSpace.iind]];
-                    [display updateScore:gamePlay.gameData.score];
+                    int newScore = [gamePlay updateScore:[board sumRow:touchedSpace.iind]];
                     
                     [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind];
+                    
+                    [display animatePlusScore:newScore];
                     [display makePiecesFlash];
                     
                     [self performSelector:@selector(eliminateRowFromBoard) withObject:nil afterDelay:0.4];
@@ -283,7 +284,7 @@
     boardFrm = [display initBoardView:self.view.frame];
     
     CGFloat buffer = [gamePlay setUp:board :boardFrm];
-    [board initBoard:boardFrm :gamePlay.dimx :gamePlay.dimy :0.0005*self.view.frame.size.width :buffer :gamePlay.wordLogic];
+    [board initBoard:boardFrm :gamePlay.dimx :gamePlay.dimy :0.00075*self.view.frame.size.width :buffer :gamePlay.wordLogic];
     
     [self addPiecesToView];
     
@@ -297,7 +298,7 @@
     
     display.addPiece.text = @""; //[gamePlay getARandomLetter];
     
-    [display updateScore:gamePlay.gameData.score];
+    [display updateScore];
     [display updateLevelValues];
     
   //  [gamePlay rowOfValues];

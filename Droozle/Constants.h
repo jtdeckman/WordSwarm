@@ -46,6 +46,9 @@ typedef struct {
     int score;
     int highScore;
     
+    uint numBombs;
+    uint numKnockouts;
+    
 } GameData;
 
 typedef enum : NSUInteger {

@@ -41,7 +41,7 @@
     spcFrm.size.width = spaceWidth;
     spcFrm.size.height = spaceHeight;
     
-    pcFrm.size.width = pieceWidth - offset;
+    pcFrm.size.width = pieceWidth - offset/2.0;
     pcFrm.size.height = pieceHeight - offset;
     
     spaces = [[NSMutableArray alloc] initWithCapacity:dimx];
@@ -59,7 +59,7 @@
             spcFrm.origin.x = xini + j*spaceWidth;
             spcFrm.origin.y = yini + i*spaceHeight;
             
-            pcFrm.origin.x = spcFrm.origin.x + os2;
+            pcFrm.origin.x = spcFrm.origin.x + os2/2.0;
             pcFrm.origin.y = spcFrm.origin.y + os2;
             
             newSpace = [[Space alloc] init];

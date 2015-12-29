@@ -13,7 +13,8 @@
 @synthesize topBar, bottomBar, boardView;
 @synthesize floatPiece, addPiece;
 @synthesize menuBar, menuView, gamePlay;
-@synthesize piecesToAnimate;
+@synthesize piecesToAnimate, bombPiece;
+@synthesize strikePiece;
 
 - (void)initDisplay:(CGRect)viewFrame : (UIViewController*)rootViewCont {
 
@@ -158,7 +159,7 @@
     scoreBox.opaque = NO;
     scoreBox.layer.borderWidth = 0.75f;
     
-    //[scoreBox.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+    [scoreBox.layer setBorderColor:[[UIColor clearColor] CGColor]];
     scoreBox.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
     levelBox.hidden = NO;
     levelBox.layer.cornerRadius = 5.0;
@@ -166,7 +167,7 @@
     levelBox.opaque = NO;
     levelBox.layer.borderWidth = 0.75f;
     
-   // [levelBox.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+    [levelBox.layer setBorderColor:[[UIColor clearColor] CGColor]];
     nextBox.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
     
     nextBox.hidden = NO;
@@ -175,7 +176,7 @@
     nextBox.opaque = NO;
     nextBox.layer.borderWidth = 0.75f;
     
-  //  [nextBox.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+    [nextBox.layer setBorderColor:[[UIColor clearColor] CGColor]];
     levelBox.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
     
     score.hidden = NO;
@@ -341,6 +342,50 @@
     [menuBar setFrame:pcFrm];
     
     [rootView addSubview:menuBar];
+    
+    
+ // Miscellaneous pieces:
+    
+    pcFrm = addPiece.frame;
+    pcFrm.size.width = pcFrm.size.height;
+    
+    pcFrm.origin.x -= 1.5*(bottomBar.frame.size.width - (addPiece.frame.origin.x + addPiece.frame.size.width));
+    
+    bombPiece = [[UILabel alloc] initWithFrame:pcFrm];
+    
+    UIGraphicsBeginImageContext(pcFrm.size);
+    
+    tmpImage = [UIImage imageNamed:@"bomb.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
+    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    bombPiece.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
+    
+    [rootView addSubview:bombPiece];
+    
+    bombPiece.layer.cornerRadius = 10.0f;
+    bombPiece.clipsToBounds = YES;
+    bombPiece.opaque = YES;
+    
+    bombPiece.hidden = YES;
+    
+    pcFrm = addPiece.frame;
+    pcFrm.size.width *= 2.0;
+    pcFrm.size.height *= 1.5;
+    
+    floatScore = [[UILabel alloc] initWithFrame: pcFrm];
+    
+    [rootView addSubview:floatScore];
+    
+    floatScore.layer.cornerRadius = 5.0;
+    floatScore.clipsToBounds = YES;
+    floatScore.opaque = NO;
+    
+    [floatScore setTextAlignment:NSTextAlignmentCenter];
+    [floatScore setFont:[UIFont fontWithName:@"MarkerFelt-THin" size:1.25*FONT_FACT*floatScore.frame.size.height]];
+    
+    floatScore.textColor = [UIColor whiteColor];
+    floatScore.backgroundColor = [UIColor clearColor];
 }
 
 - (void)changeFloatPieceLoc: (CGPoint)newLoc {
@@ -355,9 +400,9 @@
     [floatPiece setFrame:frm];
 }
 
-- (void)updateScore: (int)newScore {
+- (void)updateScore {
     
-    score.text = [NSString stringWithFormat:@"%d",newScore];
+    score.text = [NSString stringWithFormat:@"%d",gamePlay.gameData.score];
 }
 
 - (void)updateLevelValues {
@@ -485,6 +530,47 @@
         iPiece.alpha = savedPiece.alpha;
     }
 
+    [self performSelector:@selector(hideFloatScore) withObject:nil afterDelay:0.5];
+}
+
+- (void)hideFloatScore {
+
+    [self updateScore];
+    
+    floatScore.hidden = YES;
+}
+
+- (void)animatePlusScore:(int)addedPoints {
+    
+    uint rnd = arc4random() % [piecesToAnimate count];
+    
+    UILabel *piece = [piecesToAnimate objectAtIndex:rnd];
+    
+    CGRect frm = piece.frame;
+    
+    frm.size.width = floatScore.frame.size.width;
+    frm.size.height = floatScore.frame.size.height;
+    
+    [floatScore setFrame:frm];
+    floatScore.hidden = NO;
+    floatScore.textColor = [UIColor whiteColor];
+    
+    floatScore.text = [NSString stringWithFormat:@"+ %d",addedPoints];
+    
+    frm = score.frame;
+    frm.origin.y = score.frame.origin.y + score.frame.size.height;
+    
+    [UIView animateWithDuration:0.75f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        floatScore.frame = frm;
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (void)animateMinusScore:(int)subtractedPoints {
+    
 }
 
 - (void)deconstruct {
@@ -508,6 +594,9 @@
     scoreLabel = nil;
     levelLabel = nil;
     nextScoreLabel = nil;
+    
+    floatScore = nil;
+    bombPiece = nil;
     
     [animationPieces deconstruct];
 }
