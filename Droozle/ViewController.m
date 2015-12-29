@@ -42,17 +42,16 @@
             
             else [display hideAlertView];
             
-            if(gamePlay.gameData.timer % gamePlay.timeInterval == 0) {
+            if(!animating && gamePlay.gameData.timer % gamePlay.timeInterval == 0) {
 
                 if([board shiftRowsUp] == YES) {
                 
                     gamePlay.gameState = gameOver;
                 }
             
-                else if(!animating) {
+                else
                 
                     [gamePlay rowOfValues];
-                }
             }
         }
         
