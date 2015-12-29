@@ -33,7 +33,7 @@
 - (BOOL)checkWord:(NSString*)word forCategory:(NSString*)cat;
 
 - (void)deconstruct;
-- (void)initWordTypesForLevel:(uint)level;
+- (void)initWordTypesForLevel:(int)level;
 
 - (int)pointValueForLetter:(NSString*)letter;
 

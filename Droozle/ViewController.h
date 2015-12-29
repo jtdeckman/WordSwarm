@@ -29,5 +29,7 @@
     BOOL animating;
 }
 
+- (void)saveDefaults;
+
 @end
 

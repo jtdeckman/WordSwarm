@@ -424,7 +424,7 @@
     for(int i=0; i<dimy; i++) {
         
         space = spaces[row][i];
-        sum += space.pointValue;
+        sum += space.pointValue*space.backPieceVal;
     }
     
     return sum;
@@ -461,6 +461,7 @@
             space = spaces[i][j];
             
             if(space.isOccupied) space.piece.hidden = YES;
+            if(space.backPieceVal > 1) space.backPiece.hidden = YES;
         }
     }
 }
@@ -480,6 +481,7 @@
             space = spaces[i][j];
             
             if(space.isOccupied) space.piece.hidden = NO;
+            if(space.backPieceVal > 1) space.backPiece.hidden = NO;
         }
     }
 }

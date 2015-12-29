@@ -427,9 +427,18 @@
 }
 
 - (void)updateLevelValues {
-
-    level.text = [NSString stringWithFormat:@"%d",gamePlay.gameData.level];
-    nextScore.text = [gamePlay getPointsForLevel:gamePlay.gameData.level + 1];
+    
+    if(gamePlay.gameData.gamePlay == FREE_PLAY) {
+        
+        nextScore.text = @"--";
+        level.text = @"--";
+    }
+    
+    else {
+        
+        nextScore.text = [gamePlay getPointsForLevel:gamePlay.gameData.level + 1];
+        level.text = [NSString stringWithFormat:@"%d",gamePlay.gameData.level];
+    }
 }
 
 - (void)changeAddPieceLoc: (CGPoint)newLoc {

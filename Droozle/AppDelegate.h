@@ -14,6 +14,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 - (void)resetApp;
++ (void)setUpDefaults;
 
 @end
 

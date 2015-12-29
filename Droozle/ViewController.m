@@ -338,6 +338,8 @@
 
     CGRect boardFrm;
 
+    [AppDelegate setUpDefaults];
+    
     display = [[Display alloc] init];
     [display initDisplay:self.view.frame :self];
     
@@ -383,6 +385,22 @@
     [display resetAnimatedPieces];
     
     animating = NO;
+}
+
+- (void)saveDefaults {
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if(gamePlay.gameData.score > gamePlay.gameData.highScore) {
+        
+        [defaults setInteger:gamePlay.gameData.score forKey:@"highScore"];
+        [defaults synchronize];
+    }
+    
+    if(gamePlay.gameData.gamePlay == LEVELED_PLAY && gamePlay.gameData.level > gamePlay.gameData.highestLevel) {
+        
+        [defaults setInteger:gamePlay.gameData.level forKey:@"highestLevel"];
+    }
 }
 
 - (void)setUpNewGame {

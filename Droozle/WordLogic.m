@@ -258,9 +258,27 @@
     return NO;
 }
 
-- (void)initWordTypesForLevel:(uint)level {
+- (void)initWordTypesForLevel:(int)level {
 
     [wordTypes removeAllObjects];
+    
+    if(level < 0) {
+        
+        if(level < -1) {
+            
+            [wordTypes addObject:@"Word"];
+            [wordTypes addObject:@"Noun"];
+            [wordTypes addObject:@"Verb"];
+            [wordTypes addObject:@"Adj"];
+        }
+        else {
+            
+            [wordTypes addObject:@"Word"];
+            [wordTypes addObject:@"Word"];
+            [wordTypes addObject:@"Word"];
+            [wordTypes addObject:@"Word"];
+        }
+    }
     
     if(level == 0 || level == 1) {
         

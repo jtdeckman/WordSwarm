@@ -10,7 +10,7 @@
 #import "Board.h"
 #import "WordLogic.h"
 
-#define TIME_FACTOR 14
+#define TIME_FACTOR 15
 
 @interface GamePlay : NSObject {
     
@@ -29,8 +29,6 @@
     WordLogic *wordLogic;
     
     NSMutableArray *pointsForLevel;
-    
-    BOOL criticalState;
 }
 
 @property (nonatomic) int dimx;
@@ -59,6 +57,7 @@
 
 - (BOOL)checkWord:(NSString*)word :(NSString*)wrdType;
 
+- (void)loadDefaults;
 - (void)deconstruct;
 
 @end

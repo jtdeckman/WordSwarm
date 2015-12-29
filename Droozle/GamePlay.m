@@ -41,21 +41,10 @@
 
 - (void)newGame {
 
-    gameData.level = 1;
-    gameData.timer = 0;
-    gameData.lives = 3;
-    gameData.score = 0;
-    gameData.highScore = 0;
-    
-    gameData.numBombs = 1;
-    gameData.numKnockouts = 1;
+    [self loadDefaults];
     
     gameState = gameRunning;
     placeMode = freeState;
-    
-    timeInterval = TIME_FACTOR;
-    
-    criticalState = NO;
     
     [wordLogic initWordTypesForLevel:gameData.level];
 }
@@ -89,9 +78,23 @@
 
 - (int)updateScore:(int)newPoints {
 
-    int newScore = newPoints*gameData.level;
+    int newScore = newPoints;
     
-    gameData.score += newScore;
+    if(gameData.gamePlay == FREE_PLAY) {
+        
+        return newScore;
+    }
+    
+    if(newScore > gameData.highestWordScore) {
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        [defaults setInteger:newScore forKey:@"highestWordScore"];
+        [defaults synchronize];
+    }
+    
+    gameData.score += newScore*gameData.level;
+    
     
     NSString *pointsForNextLevel = [self getPointsForLevel:gameData.level + 1];
     
@@ -143,6 +146,36 @@
                       @"150000",
                       @"200000",
                       nil];
+}
+
+- (void)loadDefaults {
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    gameData.level = 1;
+    gameData.score = 0;
+    
+    gameData.gamePlay = (uint)[defaults integerForKey:@"gamePlay"];
+    gameData.difficulty = (int)[defaults integerForKey:@"difficulty"];
+    
+    gameData.highScore = (int)[defaults integerForKey:@"highScore"];
+    gameData.highestLevel = (int)[defaults integerForKey:@"highestLevel"];
+    gameData.highestWordScore = (int)[defaults integerForKey:@"highestWordScore"];
+    
+    if(gameData.difficulty > 1)
+        timeInterval = TIME_FACTOR - 3;
+    else
+        timeInterval = TIME_FACTOR;
+    
+    if(gameData.gamePlay == FREE_PLAY) {
+    
+        if(gameData.difficulty > 1)
+            gameData.level = -2;
+        else
+            gameData.level = -1;
+    }
+    
+    [defaults synchronize];
 }
 
 @end
