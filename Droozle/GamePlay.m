@@ -106,6 +106,8 @@
         gameState = levelUp;
         gameData.level += 1;
         
+        [self incrementBombs];
+        
         [wordLogic initWordTypesForLevel:gameData.level];
     }
     
@@ -144,6 +146,8 @@
     gameData.highScore = (int)[defaults integerForKey:@"highScore"];
     gameData.highestLevel = (int)[defaults integerForKey:@"highestLevel"];
     gameData.highestWordScore = (int)[defaults integerForKey:@"highestWordScore"];
+    
+    gameData.numBombs = (int)[defaults integerForKey:@"numBombs"];
     
     if(gameData.difficulty > 0)
         timeInterval = TIME_FACTOR - 3;
@@ -188,7 +192,7 @@
                       
                       @"25",
                       @"25",
-                      @"100",
+                      @"25",
                       @"500",
                       @"750",
                       @"1500",
@@ -216,5 +220,31 @@
     else
         timeInterval = TIME_FACTOR;
 }
+
+- (void)decrementNumBombs {
+    
+    --gameData.numBombs;
+}
+
+- (void)incrementBombs {
+    
+    if(gameData.numBombs < 2)
+        ++gameData.numBombs;
+}
+
+- (uint)getRowDelayForNumRows:(uint)nrows {
+
+    if(nrows == 0 || nrows == 1)
+        return 3;
+    else if(nrows == 2)
+        return 7;
+    else if(nrows == 3)
+        return 9;
+    else if(nrows == 4)
+        return 12;
+    
+    return timeInterval;
+}
+
 
 @end

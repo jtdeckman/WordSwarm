@@ -83,7 +83,8 @@ typedef enum : NSUInteger {
     placeMove,
     splitMove,
     addMove,
-    overtakeMove
+    overtakeMove,
+    bombMove
     
 } MoveType;
 

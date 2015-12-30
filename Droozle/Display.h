@@ -52,6 +52,7 @@
     CGSize addPieceOffSet;
     
     CGRect baseAddPiece;
+    CGRect baseBombPiece;
     
     GamePlay *gamePlay;
     
@@ -71,9 +72,7 @@
 
 @property(nonatomic, strong) UILabel *floatPiece;
 @property(nonatomic, strong) UILabel *addPiece;
-
 @property(nonatomic, strong) UILabel *bombPiece;
-@property(nonatomic, strong) UILabel *strikePiece;
 
 @property(nonatomic, strong) UIImageView *menuBar;
 
@@ -82,10 +81,16 @@
 - (void)initDisplay:(CGRect)viewFrame :(UIViewController*)rootViewCont;
 - (void)setUpColors;
 - (void)setUpFloatPieces:(CGRect)pcFrm;
-- (void)changeFloatPieceLoc: (CGPoint)newLoc;
-- (void)configureFloatPiece: (Space*)space;
-- (void)changeAddPieceLoc: (CGPoint)newLoc;
+
+- (void)changeFloatPieceLoc:(CGPoint)newLoc;
+- (void)configureFloatPiece:(Space*)space;
+
+- (void)changeAddPieceLoc:(CGPoint)newLoc;
+- (void)changeBombPieceLoc:(CGPoint)newLoc;
+
 - (void)resetAddPiece;
+- (void)resetBombPiece;
+
 - (void)deconstruct;
 - (void)updateScore;
 - (void)hideAlertView;

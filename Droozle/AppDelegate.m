@@ -66,6 +66,7 @@
         [defaults setInteger:0 forKey:@"highScore"];
         [defaults setInteger:1 forKey:@"highestLevel"];
         [defaults setInteger:0 forKey:@"highestWordScore"];
+        [defaults setInteger:1 forKey:@"numBombs"];
         
         [defaults setBool:YES forKey:@"initialized"];
     }

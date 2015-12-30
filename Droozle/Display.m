@@ -15,406 +15,6 @@
 @synthesize menuBar, menuView, gamePlay;
 @synthesize piecesToAnimate, bombPiece;
 
-- (void)initDisplay:(CGRect)viewFrame : (UIViewController*)rootViewCont {
-
-    CGRect frm;
-    
-    rootView = rootViewCont.view;
-    
-    piecesToAnimate = [[NSMutableArray alloc] initWithCapacity:500];
-    
-    animationPieces = [[AnimationPieces alloc] init];
-    [animationPieces setUpPieces];
-    
-    colors = [[Colors alloc] init];
-    [colors setUpColors];
-
-    frm = viewFrame;
-    frm.size.height *= 0.125;
-    
-    topBar = [[UIView alloc] initWithFrame:frm];
-    
-    [rootView addSubview:topBar];
-    
-    frm = topBar.frame;
-    frm.size.height *= 1.1;
-    frm.origin.y = viewFrame.size.height - frm.size.height;
-    
-    bottomBar = [[UIView alloc] initWithFrame:frm];
-    
-    [rootView addSubview:bottomBar];
-    
-    frm.size.height = viewFrame.size.height - topBar.frame.size.height - bottomBar.frame.size.height;
-    frm.origin.y = topBar.frame.size.height;
-    
-    boardView = [[UIView alloc] initWithFrame:frm];
-    
-    [rootView addSubview:boardView];
-    
-    frm.size.height = 0.7*rootViewCont.view.frame.size.height;
-    frm.origin.y = rootViewCont.view.frame.size.height - frm.size.height;
-    
-    menuView = [[MenuView alloc] initWithFrame:frm];
-    
-    [menuView setUpView];
-    
-    [rootView addSubview:menuView];
-    [rootView bringSubviewToFront:menuView];
-    
-    alertView = [[UIView alloc] initWithFrame:boardView.frame];
-    alertView.backgroundColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:0.75];
-    
-    [rootView addSubview:alertView];
-    
-    topBar.hidden = NO;
-    bottomBar.hidden = NO;
-    boardView.hidden = NO;
-    
-    menuView.hidden = YES;
-    alertView.hidden = YES;
-    
-    frm.size.height = 0.70*topBar.frame.size.height;
-    frm.origin.y = topBar.frame.origin.y + (topBar.frame.size.height - frm.size.height)/2.0;
-    frm.size.width = 0.3333*(topBar.frame.size.width - 2.0*frm.origin.y);
-    frm.origin.x = frm.origin.y;
-    
-    scoreBox = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:scoreBox];
-    
-    frm.origin.x += frm.size.width + 1.5*frm.origin.y;
-    frm.size.width = frm.size.width - 3.0*frm.origin.y;
-    
-    levelBox = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:levelBox];
-    
-    frm.origin.x += frm.size.width + 1.5*frm.origin.y;
-    frm.size.width = scoreBox.frame.size.width;
-    
-    nextBox = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:nextBox];
-    
-    frm = scoreBox.frame;
-    frm.size.height *= 0.80;
-    frm.origin.y = frm.origin.y + 1.5*(scoreBox.frame.size.height - frm.size.height);///2.0;
-    
-    score = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:score];
-    
-    frm = levelBox.frame;
-    frm.size.height *= 0.8;
-    frm.origin.y = levelBox.frame.origin.y + 1.5*(levelBox.frame.size.height - frm.size.height);
-    
-    level = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:level];
-    
-    frm = score.frame;
-    frm.origin.x = nextBox.frame.origin.x;
-    
-    nextScore = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:nextScore];
-    
-    frm = score.frame;
-    frm.origin.y = topBar.frame.origin.y + 0.05*frm.size.height;
-    
-    scoreLabel = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:scoreLabel];
-    
-    frm = levelBox.frame;
-    frm.origin.y = scoreLabel.frame.origin.y;
-    frm.size.height = scoreLabel.frame.size.height;
-    
-    levelLabel = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:levelLabel];
-    
-    frm = scoreLabel.frame;
-    frm.origin.x = nextBox.frame.origin.x;
-    
-    nextScoreLabel = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:nextScoreLabel];
-    
-    [self setUpColors] ;
-}
-
-- (void)setUpColors {
-
-    topBar.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.4];
-    bottomBar.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.4];
-    boardView.backgroundColor = [UIColor clearColor];
-    
-    menuView.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.5];
-    
-    UIGraphicsBeginImageContext(rootView.frame.size);
-    
-    UIImage *tmpImage = [UIImage imageNamed:@"stars1.png"];
-    [tmpImage drawInRect:CGRectMake(0, 0, rootView.frame.size.width, rootView.frame.size.height)];
-    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    rootView.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
-    
-    
- // Boxes
-    
-    scoreBox.hidden = NO;
-    scoreBox.layer.cornerRadius = 5.0;
-    scoreBox.clipsToBounds = YES;
-    scoreBox.opaque = NO;
-    scoreBox.layer.borderWidth = 0.75f;
-    
-    [scoreBox.layer setBorderColor:[[UIColor clearColor] CGColor]];
-    scoreBox.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
-    
-    levelBox.hidden = NO;
-    levelBox.layer.cornerRadius = 5.0;
-    levelBox.clipsToBounds = YES;
-    levelBox.opaque = NO;
-    levelBox.layer.borderWidth = 0.75f;
-    
-    [levelBox.layer setBorderColor:[[UIColor clearColor] CGColor]];
-    nextBox.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
-    
-    nextBox.hidden = NO;
-    nextBox.layer.cornerRadius = 5.0;
-    nextBox.clipsToBounds = YES;
-    nextBox.opaque = NO;
-    nextBox.layer.borderWidth = 0.75f;
-    
-    [nextBox.layer setBorderColor:[[UIColor clearColor] CGColor]];
-    levelBox.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
-    
-    
- // Value labels
-    
-    score.hidden = NO;
-    score.layer.cornerRadius = 5.0;
-    score.clipsToBounds = YES;
-    score.opaque = NO;
-    
-    [score setTextAlignment:NSTextAlignmentCenter];
-    [score setFont:[UIFont fontWithName:@"Helvetica" size:1.15*FONT_FACT*score.frame.size.height]];
-
-  //  score.textColor = [UIColor colorWithRed:colors.scoreColor.red green:colors.scoreColor.green blue:colors.scoreColor.blue alpha:0.8f];//whiteColor];
-    
-    score.textColor = [UIColor colorWithRed:colors.scoreColor.red green:colors.scoreColor.green blue:colors.scoreColor.blue alpha:0.8f];
-    score.backgroundColor = [UIColor clearColor];
-    
-    level.hidden = NO;
-    level.layer.cornerRadius = 5.0;
-    level.clipsToBounds = YES;
-    level.opaque = NO;
-    
-    [level setTextAlignment:NSTextAlignmentCenter];
-    [level setFont:[UIFont fontWithName:@"Helvetica" size:1.2*FONT_FACT*score.frame.size.height]];
-    
-    level.textColor = [UIColor colorWithRed:colors.levelColor.red green:colors.levelColor.green blue:colors.levelColor.blue alpha:0.8f];
-    
-    level.backgroundColor = [UIColor clearColor];
-    
-    nextScore.hidden = NO;
-    nextScore.layer.cornerRadius = 5.0;
-    nextScore.clipsToBounds = YES;
-    nextScore.opaque = NO;
-    
-    [nextScore setTextAlignment:NSTextAlignmentCenter];
-    [nextScore setFont:[UIFont fontWithName:@"Helvetica" size:1.15*FONT_FACT*score.frame.size.height]];
-    
-    nextScore.textColor = score.textColor; //[UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
-    
-    nextScore.backgroundColor = [UIColor clearColor];
-    
-    scoreLabel.hidden = NO;
-    scoreLabel.layer.cornerRadius = 5.0;
-    scoreLabel.clipsToBounds = YES;
-    scoreLabel.opaque = NO;
-    
-    [scoreLabel setTextAlignment:NSTextAlignmentCenter];
-    [scoreLabel setFont:[UIFont fontWithName:@"Helvetica" size:0.75*FONT_FACT*score.frame.size.height]];
-    
-    scoreLabel.textColor = [UIColor whiteColor];
-    scoreLabel.backgroundColor = [UIColor clearColor];
-    
-    scoreLabel.text = @"Score";
-    
-    
- // Level label
-    
-    levelLabel.hidden = NO;
-    levelLabel.layer.cornerRadius = 5.0;
-    levelLabel.clipsToBounds = YES;
-    levelLabel.opaque = NO;
-    
-    [levelLabel setTextAlignment:NSTextAlignmentCenter];
-    [levelLabel setFont:[UIFont fontWithName:@"Helvetica" size:0.75*FONT_FACT*score.frame.size.height]];
-    
-    levelLabel.textColor = [UIColor whiteColor];
-    levelLabel.backgroundColor = [UIColor clearColor];
-    
-    levelLabel.text = @"Level";
-    
- // Next level label
-    
-    nextScoreLabel.hidden = NO;
-    nextScoreLabel.layer.cornerRadius = 5.0;
-    nextScoreLabel.clipsToBounds = YES;
-    nextScoreLabel.opaque = NO;
-    
-    [nextScoreLabel setTextAlignment:NSTextAlignmentCenter];
-    [nextScoreLabel setFont:[UIFont fontWithName:@"Helvetica" size:0.75*FONT_FACT*score.frame.size.height]];
-    
-    nextScoreLabel.textColor = [UIColor whiteColor];
-    nextScoreLabel.backgroundColor = [UIColor clearColor];
-    
-    nextScoreLabel.text = @"Next Level";
-}
-
-- (CGRect)initBoardView: (CGRect)viewFrame{
-
-    CGRect boardFrm;
-    
-    boardFrm.origin.x = 0.04*viewFrame.size.width;
-    boardFrm.origin.y = boardView.frame.origin.y + 0.04*viewFrame.size.width;
-    boardFrm.size.height = 0.95*boardView.frame.size.height;
-    boardFrm.size.width = viewFrame.size.width - 2.0*boardFrm.origin.x;
-
-    return boardFrm;
-}
-
-- (void)setUpFloatPieces:(CGRect)pcFrm {
-
-    UIGraphicsBeginImageContext(pcFrm.size);
-    
-    UIImage *tmpImage = [UIImage imageNamed:@"redSquare.png"];
-    [tmpImage drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
-    floatBackImage = UIGraphicsGetImageFromCurrentImageContext();
-
-    floatPiece = [[UILabel alloc] initWithFrame:pcFrm];
-   // [floatPiece setBackgroundColor:[UIColor colorWithPatternImage:floatBackImage]];
-    floatPiece.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.4];//[UIColor lightGrayColor];
-    
-    floatPiece.layer.cornerRadius = 10.0f;
-    floatPiece.clipsToBounds = YES;
-    floatPiece.hidden = YES;
-    
-    [floatPiece setTextAlignment:NSTextAlignmentCenter];
-    [floatPiece setFont:[UIFont fontWithName:@"Arial" size:1.0*FONT_FACT*pcFrm.size.width]];
-    floatPiece.textColor = [UIColor whiteColor];
-    
-    [rootView addSubview:floatPiece];
-    
-    floatPieceOffSet.width = pcFrm.size.width/2.0;
-    floatPieceOffSet.height = pcFrm.size.height/2.0;
-    
-    pcFrm.size.width *= 1.05;
-    pcFrm.size.height *= 1.05;
-    pcFrm.origin.x = 0.75*bottomBar.frame.size.width;
-    pcFrm.origin.y = bottomBar.frame.origin.y + (bottomBar.frame.size.height - pcFrm.size.height)/2.0;
-    
-    baseAddPiece = pcFrm;
-    
-    UIGraphicsBeginImageContext(pcFrm.size);
-    tmpImage = [UIImage imageNamed:@"redSquare.png"];
-    [tmpImage drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
-    
-    floatBackImage = UIGraphicsGetImageFromCurrentImageContext();
-
-    addPiece = [[UILabel alloc] initWithFrame:pcFrm];
-   // [addPiece setBackgroundColor:[UIColor colorWithPatternImage:floatBackImage]];
-    addPiece.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.4];
-
-    addPiece.layer.cornerRadius = 10.0f;
-    addPiece.clipsToBounds = YES;
-    addPiece.hidden = NO;
-    
-    [addPiece setTextAlignment:NSTextAlignmentCenter];
-    [addPiece setFont:[UIFont fontWithName:@"Arial" size:1.0*FONT_FACT*pcFrm.size.width]];
-    addPiece.textColor = [UIColor whiteColor];
-    
-    [rootView addSubview:addPiece];
-    
-    addPieceOffSet.width = pcFrm.size.width/2.0;
-    addPieceOffSet.height = pcFrm.size.height/2.0;
-    
-    pcFrm.size.width *= 0.80;
-    pcFrm.size.height = 0.80*pcFrm.size.width;
-    pcFrm.origin.y = bottomBar.frame.origin.y + (bottomBar.frame.size.height - pcFrm.size.height)/2.0;
-    pcFrm.origin.x = bottomBar.frame.size.width - addPiece.frame.size.width - addPiece.frame.origin.x;
-    
-    UIGraphicsBeginImageContext(pcFrm.size);
-   
-    tmpImage = [UIImage imageNamed:@"menuBars.png"];
-    [tmpImage drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
-    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    menuBar = [[UIImageView alloc] initWithImage:tmpImage];
-    
-    [menuBar setFrame:pcFrm];
-    
-    [rootView addSubview:menuBar];
-    
-    
- // Miscellaneous pieces:
-    
-    pcFrm = addPiece.frame;
-    pcFrm.size.width = pcFrm.size.height;
-    
-    pcFrm.origin.x -= 1.5*(bottomBar.frame.size.width - (addPiece.frame.origin.x + addPiece.frame.size.width));
-    
-    bombPiece = [[UILabel alloc] initWithFrame:pcFrm];
-    
-    UIGraphicsBeginImageContext(pcFrm.size);
-    
-    tmpImage = [UIImage imageNamed:@"bomb.png"];
-    [tmpImage drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
-    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    bombPiece.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
-    
-    [rootView addSubview:bombPiece];
-    
-    bombPiece.layer.cornerRadius = 10.0f;
-    bombPiece.clipsToBounds = YES;
-    bombPiece.opaque = YES;
-    
-    bombPiece.hidden = YES;
-    
-    pcFrm = addPiece.frame;
-    pcFrm.size.width *= 2.0;
-    pcFrm.size.height *= 1.5;
-    
-    floatScore = [[UILabel alloc] initWithFrame: pcFrm];
-    
-    [rootView addSubview:floatScore];
-    
-    floatScore.layer.cornerRadius = 5.0;
-    floatScore.clipsToBounds = YES;
-    floatScore.opaque = NO;
-    
-    [floatScore setTextAlignment:NSTextAlignmentCenter];
-    [floatScore setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.25*FONT_FACT*floatScore.frame.size.height]];
-    
-    floatScore.textColor = [UIColor whiteColor];
-    floatScore.backgroundColor = [UIColor clearColor];
-    
-    
- // Bonus Float Piece 1
-    
-    pcFrm = floatScore.frame;
-    pcFrm.size.width *= 2;
-    
-    bonusLabel1 = [[UILabel alloc] initWithFrame:pcFrm];
-    
-    [rootView addSubview:bonusLabel1];
-    
-    bonusLabel1.hidden = YES;
-    bonusLabel1.layer.cornerRadius = 5.0;
-    bonusLabel1.clipsToBounds = YES;
-    bonusLabel1.opaque = NO;
-    
-    [bonusLabel1 setTextAlignment:NSTextAlignmentCenter];
-    [bonusLabel1 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.0*FONT_FACT*bonusLabel1.frame.size.height]];
-    
-    bonusLabel1.textColor = [UIColor purpleColor];
-    bonusLabel1.backgroundColor = [UIColor clearColor];
-}
 
 - (void)changeFloatPieceLoc: (CGPoint)newLoc {
 
@@ -431,6 +31,9 @@
 - (void)updateScore {
     
     score.text = [NSString stringWithFormat:@"%d",gamePlay.gameData.score];
+    
+    if(gamePlay.gameData.numBombs > 0)
+        bombPiece.hidden = NO;
 }
 
 - (void)updateLevelValues {
@@ -446,6 +49,9 @@
         nextScore.text = [gamePlay getPointsForLevel:gamePlay.gameData.level + 1];
         level.text = [NSString stringWithFormat:@"%d",gamePlay.gameData.level];
     }
+    
+    if(gamePlay.gameData.numBombs > 0)
+        bombPiece.hidden = NO;
 }
 
 - (void)changeAddPieceLoc: (CGPoint)newLoc {
@@ -460,7 +66,19 @@
     [addPiece setFrame:frm];
 }
 
-- (void)configureFloatPiece: (Space*)space {
+- (void)changeBombPieceLoc:(CGPoint)newLoc {
+    
+    CGRect frm;
+    
+    frm.origin.x = newLoc.x - addPieceOffSet.width;
+    frm.origin.y = newLoc.y - addPieceOffSet.height;
+    
+    frm.size = bombPiece.frame.size;
+    
+    [bombPiece setFrame:frm];
+}
+
+- (void)configureFloatPiece:(Space*)space {
     
     CGRect frm;
     
@@ -483,6 +101,15 @@
 - (void)resetAddPiece {
 
     [addPiece setFrame:baseAddPiece];
+}
+
+- (void)resetBombPiece {
+
+    [bombPiece setFrame:baseBombPiece];
+    [gamePlay decrementNumBombs];
+    
+    if(gamePlay.gameData.numBombs < 1)
+        bombPiece.hidden = YES;
 }
 
 - (void)animateAlertView {
@@ -618,6 +245,409 @@
     } completion:^(BOOL finished) {
         
     }];
+}
+
+- (void)initDisplay:(CGRect)viewFrame : (UIViewController*)rootViewCont {
+    
+    CGRect frm;
+    
+    rootView = rootViewCont.view;
+    
+    piecesToAnimate = [[NSMutableArray alloc] initWithCapacity:500];
+    
+    animationPieces = [[AnimationPieces alloc] init];
+    [animationPieces setUpPieces];
+    
+    colors = [[Colors alloc] init];
+    [colors setUpColors];
+    
+    frm = viewFrame;
+    frm.size.height *= 0.125;
+    
+    topBar = [[UIView alloc] initWithFrame:frm];
+    
+    [rootView addSubview:topBar];
+    
+    frm = topBar.frame;
+    frm.size.height *= 1.1;
+    frm.origin.y = viewFrame.size.height - frm.size.height;
+    
+    bottomBar = [[UIView alloc] initWithFrame:frm];
+    
+    [rootView addSubview:bottomBar];
+    
+    frm.size.height = viewFrame.size.height - topBar.frame.size.height - bottomBar.frame.size.height;
+    frm.origin.y = topBar.frame.size.height;
+    
+    boardView = [[UIView alloc] initWithFrame:frm];
+    
+    [rootView addSubview:boardView];
+    
+    frm.size.height = 0.7*rootViewCont.view.frame.size.height;
+    frm.origin.y = rootViewCont.view.frame.size.height - frm.size.height;
+    
+    menuView = [[MenuView alloc] initWithFrame:frm];
+    
+    [menuView setUpView];
+    
+    [rootView addSubview:menuView];
+    [rootView bringSubviewToFront:menuView];
+    
+    alertView = [[UIView alloc] initWithFrame:boardView.frame];
+    alertView.backgroundColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:0.75];
+    
+    [rootView addSubview:alertView];
+    
+    topBar.hidden = NO;
+    bottomBar.hidden = NO;
+    boardView.hidden = NO;
+    
+    menuView.hidden = YES;
+    alertView.hidden = YES;
+    
+    frm.size.height = 0.70*topBar.frame.size.height;
+    frm.origin.y = topBar.frame.origin.y + (topBar.frame.size.height - frm.size.height)/2.0;
+    frm.size.width = 0.3333*(topBar.frame.size.width - 2.0*frm.origin.y);
+    frm.origin.x = frm.origin.y;
+    
+    scoreBox = [[UILabel alloc] initWithFrame:frm];
+    [rootView addSubview:scoreBox];
+    
+    frm.origin.x += frm.size.width + 1.5*frm.origin.y;
+    frm.size.width = frm.size.width - 3.0*frm.origin.y;
+    
+    levelBox = [[UILabel alloc] initWithFrame:frm];
+    [rootView addSubview:levelBox];
+    
+    frm.origin.x += frm.size.width + 1.5*frm.origin.y;
+    frm.size.width = scoreBox.frame.size.width;
+    
+    nextBox = [[UILabel alloc] initWithFrame:frm];
+    [rootView addSubview:nextBox];
+    
+    frm = scoreBox.frame;
+    frm.size.height *= 0.80;
+    frm.origin.y = frm.origin.y + 1.5*(scoreBox.frame.size.height - frm.size.height);///2.0;
+    
+    score = [[UILabel alloc] initWithFrame:frm];
+    [rootView addSubview:score];
+    
+    frm = levelBox.frame;
+    frm.size.height *= 0.8;
+    frm.origin.y = levelBox.frame.origin.y + 1.5*(levelBox.frame.size.height - frm.size.height);
+    
+    level = [[UILabel alloc] initWithFrame:frm];
+    [rootView addSubview:level];
+    
+    frm = score.frame;
+    frm.origin.x = nextBox.frame.origin.x;
+    
+    nextScore = [[UILabel alloc] initWithFrame:frm];
+    [rootView addSubview:nextScore];
+    
+    frm = score.frame;
+    frm.origin.y = topBar.frame.origin.y + 0.05*frm.size.height;
+    
+    scoreLabel = [[UILabel alloc] initWithFrame:frm];
+    [rootView addSubview:scoreLabel];
+    
+    frm = levelBox.frame;
+    frm.origin.y = scoreLabel.frame.origin.y;
+    frm.size.height = scoreLabel.frame.size.height;
+    
+    levelLabel = [[UILabel alloc] initWithFrame:frm];
+    [rootView addSubview:levelLabel];
+    
+    frm = scoreLabel.frame;
+    frm.origin.x = nextBox.frame.origin.x;
+    
+    nextScoreLabel = [[UILabel alloc] initWithFrame:frm];
+    [rootView addSubview:nextScoreLabel];
+    
+    [self setUpColors] ;
+}
+
+- (void)setUpColors {
+    
+    topBar.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.4];
+    bottomBar.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.4];
+    boardView.backgroundColor = [UIColor clearColor];
+    
+    menuView.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.5];
+    
+    UIGraphicsBeginImageContext(rootView.frame.size);
+    
+    UIImage *tmpImage = [UIImage imageNamed:@"stars1.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, rootView.frame.size.width, rootView.frame.size.height)];
+    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    rootView.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
+    
+    
+    // Boxes
+    
+    scoreBox.hidden = NO;
+    scoreBox.layer.cornerRadius = 5.0;
+    scoreBox.clipsToBounds = YES;
+    scoreBox.opaque = NO;
+    scoreBox.layer.borderWidth = 0.75f;
+    
+    [scoreBox.layer setBorderColor:[[UIColor clearColor] CGColor]];
+    scoreBox.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
+    
+    levelBox.hidden = NO;
+    levelBox.layer.cornerRadius = 5.0;
+    levelBox.clipsToBounds = YES;
+    levelBox.opaque = NO;
+    levelBox.layer.borderWidth = 0.75f;
+    
+    [levelBox.layer setBorderColor:[[UIColor clearColor] CGColor]];
+    nextBox.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
+    
+    nextBox.hidden = NO;
+    nextBox.layer.cornerRadius = 5.0;
+    nextBox.clipsToBounds = YES;
+    nextBox.opaque = NO;
+    nextBox.layer.borderWidth = 0.75f;
+    
+    [nextBox.layer setBorderColor:[[UIColor clearColor] CGColor]];
+    levelBox.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
+    
+    
+    // Value labels
+    
+    score.hidden = NO;
+    score.layer.cornerRadius = 5.0;
+    score.clipsToBounds = YES;
+    score.opaque = NO;
+    
+    [score setTextAlignment:NSTextAlignmentCenter];
+    [score setFont:[UIFont fontWithName:@"Helvetica" size:1.15*FONT_FACT*score.frame.size.height]];
+    
+    //  score.textColor = [UIColor colorWithRed:colors.scoreColor.red green:colors.scoreColor.green blue:colors.scoreColor.blue alpha:0.8f];//whiteColor];
+    
+    score.textColor = [UIColor colorWithRed:colors.scoreColor.red green:colors.scoreColor.green blue:colors.scoreColor.blue alpha:0.8f];
+    score.backgroundColor = [UIColor clearColor];
+    
+    level.hidden = NO;
+    level.layer.cornerRadius = 5.0;
+    level.clipsToBounds = YES;
+    level.opaque = NO;
+    
+    [level setTextAlignment:NSTextAlignmentCenter];
+    [level setFont:[UIFont fontWithName:@"Helvetica" size:1.2*FONT_FACT*score.frame.size.height]];
+    
+    level.textColor = [UIColor colorWithRed:colors.levelColor.red green:colors.levelColor.green blue:colors.levelColor.blue alpha:0.8f];
+    
+    level.backgroundColor = [UIColor clearColor];
+    
+    nextScore.hidden = NO;
+    nextScore.layer.cornerRadius = 5.0;
+    nextScore.clipsToBounds = YES;
+    nextScore.opaque = NO;
+    
+    [nextScore setTextAlignment:NSTextAlignmentCenter];
+    [nextScore setFont:[UIFont fontWithName:@"Helvetica" size:1.15*FONT_FACT*score.frame.size.height]];
+    
+    nextScore.textColor = score.textColor; //[UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
+    
+    nextScore.backgroundColor = [UIColor clearColor];
+    
+    scoreLabel.hidden = NO;
+    scoreLabel.layer.cornerRadius = 5.0;
+    scoreLabel.clipsToBounds = YES;
+    scoreLabel.opaque = NO;
+    
+    [scoreLabel setTextAlignment:NSTextAlignmentCenter];
+    [scoreLabel setFont:[UIFont fontWithName:@"Helvetica" size:0.75*FONT_FACT*score.frame.size.height]];
+    
+    scoreLabel.textColor = [UIColor whiteColor];
+    scoreLabel.backgroundColor = [UIColor clearColor];
+    
+    scoreLabel.text = @"Score";
+    
+    
+    // Level label
+    
+    levelLabel.hidden = NO;
+    levelLabel.layer.cornerRadius = 5.0;
+    levelLabel.clipsToBounds = YES;
+    levelLabel.opaque = NO;
+    
+    [levelLabel setTextAlignment:NSTextAlignmentCenter];
+    [levelLabel setFont:[UIFont fontWithName:@"Helvetica" size:0.75*FONT_FACT*score.frame.size.height]];
+    
+    levelLabel.textColor = [UIColor whiteColor];
+    levelLabel.backgroundColor = [UIColor clearColor];
+    
+    levelLabel.text = @"Level";
+    
+    // Next level label
+    
+    nextScoreLabel.hidden = NO;
+    nextScoreLabel.layer.cornerRadius = 5.0;
+    nextScoreLabel.clipsToBounds = YES;
+    nextScoreLabel.opaque = NO;
+    
+    [nextScoreLabel setTextAlignment:NSTextAlignmentCenter];
+    [nextScoreLabel setFont:[UIFont fontWithName:@"Helvetica" size:0.75*FONT_FACT*score.frame.size.height]];
+    
+    nextScoreLabel.textColor = [UIColor whiteColor];
+    nextScoreLabel.backgroundColor = [UIColor clearColor];
+    
+    nextScoreLabel.text = @"Next Level";
+}
+
+- (CGRect)initBoardView: (CGRect)viewFrame{
+    
+    CGRect boardFrm;
+    
+    boardFrm.origin.x = 0.04*viewFrame.size.width;
+    boardFrm.origin.y = boardView.frame.origin.y + 0.04*viewFrame.size.width;
+    boardFrm.size.height = 0.95*boardView.frame.size.height;
+    boardFrm.size.width = viewFrame.size.width - 2.0*boardFrm.origin.x;
+    
+    return boardFrm;
+}
+
+- (void)setUpFloatPieces:(CGRect)pcFrm {
+    
+    UIGraphicsBeginImageContext(pcFrm.size);
+    
+    UIImage *tmpImage = [UIImage imageNamed:@"redSquare.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
+    floatBackImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    floatPiece = [[UILabel alloc] initWithFrame:pcFrm];
+    // [floatPiece setBackgroundColor:[UIColor colorWithPatternImage:floatBackImage]];
+    floatPiece.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.4];//[UIColor lightGrayColor];
+    
+    floatPiece.layer.cornerRadius = 10.0f;
+    floatPiece.clipsToBounds = YES;
+    floatPiece.hidden = YES;
+    
+    [floatPiece setTextAlignment:NSTextAlignmentCenter];
+    [floatPiece setFont:[UIFont fontWithName:@"Arial" size:1.0*FONT_FACT*pcFrm.size.width]];
+    floatPiece.textColor = [UIColor whiteColor];
+    
+    [rootView addSubview:floatPiece];
+    
+    floatPieceOffSet.width = pcFrm.size.width/2.0;
+    floatPieceOffSet.height = pcFrm.size.height/2.0;
+    
+    pcFrm.size.width *= 1.05;
+    pcFrm.size.height *= 1.05;
+    pcFrm.origin.x = 0.75*bottomBar.frame.size.width;
+    pcFrm.origin.y = bottomBar.frame.origin.y + (bottomBar.frame.size.height - pcFrm.size.height)/2.0;
+    
+    baseAddPiece = pcFrm;
+    
+    UIGraphicsBeginImageContext(pcFrm.size);
+    tmpImage = [UIImage imageNamed:@"redSquare.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
+    
+    floatBackImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    addPiece = [[UILabel alloc] initWithFrame:pcFrm];
+    addPiece.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.4];
+    
+    addPiece.layer.cornerRadius = 10.0f;
+    addPiece.clipsToBounds = YES;
+    addPiece.hidden = NO;
+    
+    [addPiece setTextAlignment:NSTextAlignmentCenter];
+    [addPiece setFont:[UIFont fontWithName:@"Arial" size:1.0*FONT_FACT*pcFrm.size.width]];
+    addPiece.textColor = [UIColor whiteColor];
+    
+    [rootView addSubview:addPiece];
+    
+    addPieceOffSet.width = pcFrm.size.width/2.0;
+    addPieceOffSet.height = pcFrm.size.height/2.0;
+    
+    pcFrm.size.width *= 0.80;
+    pcFrm.size.height = 0.80*pcFrm.size.width;
+    pcFrm.origin.y = bottomBar.frame.origin.y + (bottomBar.frame.size.height - pcFrm.size.height)/2.0;
+    pcFrm.origin.x = bottomBar.frame.size.width - addPiece.frame.size.width - addPiece.frame.origin.x;
+    
+    UIGraphicsBeginImageContext(pcFrm.size);
+    
+    tmpImage = [UIImage imageNamed:@"menuBars.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
+    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    menuBar = [[UIImageView alloc] initWithImage:tmpImage];
+    
+    [menuBar setFrame:pcFrm];
+    
+    [rootView addSubview:menuBar];
+    
+    
+    // Miscellaneous pieces:
+    
+    // Bomb piece
+    
+    pcFrm = addPiece.frame;
+    pcFrm.size.width = pcFrm.size.height;
+    
+    pcFrm.origin.x -= 1.5*(bottomBar.frame.size.width - (addPiece.frame.origin.x + addPiece.frame.size.width));
+    
+    bombPiece = [[UILabel alloc] initWithFrame:pcFrm];
+    
+    UIGraphicsBeginImageContext(pcFrm.size);
+    
+    tmpImage = [UIImage imageNamed:@"bomb.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
+    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    bombPiece.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
+    
+    [rootView addSubview:bombPiece];
+    
+    bombPiece.layer.cornerRadius = 10.0f;
+    bombPiece.clipsToBounds = YES;
+    bombPiece.opaque = YES;
+    
+    bombPiece.hidden = YES;
+    baseBombPiece = bombPiece.frame;
+    
+    pcFrm = addPiece.frame;
+    pcFrm.size.width *= 2.0;
+    pcFrm.size.height *= 1.5;
+    
+    floatScore = [[UILabel alloc] initWithFrame: pcFrm];
+    
+    [rootView addSubview:floatScore];
+    
+    floatScore.layer.cornerRadius = 5.0;
+    floatScore.clipsToBounds = YES;
+    floatScore.opaque = NO;
+    
+    [floatScore setTextAlignment:NSTextAlignmentCenter];
+    [floatScore setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.25*FONT_FACT*floatScore.frame.size.height]];
+    
+    floatScore.textColor = [UIColor whiteColor];
+    floatScore.backgroundColor = [UIColor clearColor];
+    
+    
+    // Bonus Float Piece 1
+    
+    pcFrm = floatScore.frame;
+    pcFrm.size.width *= 2;
+    
+    bonusLabel1 = [[UILabel alloc] initWithFrame:pcFrm];
+    
+    [rootView addSubview:bonusLabel1];
+    
+    bonusLabel1.hidden = YES;
+    bonusLabel1.layer.cornerRadius = 5.0;
+    bonusLabel1.clipsToBounds = YES;
+    bonusLabel1.opaque = NO;
+    
+    [bonusLabel1 setTextAlignment:NSTextAlignmentCenter];
+    [bonusLabel1 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.0*FONT_FACT*bonusLabel1.frame.size.height]];
+    
+    bonusLabel1.textColor = [UIColor purpleColor];
+    bonusLabel1.backgroundColor = [UIColor clearColor];
 }
 
 - (void)deconstruct {

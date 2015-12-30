@@ -507,6 +507,19 @@
     [pieces addObject:space.piece];
 }
 
+- (void)getAllVisiblePieces:(NSMutableArray*)allPieces {
+
+    [allPieces removeAllObjects];
+    
+    for(int i=0; i<dimx; i++) {
+        
+        [allPieces addObject:((Space*)rowTypes[i]).piece];
+        
+        for(int j=0; j<dimy; j++)
+            [allPieces addObject:((Space*)spaces[i][j]).piece];
+    }
+}
+
 - (BOOL)isCategoryRow:(uint)row {
 
     Space *space = rowTypes[row];
@@ -515,6 +528,30 @@
         return NO;
     
     return YES;
+}
+
+- (void)hideBackPiecesInRow:(uint)row {
+
+    Space *space;
+    
+    for(int j=0; j<dimy; j++) {
+        
+        space = spaces[row][j];
+        space.backPiece.hidden = YES;
+    }
+}
+
+- (void)unHideBackPiecesInRow:(uint)row {
+
+    Space *space;
+    
+    for(int j=0; j<dimy; j++) {
+        
+        space = spaces[row][j];
+        
+        if(space.backPieceVal > 1)
+            space.backPiece.hidden = NO;
+    }
 }
 
 @end

@@ -11,6 +11,7 @@
 #import "WordLogic.h"
 
 #define TIME_FACTOR 15
+#define MAX_BOMBS 2
 
 @interface GamePlay : NSObject {
     
@@ -60,5 +61,8 @@
 - (void)checkDifficulty;
 - (void)loadDefaults;
 - (void)deconstruct;
+- (void)decrementNumBombs;
+
+- (uint)getRowDelayForNumRows:(uint)nrows;
 
 @end

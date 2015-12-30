@@ -67,7 +67,11 @@
 
 - (void)eliminateRow:(uint)row;
 - (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row;
+- (void)getAllVisiblePieces:(NSMutableArray*)allPieces;
 
 - (NSString*)makeWordFromRow: (uint)row;
+
+- (void)hideBackPiecesInRow:(uint)row;
+- (void)unHideBackPiecesInRow:(uint)row;
 
 @end
