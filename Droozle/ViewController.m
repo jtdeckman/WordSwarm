@@ -114,7 +114,7 @@
                 [self presentViewController:settingsView animated:NO completion:nil];
                 
                // [settingsView deconstruct];
-               // settingsView = nil;
+                settingsView = nil;
             }
 
             else {
