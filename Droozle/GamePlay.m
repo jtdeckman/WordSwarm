@@ -91,20 +91,13 @@
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
-        [defaults setInteger:newScore forKey:@"highestWordScore"];
-        [defaults synchronize];
-    }
-    
-    if(gameData.score > gameData.highScore) {
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        gameData.highestWordScore = newScore;
         
         [defaults setInteger:newScore forKey:@"highestWordScore"];
         [defaults synchronize];
     }
     
     gameData.score += newScore*gameData.level;
-    
     
     NSString *pointsForNextLevel = [self getPointsForLevel:gameData.level + 1];
     
@@ -174,13 +167,18 @@
     
     if(gameData.score > gameData.highScore) {
         
+        gameData.highScore = gameData.score;
+        
         [defaults setInteger:gameData.score forKey:@"highScore"];
         [defaults synchronize];
     }
     
     if(gameData.gamePlay == LEVELED_PLAY && gameData.level > gameData.highestLevel) {
         
+        gameData.highestLevel = gameData.level;
+        
         [defaults setInteger:gameData.level forKey:@"highestLevel"];
+        [defaults synchronize];
     }
 }
 

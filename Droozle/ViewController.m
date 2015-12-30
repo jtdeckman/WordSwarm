@@ -50,16 +50,20 @@
     if(gamePlay.gameState == gameRunning) {
         
         uint nRowsOcc = [board numRowsOccupied];
+        uint timeInterval;
         
         if(nRowsOcc < 1) [gamePlay rowOfValues];
         
         else {
             
+            if(nRowsOcc < 3) timeInterval = 5;
+            else timeInterval = gamePlay.timeInterval;
+            
             if(nRowsOcc >= board.dimx - 2) [display animateAlertView];
             
             else [display hideAlertView];
             
-            if(!animating && gamePlay.gameData.timer % gamePlay.timeInterval == 0) {
+            if(!animating && gamePlay.gameData.timer % timeInterval == 0) {
 
                 if([board shiftRowsUp] == YES) {
                 
@@ -408,7 +412,7 @@
     [display updateScore];
     [display updateLevelValues];
     
-    [gamePlay rowOfValues];
+   // [gamePlay rowOfValues];
     
     animating = NO;
     prevViewSettings = NO;
