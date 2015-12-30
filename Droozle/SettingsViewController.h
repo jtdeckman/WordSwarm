@@ -11,6 +11,8 @@
 
 @interface SettingsViewController : UIViewController {
     
+    UILabel *acceptButton;
+    
     UILabel *playModeBox;
     UILabel *difficultyBox;
     
@@ -22,5 +24,6 @@
 }
 
 - (void)setUp;
+- (void)deconstruct;
 
 @end

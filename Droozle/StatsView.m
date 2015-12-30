@@ -17,7 +17,9 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
     [self setUp];
+    [self loadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,6 +38,8 @@
     tmpImage = UIGraphicsGetImageFromCurrentImageContext();
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
+    
+ // High score
     
     frm.size.width = 0.6*self.view.frame.size.width;
     frm.size.height = 0.4*frm.size.width;
@@ -91,7 +95,8 @@
     highScore.textColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
     highScoreLabel.backgroundColor = [UIColor clearColor];
     
-    highScore.text = @"1437882365";
+    
+ // Highest word score
     
     [self.view addSubview:highScore];
     
@@ -148,13 +153,13 @@
     highestWordScore.textColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
     highestWordScoreLabel.backgroundColor = [UIColor clearColor];
     
-    highestWordScore.text = @"1437882365";
-    
     [self.view addSubview:highestWordScore];
 
     frm = highestWordScoreBox.frame;
     
     frm.origin.y += frm.size.height + 0.35*frm.size.height;
+    
+ // Highest level
     
     highestLevelBox = [[UILabel alloc] initWithFrame:frm];
     
@@ -205,15 +210,25 @@
     highestLevel.textColor = [UIColor colorWithRed:0.2 green:0.6 blue:1.0 alpha:1.0];
     highestLevelLabel.backgroundColor = [UIColor clearColor];
     
-    highestLevel.text = @"14";
-    
     [self.view addSubview:highestLevel];
-
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+- (void)loadData {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    highScore.text = [NSString stringWithFormat:@"%d",(int)[defaults integerForKey:@"highScore"]];
+    
+    highestWordScore.text = [NSString stringWithFormat:@"%d", (int)[defaults integerForKey:@"highestWordScore"]];
+    
+    highestLevel.text = [NSString stringWithFormat:@"%d", (int)[defaults integerForKey:@"highestLevel"]];
+    
+    [defaults synchronize];
 }
 
 @end

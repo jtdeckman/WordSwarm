@@ -287,6 +287,9 @@
             space = spaces[i][j];
             space.isOccupied = NO;
             space.piece.hidden = YES;
+            
+            space.backPieceVal = 1;
+            space.backPiece.hidden = YES;
         }
     }
 }

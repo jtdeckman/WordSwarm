@@ -10,7 +10,7 @@
 #import "Board.h"
 #import "WordLogic.h"
 
-#define TIME_FACTOR 2
+#define TIME_FACTOR 15
 
 @interface GamePlay : NSObject {
     
@@ -57,6 +57,7 @@
 
 - (BOOL)checkWord:(NSString*)word :(NSString*)wrdType;
 
+- (void)checkDifficulty;
 - (void)loadDefaults;
 - (void)deconstruct;
 

@@ -29,6 +29,7 @@
     UIColor *tmpColor;
     
     BOOL animating;
+    BOOL prevViewSettings;
 }
 
 - (void)saveDefaults;

@@ -28,6 +28,23 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:NO];
+    
+    if(prevViewSettings) {
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        if((int)[defaults integerForKey:@"gamePlay"] != gamePlay.gameData.gamePlay)
+            [self setUpNewGame];
+        
+        [gamePlay checkDifficulty];
+        
+        prevViewSettings = NO;
+    }
+}
+
 - (void)gameLoop {
     
     if(gamePlay.gameState == gameRunning) {
@@ -91,8 +108,13 @@
             
             else if(CGRectContainsPoint(display.menuView.settingsLabel.frame, location)) {
                 
-               SettingsViewController *settingsView = [[SettingsViewController alloc] init];
+                prevViewSettings = YES;
+                
+                SettingsViewController *settingsView = [[SettingsViewController alloc] init];
                 [self presentViewController:settingsView animated:NO completion:nil];
+                
+               // [settingsView deconstruct];
+               // settingsView = nil;
             }
 
             else {
@@ -389,6 +411,7 @@
     [gamePlay rowOfValues];
     
     animating = NO;
+    prevViewSettings = NO;
 }
 
 - (void)eliminateRowFromBoard {
@@ -407,27 +430,15 @@
     animating = NO;
 }
 
-- (void)saveDefaults {
-
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    if(gamePlay.gameData.score > gamePlay.gameData.highScore) {
-        
-        [defaults setInteger:gamePlay.gameData.score forKey:@"highScore"];
-        [defaults synchronize];
-    }
-    
-    if(gamePlay.gameData.gamePlay == LEVELED_PLAY && gamePlay.gameData.level > gamePlay.gameData.highestLevel) {
-        
-        [defaults setInteger:gamePlay.gameData.level forKey:@"highestLevel"];
-    }
-}
-
 - (void)setUpNewGame {
     
     [board deconstruct];
     [display deconstruct];
     [gamePlay deconstruct];
+    
+    touchedSpace = nil;
+    gameTimer = nil;
+    alertTimer = nil;
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
@@ -437,6 +448,10 @@
 - (BOOL)prefersStatusBarHidden {
     
     return YES;
+}
+
+- (void)saveDefaults {
+    
 }
 
 @end

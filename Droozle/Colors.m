@@ -29,12 +29,12 @@
     boardViewBackgroundColor.blue = 0.9f;
     
     scoreColor.red = 0.8f;
-    scoreColor.green = 0.7f;
+    scoreColor.green = 0.1f;
     scoreColor.blue = 0.1f;
     
-    levelColor.red = 0.55f;
+    levelColor.red = 0.9f;
     levelColor.green = 0.7;
-    levelColor.blue = 1.0;
+    levelColor.blue = 0.1;
     
     redFlashColor.red = 0.8f;
     redFlashColor.green = 0.2f;

@@ -25,5 +25,6 @@
 }
 
 - (void)setUp;
+- (void)loadData;
 
 @end

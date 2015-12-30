@@ -43,7 +43,7 @@ typedef enum : NSUInteger {
     LEVELED_PLAY,
     FREE_PLAY
     
-} playMode;
+} PlayMode;
 
 typedef struct {
     
@@ -56,7 +56,7 @@ typedef struct {
     int highestLevel;
     int highestWordScore;
     
-    playMode gamePlay;
+    PlayMode gamePlay;
     
     uint difficulty;
     uint numBombs;

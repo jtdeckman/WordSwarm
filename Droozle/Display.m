@@ -151,6 +151,9 @@
     
     rootView.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
     
+    
+ // Boxes
+    
     scoreBox.hidden = NO;
     scoreBox.layer.cornerRadius = 5.0;
     scoreBox.clipsToBounds = YES;
@@ -178,6 +181,9 @@
     [nextBox.layer setBorderColor:[[UIColor clearColor] CGColor]];
     levelBox.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
     
+    
+ // Value labels
+    
     score.hidden = NO;
     score.layer.cornerRadius = 5.0;
     score.clipsToBounds = YES;
@@ -188,7 +194,7 @@
 
   //  score.textColor = [UIColor colorWithRed:colors.scoreColor.red green:colors.scoreColor.green blue:colors.scoreColor.blue alpha:0.8f];//whiteColor];
     
-    score.textColor = [UIColor colorWithRed:colors.scoreColor.red green:colors.scoreColor.green blue:colors.scoreColor.blue alpha:0.9f];
+    score.textColor = [UIColor colorWithRed:colors.scoreColor.red green:colors.scoreColor.green blue:colors.scoreColor.blue alpha:0.8f];
     score.backgroundColor = [UIColor clearColor];
     
     level.hidden = NO;
@@ -593,7 +599,7 @@
         
         floatScore.textColor = [UIColor colorWithRed:colors.redFlashColor.red green:colors.redFlashColor.green blue:colors.redFlashColor.blue alpha:1.0f];
         
-        floatScore.text = [NSString stringWithFormat:@"- %d",addedPoints];
+        floatScore.text = [NSString stringWithFormat:@"%d",addedPoints];
     }
     
     else {
@@ -646,6 +652,5 @@
     [animationPieces deconstruct];
     animationPieces = nil;
 }
-
 
 @end

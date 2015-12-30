@@ -82,10 +82,20 @@
     
     if(gameData.gamePlay == FREE_PLAY) {
         
+        gameData.score += newScore;
+        
         return newScore;
     }
     
     if(newScore > gameData.highestWordScore) {
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        [defaults setInteger:newScore forKey:@"highestWordScore"];
+        [defaults synchronize];
+    }
+    
+    if(gameData.score > gameData.highScore) {
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
@@ -105,6 +115,8 @@
         
         [wordLogic initWordTypesForLevel:gameData.level];
     }
+    
+    [self checkHighScores];
     
     return newScore;
 }
@@ -126,9 +138,56 @@
     return [pointsForLevel objectAtIndex:level];
 }
 
+- (void)loadDefaults {
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    gameData.level = 1;
+    gameData.score = 0;
+    
+    gameData.gamePlay = (uint)[defaults integerForKey:@"gamePlay"];
+    gameData.difficulty = (int)[defaults integerForKey:@"difficulty"];
+    
+    gameData.highScore = (int)[defaults integerForKey:@"highScore"];
+    gameData.highestLevel = (int)[defaults integerForKey:@"highestLevel"];
+    gameData.highestWordScore = (int)[defaults integerForKey:@"highestWordScore"];
+    
+    if(gameData.difficulty > 0)
+        timeInterval = TIME_FACTOR - 3;
+    else
+        timeInterval = TIME_FACTOR;
+    
+    if(gameData.gamePlay == FREE_PLAY) {
+    
+        if(gameData.difficulty > 1)
+            gameData.level = -2;
+        else
+            gameData.level = -1;
+    }
+    
+    [defaults synchronize];
+}
+
+- (void)checkHighScores {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if(gameData.score > gameData.highScore) {
+        
+        [defaults setInteger:gameData.score forKey:@"highScore"];
+        [defaults synchronize];
+    }
+    
+    if(gameData.gamePlay == LEVELED_PLAY && gameData.level > gameData.highestLevel) {
+        
+        [defaults setInteger:gameData.level forKey:@"highestLevel"];
+    }
+}
+
 - (void)setUpPointsForLevel {
     
     pointsForLevel = [[NSMutableArray alloc] initWithObjects:
+                      
                       @"25",
                       @"25",
                       @"100",
@@ -148,34 +207,16 @@
                       nil];
 }
 
-- (void)loadDefaults {
+- (void)checkDifficulty {
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    gameData.level = 5;
-    gameData.score = 0;
-    
-    gameData.gamePlay = (uint)[defaults integerForKey:@"gamePlay"];
     gameData.difficulty = (int)[defaults integerForKey:@"difficulty"];
     
-    gameData.highScore = (int)[defaults integerForKey:@"highScore"];
-    gameData.highestLevel = (int)[defaults integerForKey:@"highestLevel"];
-    gameData.highestWordScore = (int)[defaults integerForKey:@"highestWordScore"];
-    
-    if(gameData.difficulty > 1)
+    if(gameData.difficulty > 0)
         timeInterval = TIME_FACTOR - 3;
     else
         timeInterval = TIME_FACTOR;
-    
-    if(gameData.gamePlay == FREE_PLAY) {
-    
-        if(gameData.difficulty > 1)
-            gameData.level = -2;
-        else
-            gameData.level = -1;
-    }
-    
-    [defaults synchronize];
 }
 
 @end
