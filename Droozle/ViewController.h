@@ -11,6 +11,8 @@
 #import "Constants.h"
 #import "Board.h"
 #import "GamePlay.h"
+#import "StatsView.h"
+#import "SettingsViewController.h"
 
 @interface ViewController : UIViewController {
 

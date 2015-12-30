@@ -141,7 +141,7 @@
     bottomBar.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.4];
     boardView.backgroundColor = [UIColor clearColor];
     
-    menuView.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.7];
+    menuView.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.5];
     
     UIGraphicsBeginImageContext(rootView.frame.size);
     
@@ -159,6 +159,7 @@
     
     [scoreBox.layer setBorderColor:[[UIColor clearColor] CGColor]];
     scoreBox.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
+    
     levelBox.hidden = NO;
     levelBox.layer.cornerRadius = 5.0;
     levelBox.clipsToBounds = YES;
@@ -187,7 +188,7 @@
 
   //  score.textColor = [UIColor colorWithRed:colors.scoreColor.red green:colors.scoreColor.green blue:colors.scoreColor.blue alpha:0.8f];//whiteColor];
     
-    score.textColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.8f];//whiteColor];
+    score.textColor = [UIColor colorWithRed:colors.scoreColor.red green:colors.scoreColor.green blue:colors.scoreColor.blue alpha:0.9f];
     score.backgroundColor = [UIColor clearColor];
     
     level.hidden = NO;

@@ -35,10 +35,10 @@
     settingsLabel.hidden = NO;
     settingsLabel.layer.cornerRadius = 3.0;
     settingsLabel.clipsToBounds = YES;
-    settingsLabel.backgroundColor = [UIColor clearColor];
+    settingsLabel.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];[UIColor clearColor];
     //   settingsLabel.layer.borderColor = [[UIColor redColor] CGColor];
     
-    settingsLabel.layer.borderColor = [[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
+    settingsLabel.layer.borderColor = [[UIColor clearColor] CGColor];//[[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
     
     settingsLabel.layer.borderWidth = 1.0f;
     //  settingsLabel.textColor = [UIColor redColor];
@@ -58,13 +58,12 @@
     nwGameLabel.hidden = NO;
     nwGameLabel.layer.cornerRadius = 3.0;
     nwGameLabel.clipsToBounds = YES;
-    nwGameLabel.backgroundColor = [UIColor clearColor];
-    //   nwGameLabel.layer.borderColor = [[UIColor redColor] CGColor];
+    nwGameLabel.backgroundColor = settingsLabel.backgroundColor; //[UIColor clearColor];
+   
     
-    nwGameLabel.layer.borderColor = [[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
+    nwGameLabel.layer.borderColor = [[UIColor clearColor] CGColor]; //[[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
     
     nwGameLabel.layer.borderWidth = 1.0f;
-    //  nwGameLabel.textColor = [UIColor redColor];
     nwGameLabel.textColor = [UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0];
     
     nwGameLabel.text = @"New Game";
@@ -81,13 +80,12 @@
     howToLabel.hidden = NO;
     howToLabel.layer.cornerRadius = 3.0;
     howToLabel.clipsToBounds = YES;
-    howToLabel.backgroundColor = [UIColor clearColor];
-    //   howToLabel.layer.borderColor = [[UIColor redColor] CGColor];
+    howToLabel.backgroundColor = settingsLabel.backgroundColor;// [UIColor clearColor];
+    howToLabel.layer.borderColor = [[UIColor clearColor] CGColor]; //[[UIColor redColor] CGColor];
     
-    howToLabel.layer.borderColor = [[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
+  //  howToLabel.layer.borderColor = [[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
     
     howToLabel.layer.borderWidth = 1.0f;
-    //  howToLabel.textColor = [UIColor redColor];
     howToLabel.textColor = [UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0];
     
     howToLabel.text = @"How to Play";
@@ -107,13 +105,12 @@
     statsLabel.hidden = NO;
     statsLabel.layer.cornerRadius = 3.0;
     statsLabel.clipsToBounds = YES;
-    statsLabel.backgroundColor = [UIColor clearColor];
-    //   statsLabel.layer.borderColor = [[UIColor redColor] CGColor];
+    statsLabel.backgroundColor = settingsLabel.backgroundColor;//[UIColor clearColor];
+    statsLabel.layer.borderColor = [[UIColor clearColor] CGColor];
     
-    statsLabel.layer.borderColor = [[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
+  //  statsLabel.layer.borderColor = [[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
     
     statsLabel.layer.borderWidth = 1.0f;
-    //  statsLabel.textColor = [UIColor redColor];
     statsLabel.textColor = [UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0];
     
     statsLabel.text = @"Game Stats";

@@ -28,9 +28,9 @@
     boardViewBackgroundColor.green = 0.9f;
     boardViewBackgroundColor.blue = 0.9f;
     
-    scoreColor.red = 1.0f;
-    scoreColor.green = 0.75f;
-    scoreColor.blue = 0.2f;
+    scoreColor.red = 0.8f;
+    scoreColor.green = 0.7f;
+    scoreColor.blue = 0.1f;
     
     levelColor.red = 0.55f;
     levelColor.green = 0.7;

@@ -82,6 +82,19 @@
                 
                 [self setUpNewGame];
             }
+            
+            else if(CGRectContainsPoint(display.menuView.statsLabel.frame, location)) {
+                
+                StatsView *statsView = [[StatsView alloc] init];
+                [self presentViewController:statsView animated:NO completion:nil];
+            }
+            
+            else if(CGRectContainsPoint(display.menuView.settingsLabel.frame, location)) {
+                
+               SettingsViewController *settingsView = [[SettingsViewController alloc] init];
+                [self presentViewController:settingsView animated:NO completion:nil];
+            }
+
             else {
                 
                 display.menuView.hidden = YES;
@@ -175,6 +188,13 @@
                 
                 [self setUpNewGame];
             }
+            
+            else if(CGRectContainsPoint(display.menuView.statsLabel.frame, location)) {
+                
+                StatsView *statsView = [[StatsView alloc] init];
+                [self presentViewController:statsView animated:NO completion:nil];
+            }
+
             else {
                 
                 display.menuView.hidden = YES;
