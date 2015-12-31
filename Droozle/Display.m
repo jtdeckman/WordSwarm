@@ -14,7 +14,7 @@
 @synthesize floatPiece, addPiece;
 @synthesize menuBar, menuView, gamePlay;
 @synthesize piecesToAnimate, bombPiece;
-@synthesize animations;
+@synthesize animations, topOffset;
 
 - (void)changeFloatPieceLoc: (CGPoint)newLoc {
 
@@ -332,18 +332,32 @@
     
     topBar = [[UIView alloc] initWithFrame:frm];
     
+    topOffset = topBar.frame;
+    topOffset.size.height += topBar.frame.size.height*WORD_BAR_FACT;
+    
     [rootView addSubview:topBar];
     
+    wordBar = [[WordBar alloc] init];
+    [wordBar setUp:7 :topBar.frame];
+    
     frm = topBar.frame;
-    frm.size.height *= 1.1;
-    frm.origin.y = viewFrame.size.height - frm.size.height;
+   // frm.size.height *= 1.17;
+    frm.size.height *=1.125;
+    frm.origin.y = viewFrame.size.height - 1.05*frm.size.height;//topBar.frame.size.height;
     
     bottomBar = [[UIView alloc] initWithFrame:frm];
     
     [rootView addSubview:bottomBar];
     
-    frm.size.height = viewFrame.size.height - topBar.frame.size.height - bottomBar.frame.size.height;
-    frm.origin.y = topBar.frame.size.height;
+  /*  CGRect tmpFrm = frm;
+    tmpFrm.size.height *= 0.0425;
+    tmpFrm.origin.y -= 0.0475*frm.size.height;
+    
+    extraBckgd = [[UILabel alloc] initWithFrame:tmpFrm];
+    [rootView addSubview:extraBckgd]; */
+
+    frm.size.height = viewFrame.size.height - topBar.frame.size.height - wordBar.barBackground.frame.size.height - bottomBar.frame.size.height;
+    frm.origin.y = topBar.frame.size.height + wordBar.barBackground.frame.size.height;
     
     boardView = [[UIView alloc] initWithFrame:frm];
     
@@ -419,7 +433,6 @@
     
     frm = levelBox.frame;
     frm.size.height *= 0.8;
-  //  frm.origin.y = levelBox.frame.origin.y + 1.5*(levelBox.frame.size.height - frm.size.height) - 0.5*level.frame.size.height;
     frm.origin.y = levelLabel.frame.origin.y + 0.45*levelLabel.frame.size.height;
     
     level = [[UILabel alloc] initWithFrame:frm];
@@ -456,6 +469,14 @@
     topBar.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.4];
     bottomBar.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.4];
     boardView.backgroundColor = [UIColor clearColor];
+    
+   // extraBckgd.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
+ 
+    topBar.layer.borderColor = [[UIColor clearColor] CGColor];
+    
+    wordBar.barBackground.backgroundColor = topBar.backgroundColor;
+    
+    [rootView addSubview:wordBar.barBackground];
     
     menuView.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.5];
     
@@ -611,7 +632,7 @@
     
     boardFrm.origin.x = 0.04*viewFrame.size.width;
     boardFrm.origin.y = boardView.frame.origin.y + 0.04*viewFrame.size.width;
-    boardFrm.size.height = 0.95*boardView.frame.size.height;
+    boardFrm.size.height = boardView.frame.size.height + 0.02*boardFrm.origin.x;
     boardFrm.size.width = viewFrame.size.width - 2.0*boardFrm.origin.x;
     
     return boardFrm;

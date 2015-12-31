@@ -170,7 +170,7 @@
                     
                     [display animateScore:newScore];
                     
-                    if([word length] == 3) {//board.dimy ) {//board.dimy) {
+                    if([word length] == board.dimy) {
                         
                         int bonusScore = FULL_WORD_BONUS;
                         

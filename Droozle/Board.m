@@ -72,7 +72,7 @@
         [spaces addObject:row];
     }
     
-    spcFrm.size.width = 1.25*spcFrm.size.width;
+    spcFrm.size.width = 1.35*spcFrm.size.width;
     spcFrm.size.height -= offset;
     
     for(int i=0; i<dimx; i++) {

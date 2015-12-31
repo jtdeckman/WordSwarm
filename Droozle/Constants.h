@@ -27,6 +27,7 @@
 #define DIMY 10
 
 #define FONT_FACT 0.4
+#define WORD_BAR_FACT 0.5
 
 #define MAX_NEARBY_NEIGHBORS 8
 

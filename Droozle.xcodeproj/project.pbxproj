@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C85F4DF1C35AEC000908313 /* WordBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85F4DE1C35AEC000908313 /* WordBar.m */; };
+		8C85F4E11C35C18C00908313 /* topBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C85F4E01C35C18C00908313 /* topBar.png */; };
 		8C8DA7131C2DEB590083CCE1 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8DA7121C2DEB590083CCE1 /* MenuView.m */; };
 		8CD640911C2F4F8800C9E6CF /* stars1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD640901C2F4F8800C9E6CF /* stars1.png */; };
-		8CD640931C2F5BBC00C9E6CF /* whiteBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD640921C2F5BBC00C9E6CF /* whiteBorder.png */; };
 		8CD640B81C2F7E4A00C9E6CF /* TileImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD640B71C2F7E4A00C9E6CF /* TileImages.m */; };
 		8CEBF8E71C30B93B0055861A /* topLabels.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBF8E61C30B93B0055861A /* topLabels.png */; };
 		8CEBF8F71C30E7810055861A /* menuBars.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBF8F61C30E7810055861A /* menuBars.png */; };
@@ -27,7 +28,6 @@
 		8CEBF9341C33B81D0055861A /* times2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBF9331C33B81D0055861A /* times2.png */; };
 		8CEBF9361C33B8AA0055861A /* times3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBF9351C33B8AA0055861A /* times3.png */; };
 		8CEBF9391C34E4120055861A /* Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF9381C34E4120055861A /* Animations.m */; };
-		8CEBF93B1C3515DA0055861A /* Screen Shot 2015-12-31 at 2.46.38 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBF93A1C3515DA0055861A /* Screen Shot 2015-12-31 at 2.46.38 AM.png */; };
 		8CEBF9411C35261E0055861A /* bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBF9401C35261E0055861A /* bomb.png */; };
 		8CF092C81BFBEE1A00AC3599 /* LexicontextAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8CF092C71BFBEE1A00AC3599 /* LexicontextAssets.bundle */; };
 		8CF092CA1BFBEE4600AC3599 /* libLexicontext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF092C91BFBEE4600AC3599 /* libLexicontext.a */; };
@@ -59,10 +59,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C85F4DD1C35AEC000908313 /* WordBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordBar.h; sourceTree = "<group>"; };
+		8C85F4DE1C35AEC000908313 /* WordBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordBar.m; sourceTree = "<group>"; };
+		8C85F4E01C35C18C00908313 /* topBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topBar.png; sourceTree = "<group>"; };
 		8C8DA7111C2DEB590083CCE1 /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
 		8C8DA7121C2DEB590083CCE1 /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
 		8CD640901C2F4F8800C9E6CF /* stars1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars1.png; sourceTree = "<group>"; };
-		8CD640921C2F5BBC00C9E6CF /* whiteBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteBorder.png; sourceTree = "<group>"; };
 		8CD640B61C2F7E4A00C9E6CF /* TileImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileImages.h; sourceTree = "<group>"; };
 		8CD640B71C2F7E4A00C9E6CF /* TileImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileImages.m; sourceTree = "<group>"; };
 		8CEBF8E61C30B93B0055861A /* topLabels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topLabels.png; sourceTree = "<group>"; };
@@ -85,7 +87,6 @@
 		8CEBF9351C33B8AA0055861A /* times3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = times3.png; sourceTree = "<group>"; };
 		8CEBF9371C34E4120055861A /* Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animations.h; sourceTree = "<group>"; };
 		8CEBF9381C34E4120055861A /* Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animations.m; sourceTree = "<group>"; };
-		8CEBF93A1C3515DA0055861A /* Screen Shot 2015-12-31 at 2.46.38 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2015-12-31 at 2.46.38 AM.png"; sourceTree = "<group>"; };
 		8CEBF9401C35261E0055861A /* bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bomb.png; sourceTree = "<group>"; };
 		8CF092C61BFBEE1A00AC3599 /* Lexicontext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lexicontext.h; path = ../lexicontext/Lexicontext.h; sourceTree = "<group>"; };
 		8CF092C71BFBEE1A00AC3599 /* LexicontextAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = LexicontextAssets.bundle; path = lexicontext/LexicontextAssets.bundle; sourceTree = "<group>"; };
@@ -194,6 +195,8 @@
 				8CEBF92B1C33669F0055861A /* SettingsViewController.m */,
 				8CEBF9371C34E4120055861A /* Animations.h */,
 				8CEBF9381C34E4120055861A /* Animations.m */,
+				8C85F4DD1C35AEC000908313 /* WordBar.h */,
+				8C85F4DE1C35AEC000908313 /* WordBar.m */,
 				A8166A6E1B99E84700F47146 /* Images.xcassets */,
 				A8166A701B99E84700F47146 /* LaunchScreen.xib */,
 				A8166A611B99E84700F47146 /* Supporting Files */,
@@ -204,8 +207,8 @@
 		A8166A611B99E84700F47146 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8C85F4E01C35C18C00908313 /* topBar.png */,
 				8CEBF8E61C30B93B0055861A /* topLabels.png */,
-				8CD640921C2F5BBC00C9E6CF /* whiteBorder.png */,
 				8CD640901C2F4F8800C9E6CF /* stars1.png */,
 				8CEBF8F61C30E7810055861A /* menuBars.png */,
 				8CEBF9101C31B3B70055861A /* p1.png */,
@@ -221,7 +224,6 @@
 				A8166A961B99EEF800F47146 /* redSquare.png */,
 				8CEBF9331C33B81D0055861A /* times2.png */,
 				8CEBF9351C33B8AA0055861A /* times3.png */,
-				8CEBF93A1C3515DA0055861A /* Screen Shot 2015-12-31 at 2.46.38 AM.png */,
 				8CEBF9401C35261E0055861A /* bomb.png */,
 				A8166A621B99E84700F47146 /* Info.plist */,
 				A8166A631B99E84700F47146 /* main.m */,
@@ -330,12 +332,12 @@
 				A8166A6D1B99E84700F47146 /* Main.storyboard in Resources */,
 				8CEBF91F1C31B3B70055861A /* p12.png in Resources */,
 				8CF092C81BFBEE1A00AC3599 /* LexicontextAssets.bundle in Resources */,
-				8CEBF93B1C3515DA0055861A /* Screen Shot 2015-12-31 at 2.46.38 AM.png in Resources */,
 				A8166A921B99EE2D00F47146 /* orangeSquare.png in Resources */,
 				A8166A971B99EEF800F47146 /* redSquare.png in Resources */,
 				8CEBF91A1C31B3B70055861A /* p3.png in Resources */,
 				A8166A721B99E84700F47146 /* LaunchScreen.xib in Resources */,
 				8CEBF8F71C30E7810055861A /* menuBars.png in Resources */,
+				8C85F4E11C35C18C00908313 /* topBar.png in Resources */,
 				A8166A6F1B99E84700F47146 /* Images.xcassets in Resources */,
 				8CEBF9211C31B5310055861A /* p2.png in Resources */,
 				8CEBF9341C33B81D0055861A /* times2.png in Resources */,
@@ -343,7 +345,6 @@
 				8CEBF91B1C31B3B70055861A /* p4.png in Resources */,
 				8CD640911C2F4F8800C9E6CF /* stars1.png in Resources */,
 				8CEBF91D1C31B3B70055861A /* p7.png in Resources */,
-				8CD640931C2F5BBC00C9E6CF /* whiteBorder.png in Resources */,
 				8CEBF9181C31B3B70055861A /* p1.png in Resources */,
 				8CEBF9361C33B8AA0055861A /* times3.png in Resources */,
 				8CEBF91E1C31B3B70055861A /* p10.png in Resources */,
@@ -371,6 +372,7 @@
 				A831F6111BB0B8B70001E1BC /* Colors.m in Sources */,
 				A831F60D1BB0B0190001E1BC /* Display.m in Sources */,
 				8CF7E9781BEBED1F00BF3D4B /* WordLogic.m in Sources */,
+				8C85F4DF1C35AEC000908313 /* WordBar.m in Sources */,
 				A8166A671B99E84700F47146 /* AppDelegate.m in Sources */,
 				A8699DD01BB6FD9B00CCC1FD /* GamePlay.m in Sources */,
 				8CD640B81C2F7E4A00C9E6CF /* TileImages.m in Sources */,

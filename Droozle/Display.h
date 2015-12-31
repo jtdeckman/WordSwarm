@@ -14,6 +14,7 @@
 #import "GamePlay.h"
 #import "AnimationPieces.h"
 #import "Animations.h"
+#import "WordBar.h"
 
 @interface Display : NSObject {
     
@@ -43,7 +44,8 @@
     
     UILabel *floatScore;
     UILabel *bombPiece;
-       
+   // UILabel *extraBckgd;
+    
     UIImage *floatBackImage;
     
     UIImageView *menuBar;
@@ -58,6 +60,8 @@
     CGRect baseLevelLabel;
     CGRect baseLevel;
     
+    CGRect topOffset;
+    
     GamePlay *gamePlay;
     
     NSMutableArray *piecesToAnimate;
@@ -65,12 +69,16 @@
     AnimationPieces *animationPieces;
     Animations *animations;
     
+    WordBar *wordBar;
+    
     Colors *colors;
 }
 
 @property(nonatomic, strong) UIView *topBar;
 @property(nonatomic, strong) UIView *boardView;
 @property(nonatomic, strong) UIView *bottomBar;
+
+@property(nonatomic) CGRect topOffset;
 
 @property(nonatomic, strong) MenuView *menuView;
 @property(nonatomic, strong) GamePlay *gamePlay;
