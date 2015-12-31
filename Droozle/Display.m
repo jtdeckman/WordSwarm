@@ -328,7 +328,7 @@
     [colors setUpColors];
     
     frm = viewFrame;
-    frm.size.height *= 0.125;
+    frm.size.height *= 0.11;
     
     topBar = [[UIView alloc] initWithFrame:frm];
     
@@ -342,8 +342,8 @@
     
     frm = topBar.frame;
    // frm.size.height *= 1.17;
-    frm.size.height *=1.125;
-    frm.origin.y = viewFrame.size.height - 1.05*frm.size.height;//topBar.frame.size.height;
+  //  frm.size.height;// *=1.1;//25;
+    frm.origin.y = viewFrame.size.height - 1.0*frm.size.height;//topBar.frame.size.height;
     
     bottomBar = [[UIView alloc] initWithFrame:frm];
     
@@ -632,7 +632,7 @@
     
     boardFrm.origin.x = 0.04*viewFrame.size.width;
     boardFrm.origin.y = boardView.frame.origin.y + 0.04*viewFrame.size.width;
-    boardFrm.size.height = boardView.frame.size.height + 0.02*boardFrm.origin.x;
+    boardFrm.size.height = boardView.frame.size.height;// - 0.5*boardFrm.origin.x;
     boardFrm.size.width = viewFrame.size.width - 2.0*boardFrm.origin.x;
     
     return boardFrm;
