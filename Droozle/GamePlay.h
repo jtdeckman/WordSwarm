@@ -13,6 +13,7 @@
 #define TIME_FACTOR 15
 #define MAX_BOMBS 2
 #define FULL_WORD_BONUS 10
+#define BOMB_BONUS_SCORE 35
 
 @interface GamePlay : NSObject {
     
@@ -62,7 +63,9 @@
 - (void)checkDifficulty;
 - (void)loadDefaults;
 - (void)deconstruct;
+
 - (void)decrementNumBombs;
+- (void)incrementBombs;
 
 - (uint)getRowDelayForNumRows:(uint)nrows;
 

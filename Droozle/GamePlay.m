@@ -187,7 +187,7 @@
                       
                       @"25",
                       @"25",
-                      @"15",
+                      @"100",
                       @"500",
                       @"750",
                       @"1500",
@@ -223,14 +223,14 @@
 
 - (void)incrementBombs {
     
-    if(gameData.numBombs < 2)
+    if(gameData.numBombs < MAX_BOMBS)
         ++gameData.numBombs;
 }
 
 - (uint)getRowDelayForNumRows:(uint)nrows {
 
     if(nrows == 0 || nrows == 1)
-        return 4;
+        return 3;
     else if(nrows < 4)
         return 12;
     

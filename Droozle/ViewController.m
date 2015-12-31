@@ -163,25 +163,32 @@
                     
                     int newScore = [gamePlay updateScore:[board sumRow:touchedSpace.iind]];
                     
+                    CGFloat flashDuration = 0.4f;
+                    
                     [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind];
                     [board hideBackPiecesInRow:touchedSpace.iind];
                     
                     [display animateScore:newScore];
-                    [display makePiecesFlash:NO :0.4];
                     
-                    if([word length] > 2 ) {//board.dimy) {
+                    if([word length] == 3) {//board.dimy ) {//board.dimy) {
                         
-                        int bonusScore = FULL_WORD_BONUS*gamePlay.gameData.level;
+                        int bonusScore = FULL_WORD_BONUS;
                         
                         [display.animations animateTextBox1:0.8f :0.4*self.view.frame.size.height :0.4f
-                                                                 :[NSString stringWithFormat:@"Full Word Bonus! +%d", bonusScore]];
+                                                                 :[NSString stringWithFormat:@"Full Word Bonus! +%d", bonusScore*gamePlay.gameData.level]];
                         
                         NSNumber *newScore = [NSNumber numberWithInt:bonusScore];
                         
                         [self performSelector:@selector(updateGameScoreAfterDelay:) withObject:newScore afterDelay:1.2f];
                     }
                     
-                    [self performSelector:@selector(eliminateRowFromBoard:) withObject:touchedSpace afterDelay:1.2f];
+                    if(newScore > BOMB_BONUS_SCORE) {
+                    
+                        [gamePlay incrementBombs];
+                    }
+                    
+                    [display makePiecesFlash:NO :flashDuration];
+                    [self performSelector:@selector(eliminateRowFromBoard:) withObject:touchedSpace afterDelay:flashDuration];
                 }
                 
                 else {
@@ -402,13 +409,16 @@
                 [display animateScore:newScore];
                 
                 [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:0.4];
+                
+                [display resetBombPiece:YES];
             }
             
             else {
                 
+                [display resetBombPiece:NO];
             }
             
-            [display resetBombPiece];
+           
             
             touchedSpace = NULL;
             gamePlay.placeMode = freeState;

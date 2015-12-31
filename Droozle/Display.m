@@ -103,13 +103,17 @@
     [addPiece setFrame:baseAddPiece];
 }
 
-- (void)resetBombPiece {
+- (void)resetBombPiece:(BOOL)bombUsed {
 
     [bombPiece setFrame:baseBombPiece];
-    [gamePlay decrementNumBombs];
     
-    if(gamePlay.gameData.numBombs < 1)
-        bombPiece.hidden = YES;
+    if(bombUsed) {
+        
+        [gamePlay decrementNumBombs];
+    
+        if(gamePlay.gameData.numBombs < 1)
+            bombPiece.hidden = YES;
+    }
 }
 
 - (void)animateAlertView {
@@ -690,8 +694,9 @@
     // Bomb piece
     
     pcFrm = addPiece.frame;
-    pcFrm.size.width = pcFrm.size.height;
-    
+    pcFrm.size.height *=1.15;
+    pcFrm.size.width = 0.75*pcFrm.size.height;
+    pcFrm.origin.y -= 0.15*pcFrm.size.width;
     pcFrm.origin.x -= 1.5*(bottomBar.frame.size.width - (addPiece.frame.origin.x + addPiece.frame.size.width));
     
     bombPiece = [[UILabel alloc] initWithFrame:pcFrm];

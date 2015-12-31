@@ -96,7 +96,7 @@
 - (void)changeBombPieceLoc:(CGPoint)newLoc;
 
 - (void)resetAddPiece;
-- (void)resetBombPiece;
+- (void)resetBombPiece:(BOOL)bombUsed;
 
 - (void)deconstruct;
 - (void)updateScore;
