@@ -192,7 +192,7 @@
                       
                       @"25",
                       @"25",
-                      @"25",
+                      @"15",
                       @"500",
                       @"750",
                       @"1500",
@@ -235,13 +235,13 @@
 - (uint)getRowDelayForNumRows:(uint)nrows {
 
     if(nrows == 0 || nrows == 1)
-        return 3;
-    else if(nrows == 2)
-        return 7;
-    else if(nrows == 3)
-        return 9;
-    else if(nrows == 4)
+        return 4;
+    else if(nrows < 4)
         return 12;
+   // else if(nrows == 3)
+   //     return 7;
+ //   else if(nrows == 4)
+   //     return 12;
     
     return timeInterval;
 }

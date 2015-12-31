@@ -58,9 +58,7 @@
             
             timeInterval = [gamePlay getRowDelayForNumRows:nRowsOcc];
             
-            if(nRowsOcc >= board.dimx - 2) [display animateAlertView];
-            
-            else [display hideAlertView];
+            [display checkAlertView:nRowsOcc];
             
             if(!animating && gamePlay.gameData.timer % timeInterval == 0) {
 
@@ -79,12 +77,20 @@
     
     if(gamePlay.gameState == levelUp) {
         
-        [board getAllVisiblePieces:display.piecesToAnimate];
+        if(!animating) {
+            
+            animating = YES;
+            
+            [board getAllVisiblePieces:display.piecesToAnimate];
+            [board hideAllBackPieces];
         
-        [display hideAlertView];
-        [display makePiecesFlash:NO];
+            [display hideAlertView];
+            [display makePiecesFlash:NO :1.0];
         
-        [self performSelector:@selector(setUpForNextLevel) withObject:nil afterDelay:0.4];
+            [display animateLevelTile:1.0];
+        
+            [self performSelector:@selector(setUpForNextLevel) withObject:nil afterDelay:1.0];
+        }
     }
 }
 
@@ -158,9 +164,10 @@
                     int newScore = [gamePlay updateScore:[board sumRow:touchedSpace.iind]];
                     
                     [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind];
+                    [board hideBackPiecesInRow:touchedSpace.iind];
                     
                     [display animateScore:newScore];
-                    [display makePiecesFlash:NO];
+                    [display makePiecesFlash:NO :0.4];
                     
                     [self performSelector:@selector(eliminateRowFromBoard:) withObject:touchedSpace afterDelay:0.4];
                 }
@@ -172,7 +179,7 @@
                     [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind];
                     
                     [display animateScore:newScore];
-                    [display makePiecesFlash:YES];
+                    [display makePiecesFlash:YES :0.4];
                     
                     [self performSelector:@selector(resetRow) withObject:nil afterDelay:0.4];
                 }
@@ -356,7 +363,6 @@
                 selectedSpace.piece.backgroundColor = display.addPiece.backgroundColor;
                 selectedSpace.pointValue = 0;
                 
-              //  display.addPiece.text = [gamePlay getARandomLetter];
                 display.addPiece.text = @"";
             }
             
@@ -375,8 +381,13 @@
             
             if(selectedSpace.isOccupied && !selectedSpace.refPiece) {
                 
+                int newScore = [gamePlay updateScore:[board sumRow:selectedSpace.iind]];
+                
                 [board getPiecesInRow:display.piecesToAnimate :selectedSpace.iind];
-                [display makePiecesFlash:NO];
+                [board hideBackPiecesInRow:selectedSpace.iind];
+                
+                [display makePiecesFlash:NO :0.4];
+                [display animateScore:newScore];
                 
                 [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:0.4];
             }
@@ -440,8 +451,7 @@
     gameTimer = [NSTimer scheduledTimerWithTimeInterval:1/1 target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
     
     display.gamePlay = gamePlay;
-    
-    display.addPiece.text = @""; //[gamePlay getARandomLetter];
+  //  display.addPiece.text = @"";
     
     [display updateScore];
     [display updateLevelValues];
@@ -474,10 +484,12 @@
     [board deconstruct];
     [display deconstruct];
     [gamePlay deconstruct];
-    
+
     touchedSpace = nil;
     gameTimer = nil;
     alertTimer = nil;
+    
+    [self dismissViewControllerAnimated:NO completion:nil];
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
@@ -495,6 +507,9 @@
 
 - (void)setUpForNextLevel {
     
+    animating = NO;
+    
+    [display resetAnimatedPieces];
     [board clearBoard];
     
     [display updateLevelValues];

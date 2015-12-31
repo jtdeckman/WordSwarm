@@ -73,5 +73,6 @@
 
 - (void)hideBackPiecesInRow:(uint)row;
 - (void)unHideBackPiecesInRow:(uint)row;
+- (void)hideAllBackPieces;
 
 @end

@@ -37,6 +37,7 @@
     
     UILabel *scoreLabel;
     UILabel *levelLabel;
+    UILabel *levelBackgroundPiece;
     UILabel *nextScoreLabel;
     
     UILabel *floatScore;
@@ -53,6 +54,10 @@
     
     CGRect baseAddPiece;
     CGRect baseBombPiece;
+    
+    CGRect baseLevelBackPiece;
+    CGRect baseLevelLabel;
+    CGRect baseLevel;
     
     GamePlay *gamePlay;
     
@@ -96,11 +101,14 @@
 - (void)hideAlertView;
 - (void)updateLevelValues;
 
-- (void)makePiecesFlash:(BOOL)wrongWord;
+- (void)makePiecesFlash:(BOOL)wrongWord :(CGFloat)delay;
 - (void)resetAnimatedPieces;
 - (void)animateAlertView;
+- (void)unhideAlertViewWithAlpha:(CGFloat)alpha;
+- (void)checkAlertView:(uint)nrows;
 
 - (void)animateScore:(int)addedPoints;
+- (void)animateLevelTile:(CGFloat)duration;
 
 - (CGRect)initBoardView:(CGRect)viewFrame;
 

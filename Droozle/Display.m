@@ -138,13 +138,41 @@
 - (void)hideAlertView {
     
     alertView.hidden = YES;
+    
+    [rootView setNeedsDisplay];
 }
 
-- (void)makePiecesFlash:(BOOL)wrongWord {
+-(void)unhideAlertViewWithAlpha:(CGFloat)alpha {
+
+    alertView.hidden = NO;
+    alertView.alpha = alpha;
+    
+    [rootView sendSubviewToBack:alertView];
+}
+
+- (void)checkAlertView:(uint)nrows {
+    
+    if(nrows == gamePlay.dimx)
+        [self unhideAlertViewWithAlpha:0.8];//[display animateAlertView];
+    
+    else if(nrows == gamePlay.dimx - 1)
+        [self unhideAlertViewWithAlpha:0.6];
+    
+    else if(nrows == gamePlay.dimx - 2)
+        [self unhideAlertViewWithAlpha:0.5];
+    
+    else [self hideAlertView];
+    
+    [rootView setNeedsDisplay];
+}
+
+- (void)makePiecesFlash:(BOOL)wrongWord :(CGFloat)duration {
     
     NSArray *pieces = [[NSArray alloc] initWithArray:piecesToAnimate];
     
     UILabel *savedPiece, *iPiece;
+    
+    CGFloat dur2 = duration/2.0;
     
     for(uint i=0; i<[pieces count]; i++) {
     
@@ -163,7 +191,7 @@
         iPiece.alpha = 0.8;
     }
     
-   [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+   [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
         
         for(UILabel* piece in pieces)
             piece.alpha = 0.0;
@@ -171,7 +199,7 @@
         
     } completion:^(BOOL finished) {
         
-        [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             
             for(UILabel* piece in pieces)
                 piece.alpha = 0.8;
@@ -243,6 +271,38 @@
         floatScore.frame = frm;
         
     } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (void)animateLevelTile:(CGFloat)duration {
+    
+    CGRect lbpFrm = levelBackgroundPiece.frame;
+    
+    level.hidden = YES;
+    
+    lbpFrm = baseLevelBackPiece;
+    
+    lbpFrm.origin.x += rootView.frame.size.width/2.0;
+    lbpFrm.origin.y += rootView.frame.size.height;
+    
+    [levelBackgroundPiece setFrame:lbpFrm];
+    
+    levelBackgroundPiece.text = [NSString stringWithFormat:@"%d", gamePlay.gameData.level];
+    
+    lbpFrm = baseLevelBackPiece;
+    [rootView bringSubviewToFront:levelBackgroundPiece];
+
+    [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        levelBackgroundPiece.frame = lbpFrm;
+        
+    } completion:^(BOOL finished) {
+        
+        level.hidden = NO;
+        levelBackgroundPiece.text = @"";
+        [rootView bringSubviewToFront:levelLabel];
+        [rootView bringSubviewToFront:level];
         
     }];
 }
@@ -327,17 +387,10 @@
     
     frm = scoreBox.frame;
     frm.size.height *= 0.80;
-    frm.origin.y = frm.origin.y + 1.5*(scoreBox.frame.size.height - frm.size.height);///2.0;
+    frm.origin.y = frm.origin.y + 1.25*(scoreBox.frame.size.height - frm.size.height);///2.0;
     
     score = [[UILabel alloc] initWithFrame:frm];
     [rootView addSubview:score];
-    
-    frm = levelBox.frame;
-    frm.size.height *= 0.8;
-    frm.origin.y = levelBox.frame.origin.y + 1.5*(levelBox.frame.size.height - frm.size.height);
-    
-    level = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:level];
     
     frm = score.frame;
     frm.origin.x = nextBox.frame.origin.x;
@@ -352,17 +405,42 @@
     [rootView addSubview:scoreLabel];
     
     frm = levelBox.frame;
-    frm.origin.y = scoreLabel.frame.origin.y;
+    frm.origin.y = scoreLabel.frame.origin.y + 0.075*scoreLabel.frame.size.height;
     frm.size.height = scoreLabel.frame.size.height;
     
     levelLabel = [[UILabel alloc] initWithFrame:frm];
     [rootView addSubview:levelLabel];
+    
+    frm = levelBox.frame;
+    frm.size.height *= 0.8;
+  //  frm.origin.y = levelBox.frame.origin.y + 1.5*(levelBox.frame.size.height - frm.size.height) - 0.5*level.frame.size.height;
+    frm.origin.y = levelLabel.frame.origin.y + 0.45*levelLabel.frame.size.height;
+    
+    level = [[UILabel alloc] initWithFrame:frm];
+    [rootView addSubview:level];
+    
+    frm = levelBox.frame;
+    frm.size.width *= 0.85;
+    frm.size.height *= 0.825;
+    frm.origin.x = frm.origin.x + (levelBox.frame.size.width - frm.size.width)/2.0;
+    frm.origin.y = frm.origin.y + (levelBox.frame.size.height - frm.size.height)/2.0;
+    
+    levelBackgroundPiece = [[UILabel alloc] initWithFrame:frm];
+    [rootView addSubview:levelBackgroundPiece];
+   // [rootView sendSubviewToBack:levelBackgroundPiece];
     
     frm = scoreLabel.frame;
     frm.origin.x = nextBox.frame.origin.x;
     
     nextScoreLabel = [[UILabel alloc] initWithFrame:frm];
     [rootView addSubview:nextScoreLabel];
+    
+    baseLevel = level.frame;
+    baseLevelBackPiece = levelBackgroundPiece.frame;
+    baseLevelLabel = levelLabel.frame;
+    
+    [rootView bringSubviewToFront:levelLabel];
+    [rootView bringSubviewToFront:level];
     
     [self setUpColors] ;
 }
@@ -422,11 +500,11 @@
     score.opaque = NO;
     
     [score setTextAlignment:NSTextAlignmentCenter];
-    [score setFont:[UIFont fontWithName:@"Helvetica" size:1.15*FONT_FACT*score.frame.size.height]];
+    [score setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.1*FONT_FACT*score.frame.size.height]];
     
     //  score.textColor = [UIColor colorWithRed:colors.scoreColor.red green:colors.scoreColor.green blue:colors.scoreColor.blue alpha:0.8f];//whiteColor];
     
-    score.textColor = [UIColor colorWithRed:colors.scoreColor.red green:colors.scoreColor.green blue:colors.scoreColor.blue alpha:0.8f];
+    score.textColor = [UIColor colorWithRed:colors.scoreColor.red green:colors.scoreColor.green blue:colors.scoreColor.blue alpha:1.0f];
     score.backgroundColor = [UIColor clearColor];
     
     level.hidden = NO;
@@ -435,7 +513,7 @@
     level.opaque = NO;
     
     [level setTextAlignment:NSTextAlignmentCenter];
-    [level setFont:[UIFont fontWithName:@"Helvetica" size:1.2*FONT_FACT*score.frame.size.height]];
+    [level setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.0*FONT_FACT*score.frame.size.height]];
     
     level.textColor = [UIColor colorWithRed:colors.levelColor.red green:colors.levelColor.green blue:colors.levelColor.blue alpha:0.8f];
     
@@ -447,7 +525,7 @@
     nextScore.opaque = NO;
     
     [nextScore setTextAlignment:NSTextAlignmentCenter];
-    [nextScore setFont:[UIFont fontWithName:@"Helvetica" size:1.15*FONT_FACT*score.frame.size.height]];
+    [nextScore setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.1*FONT_FACT*score.frame.size.height]];
     
     nextScore.textColor = score.textColor; //[UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
     
@@ -467,7 +545,29 @@
     scoreLabel.text = @"Score";
     
     
-    // Level label
+ // Level Background label
+    
+    UIGraphicsBeginImageContext(levelBackgroundPiece.frame.size);
+    
+    tmpImage = [UIImage imageNamed:@"redSquare.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, levelBackgroundPiece.frame.size.width, levelBackgroundPiece.frame.size.height)];
+    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    levelBackgroundPiece.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
+    
+    levelBackgroundPiece.hidden = NO;
+    levelBackgroundPiece.layer.cornerRadius = 5.0;
+    levelBackgroundPiece.clipsToBounds = YES;
+    levelBackgroundPiece.opaque = NO;
+    
+    [levelBackgroundPiece setTextAlignment:NSTextAlignmentCenter];
+    [levelBackgroundPiece setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.15*FONT_FACT*score.frame.size.height]];
+    
+    levelBackgroundPiece.text = @"";
+    levelBackgroundPiece.textColor = [UIColor colorWithRed:colors.levelColor.red green:colors.levelColor.green blue:colors.levelColor.blue alpha:1.0f];
+
+    
+ // Level Label
     
     levelLabel.hidden = NO;
     levelLabel.layer.cornerRadius = 5.0;
@@ -481,6 +581,7 @@
     levelLabel.backgroundColor = [UIColor clearColor];
     
     levelLabel.text = @"Level";
+
     
     // Next level label
     
@@ -519,7 +620,6 @@
     floatBackImage = UIGraphicsGetImageFromCurrentImageContext();
     
     floatPiece = [[UILabel alloc] initWithFrame:pcFrm];
-    // [floatPiece setBackgroundColor:[UIColor colorWithPatternImage:floatBackImage]];
     floatPiece.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.4];//[UIColor lightGrayColor];
     
     floatPiece.layer.cornerRadius = 10.0f;
@@ -556,8 +656,9 @@
     addPiece.hidden = NO;
     
     [addPiece setTextAlignment:NSTextAlignmentCenter];
-    [addPiece setFont:[UIFont fontWithName:@"Arial" size:1.0*FONT_FACT*pcFrm.size.width]];
-    addPiece.textColor = [UIColor whiteColor];
+    [addPiece setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.5*FONT_FACT*pcFrm.size.width]];
+    addPiece.textColor = [UIColor colorWithRed:0.7 green:0.3 blue:0.3 alpha:0.7];
+    addPiece.text = @"";
     
     [rootView addSubview:addPiece];
     
@@ -671,6 +772,7 @@
     scoreLabel = nil;
     levelLabel = nil;
     nextScoreLabel = nil;
+    levelBackgroundPiece = nil;
     
     floatScore = nil;
     bombPiece = nil;
