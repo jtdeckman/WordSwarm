@@ -27,6 +27,7 @@
 		8CEBF92C1C33669F0055861A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF92B1C33669F0055861A /* SettingsViewController.m */; };
 		8CEBF9341C33B81D0055861A /* times2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBF9331C33B81D0055861A /* times2.png */; };
 		8CEBF9361C33B8AA0055861A /* times3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBF9351C33B8AA0055861A /* times3.png */; };
+		8CEBF9391C34E4120055861A /* Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF9381C34E4120055861A /* Animations.m */; };
 		8CF092C81BFBEE1A00AC3599 /* LexicontextAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8CF092C71BFBEE1A00AC3599 /* LexicontextAssets.bundle */; };
 		8CF092CA1BFBEE4600AC3599 /* libLexicontext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF092C91BFBEE4600AC3599 /* libLexicontext.a */; };
 		8CF7E9781BEBED1F00BF3D4B /* WordLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF7E9771BEBED1F00BF3D4B /* WordLogic.m */; };
@@ -82,6 +83,8 @@
 		8CEBF92B1C33669F0055861A /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		8CEBF9331C33B81D0055861A /* times2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = times2.png; sourceTree = "<group>"; };
 		8CEBF9351C33B8AA0055861A /* times3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = times3.png; sourceTree = "<group>"; };
+		8CEBF9371C34E4120055861A /* Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animations.h; sourceTree = "<group>"; };
+		8CEBF9381C34E4120055861A /* Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animations.m; sourceTree = "<group>"; };
 		8CF092C61BFBEE1A00AC3599 /* Lexicontext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lexicontext.h; path = ../lexicontext/Lexicontext.h; sourceTree = "<group>"; };
 		8CF092C71BFBEE1A00AC3599 /* LexicontextAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = LexicontextAssets.bundle; path = lexicontext/LexicontextAssets.bundle; sourceTree = "<group>"; };
 		8CF092C91BFBEE4600AC3599 /* libLexicontext.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLexicontext.a; path = lexicontext/libLexicontext.a; sourceTree = "<group>"; };
@@ -187,6 +190,8 @@
 				8CEBF9281C33574E0055861A /* StatsView.m */,
 				8CEBF92A1C33669F0055861A /* SettingsViewController.h */,
 				8CEBF92B1C33669F0055861A /* SettingsViewController.m */,
+				8CEBF9371C34E4120055861A /* Animations.h */,
+				8CEBF9381C34E4120055861A /* Animations.m */,
 				A8166A6E1B99E84700F47146 /* Images.xcassets */,
 				A8166A701B99E84700F47146 /* LaunchScreen.xib */,
 				A8166A611B99E84700F47146 /* Supporting Files */,
@@ -369,6 +374,7 @@
 				8CEBF9241C31C56D0055861A /* AnimationPieces.m in Sources */,
 				8CEBF9291C33574E0055861A /* StatsView.m in Sources */,
 				A8166A641B99E84700F47146 /* main.m in Sources */,
+				8CEBF9391C34E4120055861A /* Animations.m in Sources */,
 				8C8DA7131C2DEB590083CCE1 /* MenuView.m in Sources */,
 				8CEBF92C1C33669F0055861A /* SettingsViewController.m in Sources */,
 			);

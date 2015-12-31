@@ -110,6 +110,10 @@
         clr = images[i];
         clr = nil;
     }
+    
+    [images removeAllObjects];
+    
+    images = nil;
 }
 
 @end

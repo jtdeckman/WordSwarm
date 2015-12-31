@@ -12,6 +12,7 @@
 
 #define TIME_FACTOR 15
 #define MAX_BOMBS 2
+#define FULL_WORD_BONUS 10
 
 @interface GamePlay : NSObject {
     

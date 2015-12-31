@@ -215,6 +215,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
+    [self deconstruct];
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
@@ -229,6 +230,33 @@
     highestLevel.text = [NSString stringWithFormat:@"%d", (int)[defaults integerForKey:@"highestLevel"]];
     
     [defaults synchronize];
+}
+
+- (void)deconstruct {
+
+ /* [highestWordScore removeFromSuperview];
+    [highestWordScoreBox removeFromSuperview];
+    [highestWordScoreLabel removeFromSuperview];
+    
+    [highestLevelBox removeFromSuperview];
+    [highestLevelLabel removeFromSuperview];
+    [highestLevel removeFromSuperview];
+    
+    [highScoreBox removeFromSuperview];
+    [highScore removeFromSuperview];
+    [highScoreLabel removeFromSuperview]; */
+    
+    highestWordScore = nil;
+    highestWordScoreBox = nil;
+    highestWordScoreLabel = nil;
+    
+    highestLevel = nil;
+    highestLevelBox = nil;
+    highestLevelLabel = nil;
+    
+    highScoreLabel = nil;
+    highScoreBox = nil;
+    highScore = nil;
 }
 
 @end

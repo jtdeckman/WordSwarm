@@ -36,6 +36,8 @@
         piece = nil;
     }
     
+    [pieces removeAllObjects];
+    
     pieces = nil;
 }
 

@@ -380,6 +380,10 @@
 
 - (void)deconstruct {
     
+    [wordTypes removeAllObjects];
+    [letters removeAllObjects];
+    [pointsForLetters removeAllObjects];
+    
     dictionary = nil;
     wordTypes = nil;
     letters = nil;

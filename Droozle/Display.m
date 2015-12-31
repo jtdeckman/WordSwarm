@@ -14,7 +14,7 @@
 @synthesize floatPiece, addPiece;
 @synthesize menuBar, menuView, gamePlay;
 @synthesize piecesToAnimate, bombPiece;
-
+@synthesize animations;
 
 - (void)changeFloatPieceLoc: (CGPoint)newLoc {
 
@@ -226,7 +226,7 @@
         iPiece.alpha = savedPiece.alpha;
     }
 
-    [self performSelector:@selector(hideFloatScore) withObject:nil afterDelay:0.5];
+ //   [self performSelector:@selector(hideFloatScore) withObject:nil afterDelay:0.5];
 }
 
 - (void)hideFloatScore {
@@ -272,6 +272,8 @@
         
     } completion:^(BOOL finished) {
         
+        floatScore.hidden = YES;
+        [self updateScore];
     }];
 }
 
@@ -423,7 +425,7 @@
     frm.size.width *= 0.85;
     frm.size.height *= 0.825;
     frm.origin.x = frm.origin.x + (levelBox.frame.size.width - frm.size.width)/2.0;
-    frm.origin.y = frm.origin.y + (levelBox.frame.size.height - frm.size.height)/2.0;
+    frm.origin.y = frm.origin.y + (levelBox.frame.size.height - frm.size.height)/2.0 + 0.01*frm.size.height;
     
     levelBackgroundPiece = [[UILabel alloc] initWithFrame:frm];
     [rootView addSubview:levelBackgroundPiece];
@@ -729,30 +731,49 @@
     floatScore.textColor = [UIColor whiteColor];
     floatScore.backgroundColor = [UIColor clearColor];
     
+    [self setUpAnimations];
+}
+
+- (void)addLabelToSuperView:(UILabel*)label {
+
+    [rootView addSubview:label];
+}
+
+- (void)setUpAnimations {
     
-    // Bonus Float Piece 1
-    
-    pcFrm = floatScore.frame;
-    pcFrm.size.width *= 2;
-    
-    bonusLabel1 = [[UILabel alloc] initWithFrame:pcFrm];
-    
-    [rootView addSubview:bonusLabel1];
-    
-    bonusLabel1.hidden = YES;
-    bonusLabel1.layer.cornerRadius = 5.0;
-    bonusLabel1.clipsToBounds = YES;
-    bonusLabel1.opaque = NO;
-    
-    [bonusLabel1 setTextAlignment:NSTextAlignmentCenter];
-    [bonusLabel1 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.0*FONT_FACT*bonusLabel1.frame.size.height]];
-    
-    bonusLabel1.textColor = [UIColor purpleColor];
-    bonusLabel1.backgroundColor = [UIColor clearColor];
+    animations = [[Animations alloc] init];
+    [animations setUp:rootView.frame :topBar.frame.size.height/2.5];
+    [rootView addSubview:animations.textBox1];
+    [rootView bringSubviewToFront:animations.textBox1];
 }
 
 - (void)deconstruct {
 
+    [topBar removeFromSuperview];
+    [floatPiece removeFromSuperview];
+    [bottomBar removeFromSuperview];
+    [menuView removeFromSuperview];
+    [addPiece removeFromSuperview];
+    [alertView removeFromSuperview];
+    
+    [score removeFromSuperview];
+    [level removeFromSuperview];
+    [nextScore removeFromSuperview];
+    
+    [scoreBox removeFromSuperview];
+    [levelBox removeFromSuperview];
+    [nextScore removeFromSuperview];
+    
+    [scoreLabel removeFromSuperview];
+    [levelLabel removeFromSuperview];
+    [nextScoreLabel removeFromSuperview];
+    [levelBackgroundPiece removeFromSuperview];
+    
+    [floatScore removeFromSuperview];
+    [bombPiece removeFromSuperview];
+    
+    [piecesToAnimate removeAllObjects];
+    
     topBar = nil;
     floatPiece = nil;
     bottomBar = nil;
@@ -783,6 +804,9 @@
     
     [animationPieces deconstruct];
     animationPieces = nil;
+    
+    [animations deconstruct];
+    animations = nil;
 }
 
 @end

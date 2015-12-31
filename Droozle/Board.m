@@ -294,29 +294,6 @@
     }
 }
 
-- (void)deconstruct {
-    
-    Space* space;
-    
-    for(int i=0; i<dimx; i++) {
-        
-        space = rowTypes[i];
-        [space deconstruct];
-    
-        for(int j=0; j<dimy; j++) {
-            space = spaces[i][j];
-            [space deconstruct];
-        }
-    }
-    
-    [spaces removeAllObjects];
-    
-    spaces = nil;
-    
-    [tileImages deconstruct];
-    tileImages = nil;
-}
-
 - (BOOL)shiftRowsUp {
 
     if([self topRowOccupied])
@@ -566,6 +543,33 @@
             space.backPiece.hidden = YES;
         }
     }
+}
+
+- (void)deconstruct {
+    
+    Space* space;
+    
+    for(int i=0; i<dimx; i++) {
+        
+        space = rowTypes[i];
+        [space deconstruct];
+        
+        for(int j=0; j<dimy; j++) {
+            space = spaces[i][j];
+            [space deconstruct];
+        }
+    }
+    
+    [spaces removeAllObjects];
+    [rowTypes removeAllObjects];
+    [rows removeAllObjects];
+    
+    spaces = nil;
+    rowTypes = nil;
+    rows = nil;
+    
+    [tileImages deconstruct];
+    tileImages = nil;
 }
 
 @end

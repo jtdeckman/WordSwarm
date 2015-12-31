@@ -169,7 +169,19 @@
                     [display animateScore:newScore];
                     [display makePiecesFlash:NO :0.4];
                     
-                    [self performSelector:@selector(eliminateRowFromBoard:) withObject:touchedSpace afterDelay:0.4];
+                    if([word length] > 2 ) {//board.dimy) {
+                        
+                        int bonusScore = FULL_WORD_BONUS*gamePlay.gameData.level;
+                        
+                        [display.animations animateTextBox1:0.8f :0.4*self.view.frame.size.height :0.4f
+                                                                 :[NSString stringWithFormat:@"Full Word Bonus! +%d", bonusScore]];
+                        
+                        NSNumber *newScore = [NSNumber numberWithInt:bonusScore];
+                        
+                        [self performSelector:@selector(updateGameScoreAfterDelay:) withObject:newScore afterDelay:1.2f];
+                    }
+                    
+                    [self performSelector:@selector(eliminateRowFromBoard:) withObject:touchedSpace afterDelay:1.2f];
                 }
                 
                 else {
@@ -451,6 +463,7 @@
     gameTimer = [NSTimer scheduledTimerWithTimeInterval:1/1 target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
     
     display.gamePlay = gamePlay;
+    
   //  display.addPiece.text = @"";
     
     [display updateScore];
@@ -467,6 +480,8 @@
     [display resetAnimatedPieces];
     
     [board eliminateRow:space.iind];
+    
+    [display updateScore];
     
     animating = NO;
 }
@@ -503,6 +518,12 @@
 
 - (void)saveDefaults {
     
+}
+
+- (void)updateGameScoreAfterDelay:(NSNumber*)newScore {
+
+    [gamePlay updateScore:(int)[newScore integerValue]];
+    [display updateScore];
 }
 
 - (void)setUpForNextLevel {

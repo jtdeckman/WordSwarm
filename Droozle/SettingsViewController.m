@@ -221,6 +221,17 @@
 
 - (void)deconstruct {
     
+ /* [playModeBox removeFromSuperview];
+    [difficultyBox removeFromSuperview];
+    
+    [playModeLabel removeFromSuperview];
+    [difficultyLabel removeFromSuperview];
+
+    [playModeControl removeFromSuperview];
+    [difficultyControl removeFromSuperview];
+
+    [acceptButton removeFromSuperview]; */
+    
     acceptButton = nil;
     
     playModeBox = nil;

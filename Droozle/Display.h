@@ -13,6 +13,7 @@
 #import "MenuView.h"
 #import "GamePlay.h"
 #import "AnimationPieces.h"
+#import "Animations.h"
 
 @interface Display : NSObject {
     
@@ -42,9 +43,7 @@
     
     UILabel *floatScore;
     UILabel *bombPiece;
-    UILabel *bonusLabel1;
-    UILabel *bonusLabel2;
-    
+       
     UIImage *floatBackImage;
     
     UIImageView *menuBar;
@@ -64,6 +63,7 @@
     NSMutableArray *piecesToAnimate;
     
     AnimationPieces *animationPieces;
+    Animations *animations;
     
     Colors *colors;
 }
@@ -82,6 +82,8 @@
 @property(nonatomic, strong) UIImageView *menuBar;
 
 @property(nonatomic, strong) NSMutableArray *piecesToAnimate;
+
+@property(nonatomic, strong) Animations *animations;
 
 - (void)initDisplay:(CGRect)viewFrame :(UIViewController*)rootViewCont;
 - (void)setUpColors;
@@ -111,5 +113,7 @@
 - (void)animateLevelTile:(CGFloat)duration;
 
 - (CGRect)initBoardView:(CGRect)viewFrame;
+
+- (void)addLabelToSuperView:(UILabel*)label;
 
 @end

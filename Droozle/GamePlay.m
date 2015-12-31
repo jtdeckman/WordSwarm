@@ -116,11 +116,6 @@
     return newScore;
 }
 
-- (void)deconstruct {
-    
-    [wordLogic deconstruct];
-}
-
 - (NSString*)getPointsForLevel:(uint)level {
 
     if(level >= [pointsForLevel count]) {
@@ -238,13 +233,17 @@
         return 4;
     else if(nrows < 4)
         return 12;
-   // else if(nrows == 3)
-   //     return 7;
- //   else if(nrows == 4)
-   //     return 12;
     
     return timeInterval;
 }
 
+- (void)deconstruct {
+    
+    [wordLogic deconstruct];
+    [pointsForLevel removeAllObjects];
+    
+    wordLogic = nil;
+    pointsForLevel = nil;
+}
 
 @end
