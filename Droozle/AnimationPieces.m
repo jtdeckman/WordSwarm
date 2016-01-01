@@ -8,6 +8,7 @@
 
 #import "AnimationPieces.h"
 #import <UIKIt/UIKit.h>
+#import "Constants.h"
 
 @implementation AnimationPieces
 
@@ -23,6 +24,16 @@
         
         piece = [[UILabel alloc] init];
         [pieces addObject:piece];
+        
+        piece.layer.cornerRadius = 10.0;
+        piece.clipsToBounds = YES;
+        piece.opaque = NO;
+        piece.layer.borderWidth = 0.0;
+        piece.alpha = 1.0;
+        piece.layer.borderColor = [[UIColor clearColor] CGColor];
+        piece.text = @"";
+        
+        [piece setTextAlignment:NSTextAlignmentCenter];
     }
 }
 

@@ -66,7 +66,8 @@
 - (BOOL)isCategoryRow:(uint)row;
 
 - (void)eliminateRow:(uint)row;
-- (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row;
+- (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row :(BOOL)getCatPiece;
+
 - (void)getAllVisiblePieces:(NSMutableArray*)allPieces;
 
 - (NSString*)makeWordFromRow: (uint)row;
@@ -74,5 +75,6 @@
 - (void)hideBackPiecesInRow:(uint)row;
 - (void)unHideBackPiecesInRow:(uint)row;
 - (void)hideAllBackPieces;
+- (void)unHidePiecesInRow:(uint)row;
 
 @end

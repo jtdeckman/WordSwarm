@@ -47,12 +47,22 @@
 
 - (void)gameLoop {
     
-    if(gamePlay.gameState == gameRunning) {
+    if(gamePlay.gameState == gameRunning && !animating) {
         
         uint nRowsOcc = [board numRowsOccupied];
         uint timeInterval;
         
-        if(nRowsOcc < 1) [gamePlay rowOfValues];
+        if(nRowsOcc < 1) {
+            
+            animating = YES;
+            [gamePlay rowOfValues];
+            
+            [board getPiecesInRow:display.piecesToAnimate :bottomRow :YES];
+            [board hideBackPiecesInRow:bottomRow];
+            [display animatePiecesToBottomRow:1.0f];
+            
+            [self performSelector:@selector(rowAddAnimatingOff) withObject:nil afterDelay:1.1f];
+        }
         
         else {
             
@@ -67,8 +77,21 @@
                     gamePlay.gameState = gameOver;
                 }
             
-                else
+                else {
+                    
                     [gamePlay rowOfValues];
+                    
+                    animating = YES;
+                    [gamePlay rowOfValues];
+                    
+                    [board getPiecesInRow:display.piecesToAnimate :bottomRow :YES];
+                    [board hideBackPiecesInRow:bottomRow];
+               
+                    [display animatePiecesToBottomRow:1.0f];
+                    
+                    [self performSelector:@selector(rowAddAnimatingOff) withObject:nil afterDelay:1.1f];
+                   
+                }
             }
         }
         
@@ -144,7 +167,7 @@
         }
     }
     
-    else if(gamePlay.gameState == gameRunning) {
+    else if(gamePlay.gameState == gameRunning && !animating) {
         
         if(touch.view == display.boardView && gamePlay.placeMode == freeState) {
             
@@ -165,7 +188,7 @@
                     
                     CGFloat flashDuration = 0.4f;
                     
-                    [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind];
+                    [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind :YES];
                     [board hideBackPiecesInRow:touchedSpace.iind];
                     
                     [display animateScore:newScore];
@@ -195,7 +218,7 @@
                     
                     int newScore = [gamePlay updateScore:-1.0*[board sumRow:touchedSpace.iind :YES]];
                      
-                    [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind];
+                    [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind :YES];
                     
                     [display animateScore:newScore];
                     [display makePiecesFlash:YES :0.4];
@@ -417,7 +440,7 @@
                 
                 int newScore = [gamePlay updateScore:[board sumRow:selectedSpace.iind :NO]];
                 
-                [board getPiecesInRow:display.piecesToAnimate :selectedSpace.iind];
+                [board getPiecesInRow:display.piecesToAnimate :selectedSpace.iind :YES];
                 [board hideBackPiecesInRow:selectedSpace.iind];
                 
                 [display makePiecesFlash:NO :0.4];
@@ -495,15 +518,15 @@
     [display updateScore];
     [display updateLevelValues];
     
-   // [gamePlay rowOfValues];
-    
     animating = NO;
     prevViewSettings = NO;
+    
+    bottomRow = board.dimx - 1;
 }
 
 - (void)eliminateRowFromBoard:(Space*)space {
     
-    [display resetAnimatedPieces];
+  //  [display resetAnimatedPieces];
     
     [board eliminateRow:space.iind];
     
@@ -514,7 +537,7 @@
 
 - (void)resetRow {
 
-    [display resetAnimatedPieces];
+  //  [display resetAnimatedPieces];
     [board unHideBackPiecesInRow:touchedSpace.iind];
     
     animating = NO;
@@ -556,12 +579,18 @@
     
     animating = NO;
     
-    [display resetAnimatedPieces];
+   // [display resetAnimatedPieces];
     [board clearBoard];
     
     [display updateLevelValues];
     
     gamePlay.gameState = gameRunning;
+}
+
+- (void)rowAddAnimatingOff {
+
+    [board unHidePiecesInRow:bottomRow];
+    animating = NO;
 }
 
 @end

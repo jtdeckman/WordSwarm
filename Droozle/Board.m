@@ -491,6 +491,19 @@
     }
 }
 
+- (void)unHidePiecesInRow:(uint)row {
+    
+    Space *space;
+    
+    for(int j=0; j<dimy; j++) {
+        
+        space = spaces[row][j];
+        space.piece.hidden = NO;
+        space.pointsLabel.hidden = NO;
+    }
+
+}
+
 - (void)hideBackPiecesInRow:(uint)row {
     
     Space *space;
@@ -534,7 +547,7 @@
     }
 }
 
-- (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row {
+- (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row :(BOOL)getCatPiece {
 
     Space *space;
     
@@ -547,9 +560,11 @@
         [pieces addObject:space.piece];
     }
     
-    space = [rowTypes objectAtIndex:row];
-    
-    [pieces addObject:space.piece];
+    if(getCatPiece) {
+        
+        space = [rowTypes objectAtIndex:row];
+        [pieces addObject:space.piece];
+    }
 }
 
 - (void)getAllVisiblePieces:(NSMutableArray*)allPieces {

@@ -172,6 +172,66 @@
 
 - (void)makePiecesFlash:(BOOL)wrongWord :(CGFloat)duration {
     
+    UILabel *iPiece;
+    
+    CGFloat dur2 = duration/2.0;
+    
+    __block UILabel *movePiece;
+    
+    for(uint i=0; i<[piecesToAnimate count]; i++) {
+        
+        movePiece = [animationPieces.pieces objectAtIndex:i];
+        
+        iPiece = [piecesToAnimate objectAtIndex:i];
+        iPiece.hidden = YES;
+        
+        if(!wrongWord)
+            movePiece.backgroundColor = [UIColor whiteColor];
+        else
+            movePiece.backgroundColor = [UIColor colorWithRed:colors.redFlashColor.red
+                                                        green:colors.redFlashColor.green
+                                                         blue:colors.redFlashColor.blue alpha:0.8f];
+        movePiece.hidden = NO;
+        movePiece.alpha = 0.8f;
+        
+        [rootView addSubview:movePiece];
+    }
+    
+   [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+       for(int i=0; i<[piecesToAnimate count]; i++) {
+            movePiece = [animationPieces.pieces objectAtIndex:i];
+            movePiece.alpha = 0.2;
+       }
+       
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+            for(int i=0; i<[piecesToAnimate count]; i++) {
+                
+                movePiece = [animationPieces.pieces objectAtIndex:i];
+                movePiece.alpha = 0.8;
+            }
+            
+        } completion:^(BOOL finished) {
+            
+            for(int i=0; i<[piecesToAnimate count]; i++) {
+                
+                movePiece = [animationPieces.pieces objectAtIndex:i];
+                movePiece.alpha = 1.0;
+                movePiece.hidden = YES;
+                [movePiece removeFromSuperview];
+                
+                ((UILabel*)piecesToAnimate[i]).hidden = NO;
+            }
+        }];
+    } ];
+}
+
+/*- (void)makePiecesFlash:(BOOL)wrongWord :(CGFloat)duration {
+    
     NSArray *pieces = [[NSArray alloc] initWithArray:piecesToAnimate];
     
     UILabel *savedPiece, *iPiece;
@@ -179,7 +239,7 @@
     CGFloat dur2 = duration/2.0;
     
     for(uint i=0; i<[pieces count]; i++) {
-    
+        
         savedPiece = [animationPieces.pieces objectAtIndex:i];
         iPiece = [pieces objectAtIndex:i];
         
@@ -195,7 +255,7 @@
         iPiece.alpha = 0.8;
     }
     
-   [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
         
         for(UILabel* piece in pieces)
             piece.alpha = 0.0;
@@ -210,7 +270,7 @@
             
         } completion:nil];
     }];
-}
+} */
 
 - (void)resetAnimatedPieces {
     
@@ -309,6 +369,65 @@
     }];
 }
 
+- (void)animatePiecesToBottomRow:(CGFloat)duration {
+    
+    UILabel *iPiece;
+
+    __block UILabel *movePiece;
+    
+    CGRect startFrm[[piecesToAnimate count]];
+    
+    for(uint i=0; i<[piecesToAnimate count]; i++) {
+        
+        movePiece = [animationPieces.pieces objectAtIndex:i];
+       
+        iPiece = [piecesToAnimate objectAtIndex:i];
+        iPiece.hidden = YES;
+        
+        startFrm[i] = iPiece.frame;
+        startFrm[i].origin.y += iPiece.frame.size.height;
+         
+        movePiece.frame = startFrm[i];
+         
+        movePiece.backgroundColor = iPiece.backgroundColor;
+        movePiece.alpha = iPiece.alpha;
+         
+        movePiece.text = iPiece.text;
+        movePiece.textColor = iPiece.textColor;
+        movePiece.font = iPiece.font;
+         
+        movePiece.hidden = NO;
+         
+        movePiece.alpha = 0.2f;
+         
+        [rootView addSubview:movePiece];
+    }
+     
+    [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+     
+        for(uint i=0; i<[piecesToAnimate count]; i++) {
+     
+            movePiece = animationPieces.pieces[i];
+            movePiece.frame = ((UILabel*)piecesToAnimate[i]).frame;
+            movePiece.alpha = 1.0;
+        }
+     
+     
+     } completion:^(BOOL finished) {
+     
+         for(uint i=0; i<[piecesToAnimate count]; i++) {
+     
+             movePiece = animationPieces.pieces[i];
+             movePiece.hidden = YES;
+             [movePiece removeFromSuperview];
+             movePiece.text = @"";
+             
+             ((UILabel*)piecesToAnimate[i]).hidden = NO;
+         }
+     
+    }];
+}
+
 - (void)initDisplay:(CGRect)viewFrame : (UIViewController*)rootViewCont {
     
     CGRect frm;
@@ -371,7 +490,12 @@
     [rootView addSubview:menuView];
     [rootView bringSubviewToFront:menuView];
     
+    frm = boardView.frame;
+    frm.origin.x += 0.2*topBar.frame.size.height;
+    frm.size.height -= 0.2*topBar.frame.size.height;
+    
     alertView = [[UIView alloc] initWithFrame:boardView.frame];
+    
     alertView.backgroundColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:0.75];
     
     [rootView addSubview:alertView];

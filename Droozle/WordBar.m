@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "Constants.h"
 
-#define BOX_SPACING_FACT 0.125
+#define BOX_SPACING_FACT 0.15
 
 @implementation WordBar
 
@@ -66,7 +66,7 @@
         [letters addObject:letterLabel];
 
         letterLabel.hidden = NO;
-        letterLabel.layer.cornerRadius = 4.0;
+        letterLabel.layer.cornerRadius = 7.0;
         letterLabel.clipsToBounds = YES;
         letterLabel.opaque = NO;
         
@@ -95,7 +95,7 @@
     catLabel = [[UILabel alloc] initWithFrame:frm];
     
     catLabel.hidden = NO;
-    catLabel.layer.cornerRadius = 4.0;
+    catLabel.layer.cornerRadius = 7.0;
     catLabel.clipsToBounds = YES;
     catLabel.opaque = NO;
     

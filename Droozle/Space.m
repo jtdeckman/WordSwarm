@@ -111,13 +111,20 @@
     if(isRefPiece) {
         
         [piece setFont:[UIFont fontWithName:@"Arial" size:0.6*FONT_FACT*spaceFrame.size.width]];
-        piece.backgroundColor = [UIColor colorWithPatternImage:p1Img];
+        
+        if(!isOccupied)
+            piece.backgroundColor = [UIColor clearColor];
+        else
+            piece.backgroundColor = [UIColor colorWithPatternImage:p1Img];
         
         backPiece = nil;
     }
     else {
         
-        piece.backgroundColor = bckImg;
+        if(!isOccupied)
+            piece.backgroundColor = [UIColor clearColor];
+        else
+            piece.backgroundColor = bckImg;
         
         if(isOccupied)
             pointsLabel.hidden = NO;

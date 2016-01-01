@@ -119,6 +119,7 @@
 
 - (void)animateScore:(int)addedPoints;
 - (void)animateLevelTile:(CGFloat)duration;
+- (void)animatePiecesToBottomRow:(CGFloat)duration;
 
 - (CGRect)initBoardView:(CGRect)viewFrame;
 
