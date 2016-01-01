@@ -185,6 +185,8 @@
         iPiece = [piecesToAnimate objectAtIndex:i];
         iPiece.hidden = YES;
         
+        movePiece.frame = iPiece.frame;
+        
         if(!wrongWord)
             movePiece.backgroundColor = [UIColor whiteColor];
         else
@@ -492,7 +494,7 @@
     
     frm = boardView.frame;
     frm.origin.x += 0.2*topBar.frame.size.height;
-    frm.size.height -= 0.2*topBar.frame.size.height;
+    frm.size.height -= 0.4*topBar.frame.size.height;
     
     alertView = [[UIView alloc] initWithFrame:boardView.frame];
     

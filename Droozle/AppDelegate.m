@@ -58,7 +58,7 @@
     
     BOOL initialized = [defaults boolForKey:@"initialized"];
     
-    if(!initialized) {
+    if(initialized) {
         
         [defaults setInteger:1 forKey:@"difficulty"];
         [defaults setInteger:0 forKey:@"gamePlay"];

@@ -122,10 +122,10 @@
    // [self addLetterToBox:@"E"];
    // [self addLetterToBox:@"A"];
    // [self addLetterToBox:@"T"];
-    [self addLetterToBox:@"S"];
-    [self addLetterToBox:@"H"];
-    [self addLetterToBox:@"I"];
-    [self addLetterToBox:@"T"];
+    [self addLetterToBox:@"N"];
+    [self addLetterToBox:@"C"];
+    [self addLetterToBox:@"Z"];
+    [self addLetterToBox:@"A"];
     
     NSLog(@"%@",[self makeWordFromLetters]);
 }

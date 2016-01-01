@@ -569,14 +569,24 @@
 
 - (void)getAllVisiblePieces:(NSMutableArray*)allPieces {
 
+    Space *space;
+    
     [allPieces removeAllObjects];
     
     for(int i=0; i<dimx; i++) {
         
-        [allPieces addObject:((Space*)rowTypes[i]).piece];
+        space = [rowTypes objectAtIndex:i];
         
-        for(int j=0; j<dimy; j++)
-            [allPieces addObject:((Space*)spaces[i][j]).piece];
+        if(space.isOccupied)
+            [allPieces addObject:space.piece];
+        
+        for(int j=0; j<dimy; j++) {
+            
+            space = spaces[i][j];
+            
+            if(space.isOccupied)
+                [allPieces addObject:((Space*)spaces[i][j]).piece];
+        }
     }
 }
 
