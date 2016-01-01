@@ -67,7 +67,7 @@
         [letterLabel setTextAlignment:NSTextAlignmentCenter];
         [letterLabel setFont:[UIFont fontWithName:@"Arial" size:1.35*FONT_FACT*frm.size.width]];
        // letterLabel .textColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
-        letterLabel.textColor = [UIColor whiteColor];
+        letterLabel.textColor = [UIColor blackColor];
         
         letterLabel.layer.borderWidth = 0.f;
         letterLabel.backgroundColor = letterBackColor;

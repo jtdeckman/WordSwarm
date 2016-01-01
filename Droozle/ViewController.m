@@ -89,7 +89,7 @@
         
             [display animateLevelTile:1.0];
         
-            [self performSelector:@selector(setUpForNextLevel) withObject:nil afterDelay:1.0];
+            [self performSelector:@selector(setUpForNextLevel) withObject:nil afterDelay:1.1];
         }
     }
 }
@@ -399,6 +399,8 @@
             Space *selectedSpace = [board getSpaceFromPoint:location];
             
             if(selectedSpace.isOccupied && !selectedSpace.refPiece) {
+                
+                animating = YES;
                 
                 int newScore = [gamePlay updateScore:[board sumRow:selectedSpace.iind]];
                 
