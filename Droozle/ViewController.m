@@ -448,7 +448,7 @@
                 [display makePiecesFlash:NO :0.4];
                 [display animateScore:newScore];
                 
-                [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:0.5];
+                [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:0.4];
                 
                 [display resetBombPiece:YES];
             }

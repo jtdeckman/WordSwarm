@@ -46,7 +46,7 @@
     backPiece.layer.cornerRadius = 10.0;
     backPiece.clipsToBounds = YES;
     backPiece.opaque = NO;
-    backPiece.layer.borderWidth = 3.0;
+    backPiece.layer.borderWidth = 4.0;
     backPiece.alpha = 1.0;
     
     backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:0.1 blue:0.1 alpha:0.8] CGColor];
@@ -62,8 +62,8 @@
     
     frm.size.width *= 0.225;
     frm.size.height = frm.size.width;
-    frm.origin.x = frm.origin.x + spaceFrm.size.width - 1.35*frm.size.width;
-    frm.origin.y = frm.origin.y + 0.225*frm.size.width;
+    frm.origin.x = frm.origin.x + spaceFrm.size.width - 1.375*frm.size.width;
+    frm.origin.y = frm.origin.y + 0.24*frm.size.width;
     
     pointsLabel = [[UILabel alloc] initWithFrame:frm];
     pointsLabel.backgroundColor = [UIColor clearColor];
@@ -112,8 +112,10 @@
         
         [piece setFont:[UIFont fontWithName:@"Arial" size:0.6*FONT_FACT*spaceFrame.size.width]];
         
-        if(!isOccupied)
+        if(!isOccupied) {
             piece.backgroundColor = [UIColor clearColor];
+            piece.text = @"";
+        }
         else
             piece.backgroundColor = [UIColor colorWithPatternImage:p1Img];
         
@@ -146,12 +148,11 @@
         if(backPieceVal == 2) {
          
             backPiece.hidden = NO;
-            backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.8] CGColor];
+            backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.8] CGColor];
             backPiece.textColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:0.8];
             backPiece.text = @"";
-            
+            backPiece.layer.borderWidth = 1.5f;
             backPiece.backgroundColor = [UIColor colorWithPatternImage:p2Img];
-            piece.alpha = 0.6;
         
         }
         
@@ -161,6 +162,10 @@
             backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.8] CGColor];
             backPiece.textColor = [UIColor clearColor];
             backPiece.backgroundColor = [UIColor colorWithPatternImage:p3Img];
+        }
+        
+        else if(backPieceVal == 7) {
+            
         }
         
         else {

@@ -150,7 +150,10 @@
 
     CGRect frm = boardView.frame;
     
-    frm.origin.y += 0.025*frm.origin.y;
+    frm.origin.y -= wordBar.barBackground.frame.size.height;
+    frm.size.height += wordBar.barBackground.frame.size.height;
+    
+  //  frm.origin.y += 0.025*frm.origin.y;
     
     alertView.hidden = NO;
     alertView.alpha = alpha;
