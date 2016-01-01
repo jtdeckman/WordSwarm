@@ -14,12 +14,17 @@
     NSMutableArray *letters;
     
     UILabel *barBackground;
+    UILabel *catLabel;
+    
+    CGFloat xOffset;
 }
 
 @property (nonatomic,strong) NSMutableArray *letters;
-@property (nonatomic,strong) UILabel *barBackground;
 
-- (void)setUp:(uint)nLetters :(CGRect)frame;
+@property (nonatomic,strong) UILabel *barBackground;
+@property (nonatomic,strong) UILabel *catLabel;
+
+- (void)setUp:(uint)nLetters :(CGRect)frame :(CGFloat)offset :(UIView*)rootView;
 - (void)deconstruct;
 
 @end

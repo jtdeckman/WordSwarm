@@ -338,7 +338,6 @@
     [rootView addSubview:topBar];
     
     wordBar = [[WordBar alloc] init];
-    [wordBar setUp:7 :topBar.frame];
     
     frm = topBar.frame;
    // frm.size.height *= 1.17;
@@ -356,9 +355,12 @@
     extraBckgd = [[UILabel alloc] initWithFrame:tmpFrm];
     [rootView addSubview:extraBckgd]; */
 
-    frm.size.height = viewFrame.size.height - topBar.frame.size.height - wordBar.barBackground.frame.size.height - bottomBar.frame.size.height;
-    frm.origin.y = topBar.frame.size.height + wordBar.barBackground.frame.size.height;
+  //  frm.size.height = viewFrame.size.height - topBar.frame.size.height - wordBar.barBackground.frame.size.height - bottomBar.frame.size.height;
+  //  frm.origin.y = topBar.frame.size.height + wordBar.barBackground.frame.size.height;
     
+    frm.size.height = viewFrame.size.height - topOffset.size.height - bottomBar.frame.size.height;
+    frm.origin.y = topOffset.size.height; //topBar.frame.size.height + wordBar.barBackground.frame.size.height;
+
     boardView = [[UIView alloc] initWithFrame:frm];
     
     [rootView addSubview:boardView];
@@ -474,9 +476,8 @@
  
     topBar.layer.borderColor = [[UIColor clearColor] CGColor];
     
+    [wordBar setUp:7 :topBar.frame :scoreBox.frame.origin.x :rootView];
     wordBar.barBackground.backgroundColor = topBar.backgroundColor;
-    
-    [rootView addSubview:wordBar.barBackground];
     
     menuView.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.5];
     
@@ -833,6 +834,9 @@
     
     [animations deconstruct];
     animations = nil;
+    
+    [wordBar deconstruct];
+    wordBar = nil;
 }
 
 @end
