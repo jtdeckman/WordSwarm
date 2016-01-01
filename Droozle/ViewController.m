@@ -58,10 +58,11 @@
             [gamePlay rowOfValues];
             
             [board getPiecesInRow:display.piecesToAnimate :bottomRow :YES];
-            [board hideBackPiecesInRow:bottomRow];
-            [display animatePiecesToBottomRow:1.0f];
+          //  [board hideBackPiecesInRow:bottomRow];
+            [board hidePointsLabelInRow:bottomRow];
+            [display animatePiecesToBottomRow:0.7f];
             
-            [self performSelector:@selector(rowAddAnimatingOff) withObject:nil afterDelay:1.1f];
+            [self performSelector:@selector(rowAddAnimatingOff) withObject:nil afterDelay:0.8f];
         }
         
         else {
@@ -85,11 +86,12 @@
                     [gamePlay rowOfValues];
                     
                     [board getPiecesInRow:display.piecesToAnimate :bottomRow :YES];
-                    [board hideBackPiecesInRow:bottomRow];
+                  //  [board hideBackPiecesInRow:bottomRow];
+                    [board hidePointsLabelInRow:bottomRow];
                
-                    [display animatePiecesToBottomRow:1.0f];
+                    [display animatePiecesToBottomRow:0.7f];
                     
-                    [self performSelector:@selector(rowAddAnimatingOff) withObject:nil afterDelay:1.1f];
+                    [self performSelector:@selector(rowAddAnimatingOff) withObject:nil afterDelay:0.8f];
                    
                 }
             }
@@ -446,7 +448,7 @@
                 [display makePiecesFlash:NO :0.4];
                 [display animateScore:newScore];
                 
-                [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:0.4];
+                [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:0.5];
                 
                 [display resetBombPiece:YES];
             }
@@ -481,7 +483,7 @@
             [self.view addSubview:space.backPiece];
             [self.view addSubview:space.pointsLabel];
             
-            [self.view bringSubviewToFront:space.pointsLabel];
+          //  [self.view bringSubviewToFront:space.pointsLabel];
         }
     }
 }
@@ -583,6 +585,7 @@
     [board clearBoard];
     
     [display updateLevelValues];
+    [display resetForNextLevel];
     
     gamePlay.gameState = gameRunning;
 }

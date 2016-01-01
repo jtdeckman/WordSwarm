@@ -164,7 +164,7 @@
     
     int pVal = [wLPointer pointValueForLetter:val];
     
-    uint rnum = arc4random() % 25;
+    uint rnum = arc4random() % 20;
     
     if(pVal < 0) pVal = 0;
     
@@ -172,9 +172,9 @@
     space.value = val;
     space.pointValue = pVal;
     
-    if(rnum == 7 || rnum == 19)
+    if(rnum == 5 || rnum == 11)
         space.backPieceVal = 2;
-    else if(rnum == 25)
+    else if(rnum == 17)
         space.backPieceVal = 3;
     else
         space.backPieceVal = 1;
@@ -297,6 +297,12 @@
             space.backPiece.hidden = YES;
             
             space.pointsLabel.hidden = YES;
+            space.pointsLabel.text = @"";
+            
+            space.piece.text = @"";
+            space.value = @"";
+            
+            space.pointValue = 0;
         }
     }
 }
@@ -504,7 +510,7 @@
 
 }
 
-- (void)hideBackPiecesInRow:(uint)row {
+- (void)hideBackPiecesInRow:(uint)row { 
     
     Space *space;
     
@@ -512,6 +518,18 @@
         
         space = spaces[row][j];
         space.backPiece.hidden = YES;
+        
+        space.pointsLabel.hidden = YES;
+    }
+}
+
+- (void)hidePointsLabelInRow:(uint)row {
+
+    Space *space;
+    
+    for(int j=0; j<dimy; j++) {
+        
+        space = spaces[row][j];
         space.pointsLabel.hidden = YES;
     }
 }

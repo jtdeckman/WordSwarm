@@ -121,13 +121,17 @@
     }
     else {
         
-        if(!isOccupied)
+        if(!isOccupied) {
+            
             piece.backgroundColor = [UIColor clearColor];
-        else
+            value = @"";
+            pointValue = 0;
+            pointsLabel.hidden = YES;
+        }
+        else {
             piece.backgroundColor = bckImg;
-        
-        if(isOccupied)
             pointsLabel.hidden = NO;
+        }
         
         if(pointValue < 0)
             pointsLabel.textColor = [UIColor colorWithRed:0.8 green:0.3 blue:0.2 alpha:1.0];
@@ -143,8 +147,11 @@
          
             backPiece.hidden = NO;
             backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.8] CGColor];
-            backPiece.textColor = [UIColor clearColor];
+            backPiece.textColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:0.8];
+            backPiece.text = @"";
+            
             backPiece.backgroundColor = [UIColor colorWithPatternImage:p2Img];
+            piece.alpha = 0.6;
         
         }
         
@@ -160,6 +167,7 @@
             
             backPiece.hidden = YES;
             backPieceVal = 1;
+            piece.alpha = 1.0;
         }
     }
     

@@ -60,7 +60,7 @@
     
     if(initialized) {
         
-        [defaults setInteger:1 forKey:@"difficulty"];
+        [defaults setInteger:0 forKey:@"difficulty"];
         [defaults setInteger:0 forKey:@"gamePlay"];
         
         [defaults setInteger:0 forKey:@"highScore"];

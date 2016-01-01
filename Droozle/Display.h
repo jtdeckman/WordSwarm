@@ -96,6 +96,7 @@
 - (void)initDisplay:(CGRect)viewFrame :(UIViewController*)rootViewCont;
 - (void)setUpColors;
 - (void)setUpFloatPieces:(CGRect)pcFrm;
+- (void)resetForNextLevel;
 
 - (void)changeFloatPieceLoc:(CGPoint)newLoc;
 - (void)configureFloatPiece:(Space*)space;

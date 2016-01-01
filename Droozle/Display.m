@@ -148,9 +148,14 @@
 
 -(void)unhideAlertViewWithAlpha:(CGFloat)alpha {
 
+    CGRect frm = boardView.frame;
+    
+    frm.origin.y += 0.025*frm.origin.y;
+    
     alertView.hidden = NO;
     alertView.alpha = alpha;
-    
+    alertView.frame = frm;
+   
     [rootView sendSubviewToBack:alertView];
 }
 
@@ -230,6 +235,12 @@
             }
         }];
     } ];
+}
+
+- (void)resetForNextLevel {
+
+    bombPiece.frame = baseBombPiece;
+    floatPiece.hidden = YES;
 }
 
 /*- (void)makePiecesFlash:(BOOL)wrongWord :(CGFloat)duration {
@@ -493,8 +504,8 @@
     [rootView bringSubviewToFront:menuView];
     
     frm = boardView.frame;
-    frm.origin.x += 0.2*topBar.frame.size.height;
-    frm.size.height -= 0.4*topBar.frame.size.height;
+    frm.origin.x = topBar.frame.size.height + topOffset.size.height;
+    frm.size.height = rootView.frame.size.height - topBar.frame.size.height - topOffset.size.height - bottomBar.frame.size.height;
     
     alertView = [[UIView alloc] initWithFrame:boardView.frame];
     
@@ -881,6 +892,8 @@
     floatScore.backgroundColor = [UIColor clearColor];
     
     [self setUpAnimations];
+    
+    [rootView sendSubviewToBack:alertView];
 }
 
 - (void)addLabelToSuperView:(UILabel*)label {
