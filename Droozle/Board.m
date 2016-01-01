@@ -164,7 +164,7 @@
     
     int pVal = [wLPointer pointValueForLetter:val];
     
-    uint rnum = arc4random() % 30;
+    uint rnum = arc4random() % 25;
     
     if(pVal < 0) pVal = 0;
     

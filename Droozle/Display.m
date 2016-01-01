@@ -473,7 +473,7 @@
     topBar.layer.borderColor = [[UIColor clearColor] CGColor];
     
     [wordBar setUp:7 :topBar.frame :scoreBox.frame.origin.x :rootView];
-    wordBar.barBackground.backgroundColor = topBar.backgroundColor;
+    wordBar.barBackground.backgroundColor = [UIColor clearColor];//topBar.backgroundColor;
     
     menuView.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.5];
     

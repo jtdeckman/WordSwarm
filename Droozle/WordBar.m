@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "Constants.h"
 
-#define BOX_SPACING_FACT 0.1
+#define BOX_SPACING_FACT 0.125
 
 @implementation WordBar
 
@@ -31,7 +31,7 @@
     barBackground = [[UILabel alloc] initWithFrame:frm];
     
     barBackground.hidden = NO;
-    barBackground.layer.borderColor = [[UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.8] CGColor];
+    barBackground.layer.borderColor = [[UIColor clearColor] CGColor];//[[UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.8] CGColor];
     
     barBackground.layer.cornerRadius = 0.0;
     barBackground.clipsToBounds = YES;
@@ -47,12 +47,12 @@
 
     frm.size.height *= 0.9;
     frm.size.width = frm.size.height;
-    frm.origin.x = xOffset + 0.25*offset;
-    frm.origin.y -= 0.1*frm.size.height;
+    frm.origin.x = xOffset;// + 0.15*offset;
+    frm.origin.y += 0.2*frm.size.height;// -= 0.1*frm.size.height;
     
     UIGraphicsBeginImageContext(frm.size);
     
-    UIImage *tmpImage = [UIImage imageNamed:@"p4.png"];
+    UIImage *tmpImage = [UIImage imageNamed:@"p1.png"];
     [tmpImage drawInRect:CGRectMake(0, 0, frm.size.width, frm.size.height)];
     tmpImage = UIGraphicsGetImageFromCurrentImageContext();
 
@@ -76,7 +76,7 @@
         
         [self makeLetterSquareUnOccupied:i];
         
-        letterLabel.layer.borderWidth = 1.5f;
+        letterLabel.layer.borderWidth = 0.0f;
         
        //letterBackColor;
 
@@ -103,7 +103,7 @@
     [catLabel setFont:[UIFont fontWithName:@"Arial" size:0.75*FONT_FACT*frm.size.width]];
     catLabel.textColor = [UIColor whiteColor];//[UIColor colorWithRed:0.9 green:0.7 blue:0.1 alpha:0.75];
     
-    catLabel.layer.borderColor = [[UIColor colorWithRed:0.7f green: 0.7f blue:0.7f alpha:0.8f] CGColor];
+    catLabel.layer.borderColor = [[UIColor clearColor] CGColor];//[[UIColor colorWithRed:0.7f green: 0.7f blue:0.7f alpha:0.8f] CGColor];
     
     [rootView addSubview:catLabel];
     
@@ -111,17 +111,17 @@
     
     UIGraphicsBeginImageContext(catLabel.frame.size);
     
-    tmpImage = [UIImage imageNamed:@"p1.png"];
+    tmpImage = [UIImage imageNamed:@"p4.png"];
     [tmpImage drawInRect:CGRectMake(0, 0, catLabel.frame.size.width, catLabel.frame.size.height)];
     tmpImage = UIGraphicsGetImageFromCurrentImageContext();
     
     catLabel.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
     
-    catLabel.text = @"Word";
+    catLabel.text = @"Verb";
     
-    [self addLetterToBox:@"E"];
-    [self addLetterToBox:@"A"];
-    [self addLetterToBox:@"T"];
+   // [self addLetterToBox:@"E"];
+   // [self addLetterToBox:@"A"];
+   // [self addLetterToBox:@"T"];
     [self addLetterToBox:@"S"];
     [self addLetterToBox:@"H"];
     [self addLetterToBox:@"I"];
@@ -147,8 +147,8 @@
     
     UILabel *square = letters[squareNum];
     
-    square.backgroundColor = [UIColor clearColor];
-    square.layer.borderColor = [[UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:0.8] CGColor];
+    square.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.35];//[UIColor clearColor];
+ //   square.layer.borderColor = [[UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:0.8] CGColor];
     
     square.text = @"";
 }
