@@ -161,7 +161,7 @@
                 
                 if([gamePlay checkWord:word :type]) {
                     
-                    int newScore = [gamePlay updateScore:[board sumRow:touchedSpace.iind]];
+                    int newScore = [gamePlay updateScore:[board sumRow:touchedSpace.iind :NO]];
                     
                     CGFloat flashDuration = 0.4f;
                     
@@ -193,8 +193,8 @@
                 
                 else {
                     
-                    int newScore = [gamePlay updateScore:-1.0*[board sumRow:touchedSpace.iind]];
-                    
+                    int newScore = [gamePlay updateScore:-1.0*[board sumRow:touchedSpace.iind :YES]];
+                     
                     [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind];
                     
                     [display animateScore:newScore];
@@ -328,15 +328,26 @@
                 if(selectedSpace.isOccupied) {
                     
                     NSString *val = selectedSpace.value;
-                    uint pVal = selectedSpace.pointValue;
                     
+                    int pVal = selectedSpace.pointValue;
+                
                     tmpColor = selectedSpace.piece.backgroundColor;
                     
                     selectedSpace.piece.backgroundColor = touchedSpace.piece.backgroundColor;
                     selectedSpace.pointValue = touchedSpace.pointValue;
                     
+                    if(touchedSpace.pointValue == 0)
+                        selectedSpace.pointsLabel.text = @"";
+                    else
+                        selectedSpace.pointsLabel.text = [NSString stringWithFormat:@"%d",touchedSpace.pointValue];
+                    
                     touchedSpace.pointValue = pVal;
                     touchedSpace.piece.backgroundColor = tmpColor;
+                    
+                    if(pVal == 0)
+                        touchedSpace.pointsLabel.text = @"";
+                    else
+                        touchedSpace.pointsLabel.text = [NSString stringWithFormat:@"%d",pVal];
                     
                     selectedSpace.value = touchedSpace.value;
                     selectedSpace.piece.text = selectedSpace.value;
@@ -348,7 +359,7 @@
                         [board removePiece:touchedSpace];
                 }
                 
-                else if([selectedSpace isNearestNearestNbrOf:touchedSpace]){
+             /*   else if([selectedSpace isNearestNearestNbrOf:touchedSpace]){
                     
                     selectedSpace.value = touchedSpace.value;
                     selectedSpace.piece.text = selectedSpace.value;
@@ -361,8 +372,8 @@
                     touchedSpace.value = @"";
                     touchedSpace.pointValue = 0;
                     
-                    //[board removePiece:touchedSpace];
-                }
+                    //[board removePiece:touchedSpace]; 
+                } */
             }
             
             display.floatPiece.hidden = YES;
@@ -380,7 +391,9 @@
                 selectedSpace.piece.text = display.addPiece.text;
                 
                 selectedSpace.piece.backgroundColor = display.addPiece.backgroundColor;
+                //selectedSpace.pointValue *= -1;
                 selectedSpace.pointValue = 0;
+                selectedSpace.pointsLabel.text = @"";//[NSString stringWithFormat:@"%d",selectedSpace.pointValue];
                 
                 display.addPiece.text = @"";
             }
@@ -402,7 +415,7 @@
                 
                 animating = YES;
                 
-                int newScore = [gamePlay updateScore:[board sumRow:selectedSpace.iind]];
+                int newScore = [gamePlay updateScore:[board sumRow:selectedSpace.iind :NO]];
                 
                 [board getPiecesInRow:display.piecesToAnimate :selectedSpace.iind];
                 [board hideBackPiecesInRow:selectedSpace.iind];
@@ -443,8 +456,9 @@
             
             [self.view addSubview:space.piece];
             [self.view addSubview:space.backPiece];
+            [self.view addSubview:space.pointsLabel];
             
-         // [self.view bringSubviewToFront:space.piece];
+            [self.view bringSubviewToFront:space.pointsLabel];
         }
     }
 }

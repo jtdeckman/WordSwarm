@@ -51,7 +51,7 @@
 
 - (int)nbrNearestOccupied: (Space*)space;
 - (int)nbrOccupied: (Space*)space;
-- (int)sumRow:(uint)row;
+- (int)sumRow:(uint)row :(BOOL)absValue;
 
 - (uint)numRowsOccupied;
 

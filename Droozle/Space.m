@@ -15,6 +15,7 @@
 @synthesize spaceFrame, iind, jind;
 @synthesize neighbors, nearestNbrs;
 @synthesize backPiece, backPieceVal;
+@synthesize pointsLabel;
 
 - (void)initSpace : (int)ival : (int)jval : (CGRect)spaceFrm : (CGRect)labelframe {
     
@@ -23,6 +24,8 @@
     iind = ival;
     jind = jval;
 
+    pointsTextColor = [UIColor whiteColor];
+    
     refPiece = NO;
     
     spaceFrame = spaceFrm;
@@ -55,6 +58,22 @@
     backPiece.backgroundColor = [UIColor clearColor];
     backPieceVal = 1;
     
+    CGRect frm = labelframe;
+    
+    frm.size.width *= 0.225;
+    frm.size.height = frm.size.width;
+    frm.origin.x = frm.origin.x + spaceFrm.size.width - 1.225*frm.size.width;
+    frm.origin.y = frm.origin.y + 0.225*frm.size.width;
+    
+    pointsLabel = [[UILabel alloc] initWithFrame:frm];
+    pointsLabel.backgroundColor = [UIColor clearColor];
+    pointsLabel.textColor = pointsTextColor;
+    pointsLabel.hidden = YES;
+    pointsLabel.text = @"";
+
+    [pointsLabel setTextAlignment:NSTextAlignmentCenter];
+    [pointsLabel setFont:[UIFont fontWithName:@"Helvetica" size:0.5*FONT_FACT*spaceFrame.size.width]];
+    
     nearestNbrs = [[NSMutableSet alloc] initWithCapacity:4];
     neighbors = [[NSMutableSet alloc] initWithCapacity:10];
    
@@ -86,7 +105,7 @@
 }
 
 - (void)configurePiece: (bool)isRefPiece :(UIColor*)bckImg {
-
+    
     refPiece = isRefPiece;
     
     if(isRefPiece) {
@@ -97,7 +116,21 @@
         backPiece = nil;
     }
     else {
+        
         piece.backgroundColor = bckImg;
+        
+        if(isOccupied)
+            pointsLabel.hidden = NO;
+        
+        if(pointValue < 0)
+            pointsLabel.textColor = [UIColor colorWithRed:0.8 green:0.3 blue:0.2 alpha:1.0];
+        else
+            pointsLabel.textColor = [UIColor whiteColor];
+        
+        if(pointValue == 0)
+            pointsLabel.text = @"";
+        else
+            pointsLabel.text = [NSString stringWithFormat:@"%d",pointValue];
         
         if(backPieceVal == 2) {
          

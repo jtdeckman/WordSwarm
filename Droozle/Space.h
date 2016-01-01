@@ -17,8 +17,8 @@
     int iind;
     int jind;
     
-    uint pointValue;
-    uint backPieceVal;
+    int pointValue;
+    int backPieceVal;
     
     BOOL isOccupied;
     BOOL refPiece;
@@ -30,10 +30,13 @@
     
     UILabel *piece;
     UILabel *backPiece;
+    UILabel *pointsLabel;
     
     UIImage *p1Img;
     UIImage *p2Img;
     UIImage *p3Img;
+    
+    UIColor *pointsTextColor;
     
     JDColor color;
 }
@@ -46,13 +49,14 @@
 @property (nonatomic) int iind;
 @property (nonatomic) int jind;
 
-@property (nonatomic) uint pointValue;
-@property (nonatomic) uint backPieceVal;
+@property (nonatomic) int pointValue;
+@property (nonatomic) int backPieceVal;
 
 @property (nonatomic) CGRect spaceFrame;
 
 @property (nonatomic, strong) UILabel *piece;
 @property (nonatomic, strong) UILabel *backPiece;
+@property (nonatomic, strong) UILabel *pointsLabel;
 
 @property (nonatomic, strong) NSMutableSet *neighbors;
 @property (nonatomic, strong) NSMutableSet *nearestNbrs;

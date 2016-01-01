@@ -22,6 +22,6 @@
 - (void)setUp:(CGSize)frm;
 - (void)deconstruct;
 
-- (UIColor*)backgroundImageForIndex:(uint)ind;
+- (UIColor*)backgroundImageForIndex:(int)ind;
 
 @end

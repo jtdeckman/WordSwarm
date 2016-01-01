@@ -96,7 +96,10 @@
 
 }
 
-- (UIColor*)backgroundImageForIndex:(uint)ind {
+- (UIColor*)backgroundImageForIndex:(int)ind {
+    
+    if(ind < 0)
+        return [images objectAtIndex:0];
     
     return [images objectAtIndex:ind];
 }

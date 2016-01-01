@@ -268,6 +268,11 @@
     
     space.isOccupied = NO;
     space.piece.hidden = YES;
+    
+    space.backPiece.hidden = YES;
+    space.backPieceVal = 1;
+    space.pointsLabel.hidden = YES;
+    
     space.value = @"-";
     space.pointValue = 0;
 }
@@ -290,6 +295,8 @@
             
             space.backPieceVal = 1;
             space.backPiece.hidden = YES;
+            
+            space.pointsLabel.hidden = YES;
         }
     }
 }
@@ -304,6 +311,7 @@
     for(int i=0; i<dimx-1; i++) {
      
         for(int j=0; j<dimy; j++) {
+            
             space = spaces[i][j];
             spaceBelow = spaces[i+1][j];
             space.value = spaceBelow.value;
@@ -311,6 +319,8 @@
             space.piece.hidden = spaceBelow.piece.hidden;
             space.pointValue = spaceBelow.pointValue;
             space.backPieceVal = spaceBelow.backPieceVal;
+            
+            space.pointsLabel.hidden = spaceBelow.pointsLabel.hidden;
             
             [space configurePiece:NO :[tileImages backgroundImageForIndex:space.pointValue]];
         }
@@ -321,6 +331,7 @@
         space.value = spaceBelow.value;
         space.isOccupied = spaceBelow.isOccupied;
         space.piece.hidden = spaceBelow.piece.hidden;
+        
         [space configurePiece:YES :nil];
     }
     
@@ -344,6 +355,7 @@
     for(int i=row; i>0; i--) {
         
         for(int j=0; j<dimy; j++) {
+            
             space = spaces[i][j];
             spaceAbove = spaces[i-1][j];
             space.value = spaceAbove.value;
@@ -351,6 +363,8 @@
             space.piece.hidden = spaceAbove.piece.hidden;
             space.pointValue = spaceAbove.pointValue;
             space.backPieceVal = spaceAbove.backPieceVal;
+            
+            space.pointsLabel.hidden = spaceAbove.pointsLabel.hidden;
             
             [space configurePiece:NO :[tileImages backgroundImageForIndex:space.pointValue]];
         }
@@ -395,7 +409,7 @@
     return word;
 }
 
-- (int)sumRow:(uint)row {
+- (int)sumRow:(uint)row :(BOOL)absValue {
 
     Space* space;
     
@@ -404,7 +418,11 @@
     for(int i=0; i<dimy; i++) {
         
         space = spaces[row][i];
-        sum += space.pointValue*space.backPieceVal;
+        
+        if(absValue)
+            sum += abs(space.pointValue*space.backPieceVal);
+        else
+            sum += space.pointValue*space.backPieceVal;
     }
     
     return sum;
@@ -442,6 +460,8 @@
             
             if(space.isOccupied) space.piece.hidden = YES;
             if(space.backPieceVal > 1) space.backPiece.hidden = YES;
+            
+            space.pointsLabel.hidden = YES;
         }
     }
 }
