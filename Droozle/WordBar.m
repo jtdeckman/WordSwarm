@@ -22,8 +22,11 @@
     
     xOffset = offset;
     
+    numLetters = nLetters;
+    letterPosition = 0;
+    
     frm.size.height *= WORD_BAR_FACT;
-    frm.origin.y = frame.size.height;//*1.0011;
+    frm.origin.y = frame.size.height;
     
     barBackground = [[UILabel alloc] initWithFrame:frm];
     
@@ -49,7 +52,7 @@
     
     UIGraphicsBeginImageContext(frm.size);
     
-    UIImage *tmpImage = [UIImage imageNamed:@"orangeSquare.png"];
+    UIImage *tmpImage = [UIImage imageNamed:@"p4.png"];
     [tmpImage drawInRect:CGRectMake(0, 0, frm.size.width, frm.size.height)];
     tmpImage = UIGraphicsGetImageFromCurrentImageContext();
 
@@ -59,6 +62,9 @@
         
         letterLabel = [[UILabel alloc] initWithFrame:frm];
         
+        [rootView addSubview:letterLabel];
+        [letters addObject:letterLabel];
+
         letterLabel.hidden = NO;
         letterLabel.layer.cornerRadius = 4.0;
         letterLabel.clipsToBounds = YES;
@@ -66,20 +72,17 @@
         
         [letterLabel setTextAlignment:NSTextAlignmentCenter];
         [letterLabel setFont:[UIFont fontWithName:@"Arial" size:1.35*FONT_FACT*frm.size.width]];
-       // letterLabel .textColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
         letterLabel.textColor = [UIColor blackColor];
         
-        letterLabel.layer.borderWidth = 0.f;
-        letterLabel.backgroundColor = letterBackColor;
-      // letterLabel.alpha = 0.75;
+        [self makeLetterSquareUnOccupied:i];
         
-        [rootView addSubview:letterLabel];
+        letterLabel.layer.borderWidth = 1.5f;
         
-        [letters addObject:letterLabel];
-        
+       //letterBackColor;
+
         frm.origin.x += frm.size.width + BOX_SPACING_FACT*xOffset;
         
-        letterLabel.text = @"Z";
+        letterLabel.text = @"";
     }
     
     letterLabel = [letters objectAtIndex:0];
@@ -108,13 +111,46 @@
     
     UIGraphicsBeginImageContext(catLabel.frame.size);
     
-    tmpImage = [UIImage imageNamed:@"redSquare.png"];
+    tmpImage = [UIImage imageNamed:@"p1.png"];
     [tmpImage drawInRect:CGRectMake(0, 0, catLabel.frame.size.width, catLabel.frame.size.height)];
     tmpImage = UIGraphicsGetImageFromCurrentImageContext();
     
     catLabel.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
     
     catLabel.text = @"Word";
+    
+    [self addLetterToBox:@"E"];
+    [self addLetterToBox:@"A"];
+    [self addLetterToBox:@"T"];
+    [self addLetterToBox:@"S"];
+    [self addLetterToBox:@"H"];
+    [self addLetterToBox:@"I"];
+    [self addLetterToBox:@"T"];
+    
+    NSLog(@"%@",[self makeWordFromLetters]);
+}
+
+- (void)addLetterToBox:(NSString*)letter {
+
+    UILabel *square = letters[letterPosition++];
+    
+    if(letterPosition >= numLetters)
+        letterPosition = 0;
+    
+    square.backgroundColor = letterBackColor;
+  //  square.layer.borderColor = [[UIColor clearColor] CGColor];
+    
+    square.text = letter;
+}
+
+- (void)makeLetterSquareUnOccupied:(uint)squareNum {
+    
+    UILabel *square = letters[squareNum];
+    
+    square.backgroundColor = [UIColor clearColor];
+    square.layer.borderColor = [[UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:0.8] CGColor];
+    
+    square.text = @"";
 }
 
 - (void)deconstruct {
@@ -140,4 +176,27 @@
     letterBackColor = nil;
 }
 
+- (void)clearLetters {
+    
+    for(uint i=0; i<numLetters; i++)
+        [self makeLetterSquareUnOccupied:i];
+}
+
+- (NSString*)makeWordFromLetters {
+
+    NSMutableString *word = [[NSMutableString alloc] initWithString:@""];
+    
+    UILabel *letter;
+    
+    for(uint i=0; i<[letters count]; i++) {
+        
+        letter = letters[i];
+        
+        [word appendString:letter.text];
+    }
+    
+    return word;
+}
+
 @end
+

@@ -223,14 +223,10 @@
         savedPiece = [animationPieces.pieces objectAtIndex:i];
         iPiece = [pieces objectAtIndex:i];
         
-        //iPiece.hidden = YES;
-        
         iPiece.frame = savedPiece.frame;
         iPiece.backgroundColor = savedPiece.backgroundColor;
         iPiece.alpha = savedPiece.alpha;
     }
-
- //   [self performSelector:@selector(hideFloatScore) withObject:nil afterDelay:0.5];
 }
 
 - (void)hideFloatScore {

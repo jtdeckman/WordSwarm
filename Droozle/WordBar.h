@@ -19,6 +19,9 @@
     CGFloat xOffset;
     
     UIColor *letterBackColor;
+    
+    uint letterPosition;
+    uint numLetters;
 }
 
 @property (nonatomic,strong) NSMutableArray *letters;
@@ -27,6 +30,11 @@
 @property (nonatomic,strong) UILabel *catLabel;
 
 - (void)setUp:(uint)nLetters :(CGRect)frame :(CGFloat)offset :(UIView*)rootView;
+- (void)addLetterToBox:(NSString*)letter;
+- (void)clearLetters;
+
+- (NSString*)makeWordFromLetters;
+
 - (void)deconstruct;
 
 @end

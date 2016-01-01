@@ -62,7 +62,7 @@
     
     frm.size.width *= 0.225;
     frm.size.height = frm.size.width;
-    frm.origin.x = frm.origin.x + spaceFrm.size.width - 1.225*frm.size.width;
+    frm.origin.x = frm.origin.x + spaceFrm.size.width - 1.35*frm.size.width;
     frm.origin.y = frm.origin.y + 0.225*frm.size.width;
     
     pointsLabel = [[UILabel alloc] initWithFrame:frm];

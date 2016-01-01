@@ -480,8 +480,56 @@
             
             space = spaces[i][j];
             
-            if(space.isOccupied) space.piece.hidden = NO;
+            if(space.isOccupied) {
+                
+                space.piece.hidden = NO;
+                space.pointsLabel.hidden = NO;
+            }
+            
             if(space.backPieceVal > 1) space.backPiece.hidden = NO;
+        }
+    }
+}
+
+- (void)hideBackPiecesInRow:(uint)row {
+    
+    Space *space;
+    
+    for(int j=0; j<dimy; j++) {
+        
+        space = spaces[row][j];
+        space.backPiece.hidden = YES;
+        space.pointsLabel.hidden = YES;
+    }
+}
+
+- (void)unHideBackPiecesInRow:(uint)row {
+    
+    Space *space;
+    
+    for(int j=0; j<dimy; j++) {
+        
+        space = spaces[row][j];
+        
+        if(space.backPieceVal > 1)
+            space.backPiece.hidden = NO;
+        
+        if(space.isOccupied)
+            space.pointsLabel.hidden = NO;
+    }
+}
+
+- (void)hideAllBackPieces {
+    
+    Space *space;
+    
+    for(int i=0; i<dimx; i++) {
+        
+        for(int j=0; j<dimy; j++) {
+            
+            space = spaces[i][j];
+            space.backPiece.hidden = YES;
+            space.pointsLabel.hidden = YES;
         }
     }
 }
@@ -525,44 +573,6 @@
         return NO;
     
     return YES;
-}
-
-- (void)hideBackPiecesInRow:(uint)row {
-
-    Space *space;
-    
-    for(int j=0; j<dimy; j++) {
-        
-        space = spaces[row][j];
-        space.backPiece.hidden = YES;
-    }
-}
-
-- (void)unHideBackPiecesInRow:(uint)row {
-
-    Space *space;
-    
-    for(int j=0; j<dimy; j++) {
-        
-        space = spaces[row][j];
-        
-        if(space.backPieceVal > 1)
-            space.backPiece.hidden = NO;
-    }
-}
-
-- (void)hideAllBackPieces {
-    
-    Space *space;
-    
-    for(int i=0; i<dimx; i++) {
-        
-        for(int j=0; j<dimy; j++) {
-            
-            space = spaces[i][j];
-            space.backPiece.hidden = YES;
-        }
-    }
 }
 
 - (void)deconstruct {
