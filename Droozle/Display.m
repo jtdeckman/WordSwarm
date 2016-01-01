@@ -157,13 +157,13 @@
 - (void)checkAlertView:(uint)nrows {
     
     if(nrows == gamePlay.dimx)
-        [self unhideAlertViewWithAlpha:0.8];//[display animateAlertView];
+        [self unhideAlertViewWithAlpha:0.7];//[display animateAlertView];
     
     else if(nrows == gamePlay.dimx - 1)
-        [self unhideAlertViewWithAlpha:0.6];
+        [self unhideAlertViewWithAlpha:0.4];
     
     else if(nrows == gamePlay.dimx - 2)
-        [self unhideAlertViewWithAlpha:0.5];
+        [self unhideAlertViewWithAlpha:0.3];
     
     else [self hideAlertView];
     

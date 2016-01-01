@@ -17,6 +17,8 @@
     UILabel *catLabel;
     
     CGFloat xOffset;
+    
+    UIColor *letterBackColor;
 }
 
 @property (nonatomic,strong) NSMutableArray *letters;

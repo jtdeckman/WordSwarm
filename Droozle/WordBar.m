@@ -47,7 +47,13 @@
     frm.origin.x = xOffset + 0.25*offset;
     frm.origin.y -= 0.1*frm.size.height;
     
-   // frm.origin.y = barBackground.frame.origin.y + (barBackground.frame.size.height - frm.size.height)/2.0;
+    UIGraphicsBeginImageContext(frm.size);
+    
+    UIImage *tmpImage = [UIImage imageNamed:@"orangeSquare.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, frm.size.width, frm.size.height)];
+    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
+
+    letterBackColor = [UIColor colorWithPatternImage:tmpImage];
     
     for(int i=0; i<nLetters; i++) {
         
@@ -59,20 +65,21 @@
         letterLabel.opaque = NO;
         
         [letterLabel setTextAlignment:NSTextAlignmentCenter];
-        [letterLabel setFont:[UIFont fontWithName:@"Arial" size:1.0*FONT_FACT*frm.size.width]];
+        [letterLabel setFont:[UIFont fontWithName:@"Arial" size:1.35*FONT_FACT*frm.size.width]];
+       // letterLabel .textColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+        letterLabel.textColor = [UIColor whiteColor];
         
-        letterLabel.layer.borderWidth = 2.f;
-     //   letterLabel.layer.borderColor = [[UIColor colorWithRed:0.75f green: 0.75f blue:0.75f alpha:0.5f] CGColor];
-        letterLabel.backgroundColor = [UIColor whiteColor];
+        letterLabel.layer.borderWidth = 0.f;
+        letterLabel.backgroundColor = letterBackColor;
+      // letterLabel.alpha = 0.75;
         
         [rootView addSubview:letterLabel];
-    //    [rootView bringSubviewToFront:letterLabel];
-        
-     //   letterLabel.backgroundColor = [UIColor colorWithRed:0.9 green:0.7 blue:0.1 alpha:0.5];
         
         [letters addObject:letterLabel];
         
         frm.origin.x += frm.size.width + BOX_SPACING_FACT*xOffset;
+        
+        letterLabel.text = @"Z";
     }
     
     letterLabel = [letters objectAtIndex:0];
@@ -91,10 +98,9 @@
     
     [catLabel setTextAlignment:NSTextAlignmentCenter];
     [catLabel setFont:[UIFont fontWithName:@"Arial" size:0.75*FONT_FACT*frm.size.width]];
-    catLabel.textColor = [UIColor colorWithRed:0.9 green:0.7 blue:0.1 alpha:0.75];
+    catLabel.textColor = [UIColor whiteColor];//[UIColor colorWithRed:0.9 green:0.7 blue:0.1 alpha:0.75];
     
-    catLabel.layer.borderWidth = 2.0f;
-    catLabel.layer.borderColor = [[UIColor colorWithRed:0.75f green: 0.75f blue:0.75f alpha:0.5f] CGColor];
+    catLabel.layer.borderColor = [[UIColor colorWithRed:0.7f green: 0.7f blue:0.7f alpha:0.8f] CGColor];
     
     [rootView addSubview:catLabel];
     
@@ -102,7 +108,7 @@
     
     UIGraphicsBeginImageContext(catLabel.frame.size);
     
-    UIImage *tmpImage = [UIImage imageNamed:@"redSquare.png"];
+    tmpImage = [UIImage imageNamed:@"redSquare.png"];
     [tmpImage drawInRect:CGRectMake(0, 0, catLabel.frame.size.width, catLabel.frame.size.height)];
     tmpImage = UIGraphicsGetImageFromCurrentImageContext();
     
@@ -130,6 +136,8 @@
     
     [catLabel removeFromSuperview];
     catLabel = nil;
+    
+    letterBackColor = nil;
 }
 
 @end
