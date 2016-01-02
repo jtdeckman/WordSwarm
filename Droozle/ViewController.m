@@ -49,6 +49,19 @@
     
     if(gamePlay.gameState == gameRunning && !animating) {
         
+        if(display.wordBar.boxesFilled) {
+            
+            NSString *word = [display.wordBar makeWordFromLetters];
+            
+            if([gamePlay checkWord:word :display.wordBar.wordCategory]) {
+                
+                gamePlay.gameState = levelUp;
+            }
+            
+            else
+                [display.wordBar clearLetters];
+        }
+
         uint nRowsOcc = [board numRowsOccupied];
         uint timeInterval;
         
@@ -561,10 +574,10 @@
     
    // [self populateWordBarFromRow:space.iind];
  
-    if(display.wordBar.boxesFilled) {
+  //  if(display.wordBar.boxesFilled) {
         
-        [display.wordBar clearLetters];
-    }
+   //     [display.wordBar clearLetters];
+  //  }
     
     [board eliminateRow:space.iind];
     
@@ -646,8 +659,6 @@
    // [display resetAnimatedPieces];
   
     [board clearBoard];
-    
-    
     [display resetForNextLevel];
     
     gamePlay.gameState = gameRunning;
