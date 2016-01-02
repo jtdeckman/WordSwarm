@@ -233,7 +233,7 @@
                     [display makePiecesFlash:NO :flashDuration];
                    // [self performSelector:@selector(eliminateRowFromBoard:) withObject:touchedSpace afterDelay:flashDuration];
                     
-                    [self performSelector:@selector(populateWordBarFromRow:) withObject:touchedSpace afterDelay:flashDuration];
+                    [self performSelector:@selector(populateWordBarFromRow:) withObject:touchedSpace afterDelay:0.0f];
                 }
                 
                 else {
