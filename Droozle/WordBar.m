@@ -14,7 +14,8 @@
 
 @implementation WordBar
 
-@synthesize letters, barBackground, catLabel;
+@synthesize letters, barBackground;
+@synthesize wordCategory, catLabel;
 
 - (void)setUp:(uint)nLetters :(CGRect)frame :(CGFloat)offset :(UIView*)rootView {
  
@@ -89,23 +90,24 @@
     letterLabel = [letters objectAtIndex:0];
     
     frm.origin.x = letterLabel.frame.origin.x;
-    frm.origin.x += nLetters*letterLabel.frame.size.width + (nLetters+4)*BOX_SPACING_FACT*xOffset;
+    frm.origin.x += nLetters*letterLabel.frame.size.width + (nLetters+2)*BOX_SPACING_FACT*xOffset;
     frm.size.width = barBackground.frame.size.width - letterLabel.frame.origin.x - frm.origin.x;
     frm.size.height = letterLabel.frame.size.height;
     
     catLabel = [[UILabel alloc] initWithFrame:frm];
     
     catLabel.hidden = NO;
-    catLabel.layer.cornerRadius = 3.0;
+    catLabel.layer.cornerRadius = 7.0;
     catLabel.clipsToBounds = YES;
     catLabel.opaque = NO;
-    catLabel.layer.borderWidth = 1.5f;
+    catLabel.layer.borderWidth = 0.0f;
+    catLabel.text = @"SEND";
     
     [catLabel setTextAlignment:NSTextAlignmentCenter];
-    [catLabel setFont:[UIFont fontWithName:@"Arial" size:0.75*FONT_FACT*frm.size.width]];
+    [catLabel setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:0.5*FONT_FACT*frm.size.width]];
     catLabel.textColor = [UIColor whiteColor];//[UIColor colorWithRed:0.9 green:0.7 blue:0.1 alpha:0.75];
     
-    catLabel.layer.borderColor = [[UIColor colorWithRed:0.6f green: 0.6f blue:0.6f alpha:0.8f] CGColor];
+    catLabel.layer.borderColor = [[UIColor clearColor] CGColor]; //[[UIColor colorWithRed:0.6f green: 0.6f blue:0.6f alpha:0.8f] CGColor];
     
     [rootView addSubview:catLabel];
     
@@ -113,11 +115,11 @@
     
     UIGraphicsBeginImageContext(catLabel.frame.size);
     
-    tmpImage = [UIImage imageNamed:@"p1.png"];
+    tmpImage = [UIImage imageNamed:@"blueSquare.png"];
     [tmpImage drawInRect:CGRectMake(0, 0, catLabel.frame.size.width, catLabel.frame.size.height)];
     tmpImage = UIGraphicsGetImageFromCurrentImageContext();
     
-    catLabel.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.35];
+    catLabel.backgroundColor = [UIColor colorWithPatternImage:tmpImage];//[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.35];
 }
 
 - (void)addLetterToBox:(NSString*)letter {

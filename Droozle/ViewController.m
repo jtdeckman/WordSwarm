@@ -531,16 +531,16 @@
     
   //  display.addPiece.text = @"";
     
-    [display updateScore];
-    [display updateLevelValues];
-    
     animating = NO;
     prevViewSettings = NO;
     
     bottomRow = board.dimx - 1;
     
     [display.wordBar setUpForLevel:1];
-    display.wordBar.catLabel.text = [gamePlay getRandomCategoryForLevel:gamePlay.gameData.level];
+    display.wordBar.wordCategory = [gamePlay getRandomCategoryForLevel:gamePlay.gameData.level];
+    
+    [display updateScore];
+    [display updateLevelValues];
 }
 
 - (void)eliminateRowFromBoard:(Space*)space {
@@ -620,7 +620,7 @@
    // [display resetAnimatedPieces];
   
     [board clearBoard];
-    display.wordBar.catLabel.text = [gamePlay getRandomCategoryForLevel:gamePlay.gameData.level];
+    display.wordBar.wordCategory = [gamePlay getRandomCategoryForLevel:gamePlay.gameData.level];
     
     [display updateLevelValues];
     [display resetForNextLevel];

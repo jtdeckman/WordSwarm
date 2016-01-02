@@ -40,16 +40,18 @@
     
     if(gamePlay.gameData.gamePlay == FREE_PLAY) {
         
-        nextScore.text = @"--";
+       // nextScore.text = @"--";
         level.text = @"--";
     }
     
     else {
         
-        nextScore.text = [gamePlay getPointsForLevel:gamePlay.gameData.level + 1];
+      //  nextScore.text = [gamePlay getPointsForLevel:gamePlay.gameData.level + 1];
         level.text = [NSString stringWithFormat:@"%d",gamePlay.gameData.level];
     }
     
+    nextScore.text = wordBar.wordCategory;
+
     if(gamePlay.gameData.numBombs > 0)
         bombPiece.hidden = NO;
 }
@@ -760,7 +762,7 @@
     nextScoreLabel.textColor = [UIColor whiteColor];
     nextScoreLabel.backgroundColor = [UIColor clearColor];
     
-    nextScoreLabel.text = @"Next Level";
+    nextScoreLabel.text = @"Word Type";
 }
 
 - (CGRect)initBoardView: (CGRect)viewFrame{

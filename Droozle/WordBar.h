@@ -20,6 +20,7 @@
     
     UIColor *letterBackColor;
     
+    NSString *wordCategory;
     uint letterPosition;
     uint numLetters;
     
@@ -30,6 +31,8 @@
 
 @property (nonatomic,strong) UILabel *barBackground;
 @property (nonatomic,strong) UILabel *catLabel;
+
+@property (nonatomic,strong) NSString *wordCategory;
 
 - (void)setUp:(uint)nLetters :(CGRect)frame :(CGFloat)offset :(UIView*)rootView;
 - (void)addLetterToBox:(NSString*)letter;
