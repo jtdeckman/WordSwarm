@@ -36,7 +36,10 @@
 @property (nonatomic,strong) NSString *wordCategory;
 
 @property (nonatomic,strong) UILabel *barBackground;
+
 @property (nonatomic) BOOL boxesFilled;
+
+@property (nonatomic) uint lettersInLevel;
 
 - (void)setUp:(uint)nLetters :(CGRect)frame :(CGFloat)offset :(UIView*)rView;
 - (void)addLetterToBox:(NSString*)letter;
@@ -44,6 +47,7 @@
 - (void)setUpForLevel:(int)level;
 
 - (uint)getNumWordBarLettersForLevel:(int)level;
+- (uint)numOccupied;
 
 - (NSString*)makeWordFromLetters;
 

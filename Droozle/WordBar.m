@@ -16,6 +16,7 @@
 
 @synthesize letters, barBackground;
 @synthesize wordCategory, boxesFilled;
+@synthesize lettersInLevel;
 
 - (void)setUp:(uint)nLetters :(CGRect)frame :(CGFloat)offset :(UIView*)rView {
  
@@ -152,6 +153,11 @@
     }
     
     return word;
+}
+
+- (uint)numOccupied {
+
+    return letterPosition + 1;
 }
 
 - (void)setUpForLevel:(int)level {
