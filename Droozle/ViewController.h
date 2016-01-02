@@ -32,6 +32,7 @@
     
     BOOL animating;
     BOOL prevViewSettings;
+    BOOL swiping;
 }
 
 - (void)saveDefaults;

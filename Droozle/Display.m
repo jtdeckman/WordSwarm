@@ -209,6 +209,8 @@
         iPiece = [piecesToAnimate objectAtIndex:i];
         iPiece.hidden = YES;
         
+      //  if(wrongWord)iPiece.hidden = NO;
+        
         movePiece.frame = iPiece.frame;
         
         if(!wrongWord)
@@ -250,7 +252,7 @@
                 movePiece.hidden = YES;
                 [movePiece removeFromSuperview];
                 
-                ((UILabel*)piecesToAnimate[i]).hidden = NO;
+               // ((UILabel*)piecesToAnimate[i]).hidden = NO;
             }
         }];
     } ];
@@ -397,7 +399,7 @@
     
     [levelBackgroundPiece setFrame:lbpFrm];
     
-    levelBackgroundPiece.text = [NSString stringWithFormat:@"%d", gamePlay.gameData.level];
+    levelBackgroundPiece.text = [NSString stringWithFormat:@"%d", gamePlay.gameData.level+1];
     
     lbpFrm = baseLevelBackPiece;
     [rootView bringSubviewToFront:levelBackgroundPiece];
@@ -744,7 +746,7 @@
     levelBackgroundPiece.opaque = NO;
     
     [levelBackgroundPiece setTextAlignment:NSTextAlignmentCenter];
-    [levelBackgroundPiece setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.15*FONT_FACT*score.frame.size.height]];
+    [levelBackgroundPiece setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.35*FONT_FACT*score.frame.size.height]];
     
     levelBackgroundPiece.text = @"";
     levelBackgroundPiece.textColor = [UIColor colorWithRed:colors.levelColor.red green:colors.levelColor.green blue:colors.levelColor.blue alpha:1.0f];

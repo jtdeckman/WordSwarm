@@ -515,6 +515,8 @@
         space.pointsLabel.hidden = NO;
     }
 
+    space = rowTypes[row];
+    space.piece.hidden = NO;
 }
 
 - (void)hideBackPiecesInRow:(uint)row { 

@@ -26,7 +26,9 @@
     
     pw = (frm.size.width-buffer)/dimy;
     
-    dimx = (int)(frm.size.height/pw)-1;
+    dimx = (int)(frm.size.height/pw);
+    
+    if(iPad) --dimx;
     
     board = brd;
     

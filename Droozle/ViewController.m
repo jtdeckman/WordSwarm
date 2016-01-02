@@ -72,7 +72,7 @@
             
             [display checkAlertView:nRowsOcc];
             
-            if(!animating && gamePlay.gameData.timer % timeInterval == 0) {
+            if(!animating && !swiping && gamePlay.gameData.timer % timeInterval == 0) {
 
                 if([board shiftRowsUp] == YES) {
                 
@@ -185,7 +185,7 @@
                 
                 animating = YES;
                 
-                [board hideBackPiecesInRow:touchedSpace.iind];
+            //    [board hideBackPiecesInRow:touchedSpace.iind];
                 
                 if([gamePlay checkWord:word :type]) {
                     
@@ -228,6 +228,7 @@
                     int newScore = [gamePlay updateScore:-1.0*[board sumRow:touchedSpace.iind :YES]];
                      
                     [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind :YES];
+                    [board hidePointsLabelInRow:touchedSpace.iind];
                     
                     [display animateScore:newScore];
                     [display makePiecesFlash:YES :0.4];
@@ -238,18 +239,12 @@
             
             else if(touchedSpace.isOccupied) {
                 
+                swiping = YES;
+                
                 gamePlay.placeMode = swipeMove;
                 [display configureFloatPiece:touchedSpace];
             }
         }
-        
-      /*  else if(CGRectContainsPoint(display.wordBar.catLabel.frame, location)) {
-        
-            NSString *word = [display.wordBar makeWordFromLetters];
-            
-            if([gamePlay checkWord:word :display.wordBar.wordCategory])
-                [gamePlay levelUp];
-        } */
         
         else if(touch.view == display.bottomBar && gamePlay.placeMode == freeState) {
             
@@ -265,10 +260,12 @@
             
             else if(gamePlay.placeMode == freeState && CGRectContainsPoint(display.addPiece.frame, location)) {
                 
+                swiping = YES;
                 gamePlay.placeMode = addMove;
             }
             else if(gamePlay.placeMode == freeState && CGRectContainsPoint(display.bombPiece.frame, location)) {
                 
+                swiping = YES;
                 gamePlay.placeMode = bombMove;
             }
         }
@@ -345,11 +342,11 @@
             [display changeFloatPieceLoc:location];
         }
         
-     //   swiping = YES;
+        swiping = YES;
     }
     else {
         
-     //   swiping = NO;
+        swiping = NO;
       //  display.floatPiece.hidden = YES;
       //  [display resetAddPiece];
     }
@@ -361,13 +358,14 @@
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint location = [touch locationInView:self.view];
     
+    swiping = NO;
+    
     if(gamePlay.gameState == gameRunning && !animating) {
       
         if(gamePlay.placeMode == swipeMove) {
             
             Space *selectedSpace = [board getSpaceFromPoint:location];
             
-         //   if([selectedSpace isNearestNearestNbrOf:touchedSpace]) {
              if(selectedSpace != NULL && !selectedSpace.refPiece) {
                  
                 rowNew = selectedSpace.iind;
@@ -406,22 +404,6 @@
                     if(![board isCategoryRow:touchedSpace.iind] && touchedSpace.pointValue == 0)
                         [board removePiece:touchedSpace];
                 }
-                
-             /*   else if([selectedSpace isNearestNearestNbrOf:touchedSpace]){
-                    
-                    selectedSpace.value = touchedSpace.value;
-                    selectedSpace.piece.text = selectedSpace.value;
-                    
-                    [board addPiece:selectedSpace.iind :selectedSpace.jind :touchedSpace.value];
-                    
-                    touchedSpace.piece.backgroundColor = display.addPiece.backgroundColor;
-                    touchedSpace.piece.text = @"";
-                    
-                    touchedSpace.value = @"";
-                    touchedSpace.pointValue = 0;
-                    
-                    //[board removePiece:touchedSpace]; 
-                } */
             }
             
             display.floatPiece.hidden = YES;
@@ -524,6 +506,8 @@
    
     BOOL iPad = NO;
     
+    swiping = NO;
+    
     [AppDelegate setUpDefaults];
     
     display = [[Display alloc] init];
@@ -621,7 +605,11 @@
         
         if([gamePlay checkWord:word :display.wordBar.wordCategory]) {
             
-            gamePlay.gameState = levelUp;
+            if(gamePlay.gameData.gamePlay == FREE_PLAY)
+                [self performSelector:@selector(clearLettersWithDelay) withObject:nil afterDelay:0.51];
+            else
+                gamePlay.gameState = levelUp;
+            
             [display.wordBar makePiecesFlash:0.5f :0.0f];
         }
         
@@ -634,8 +622,14 @@
 
   //  [display resetAnimatedPieces];
     [board unHideBackPiecesInRow:touchedSpace.iind];
+    [board unHidePiecesInRow:touchedSpace.iind];
     
     animating = NO;
+}
+
+- (void)clearLettersWithDelay {
+
+    [display.wordBar clearLetters];
 }
 
 - (void)setUpNewGame {
@@ -672,12 +666,12 @@
 
 - (void)setUpForNextLevel {
     
+    [gamePlay levelUp];
+    
     animating = NO;
   
     [board clearBoard];
     [display resetForNextLevel];
-    
-    [gamePlay levelUp];
     
     gamePlay.gameState = gameRunning;
 }
