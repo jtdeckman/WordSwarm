@@ -215,8 +215,11 @@
         return YES;
     
     UILabel *destinationBox = letters[letterPosition];
+    CGRect frm = origin.frame;
     
     __block NSString *letterToAdd;
+    
+    frm.origin = destinationBox.frame.origin;
     
     animatePiece.frame = origin.frame;
     animatePiece.backgroundColor = origin.backgroundColor;
@@ -230,7 +233,7 @@
     
     [UIView animateWithDuration:duration delay:delay options:UIViewAnimationOptionCurveEaseIn animations:^{
         
-        animatePiece.frame = destinationBox.frame;
+        animatePiece.frame = frm;
         
     } completion:^(BOOL finished) {
         

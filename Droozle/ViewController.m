@@ -201,12 +201,14 @@
                         
                         int bonusScore = FULL_WORD_BONUS;
                         
-                        [display.animations animateTextBox1:0.8f :0.4*self.view.frame.size.height :0.4f
+                        [display.animations animateTextBox1:0.8f :0.35*self.view.frame.size.height :0.4f
                                                                  :[NSString stringWithFormat:@"Full Word Bonus! +%d", bonusScore*gamePlay.gameData.level]];
                         
                         NSNumber *newScore = [NSNumber numberWithInt:bonusScore];
                         
                         [self performSelector:@selector(updateGameScoreAfterDelay:) withObject:newScore afterDelay:1.2f];
+                        
+                        flashDuration += 1.2;
                     }
                     
                     if(newScore > BOMB_BONUS_SCORE) {
