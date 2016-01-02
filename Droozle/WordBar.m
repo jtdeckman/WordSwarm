@@ -157,7 +157,7 @@
 
 - (uint)numOccupied {
 
-    return letterPosition + 1;
+    return letterPosition;
 }
 
 - (void)setUpForLevel:(int)level {

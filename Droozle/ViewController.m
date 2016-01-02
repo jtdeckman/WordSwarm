@@ -556,6 +556,11 @@
   //  [display resetAnimatedPieces];
     
    // [self populateWordBarFromRow:space.iind];
+ 
+    if(display.wordBar.boxesFilled) {
+        
+        [display.wordBar clearLetters];
+    }
     
     [board eliminateRow:space.iind];
     
@@ -572,12 +577,7 @@
     CGFloat delay = 0.0f;
     CGFloat totalTime = 0.0f;
     
-    int nLetters = [display.wordBar numOccupied];
-    
     for(uint j=0; j<board.dimy; j++) {
-        
-        if(nLetters >= display.wordBar.lettersInLevel)
-            break;
             
         space = [board getSpaceForIndices:spaceInRow.iind:j];
         
@@ -587,18 +587,12 @@
             
             totalTime += duration;
             delay += duration + 0.1;
-            ++nLetters;
         }
     }
     
-    if(nLetters >= display.wordBar.lettersInLevel) {
-        
-        [display.wordBar clearLetters];
-    }
+  //  [self eliminateRowFromBoard:spaceInRow];
     
-    [self eliminateRowFromBoard:spaceInRow];
-    
-    //[self performSelector:@selector(eliminateRowFromBoard:) withObject:spaceInRow afterDelay:totalTime + 0.1];
+    [self performSelector:@selector(eliminateRowFromBoard:) withObject:spaceInRow afterDelay:totalTime + 0.1];
 }
 
 - (void)resetRow {
