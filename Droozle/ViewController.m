@@ -540,6 +540,7 @@
     bottomRow = board.dimx - 1;
     
     [display.wordBar setUpForLevel:1];
+    display.wordBar.catLabel.text = [gamePlay getRandomCategoryForLevel:gamePlay.gameData.level];
 }
 
 - (void)eliminateRowFromBoard:(Space*)space {
@@ -617,7 +618,9 @@
     animating = NO;
     
    // [display resetAnimatedPieces];
+  
     [board clearBoard];
+    display.wordBar.catLabel.text = [gamePlay getRandomCategoryForLevel:gamePlay.gameData.level];
     
     [display updateLevelValues];
     [display resetForNextLevel];

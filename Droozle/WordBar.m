@@ -118,16 +118,6 @@
     tmpImage = UIGraphicsGetImageFromCurrentImageContext();
     
     catLabel.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.35];
-    
-    catLabel.text = @"Verb";
-    
-   // [self addLetterToBox:@"E"];
-   // [self addLetterToBox:@"A"];
-   // [self addLetterToBox:@"T"];
-   // [self addLetterToBox:@"N"];
-   // [self addLetterToBox:@"C"];
-   // [self addLetterToBox:@"Z"];
-   // [self addLetterToBox:@"A"];
 }
 
 - (void)addLetterToBox:(NSString*)letter {

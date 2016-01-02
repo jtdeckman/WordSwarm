@@ -57,6 +57,7 @@
 
 - (NSString*)getARandomLetter;
 - (NSString*)getPointsForLevel:(uint)level;
+- (NSString*)getRandomCategoryForLevel:(int)level;
 
 - (BOOL)checkWord:(NSString*)word :(NSString*)wrdType;
 
@@ -66,6 +67,7 @@
 
 - (void)decrementNumBombs;
 - (void)incrementBombs;
+- (void)levelUp;
 
 - (uint)getRowDelayForNumRows:(uint)nrows;
 

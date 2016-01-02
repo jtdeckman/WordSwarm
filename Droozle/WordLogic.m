@@ -368,7 +368,7 @@
         [wordTypes addObject:@"Adj"];
     }
     
-    else if(level > 11) {
+    else {
         
         [wordTypes addObject:@"Word"];
         [wordTypes addObject:@"Noun"];

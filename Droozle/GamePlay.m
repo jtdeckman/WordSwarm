@@ -101,19 +101,22 @@
     
     NSString *pointsForNextLevel = [self getPointsForLevel:gameData.level + 1];
     
-    if(gameData.score >= [pointsForNextLevel intValue]) {
-        
-        gameState = levelUp;
-        gameData.level += 1;
-        
-        [self incrementBombs];
-        
-        [wordLogic initWordTypesForLevel:gameData.level];
-    }
+    if(gameData.score >= [pointsForNextLevel intValue]) 
+        [self levelUp];
     
     [self checkHighScores];
     
     return newScore;
+}
+
+- (void)levelUp {
+    
+    gameState = levelUp;
+    gameData.level += 1;
+    
+    [self incrementBombs];
+    
+    [wordLogic initWordTypesForLevel:gameData.level];
 }
 
 - (NSString*)getPointsForLevel:(uint)level {
@@ -181,30 +184,6 @@
     }
 }
 
-- (void)setUpPointsForLevel {
-    
-    pointsForLevel = [[NSMutableArray alloc] initWithObjects:
-                      
-                      @"25",
-                      @"25",
-                      @"20",
-                      @"500",
-                      @"750",
-                      @"1500",
-                      @"5000",
-                      @"10000",
-                      @"20000",
-                      @"40000",
-                      @"60000",
-                      @"80000",
-                      @"100000",
-                      @"125000",
-                      @"150000",
-                      @"200000",
-                      nil];
-}
-
-
 - (void)checkDifficulty {
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -236,6 +215,11 @@
     return timeInterval;
 }
 
+- (NSString*)getRandomCategoryForLevel:(int)level {
+
+    return [wordLogic getType];
+}
+
 - (void)deconstruct {
     
     [wordLogic deconstruct];
@@ -243,6 +227,29 @@
     
     wordLogic = nil;
     pointsForLevel = nil;
+}
+
+- (void)setUpPointsForLevel {
+    
+    pointsForLevel = [[NSMutableArray alloc] initWithObjects:
+                      
+                      @"25",
+                      @"25",
+                      @"20",
+                      @"500",
+                      @"750",
+                      @"1500",
+                      @"5000",
+                      @"10000",
+                      @"20000",
+                      @"40000",
+                      @"60000",
+                      @"80000",
+                      @"100000",
+                      @"125000",
+                      @"150000",
+                      @"200000",
+                      nil];
 }
 
 @end
