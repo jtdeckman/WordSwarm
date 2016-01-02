@@ -124,6 +124,7 @@
                @"",
                @"",
                @"",
+               @"",
                nil];
     
     nArraySelections = (int)[letters count];

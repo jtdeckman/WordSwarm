@@ -113,6 +113,8 @@
         
         [gamePlay decrementNumBombs];
     
+        bombPiece.text = [NSString stringWithFormat:@"X%d",gamePlay.gameData.numBombs];
+        
         if(gamePlay.gameData.numBombs < 1)
             bombPiece.hidden = YES;
     }
@@ -167,13 +169,13 @@
 - (void)checkAlertView:(uint)nrows {
     
     if(nrows == gamePlay.dimx)
-        [self unhideAlertViewWithAlpha:0.7];//[display animateAlertView];
+        [self unhideAlertViewWithAlpha:0.6];//[display animateAlertView];
     
     else if(nrows == gamePlay.dimx - 1)
-        [self unhideAlertViewWithAlpha:0.4];
-    
-    else if(nrows == gamePlay.dimx - 2)
         [self unhideAlertViewWithAlpha:0.3];
+    
+   // else if(nrows == gamePlay.dimx - 2)
+   //     [self unhideAlertViewWithAlpha:0.3];
     
     else [self hideAlertView];
     
@@ -478,26 +480,14 @@
     wordBar = [[WordBar alloc] init];
     
     frm = topBar.frame;
-   // frm.size.height *= 1.17;
-  //  frm.size.height;// *=1.1;//25;
     frm.origin.y = viewFrame.size.height - frm.size.height;//topBar.frame.size.height;
     
     bottomBar = [[UIView alloc] initWithFrame:frm];
     
     [rootView addSubview:bottomBar];
     
-  /*  CGRect tmpFrm = frm;
-    tmpFrm.size.height *= 0.0425;
-    tmpFrm.origin.y -= 0.0475*frm.size.height;
-    
-    extraBckgd = [[UILabel alloc] initWithFrame:tmpFrm];
-    [rootView addSubview:extraBckgd]; */
-
-  //  frm.size.height = viewFrame.size.height - topBar.frame.size.height - wordBar.barBackground.frame.size.height - bottomBar.frame.size.height;
-  //  frm.origin.y = topBar.frame.size.height + wordBar.barBackground.frame.size.height;
-    
     frm.size.height = viewFrame.size.height - topOffset.size.height - bottomBar.frame.size.height;
-    frm.origin.y = topOffset.size.height; //topBar.frame.size.height + wordBar.barBackground.frame.size.height;
+    frm.origin.y = topOffset.size.height;
 
     boardView = [[UIView alloc] initWithFrame:frm];
     
@@ -619,7 +609,7 @@
  
     topBar.layer.borderColor = [[UIColor clearColor] CGColor];
     
-    [wordBar setUp:7 :topBar.frame :scoreBox.frame.origin.x :rootView];
+    [wordBar setUp:NUM_WORDBAR_LETTERS :topBar.frame :scoreBox.frame.origin.x :rootView];
     wordBar.barBackground.backgroundColor = [UIColor clearColor];//topBar.backgroundColor;
     
     menuView.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.5];
@@ -880,6 +870,11 @@
     bombPiece.clipsToBounds = YES;
     bombPiece.opaque = YES;
     
+    [bombPiece setTextAlignment:NSTextAlignmentCenter];
+    [bombPiece setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.8*FONT_FACT*pcFrm.size.width]];
+    bombPiece.textColor = [UIColor colorWithRed:0.8 green:0.3 blue:0.3 alpha:0.7];
+    bombPiece.text = @"x 2";
+
     bombPiece.hidden = YES;
     baseBombPiece = bombPiece.frame;
     

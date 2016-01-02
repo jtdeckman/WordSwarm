@@ -215,7 +215,9 @@
                     }
                     
                     [display makePiecesFlash:NO :flashDuration];
-                    [self performSelector:@selector(eliminateRowFromBoard:) withObject:touchedSpace afterDelay:flashDuration];
+                   // [self performSelector:@selector(eliminateRowFromBoard:) withObject:touchedSpace afterDelay:flashDuration];
+                    
+                    [self performSelector:@selector(populateWordBarFromRow:) withObject:touchedSpace afterDelay:flashDuration];
                 }
                 
                 else {
@@ -238,13 +240,13 @@
             }
         }
         
-        else if(CGRectContainsPoint(display.wordBar.catLabel.frame, location)) {
+      /*  else if(CGRectContainsPoint(display.wordBar.catLabel.frame, location)) {
         
             NSString *word = [display.wordBar makeWordFromLetters];
             
             if([gamePlay checkWord:word :display.wordBar.wordCategory])
                 [gamePlay levelUp];
-        }
+        } */
         
         else if(touch.view == display.bottomBar && gamePlay.placeMode == freeState) {
             
@@ -553,7 +555,7 @@
     
   //  [display resetAnimatedPieces];
     
-    [self populateWordBarFromRow:space.iind];
+   // [self populateWordBarFromRow:space.iind];
     
     [board eliminateRow:space.iind];
     
@@ -562,21 +564,39 @@
     animating = NO;
 }
 
-- (void)populateWordBarFromRow:(uint)row {
+- (void)populateWordBarFromRow:(Space*)spaceInRow {
 
     Space *space;
+
+    CGFloat duration = 0.6f;
+    CGFloat delay = 0.0f;
+    CGFloat totalTime = 0.0f;
     
     for(uint j=0; j<board.dimy; j++) {
         
-        space = [board getSpaceForIndices:row :j];
+        if(display.wordBar.boxesFilled)
+            break;
+            
+        space = [board getSpaceForIndices:spaceInRow.iind:j];
         
         if(space.backPieceVal > 1 && ![space.value isEqualToString:@""]) {
             
-            [display.wordBar addLetterToBox:space.value];
+            [display.wordBar animatePieceToEmptySpace:space.piece :duration :delay];
+            
+            totalTime += duration;
+            delay += duration + 0.1;
+           // [display.wordBar addLetterToBox:space.value];
         }
     }
     
-   // animating = NO;
+    if(display.wordBar.boxesFilled) {
+        
+        [display.wordBar clearLetters];
+    }
+    
+    [self eliminateRowFromBoard:spaceInRow];
+    
+    //[self performSelector:@selector(eliminateRowFromBoard:) withObject:spaceInRow afterDelay:totalTime + 0.1];
 }
 
 - (void)resetRow {

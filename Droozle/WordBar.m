@@ -10,22 +10,26 @@
 #import <UIKit/UIKit.h>
 #import "Constants.h"
 
-#define BOX_SPACING_FACT 0.15
+#define BOX_SPACING_FACT 0.1
 
 @implementation WordBar
 
 @synthesize letters, barBackground;
-@synthesize wordCategory, catLabel;
+@synthesize wordCategory, boxesFilled;
 
-- (void)setUp:(uint)nLetters :(CGRect)frame :(CGFloat)offset :(UIView*)rootView {
+- (void)setUp:(uint)nLetters :(CGRect)frame :(CGFloat)offset :(UIView*)rView {
  
     CGRect frm = frame;
+    
+    rootView = rView;
     
     xOffset = offset;
     
     numLetters = nLetters;
     letterPosition = 0;
     lettersInLevel = nLetters;
+    
+  //  gamePieces = [[NSMutableArray alloc] initWithCapacity:nLetters];
     
     frm.size.height *= WORD_BAR_FACT;
     frm.origin.y = frame.size.height;
@@ -38,6 +42,7 @@
     barBackground.layer.cornerRadius = 0.0;
     barBackground.clipsToBounds = YES;
     barBackground.opaque = NO;
+    barBackground.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.8];
     
     [rootView addSubview:barBackground];
     
@@ -47,7 +52,7 @@
     
     frm = barBackground.frame;
 
-    frm.size.height *= 0.9;
+    frm.size.height *= 0.85;
     frm.size.width = frm.size.height;
     frm.origin.x = xOffset;// + 0.15*offset;
     frm.origin.y += 0.2*frm.size.height;// -= 0.1*frm.size.height;
@@ -75,65 +80,44 @@
         [letterLabel setTextAlignment:NSTextAlignmentCenter];
         [letterLabel setFont:[UIFont fontWithName:@"Arial" size:1.35*FONT_FACT*frm.size.width]];
         letterLabel.textColor = [UIColor blackColor];
-        
+        letterLabel.layer.borderColor = [[UIColor colorWithRed:0.8 green:0.6 blue:0.2 alpha:1.0] CGColor];
+                                         
         [self makeLetterSquareUnOccupied:i];
         
-        letterLabel.layer.borderWidth = 0.0f;
-        
-       //letterBackColor;
-
-        frm.origin.x += frm.size.width + BOX_SPACING_FACT*xOffset;
-        
+        letterLabel.layer.borderWidth = 1.5f;
         letterLabel.text = @"";
     }
     
-    letterLabel = [letters objectAtIndex:0];
+    animatePiece = [[UILabel alloc] initWithFrame:letterLabel.frame];
     
-    frm.origin.x = letterLabel.frame.origin.x;
-    frm.origin.x += nLetters*letterLabel.frame.size.width + (nLetters+2)*BOX_SPACING_FACT*xOffset;
-    frm.size.width = barBackground.frame.size.width - letterLabel.frame.origin.x - frm.origin.x;
-    frm.size.height = letterLabel.frame.size.height;
+    animatePiece.hidden = YES;
+    animatePiece.layer.cornerRadius = 7.0;
+    animatePiece.clipsToBounds = YES;
+    animatePiece.opaque = NO;
     
-    catLabel = [[UILabel alloc] initWithFrame:frm];
-    
-    catLabel.hidden = NO;
-    catLabel.layer.cornerRadius = 7.0;
-    catLabel.clipsToBounds = YES;
-    catLabel.opaque = NO;
-    catLabel.layer.borderWidth = 0.0f;
-    catLabel.text = @"SEND";
-    
-    [catLabel setTextAlignment:NSTextAlignmentCenter];
-    [catLabel setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:0.5*FONT_FACT*frm.size.width]];
-    catLabel.textColor = [UIColor whiteColor];//[UIColor colorWithRed:0.9 green:0.7 blue:0.1 alpha:0.75];
-    
-    catLabel.layer.borderColor = [[UIColor clearColor] CGColor]; //[[UIColor colorWithRed:0.6f green: 0.6f blue:0.6f alpha:0.8f] CGColor];
-    
-    [rootView addSubview:catLabel];
-    
-   // catLabel.backgroundColor = [UIColor clearColor];
-    
-    UIGraphicsBeginImageContext(catLabel.frame.size);
-    
-    tmpImage = [UIImage imageNamed:@"blueSquare.png"];
-    [tmpImage drawInRect:CGRectMake(0, 0, catLabel.frame.size.width, catLabel.frame.size.height)];
-    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    catLabel.backgroundColor = [UIColor colorWithPatternImage:tmpImage];//[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.35];
-}
+    [animatePiece setTextAlignment:NSTextAlignmentCenter];
+    [animatePiece setFont:[UIFont fontWithName:@"Arial" size:1.35*FONT_FACT*frm.size.width]];
+    animatePiece.textColor = [UIColor blackColor];
+    animatePiece.layer.borderColor = [[UIColor colorWithRed:0.8 green:0.6 blue:0.2 alpha:1.0] CGColor];
+
+    boxesFilled = NO;
+ }
 
 - (void)addLetterToBox:(NSString*)letter {
-
-    UILabel *square = letters[letterPosition];
     
-    ++letterPosition;
+    if(!boxesFilled) {
+   
+        UILabel *square = letters[letterPosition];
     
-    if(letterPosition >= lettersInLevel)
-        letterPosition = 0;
+        ++letterPosition;
     
-    square.backgroundColor = letterBackColor;
+        if(letterPosition >= lettersInLevel)
+            boxesFilled = YES;
     
-    square.text = letter;
+        square.backgroundColor = letterBackColor;
+    
+        square.text = letter;
+    }
 }
 
 - (void)makeLetterSquareUnOccupied:(uint)squareNum {
@@ -144,33 +128,14 @@
     square.text = @"";
 }
 
-- (void)deconstruct {
-    
-    UILabel *letter;
-    
-    for(int i=0; i<[letters count]; i++) {
-        
-        letter = letters[i];
-        [letter removeFromSuperview];
-        letter = nil;
-    }
-    
-    [letters removeAllObjects];
-    letters = nil;
-    
-    [barBackground removeFromSuperview];
-    barBackground = nil;
-    
-    [catLabel removeFromSuperview];
-    catLabel = nil;
-    
-    letterBackColor = nil;
-}
-
 - (void)clearLetters {
     
     for(uint i=0; i<numLetters; i++)
         [self makeLetterSquareUnOccupied:i];
+    
+    boxesFilled = NO;
+    
+    letterPosition = 0;
 }
 
 - (NSString*)makeWordFromLetters {
@@ -191,36 +156,110 @@
 
 - (void)setUpForLevel:(int)level {
     
+    UILabel *box = letters[0];
+    
+    CGRect frame = box.frame;
+
     lettersInLevel = [self getNumWordBarLettersForLevel:level];
     letterPosition = 0;
+    
+    frame.origin.x = (rootView.frame.size.width - lettersInLevel*frame.size.width -(lettersInLevel-1)*BOX_SPACING_FACT*frame.size.width)/2.0;
     
     [self clearLetters];
     [self hideAllLetters];
     
+    boxesFilled = NO;
+    
     for(int i=0; i<lettersInLevel; i++) {
         
+        box = letters[i];
+        
+        box.hidden = NO;
+        box.frame = frame;
+        
         [self makeLetterSquareUnOccupied:i];
-        ((UILabel*)letters[i]).hidden = NO;
+        
+        frame.origin.x += box.frame.size.width + BOX_SPACING_FACT*box.frame.size.width;
     }
 }
+
 - (uint)getNumWordBarLettersForLevel:(int)level {
     
-  /*  if(level == 1)
+    if(level == 1)
         return 3;
     else if(level == 2 || level == 3)
         return 4;
     else if(level == 4 || level == 5 || level == 6)
         return 5;
     else if(level == 7 || level == 8 || level == 9)
-        return 6; */
+        return 6; 
     
-    return 7;
+    return numLetters;
 }
 
 - (void)hideAllLetters {
 
     for(int i=0; i<numLetters; i++)
         ((UILabel*)letters[i]).hidden = YES;
+}
+
+- (BOOL)animatePieceToEmptySpace:(UILabel*)origin :(CGFloat)duration :(CGFloat)delay {
+
+    if(letterPosition >= lettersInLevel || boxesFilled)
+        return YES;
+    
+    UILabel *destinationBox = letters[letterPosition];
+    
+    __block NSString *letterToAdd;
+    
+    animatePiece.frame = origin.frame;
+    animatePiece.backgroundColor = origin.backgroundColor;
+    animatePiece.text = origin.text;
+    
+    animatePiece.hidden = NO;
+    
+    [rootView addSubview:animatePiece];
+    
+    letterToAdd = origin.text;
+    
+    [UIView animateWithDuration:duration delay:delay options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        animatePiece.frame = destinationBox.frame;
+        
+    } completion:^(BOOL finished) {
+        
+        animatePiece.hidden = YES;
+        [animatePiece removeFromSuperview];
+        
+        [self addLetterToBox:letterToAdd];
+    }];
+    
+    return NO;
+}
+
+- (void)deconstruct {
+    
+    UILabel *letter;
+    
+    for(int i=0; i<[letters count]; i++) {
+        
+        letter = letters[i];
+        [letter removeFromSuperview];
+        letter = nil;
+    }
+    
+    [letters removeAllObjects];
+    letters = nil;
+    
+    [barBackground removeFromSuperview];
+    barBackground = nil;
+    
+    // [catLabel removeFromSuperview];
+    //  catLabel = nil;
+    
+    letterBackColor = nil;
+    
+    wordCategory = nil;
 }
 
 @end

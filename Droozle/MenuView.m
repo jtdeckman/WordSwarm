@@ -32,22 +32,27 @@
     
     settingsLabel = [[UILabel alloc] initWithFrame:viewFrame];
     
+    UIGraphicsBeginImageContext(viewFrame.size);
+    
+    UIImage *tmpImage = [UIImage imageNamed:@"redSquare.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, viewFrame.size.width, viewFrame.size.height)];
+    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
+
     settingsLabel.hidden = NO;
     settingsLabel.layer.cornerRadius = 3.0;
     settingsLabel.clipsToBounds = YES;
-    settingsLabel.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];[UIColor clearColor];
+    settingsLabel.backgroundColor = [UIColor colorWithPatternImage:tmpImage];//[UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];[UIColor clearColor];
     //   settingsLabel.layer.borderColor = [[UIColor redColor] CGColor];
     
     settingsLabel.layer.borderColor = [[UIColor clearColor] CGColor];//[[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
     
     settingsLabel.layer.borderWidth = 1.0f;
     //  settingsLabel.textColor = [UIColor redColor];
-    settingsLabel.textColor = [UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0];
-    
+    settingsLabel.textColor = [UIColor colorWithRed:0.9f green:0.6f blue:0.3f alpha:1.0];//[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0];
     settingsLabel.text = @"Settings";
     
     [settingsLabel setTextAlignment:NSTextAlignmentCenter];
-    [settingsLabel setFont:[UIFont fontWithName:@"Arial" size:0.4*FONT_FACT*viewFrame.size.width]];
+    [settingsLabel setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.4*FONT_FACT*viewFrame.size.width]];
     
     [self addSubview:settingsLabel];
     
@@ -64,12 +69,13 @@
     nwGameLabel.layer.borderColor = [[UIColor clearColor] CGColor]; //[[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
     
     nwGameLabel.layer.borderWidth = 1.0f;
-    nwGameLabel.textColor = [UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0];
-    
+    nwGameLabel.textColor = settingsLabel.textColor;//[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0];
+   
     nwGameLabel.text = @"New Game";
     
     [nwGameLabel setTextAlignment:NSTextAlignmentCenter];
-    [nwGameLabel setFont:[UIFont fontWithName:@"Arial" size:0.4*FONT_FACT*viewFrame.size.width]];
+  //  [nwGameLabel setFont:[UIFont fontWithName:@"Arial" size:0.4*FONT_FACT*viewFrame.size.width]];
+    nwGameLabel.font = settingsLabel.font;
     
     [self addSubview:nwGameLabel];
     
@@ -86,12 +92,14 @@
   //  howToLabel.layer.borderColor = [[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
     
     howToLabel.layer.borderWidth = 1.0f;
-    howToLabel.textColor = [UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0];
+  //  howToLabel.textColor = [UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0];
     
     howToLabel.text = @"How to Play";
     
     [howToLabel setTextAlignment:NSTextAlignmentCenter];
-    [howToLabel setFont:[UIFont fontWithName:@"Arial" size:0.4*FONT_FACT*viewFrame.size.width]];
+   // [howToLabel setFont:[UIFont fontWithName:@"Arial" size:0.4*FONT_FACT*viewFrame.size.width]];
+    howToLabel.font = settingsLabel.font;
+    howToLabel.textColor = settingsLabel.textColor;
     
     [self addSubview:howToLabel];
     
@@ -111,12 +119,14 @@
   //  statsLabel.layer.borderColor = [[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
     
     statsLabel.layer.borderWidth = 1.0f;
-    statsLabel.textColor = [UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0];
+   // statsLabel.textColor = [UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0];
+    statsLabel.textColor = howToLabel.textColor;
     
     statsLabel.text = @"Game Stats";
     
     [statsLabel setTextAlignment:NSTextAlignmentCenter];
-    [statsLabel setFont:[UIFont fontWithName:@"Arial" size:0.4*FONT_FACT*viewFrame.size.width]];
+   // [statsLabel setFont:[UIFont fontWithName:@"Arial" size:0.4*FONT_FACT*viewFrame.size.width]];
+    statsLabel.font = howToLabel.font;
     
     [self addSubview:statsLabel];
     

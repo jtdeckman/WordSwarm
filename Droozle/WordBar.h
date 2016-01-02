@@ -14,27 +14,31 @@
     NSMutableArray *letters;
     
     UILabel *barBackground;
-    UILabel *catLabel;
+    UILabel *animatePiece;
     
     CGFloat xOffset;
     
     UIColor *letterBackColor;
     
     NSString *wordCategory;
+    
     uint letterPosition;
     uint numLetters;
     
     uint lettersInLevel;
+    
+    UIView *rootView;
+    
+    BOOL boxesFilled;
 }
 
 @property (nonatomic,strong) NSMutableArray *letters;
-
-@property (nonatomic,strong) UILabel *barBackground;
-@property (nonatomic,strong) UILabel *catLabel;
-
 @property (nonatomic,strong) NSString *wordCategory;
 
-- (void)setUp:(uint)nLetters :(CGRect)frame :(CGFloat)offset :(UIView*)rootView;
+@property (nonatomic,strong) UILabel *barBackground;
+@property (nonatomic) BOOL boxesFilled;
+
+- (void)setUp:(uint)nLetters :(CGRect)frame :(CGFloat)offset :(UIView*)rView;
 - (void)addLetterToBox:(NSString*)letter;
 - (void)clearLetters;
 - (void)setUpForLevel:(int)level;
@@ -42,6 +46,8 @@
 - (uint)getNumWordBarLettersForLevel:(int)level;
 
 - (NSString*)makeWordFromLetters;
+
+- (BOOL)animatePieceToEmptySpace:(UILabel*)origin :(CGFloat)duration :(CGFloat)delay;
 
 - (void)deconstruct;
 

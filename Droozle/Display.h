@@ -16,6 +16,8 @@
 #import "Animations.h"
 #import "WordBar.h"
 
+#define NUM_WORDBAR_LETTERS 8
+
 @interface Display : NSObject {
     
     UIView *topBar;
