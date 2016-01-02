@@ -46,7 +46,7 @@
     backPiece.layer.cornerRadius = 10.0;
     backPiece.clipsToBounds = YES;
     backPiece.opaque = NO;
-    backPiece.layer.borderWidth = 4.0;
+    backPiece.layer.borderWidth = 3.5;
     backPiece.alpha = 1.0;
     
     backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:0.1 blue:0.1 alpha:0.8] CGColor];
@@ -87,13 +87,13 @@
     UIGraphicsBeginImageContext(piece.frame.size);
     
     tmpImage = [UIImage imageNamed:@"times2.png"];
-    [tmpImage drawInRect:CGRectMake(0, 0, piece.frame.size.width, backPiece.frame.size.height)];
+    [tmpImage drawInRect:CGRectMake(0, 0, piece.frame.size.width, piece.frame.size.height)];
     p2Img = UIGraphicsGetImageFromCurrentImageContext();
     
     UIGraphicsBeginImageContext(piece.frame.size);
 
     tmpImage = [UIImage imageNamed:@"times3.png"];
-    [tmpImage drawInRect:CGRectMake(0, 0, piece.frame.size.width, backPiece.frame.size.height)];
+    [tmpImage drawInRect:CGRectMake(0, 0, piece.frame.size.width, piece.frame.size.height)];
     p3Img = UIGraphicsGetImageFromCurrentImageContext();
 }
 
@@ -114,7 +114,7 @@
         
         if(!isOccupied) {
             piece.backgroundColor = [UIColor clearColor];
-            piece.text = @"";
+            value = @"";
         }
         else
             piece.backgroundColor = [UIColor colorWithPatternImage:p1Img];
@@ -148,10 +148,10 @@
         if(backPieceVal == 2) {
          
             backPiece.hidden = NO;
-            backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.8] CGColor];
+            backPiece.layer.borderColor = [[UIColor clearColor] CGColor];//[[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.8] CGColor];
             backPiece.textColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:0.8];
             backPiece.text = @"";
-            backPiece.layer.borderWidth = 1.5f;
+          //  backPiece.layer.borderWidth = 1.5f;
             backPiece.backgroundColor = [UIColor colorWithPatternImage:p2Img];
         
         }
