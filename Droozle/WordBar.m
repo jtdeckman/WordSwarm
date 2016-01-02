@@ -224,6 +224,7 @@
     animatePiece.frame = origin.frame;
     animatePiece.backgroundColor = origin.backgroundColor;
     animatePiece.text = origin.text;
+    animatePiece.textColor = origin.textColor;
     
     animatePiece.hidden = NO;
     

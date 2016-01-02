@@ -126,7 +126,7 @@
     
     if(gamePlay.gameState == gameMenu && !animating) {
     
-        animating = YES;
+       // animating = YES;
         
         if(touch.view == display.menuView) {
             
@@ -208,7 +208,7 @@
                         
                         [self performSelector:@selector(updateGameScoreAfterDelay:) withObject:newScore afterDelay:1.2f];
                         
-                        flashDuration += 1.2;
+                    //    flashDuration += 1.2;
                     }
                     
                     if(newScore > BOMB_BONUS_SCORE) {
@@ -551,6 +551,8 @@
     
     [display updateScore];
     [display updateLevelValues];
+    
+ //   [gamePlay rowOfValues];
 }
 
 - (void)eliminateRowFromBoard:(Space*)space {
