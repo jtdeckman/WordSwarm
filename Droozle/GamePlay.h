@@ -50,7 +50,7 @@
 
 @property (nonatomic) BOOL criticalState;
 
-- (CGFloat)setUp:(Board*)brd :(CGRect)frm;
+- (CGFloat)setUp:(Board*)brd :(CGRect)frm :(BOOL)iPad;
 
 - (void)rowOfValues;
 - (void)newGame;

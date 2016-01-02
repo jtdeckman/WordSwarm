@@ -521,6 +521,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "JTD.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -537,6 +538,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "JTD.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

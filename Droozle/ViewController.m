@@ -519,7 +519,11 @@
 - (void)setUpViewController {
 
     CGRect boardFrm;
-
+    
+    CGFloat aRatio = self.view.frame.size.width/self.view.frame.size.height;
+   
+    BOOL iPad = NO;
+    
     [AppDelegate setUpDefaults];
     
     display = [[Display alloc] init];
@@ -530,7 +534,10 @@
     
     boardFrm = [display initBoardView:self.view.frame];
     
-    CGFloat buffer = [gamePlay setUp:board :boardFrm];
+    if(aRatio > 0.74)
+        iPad = YES;
+    
+    CGFloat buffer = [gamePlay setUp:board :boardFrm :iPad];
     [board initBoard:boardFrm :gamePlay.dimx :gamePlay.dimy :0.00075*self.view.frame.size.width :buffer :gamePlay.wordLogic];
     
     [self addPiecesToView];
@@ -612,7 +619,7 @@
         
         NSString *word = [display.wordBar makeWordFromLetters];
         
-        if(1) {//gamePlay checkWord:word :display.wordBar.wordCategory]) {
+        if([gamePlay checkWord:word :display.wordBar.wordCategory]) {
             
             gamePlay.gameState = levelUp;
             [display.wordBar makePiecesFlash:0.5f :0.0f];
@@ -669,6 +676,8 @@
   
     [board clearBoard];
     [display resetForNextLevel];
+    
+    [gamePlay levelUp];
     
     gamePlay.gameState = gameRunning;
 }

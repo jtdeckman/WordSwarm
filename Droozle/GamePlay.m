@@ -14,16 +14,19 @@
 @synthesize gameState, gameData, criticalState;
 @synthesize placeMode, wordLogic;
 
-- (CGFloat)setUp:(Board*)brd :(CGRect)frm {
+- (CGFloat)setUp:(Board*)brd :(CGRect)frm :(BOOL)iPad{
    
     CGFloat buffer = frm.size.width*PIECE_BUFFER;
     CGFloat pw;
     
-    dimy = 6;
+    if(iPad)
+        dimy = 7;
+    else
+        dimy = 6;
     
     pw = (frm.size.width-buffer)/dimy;
     
-    dimx = (int)(frm.size.height/pw);
+    dimx = (int)(frm.size.height/pw)-1;
     
     board = brd;
     

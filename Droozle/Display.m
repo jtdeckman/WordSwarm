@@ -786,8 +786,14 @@
     
     CGRect boardFrm;
     
+    CGFloat aRatio = rootView.frame.size.width/rootView.frame.size.height;
+    
     boardFrm.origin.x = 0.03*viewFrame.size.width;
-    boardFrm.origin.y = boardView.frame.origin.y + 0.03*viewFrame.size.width;
+    
+    if(aRatio > 0.74)
+        boardFrm.origin.x *= 2.5;
+    
+    boardFrm.origin.y = boardView.frame.origin.y + boardFrm.origin.x;// 0.03*viewFrame.size.width;
     boardFrm.size.height = boardView.frame.size.height;// - 0.5*boardFrm.origin.x;
     boardFrm.size.width = viewFrame.size.width - 2.0*boardFrm.origin.x;
     
