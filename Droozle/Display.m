@@ -258,13 +258,23 @@
 
 - (void)resetForNextLevel {
 
-    wordBar.wordCategory = [gamePlay getRandomCategoryForLevel:gamePlay.gameData.level];
-    [wordBar setUpForLevel:gamePlay.gameData.level];
+  //  [wordBar makePiecesFlash:0.4f];
     
+    [self performSelector:@selector(setUpWordBarForLevel) withObject:nil afterDelay:0.41f];
+    
+  //  wordBar.wordCategory = [gamePlay getRandomCategoryForLevel:gamePlay.gameData.level];
+  //  [wordBar setUpForLevel:gamePlay.gameData.level];
+
     bombPiece.frame = baseBombPiece;
     floatPiece.hidden = YES;
     
     [self updateLevelValues];
+}
+
+- (void)setUpWordBarForLevel {
+    
+    wordBar.wordCategory = [gamePlay getRandomCategoryForLevel:gamePlay.gameData.level];
+    [wordBar setUpForLevel:gamePlay.gameData.level];
 }
 
 /*- (void)makePiecesFlash:(BOOL)wrongWord :(CGFloat)duration {

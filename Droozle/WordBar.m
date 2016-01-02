@@ -264,6 +264,77 @@
     return NO;
 }
 
+- (void)makePiecesFlash:(CGFloat)duration {
+    
+    CGFloat dur2 = duration/4;
+    
+    __block UILabel *piece;
+    
+    for(uint i=0; i<lettersInLevel; i++) {
+        
+        piece = letters[i];
+        piece.backgroundColor = [UIColor whiteColor];
+        piece.alpha = 0.8f;
+    }
+    
+    [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        for(int i=0; i<lettersInLevel; i++) {
+            
+            piece = letters[i];
+            piece.alpha = 0.2;
+        }
+        
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+            for(int i=0; i<lettersInLevel; i++) {
+                
+                piece = letters[i];
+                piece.alpha = 0.8;
+            }
+            
+        } completion:^(BOOL finished) {
+            
+    
+        }];
+    } ];
+    
+    [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        for(int i=0; i<lettersInLevel; i++) {
+            
+            piece = letters[i];
+            piece.alpha = 0.2;
+        }
+        
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+            for(int i=0; i<lettersInLevel; i++) {
+                
+                piece = letters[i];
+                piece.alpha = 0.8;
+            }
+            
+        } completion:^(BOOL finished) {
+            
+            for(int i=0; i<lettersInLevel; i++) {
+                
+                piece = letters[i];
+                piece.alpha = 1.0;
+            }
+            
+        }];
+    } ];
+
+
+}
+
 - (void)deconstruct {
     
     UILabel *letter;

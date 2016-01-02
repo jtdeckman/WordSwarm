@@ -53,12 +53,13 @@
             
             NSString *word = [display.wordBar makeWordFromLetters];
             
-            if([gamePlay checkWord:word :display.wordBar.wordCategory]) {
+            if(1) {//gamePlay checkWord:word :display.wordBar.wordCategory]) {
                 
                 gamePlay.gameState = levelUp;
+                [display.wordBar makePiecesFlash:1.2f];
             }
             
-            else
+           else
                 [display.wordBar clearLetters];
         }
 
@@ -221,7 +222,7 @@
                         
                         [self performSelector:@selector(updateGameScoreAfterDelay:) withObject:newScore afterDelay:1.2f];
                         
-                    //    flashDuration += 1.2;
+                      // flashDuration += 1.2;
                     }
                     
                     if(newScore > BOMB_BONUS_SCORE) {
@@ -356,9 +357,12 @@
             
             [display changeFloatPieceLoc:location];
         }
+        
+     //   swiping = YES;
     }
     else {
         
+     //   swiping = NO;
       //  display.floatPiece.hidden = YES;
       //  [display resetAddPiece];
     }
@@ -555,6 +559,7 @@
   //  display.addPiece.text = @"";
     
     animating = NO;
+    
     prevViewSettings = NO;
     
     bottomRow = board.dimx - 1;
@@ -655,8 +660,6 @@
 - (void)setUpForNextLevel {
     
     animating = NO;
-    
-   // [display resetAnimatedPieces];
   
     [board clearBoard];
     [display resetForNextLevel];
