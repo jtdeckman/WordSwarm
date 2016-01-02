@@ -30,6 +30,8 @@
     UIView *rootView;
     
     BOOL boxesFilled;
+    
+    UIColor *borderColor;
 }
 
 @property (nonatomic,strong) NSMutableArray *letters;

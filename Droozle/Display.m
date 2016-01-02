@@ -15,6 +15,7 @@
 @synthesize menuBar, menuView, gamePlay;
 @synthesize piecesToAnimate, bombPiece;
 @synthesize animations, topOffset, wordBar;
+@synthesize nukePiece;
 
 - (void)changeFloatPieceLoc: (CGPoint)newLoc {
 
@@ -32,8 +33,12 @@
     
     score.text = [NSString stringWithFormat:@"%d",gamePlay.gameData.score];
     
-    if(gamePlay.gameData.numBombs > 0)
+    if(gamePlay.gameData.numBombs > 0) {
+        
         bombPiece.hidden = NO;
+        numBombsLabel.hidden = NO;
+        numBombsLabel.text = [NSString stringWithFormat:@"x %d",gamePlay.gameData.numBombs];
+    }
 }
 
 - (void)updateLevelValues {
@@ -113,10 +118,17 @@
         
         [gamePlay decrementNumBombs];
     
-        bombPiece.text = [NSString stringWithFormat:@"X%d",gamePlay.gameData.numBombs];
+        numBombsLabel.text = [NSString stringWithFormat:@"x %d",gamePlay.gameData.numBombs];
         
-        if(gamePlay.gameData.numBombs < 1)
+        if(gamePlay.gameData.numBombs < 1) {
             bombPiece.hidden = YES;
+            numBombsLabel.hidden = YES;
+        }
+        else {
+            
+            bombPiece.hidden = NO;
+            numBombsLabel.hidden = NO;
+        }
     }
 }
 
@@ -843,10 +855,9 @@
     
     [rootView addSubview:menuBar];
     
+ // Miscellaneous pieces:
     
-    // Miscellaneous pieces:
-    
-    // Bomb piece
+ // Bomb piece
     
     pcFrm = addPiece.frame;
     pcFrm.size.height *=1.15;
@@ -869,15 +880,29 @@
     bombPiece.layer.cornerRadius = 10.0f;
     bombPiece.clipsToBounds = YES;
     bombPiece.opaque = YES;
-    
-    [bombPiece setTextAlignment:NSTextAlignmentCenter];
-    [bombPiece setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.8*FONT_FACT*pcFrm.size.width]];
-    bombPiece.textColor = [UIColor colorWithRed:0.8 green:0.3 blue:0.3 alpha:0.7];
-    bombPiece.text = @"x 2";
 
     bombPiece.hidden = YES;
     baseBombPiece = bombPiece.frame;
     
+ // Num bombs label
+    
+    pcFrm = bombPiece.frame;
+    pcFrm.origin.y += 0.135*pcFrm.size.height;
+    
+    numBombsLabel = [[UILabel alloc] initWithFrame:pcFrm];
+    [rootView addSubview:numBombsLabel];
+    
+    numBombsLabel.layer.cornerRadius = 10.0f;
+    numBombsLabel.clipsToBounds = YES;
+    numBombsLabel.opaque = YES;
+    
+    [numBombsLabel setTextAlignment:NSTextAlignmentCenter];
+    [numBombsLabel setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.8*FONT_FACT*pcFrm.size.width]];
+    numBombsLabel.textColor = [UIColor colorWithRed:0.8 green:0.3 blue:0.3 alpha:0.7];
+    numBombsLabel.text = @"";
+    
+    numBombsLabel.hidden = YES;
+
     pcFrm = addPiece.frame;
     pcFrm.size.width *= 2.0;
     pcFrm.size.height *= 1.5;
@@ -938,6 +963,10 @@
     
     [floatScore removeFromSuperview];
     [bombPiece removeFromSuperview];
+    [nukePiece removeFromSuperview];
+    
+    [numBombsLabel removeFromSuperview];
+    [numNukesLabel removeFromSuperview];
     
     [piecesToAnimate removeAllObjects];
     

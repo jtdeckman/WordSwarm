@@ -16,7 +16,7 @@
 #import "Animations.h"
 #import "WordBar.h"
 
-#define NUM_WORDBAR_LETTERS 8
+#define NUM_WORDBAR_LETTERS 9
 
 @interface Display : NSObject {
     
@@ -46,7 +46,10 @@
     
     UILabel *floatScore;
     UILabel *bombPiece;
-   // UILabel *extraBckgd;
+    UILabel *nukePiece;
+    
+    UILabel *numBombsLabel;
+    UILabel *numNukesLabel;
     
     UIImage *floatBackImage;
     
@@ -57,6 +60,7 @@
     
     CGRect baseAddPiece;
     CGRect baseBombPiece;
+    CGRect baseNukePiece;
     
     CGRect baseLevelBackPiece;
     CGRect baseLevelLabel;
@@ -88,6 +92,7 @@
 @property(nonatomic, strong) UILabel *floatPiece;
 @property(nonatomic, strong) UILabel *addPiece;
 @property(nonatomic, strong) UILabel *bombPiece;
+@property(nonatomic, strong) UILabel *nukePiece;
 
 @property(nonatomic, strong) UIImageView *menuBar;
 

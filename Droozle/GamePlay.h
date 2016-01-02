@@ -11,7 +11,10 @@
 #import "WordLogic.h"
 
 #define TIME_FACTOR 15
+
 #define MAX_BOMBS 3
+#define MAX_NUKES 1
+
 #define FULL_WORD_BONUS 10
 #define BOMB_BONUS_SCORE 35
 
