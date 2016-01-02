@@ -151,7 +151,7 @@
     
     if(gameData.gamePlay == FREE_PLAY) {
     
-        if(gameData.difficulty > 1)
+        if(gameData.difficulty > 0)
             gameData.level = -2;
         else
             gameData.level = -1;
@@ -203,6 +203,7 @@
                       @"200000",
                       nil];
 }
+
 
 - (void)checkDifficulty {
 

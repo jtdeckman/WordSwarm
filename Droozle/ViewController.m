@@ -52,7 +52,7 @@
         uint nRowsOcc = [board numRowsOccupied];
         uint timeInterval;
         
-        if(nRowsOcc < 1) {
+      /*  if(nRowsOcc < 1) {
             
             animating = YES;
             [gamePlay rowOfValues];
@@ -63,9 +63,9 @@
             [display animatePiecesToBottomRow:0.7f];
             
             [self performSelector:@selector(rowAddAnimatingOff) withObject:nil afterDelay:0.8f];
-        }
+        } */
         
-        else {
+      //  else {
             
             timeInterval = [gamePlay getRowDelayForNumRows:nRowsOcc];
             
@@ -76,6 +76,8 @@
                 if([board shiftRowsUp] == YES) {
                 
                     gamePlay.gameState = gameOver;
+                    
+                    [board hideOccupiedPieces];
                 }
             
                 else {
@@ -86,16 +88,14 @@
                     [gamePlay rowOfValues];
                     
                     [board getPiecesInRow:display.piecesToAnimate :bottomRow :YES];
-                  //  [board hideBackPiecesInRow:bottomRow];
                     [board hidePointsLabelInRow:bottomRow];
                
                     [display animatePiecesToBottomRow:0.7f];
                     
                     [self performSelector:@selector(rowAddAnimatingOff) withObject:nil afterDelay:0.8f];
-                   
                 }
             }
-        }
+     //   }
         
         [gamePlay incrementTimer];
     }
@@ -124,8 +124,10 @@
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint location = [touch locationInView:self.view];
     
-    if(gamePlay.gameState == gameMenu) {
+    if(gamePlay.gameState == gameMenu) { //&& !animating) {
     
+        animating = YES;
+        
         if(touch.view == display.menuView) {
             
             location = [touch locationInView:display.menuView];
@@ -169,7 +171,7 @@
         }
     }
     
-    else if(gamePlay.gameState == gameRunning && !animating) {
+    else if(gamePlay.gameState == gameRunning) { // && !animating) {
         
         if(touch.view == display.boardView && gamePlay.placeMode == freeState) {
             
@@ -308,7 +310,7 @@
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint location = [touch locationInView:self.view];
     
-    if(gamePlay.gameState ==  gameRunning) {
+    if(gamePlay.gameState ==  gameRunning) { //&& !animating) {
         
         if(gamePlay.placeMode == swipeMove) {
             
@@ -330,6 +332,11 @@
             [display changeFloatPieceLoc:location];
         }
     }
+    else {
+        
+      //  display.floatPiece.hidden = YES;
+      //  [display resetAddPiece];
+    }
 }
 
 
@@ -338,7 +345,7 @@
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint location = [touch locationInView:self.view];
     
-    if(gamePlay.gameState == gameRunning) {
+    if(gamePlay.gameState == gameRunning && !animating) {
       
         if(gamePlay.placeMode == swipeMove) {
             
@@ -464,6 +471,13 @@
             gamePlay.placeMode = freeState;
         }
     }
+    
+    else {
+        display.floatPiece.hidden = YES;
+        [display resetAddPiece];
+    }
+    
+    animating = NO;
 }
 
 - (void)addPiecesToView {
@@ -524,15 +538,36 @@
     prevViewSettings = NO;
     
     bottomRow = board.dimx - 1;
+    
+    [display.wordBar setUpForLevel:1];
 }
 
 - (void)eliminateRowFromBoard:(Space*)space {
     
   //  [display resetAnimatedPieces];
     
+    [self populateWordBarFromRow:space.iind];
+    
     [board eliminateRow:space.iind];
     
     [display updateScore];
+ 
+    animating = NO;
+}
+
+- (void)populateWordBarFromRow:(uint)row {
+
+    Space *space;
+    
+    for(uint j=0; j<board.dimy; j++) {
+        
+        space = [board getSpaceForIndices:row :j];
+        
+        if(space.backPieceVal > 1 && ![space.value isEqualToString:@""]) {
+            
+            [display.wordBar addLetterToBox:space.value];
+        }
+    }
     
     animating = NO;
 }
@@ -594,6 +629,10 @@
 
     [board unHidePiecesInRow:bottomRow];
     animating = NO;
+}
+
+- (void)turnAnimatingOff {
+    
 }
 
 @end

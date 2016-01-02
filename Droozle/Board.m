@@ -388,14 +388,21 @@
         
         space = spaces[0][j];
         space.value = 0;
+        space.pointValue = 0;
         space.isOccupied = NO;
         space.piece.hidden = YES;
+        space.backPiece.hidden = YES;
+        space.backPieceVal = 1;
+        
+        [space configurePiece:NO :0];
     }
     
     space = rowTypes[0];
     space.value = 0;
     space.isOccupied = NO;
     space.piece.hidden = YES;
+    
+    [space configurePiece:YES :nil];
 }
 
 - (NSString*)makeWordFromRow: (uint)row {

@@ -22,6 +22,8 @@
     
     uint letterPosition;
     uint numLetters;
+    
+    uint lettersInLevel;
 }
 
 @property (nonatomic,strong) NSMutableArray *letters;
@@ -32,6 +34,9 @@
 - (void)setUp:(uint)nLetters :(CGRect)frame :(CGFloat)offset :(UIView*)rootView;
 - (void)addLetterToBox:(NSString*)letter;
 - (void)clearLetters;
+- (void)setUpForLevel:(int)level;
+
+- (uint)getNumWordBarLettersForLevel:(int)level;
 
 - (NSString*)makeWordFromLetters;
 

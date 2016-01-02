@@ -50,7 +50,6 @@
     
     CGRect frm = textBox1.frame;
     
-    frm.origin.y = 0.45*startLoc;
     frm.origin.x = baseLocBox1.origin.x;
     
     textBox1.frame = frm;

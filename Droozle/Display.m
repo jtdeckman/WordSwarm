@@ -14,7 +14,7 @@
 @synthesize floatPiece, addPiece;
 @synthesize menuBar, menuView, gamePlay;
 @synthesize piecesToAnimate, bombPiece;
-@synthesize animations, topOffset;
+@synthesize animations, topOffset, wordBar;
 
 - (void)changeFloatPieceLoc: (CGPoint)newLoc {
 
