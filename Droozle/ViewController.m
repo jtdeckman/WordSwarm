@@ -52,7 +52,7 @@
         uint nRowsOcc = [board numRowsOccupied];
         uint timeInterval;
         
-      /*  if(nRowsOcc < 1) {
+        if(nRowsOcc < 1) {
             
             animating = YES;
             [gamePlay rowOfValues];
@@ -63,9 +63,9 @@
             [display animatePiecesToBottomRow:0.7f];
             
             [self performSelector:@selector(rowAddAnimatingOff) withObject:nil afterDelay:0.8f];
-        } */
+        }
         
-      //  else {
+        else {
             
             timeInterval = [gamePlay getRowDelayForNumRows:nRowsOcc];
             
@@ -95,7 +95,7 @@
                     [self performSelector:@selector(rowAddAnimatingOff) withObject:nil afterDelay:0.8f];
                 }
             }
-     //   }
+        }
         
         [gamePlay incrementTimer];
     }
@@ -124,7 +124,7 @@
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint location = [touch locationInView:self.view];
     
-    if(gamePlay.gameState == gameMenu) { //&& !animating) {
+    if(gamePlay.gameState == gameMenu && !animating) {
     
         animating = YES;
         
@@ -171,7 +171,7 @@
         }
     }
     
-    else if(gamePlay.gameState == gameRunning) { // && !animating) {
+    else if(gamePlay.gameState == gameRunning && !animating) {
         
         if(touch.view == display.boardView && gamePlay.placeMode == freeState) {
             
@@ -227,7 +227,7 @@
                     [display animateScore:newScore];
                     [display makePiecesFlash:YES :0.4];
                     
-                    [self performSelector:@selector(resetRow) withObject:nil afterDelay:0.4];
+                    [self performSelector:@selector(resetRow) withObject:nil afterDelay:0.41];
                 }
             }
             
@@ -236,6 +236,14 @@
                 gamePlay.placeMode = swipeMove;
                 [display configureFloatPiece:touchedSpace];
             }
+        }
+        
+        else if(CGRectContainsPoint(display.wordBar.catLabel.frame, location)) {
+        
+            NSString *word = [display.wordBar makeWordFromLetters];
+            
+            if([gamePlay checkWord:word :display.wordBar.wordCategory])
+                [gamePlay levelUp];
         }
         
         else if(touch.view == display.bottomBar && gamePlay.placeMode == freeState) {
@@ -455,7 +463,7 @@
                 [display makePiecesFlash:NO :0.4];
                 [display animateScore:newScore];
                 
-                [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:0.4];
+                [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:0.42];
                 
                 [display resetBombPiece:YES];
             }
@@ -476,8 +484,6 @@
         display.floatPiece.hidden = YES;
         [display resetAddPiece];
     }
-    
-    animating = NO;
 }
 
 - (void)addPiecesToView {
@@ -570,7 +576,7 @@
         }
     }
     
-    animating = NO;
+   // animating = NO;
 }
 
 - (void)resetRow {
@@ -620,9 +626,8 @@
    // [display resetAnimatedPieces];
   
     [board clearBoard];
-    display.wordBar.wordCategory = [gamePlay getRandomCategoryForLevel:gamePlay.gameData.level];
     
-    [display updateLevelValues];
+    
     [display resetForNextLevel];
     
     gamePlay.gameState = gameRunning;

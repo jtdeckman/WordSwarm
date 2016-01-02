@@ -124,7 +124,9 @@
 
 - (void)addLetterToBox:(NSString*)letter {
 
-    UILabel *square = letters[letterPosition++];
+    UILabel *square = letters[letterPosition];
+    
+    ++letterPosition;
     
     if(letterPosition >= lettersInLevel)
         letterPosition = 0;

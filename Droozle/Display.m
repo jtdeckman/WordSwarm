@@ -244,8 +244,13 @@
 
 - (void)resetForNextLevel {
 
+    wordBar.wordCategory = [gamePlay getRandomCategoryForLevel:gamePlay.gameData.level];
+    [wordBar setUpForLevel:gamePlay.gameData.level];
+    
     bombPiece.frame = baseBombPiece;
     floatPiece.hidden = YES;
+    
+    [self updateLevelValues];
 }
 
 /*- (void)makePiecesFlash:(BOOL)wrongWord :(CGFloat)duration {

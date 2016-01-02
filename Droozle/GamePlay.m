@@ -99,10 +99,10 @@
     
     gameData.score += newScore*gameData.level;
     
-    NSString *pointsForNextLevel = [self getPointsForLevel:gameData.level + 1];
+  //  NSString *pointsForNextLevel = [self getPointsForLevel:gameData.level + 1];
     
-    if(gameData.score >= [pointsForNextLevel intValue]) 
-        [self levelUp];
+  //  if(gameData.score >= [pointsForNextLevel intValue])
+  //      [self levelUp];
     
     [self checkHighScores];
     
@@ -210,7 +210,7 @@
 - (uint)getRowDelayForNumRows:(uint)nrows {
 
     if(nrows == 0 || nrows == 1)
-        return 4;
+        return 1;
     
     return timeInterval;
 }
