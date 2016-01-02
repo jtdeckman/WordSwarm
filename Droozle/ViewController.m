@@ -49,20 +49,7 @@
     
     if(gamePlay.gameState == gameRunning && !animating) {
         
-        if(display.wordBar.boxesFilled) {
-            
-            NSString *word = [display.wordBar makeWordFromLetters];
-            
-            if(1) {//gamePlay checkWord:word :display.wordBar.wordCategory]) {
-                
-                gamePlay.gameState = levelUp;
-                [display.wordBar makePiecesFlash:1.2f];
-            }
-            
-           else
-                [display.wordBar clearLetters];
-        }
-
+      
         uint nRowsOcc = [board numRowsOccupied];
         uint timeInterval;
         
@@ -233,7 +220,7 @@
                     [display makePiecesFlash:NO :flashDuration];
                    // [self performSelector:@selector(eliminateRowFromBoard:) withObject:touchedSpace afterDelay:flashDuration];
                     
-                    [self performSelector:@selector(populateWordBarFromRow:) withObject:touchedSpace afterDelay:0.0f];
+                    [self performSelector:@selector(populateWordBarFromRow:) withObject:touchedSpace afterDelay:0.2f];
                 }
                 
                 else {
@@ -584,6 +571,8 @@
    //     [display.wordBar clearLetters];
   //  }
     
+    [self checkWordRow];
+    
     [board eliminateRow:space.iind];
     
     [display updateScore];
@@ -615,6 +604,23 @@
   //  [self eliminateRowFromBoard:spaceInRow];
     
     [self performSelector:@selector(eliminateRowFromBoard:) withObject:spaceInRow afterDelay:totalTime + 0.1];
+}
+
+- (void)checkWordRow {
+    
+    if(display.wordBar.boxesFilled) {
+        
+        NSString *word = [display.wordBar makeWordFromLetters];
+        
+        if(1) {//gamePlay checkWord:word :display.wordBar.wordCategory]) {
+            
+            gamePlay.gameState = levelUp;
+            [display.wordBar makePiecesFlash:0.5f :0.0f];
+        }
+        
+        else
+            [display.wordBar clearLetters];
+    }
 }
 
 - (void)resetRow {

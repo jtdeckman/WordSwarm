@@ -264,9 +264,9 @@
     return NO;
 }
 
-- (void)makePiecesFlash:(CGFloat)duration {
+- (void)makePiecesFlash:(CGFloat)duration :(CGFloat)delay {
     
-    CGFloat dur2 = duration/4;
+    CGFloat dur2 = duration;
     
     __block UILabel *piece;
     
@@ -277,7 +277,7 @@
         piece.alpha = 0.8f;
     }
     
-    [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+  /*  [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
         
         for(int i=0; i<lettersInLevel; i++) {
             
@@ -300,9 +300,9 @@
             
     
         }];
-    } ];
+    } ]; */
     
-    [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:dur2 delay:delay options:UIViewAnimationOptionCurveEaseIn animations:^{
         
         for(int i=0; i<lettersInLevel; i++) {
             

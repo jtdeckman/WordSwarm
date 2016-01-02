@@ -258,7 +258,7 @@
 
 - (void)resetForNextLevel {
 
-  //  [wordBar makePiecesFlash:0.4f];
+    [wordBar makePiecesFlash:0.5f :0.0f];
     
     [self performSelector:@selector(setUpWordBarForLevel) withObject:nil afterDelay:0.41f];
     

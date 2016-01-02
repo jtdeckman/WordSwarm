@@ -47,7 +47,7 @@
 - (void)addLetterToBox:(NSString*)letter;
 - (void)clearLetters;
 - (void)setUpForLevel:(int)level;
-- (void)makePiecesFlash:(CGFloat)duration;
+- (void)makePiecesFlash:(CGFloat)duration :(CGFloat)delay;
 
 - (uint)getNumWordBarLettersForLevel:(int)level;
 - (uint)numOccupied;
