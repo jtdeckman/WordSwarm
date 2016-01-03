@@ -574,16 +574,17 @@
     }
 }
 
-- (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row :(BOOL)getCatPiece {
+- (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row :(BOOL)getCatPiece :(uint)numPieces {
 
     Space *space;
     
     [pieces removeAllObjects];
     
-    for(int j=0; j<dimy; j++) {
+    uint iterateTo = dimy;
+        
+    for(int j=0; j<iterateTo; j++) {
         
         space = spaces[row][j];
-        
         [pieces addObject:space.piece];
     }
     

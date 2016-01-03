@@ -66,7 +66,7 @@
 - (BOOL)isCategoryRow:(uint)row;
 
 - (void)eliminateRow:(uint)row;
-- (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row :(BOOL)getCatPiece;
+- (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row :(BOOL)getCatPiece :(uint)numPieces;
 
 - (void)getAllVisiblePieces:(NSMutableArray*)allPieces;
 

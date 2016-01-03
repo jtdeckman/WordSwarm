@@ -58,7 +58,7 @@
             animating = YES;
             [gamePlay rowOfValues];
             
-            [board getPiecesInRow:display.piecesToAnimate :bottomRow :YES];
+            [board getPiecesInRow:display.piecesToAnimate :bottomRow :YES :0];
             [board hidePointsLabelInRow:bottomRow];
             
             [display animatePiecesToBottomRow:0.7f];
@@ -93,7 +93,7 @@
                     animating = YES;
                     [gamePlay rowOfValues];
                     
-                    [board getPiecesInRow:display.piecesToAnimate :bottomRow :YES];
+                    [board getPiecesInRow:display.piecesToAnimate :bottomRow :YES :0];
                     [board hidePointsLabelInRow:bottomRow];
                
                     [display animatePiecesToBottomRow:0.7f];
@@ -114,11 +114,14 @@
             
             display.levelLabel.hidden = YES;
             
-            [board getAllVisiblePieces:display.piecesToAnimate];
+           // [board getAllVisiblePieces:display.piecesToAnimate];
             [board hideAllBackPieces];
         
+         //   [display.animations animateTextBox2:1.0f :0.90*self.view.frame.size.height :0.3*self.view.frame.size.height :0.0f
+           //                                    :[NSString stringWithFormat:@"Level %d",gamePlay.gameData.level+1]];
+            
             [display hideAlertView];
-            [display makePiecesFlash:NO :1.0];
+         //   [display makePiecesFlash:NO :1.0];
         
             [display animateLevelTile:1.0];
         
@@ -200,7 +203,7 @@
                     
                     CGFloat flashDuration = 0.4f;
                     
-                    [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind :YES];
+                    [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind :YES :0];
                     [board hideBackPiecesInRow:touchedSpace.iind];
                     
                     [display animateScore:newScore];
@@ -233,7 +236,7 @@
                     
                     int newScore = [gamePlay updateScore:-1.0*[board sumRow:touchedSpace.iind :YES]];
                      
-                    [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind :YES];
+                    [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind :YES :0];
                     [board hidePointsLabelInRow:touchedSpace.iind];
                     
                     [display animateScore:newScore];
@@ -466,7 +469,7 @@
                 
                 int newScore = [gamePlay updateScore:[board sumRow:selectedSpace.iind :NO]];
                 
-                [board getPiecesInRow:display.piecesToAnimate :selectedSpace.iind :YES];
+                [board getPiecesInRow:display.piecesToAnimate :selectedSpace.iind :YES :0];
                 [board hideBackPiecesInRow:selectedSpace.iind];
                 
                 [display makePiecesFlash:NO :0.4];
