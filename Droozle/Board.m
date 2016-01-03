@@ -164,7 +164,7 @@
     
     int pVal = [wLPointer pointValueForLetter:val];
     
-    uint rnum = arc4random() % 20;
+    uint rnum = arc4random() % 25;
     
     if(pVal < 0) pVal = 0;
     
@@ -172,9 +172,9 @@
     space.value = val;
     space.pointValue = pVal;
     
-    if(rnum == 5 || rnum == 11)
+    if(rnum == 5 || rnum == 11 || rnum == 21)
         space.backPieceVal = 2;
-    else if(rnum == 17)
+    else if(rnum == 3 || rnum == 15)
         space.backPieceVal = 3;
     else
         space.backPieceVal = 1;
@@ -581,7 +581,10 @@
     [pieces removeAllObjects];
     
     uint iterateTo = dimy;
-        
+    
+    if(numPieces > 0)
+        iterateTo = numPieces;
+    
     for(int j=0; j<iterateTo; j++) {
         
         space = spaces[row][j];
@@ -593,6 +596,25 @@
         space = [rowTypes objectAtIndex:row];
         [pieces addObject:space.piece];
     }
+}
+
+- (BOOL)addWordToTopUnOccupiedRow:(NSString*)word :(NSString*)category {
+
+    int topUnOccupiedRow = dimx - [self numRowsOccupied] - 1;
+
+    if(topUnOccupiedRow < 0)
+        return NO;
+    
+    NSMutableArray *items = [[NSMutableArray alloc] initWithObjects:@"",@"",@"",@"",@"",@"",@"",@"",@"",@"", nil];
+    
+    for(int i=0; i < [word length]; i++)
+        [items addObject:[word substringWithRange:NSMakeRange(i, 1)]];
+    
+    items[dimy] = category;
+    
+    [self addBottomRow:items];
+    
+    return YES;
 }
 
 - (void)getAllVisiblePieces:(NSMutableArray*)allPieces {

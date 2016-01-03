@@ -630,11 +630,26 @@
         }
         
         else {
+    
+            uint topUnOccupiedRow = board.dimx - [board numRowsOccupied] - 1;
             
-            [display.wordBar makeBarPiecesFlash:1.0];
-            [gamePlay rowOfValues];
+            if(topUnOccupiedRow < 1) {
             
-           // [display.wordBar clearLetters];
+                gamePlay.gameState = gameOver;
+            }
+            
+            else {
+                
+                NSMutableArray *pieceLocations = [[NSMutableArray alloc] initWithCapacity:display.wordBar.lettersInLevel];
+                
+                [board getPiecesInRow:pieceLocations :topUnOccupiedRow :NO :display.wordBar.lettersInLevel];
+                
+                for(uint i=0; i<display.wordBar.lettersInLevel; i++)
+                    [display.wordBar animatePieceBackToBoard:(UILabel*)pieceLocations[i] :1.0 :0.0 :i];
+                
+                [display.wordBar makeBarPiecesFlash:1.0];
+                [board addWordToTopUnOccupiedRow:word :display.wordBar.wordCategory];
+            }
         }
     }
 }

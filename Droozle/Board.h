@@ -44,6 +44,7 @@
 - (void)addPiece: (int)ival :(int)jval :(NSString*)val;
 
 - (void)addBottomRow: (NSMutableArray*)vals;
+- (BOOL)addWordToTopUnOccupiedRow:(NSString*)word :(NSString*)category;
 
 - (Space*)getSpaceForIndices: (int)ival : (int)jval;
 - (Space*)getSpaceFromPoint: (CGPoint)loc;
@@ -67,7 +68,6 @@
 
 - (void)eliminateRow:(uint)row;
 - (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row :(BOOL)getCatPiece :(uint)numPieces;
-
 - (void)getAllVisiblePieces:(NSMutableArray*)allPieces;
 
 - (NSString*)makeWordFromRow: (uint)row;

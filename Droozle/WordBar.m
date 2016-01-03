@@ -279,6 +279,50 @@
     return NO;
 }
 
+-(BOOL)animatePieceBackToBoard:(UILabel*)destination :(CGFloat)duration :(CGFloat)delay :(uint)ind {
+    
+    UILabel *piece, *box = letters[ind];
+    
+    CGRect frm = box.frame;
+    frm.origin = box.frame.origin;
+    
+    piece = [[UILabel alloc] initWithFrame:frm];
+    
+    piece.clipsToBounds = YES;
+    piece.opaque = NO;
+    
+    [piece setTextAlignment:NSTextAlignmentCenter];
+    
+    piece.font = box.font;
+    piece.textColor = box.textColor;
+    piece.layer.borderColor = box.layer.borderColor;
+    piece.layer.cornerRadius = box.layer.cornerRadius;
+    
+    piece.backgroundColor = box.backgroundColor;
+    piece.text = box.text;
+    piece.textColor = box.textColor;
+    
+    piece.hidden = NO;
+    
+    [rootView addSubview:piece];
+    
+    frm.origin = destination.frame.origin;
+    
+    [UIView animateWithDuration:duration delay:delay options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        piece.frame = frm;
+        
+    } completion:^(BOOL finished) {
+        
+        piece.hidden = YES;
+        [piece removeFromSuperview];
+    }];
+    
+    piece = nil;
+    
+    return NO;
+}
+
 - (void)makeBarPiecesFlash:(CGFloat)duration {
     
     UILabel *box;
