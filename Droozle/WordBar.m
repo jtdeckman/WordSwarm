@@ -259,6 +259,7 @@
         [animatePiece removeFromSuperview];
         
         [self addLetterToBox:letterToAdd];
+       // letterToAdd = @"";
     }];
     
     return NO;

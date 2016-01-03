@@ -604,7 +604,7 @@
             [display.wordBar animatePieceToEmptySpace:space.piece :duration :delay];
             
             totalTime += duration;
-            delay += duration + 0.1;
+            delay += duration + 0.2;
         }
     }
     
