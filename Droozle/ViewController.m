@@ -611,7 +611,8 @@
             
             ++nletters;
             
-            [display.wordBar addLetterToBox:space.value];
+            [display.wordBar addLetterToBox:space.value withDelay:delay];
+          //  [display.wordBar addLetterToBox:space.value after:duration];
         }
     }
     

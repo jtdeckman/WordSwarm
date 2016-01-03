@@ -45,6 +45,7 @@
 
 - (void)setUp:(uint)nLetters :(CGRect)frame :(CGFloat)offset :(UIView*)rView;
 - (void)addLetterToBox:(NSString*)letter;
+- (void)addLetterToBox:(NSString*)letter withDelay:(CGFloat)delay;
 - (void)clearLetters;
 - (void)setUpForLevel:(int)level;
 - (void)makePiecesFlash:(CGFloat)duration :(CGFloat)delay;

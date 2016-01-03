@@ -122,10 +122,33 @@
     
         square.backgroundColor = letterBackColor;
         square.layer.borderColor = [[UIColor clearColor] CGColor];
+        square.layer.borderColor = [borderColor CGColor];
         
         square.text = letter;
     }
 }
+
+- (void)addLetterToBox:(NSString*)letter withDelay:(CGFloat)delay {
+    
+    if(!boxesFilled) {
+        
+        UILabel *square = letters[letterPosition];
+        
+        ++letterPosition;
+        
+        if(letterPosition >= lettersInLevel)
+            boxesFilled = YES;
+        
+        square.backgroundColor = [UIColor clearColor];
+        square.textColor = [UIColor clearColor];
+        square.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.4];
+        
+        square.text = letter;
+        
+        [self performSelector:@selector(unHidePiece:) withObject:square afterDelay:0.4f];
+    }
+}
+
 
 - (void)makeLetterSquareUnOccupied:(uint)squareNum {
     
@@ -265,6 +288,13 @@
     return NO;
 }
 
+- (void)unHidePiece:(UILabel*)square {
+    
+    square.backgroundColor = letterBackColor;
+    square.layer.borderColor = [[UIColor clearColor] CGColor];
+    square.textColor = [UIColor whiteColor];
+}
+
 - (void)makePiecesFlash:(CGFloat)duration :(CGFloat)delay {
     
     CGFloat dur2 = duration;
@@ -277,31 +307,6 @@
         piece.backgroundColor = [UIColor whiteColor];
         piece.alpha = 0.8f;
     }
-    
-  /*  [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
-        
-        for(int i=0; i<lettersInLevel; i++) {
-            
-            piece = letters[i];
-            piece.alpha = 0.2;
-        }
-        
-        
-    } completion:^(BOOL finished) {
-        
-        [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            
-            for(int i=0; i<lettersInLevel; i++) {
-                
-                piece = letters[i];
-                piece.alpha = 0.8;
-            }
-            
-        } completion:^(BOOL finished) {
-            
-    
-        }];
-    } ]; */
     
     [UIView animateWithDuration:dur2 delay:delay options:UIViewAnimationOptionCurveEaseIn animations:^{
         
