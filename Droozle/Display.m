@@ -356,8 +356,8 @@
     
     lbpFrm = baseLevelBackPiece;
     
-    lbpFrm.origin.x += rootView.frame.size.width/2.0;
-    lbpFrm.origin.y += rootView.frame.size.height;
+    lbpFrm.origin.x = (rootView.frame.size.width - lbpFrm.size.width)/2.0;
+    lbpFrm.origin.y = 0.5*rootView.frame.size.height;
     
     [levelBackgroundPiece setFrame:lbpFrm];
     
@@ -372,7 +372,6 @@
         
     } completion:^(BOOL finished) {
         
-      //  level.hidden = NO;
         levelBackgroundPiece.text = @"";
         [rootView bringSubviewToFront:levelLabel];
         [rootView bringSubviewToFront:level];
