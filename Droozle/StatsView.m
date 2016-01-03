@@ -78,7 +78,7 @@
     highScoreLabel.opaque = NO;
     
     [highScoreLabel setTextAlignment:NSTextAlignmentCenter];
-    [highScoreLabel setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:3.0*FONT_FACT*highScoreLabel.frame.size.height]];
+    [highScoreLabel setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:3.5*FONT_FACT*highScoreLabel.frame.size.height]];
     
     highScoreLabel.textColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1.0];
     highScoreLabel.backgroundColor = [UIColor clearColor];

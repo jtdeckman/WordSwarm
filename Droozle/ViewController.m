@@ -79,7 +79,7 @@
                     gamePlay.gameState = gameOver;
                     
                     [display.animations animateTextBox2:2.0f :0.90*self.view.frame.size.height :0.3*self.view.frame.size.height :0.4f
-                                                       :@"GAME OVER"];
+                                                       :@"Game Over"];
                     [board hideOccupiedPieces];
                     [display hideAlertView];
                 }

@@ -10,7 +10,7 @@
 #import "Board.h"
 #import "WordLogic.h"
 
-#define TIME_FACTOR 2
+#define TIME_FACTOR 15
 
 #define MAX_BOMBS 3
 #define MAX_NUKES 1
