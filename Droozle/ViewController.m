@@ -59,8 +59,8 @@
             [gamePlay rowOfValues];
             
             [board getPiecesInRow:display.piecesToAnimate :bottomRow :YES];
-          //  [board hideBackPiecesInRow:bottomRow];
             [board hidePointsLabelInRow:bottomRow];
+            
             [display animatePiecesToBottomRow:0.7f];
             
             [self performSelector:@selector(rowAddAnimatingOff) withObject:nil afterDelay:0.8f];
@@ -225,7 +225,6 @@
                     }
                     
                     [display makePiecesFlash:NO :flashDuration];
-                   // [self performSelector:@selector(eliminateRowFromBoard:) withObject:touchedSpace afterDelay:flashDuration];
                     
                     [self performSelector:@selector(populateWordBarFromRow:) withObject:touchedSpace afterDelay:0.2f];
                 }
@@ -512,8 +511,6 @@
             [self.view addSubview:space.piece];
             [self.view addSubview:space.backPiece];
             [self.view addSubview:space.pointsLabel];
-            
-          //  [self.view bringSubviewToFront:space.pointsLabel];
         }
     }
 }
@@ -573,6 +570,8 @@
 
 - (void)eliminateRowFromBoard:(Space*)space {
     
+    
+    //[self performSelector:@selector(checkWordRow) withObject:nil afterDelay:0.4f];
     [self checkWordRow];
     
     [board eliminateRow:space.iind];
@@ -627,8 +626,13 @@
             [display.wordBar makePiecesFlash:0.5f :0.0f];
         }
         
-        else
-            [display.wordBar clearLetters];
+        else {
+            
+            [display.wordBar makeBarPiecesFlash:1.0];
+            [gamePlay rowOfValues];
+            
+           // [display.wordBar clearLetters];
+        }
     }
 }
 

@@ -80,11 +80,10 @@
         letterLabel.opaque = NO;
         
         [letterLabel setTextAlignment:NSTextAlignmentCenter];
-        [letterLabel setFont:[UIFont fontWithName:@"Arial" size:1.35*FONT_FACT*frm.size.width]];
+        
+        letterFont = [UIFont fontWithName:@"Helvetica" size:1.35*FONT_FACT*frm.size.width];
+        letterLabel.font = letterFont;
         letterLabel.textColor = [UIColor blackColor];
-      //  letterLabel.layer.borderColor = [borderColor CGColor];
-                                         
-      //  [self makeLetterSquareUnOccupied:i];
         
         letterLabel.layer.borderWidth = 1.5f;
         letterLabel.text = @"";
@@ -92,18 +91,6 @@
         frm.origin.x += frm.size.width + BOX_SPACING_FACT*frm.size.width;
     }
     
-    animatePiece = [[UILabel alloc] initWithFrame:letterLabel.frame];
-    
-    animatePiece.hidden = YES;
-    animatePiece.layer.cornerRadius = 7.0;
-    animatePiece.clipsToBounds = YES;
-    animatePiece.opaque = NO;
-    
-    [animatePiece setTextAlignment:NSTextAlignmentCenter];
-    [animatePiece setFont:[UIFont fontWithName:@"Arial" size:1.35*FONT_FACT*frm.size.width]];
-    animatePiece.textColor = [UIColor blackColor];
-    animatePiece.layer.borderColor = [[UIColor colorWithRed:0.8 green:0.6 blue:0.2 alpha:1.0] CGColor];
-
     boxesFilled = NO;
     
     [self hideAllLetters];
@@ -292,43 +279,57 @@
     return NO;
 }
 
-- (BOOL)animatePieceToEmptySpace:(UILabel*)origin :(CGFloat)duration :(CGFloat)delay {
-
-    if(letterPosition >= lettersInLevel || boxesFilled)
-        return YES;
+- (void)makeBarPiecesFlash:(CGFloat)duration {
     
-    UILabel *destinationBox = letters[letterPosition];
-    CGRect frm = origin.frame;
+    UILabel *box;
     
-  //  __block NSString *letterToAdd;
+    CGFloat dur4 = duration/4.0;
     
-    frm.origin = destinationBox.frame.origin;
-    
-    animatePiece.frame = origin.frame;
-    animatePiece.backgroundColor = origin.backgroundColor;
-    animatePiece.text = origin.text;
-    animatePiece.textColor = origin.textColor;
-    
-    animatePiece.hidden = NO;
-    
-    [rootView addSubview:animatePiece];
-    
- //   letterToAdd = origin.text;
-    
-    [UIView animateWithDuration:duration delay:delay options:UIViewAnimationOptionCurveEaseIn animations:^{
+    for(int i=0; i<lettersInLevel; i++) {
         
-        animatePiece.frame = frm;
+        box = letters[i];
         
+        box.backgroundColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.15 alpha:0.8];
+        box.textColor = [UIColor colorWithRed:0.9 green:0.2 blue:0.15 alpha:0.8];
+        box.font = [UIFont fontWithName:@"MarkerFelt-Thin" size:1.5*FONT_FACT*box.frame.size.height];
+    }
+    
+    [UIView animateWithDuration:dur4 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+        for(int i=0; i<lettersInLevel; i++)
+            ((UILabel*)letters[i]).alpha = 0.2f;
+            
     } completion:^(BOOL finished) {
-        
-        animatePiece.hidden = YES;
-        [animatePiece removeFromSuperview];
-        
-      //  [self addLetterToBox:letterToAdd];
-       // letterToAdd = @"";
-    }];
-    
-    return NO;
+            
+        [UIView animateWithDuration:dur4 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                
+            for(int i=0; i<lettersInLevel; i++)
+                ((UILabel*)letters[i]).alpha = 0.8f;
+
+        } completion:^(BOOL finished) {
+                
+            [UIView animateWithDuration:dur4 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                    
+                for(int i=0; i<lettersInLevel; i++)
+                    ((UILabel*)letters[i]).alpha = 0.2f;
+                    
+            } completion:^(BOOL finished) {
+                
+                [UIView animateWithDuration:dur4 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                    
+                    for(int i=0; i<lettersInLevel; i++)
+                        ((UILabel*)letters[i]).alpha = 0.8f;
+
+                } completion:^(BOOL finished) {
+                    
+                    for(int i=0; i<lettersInLevel; i++)
+                        
+                        ((UILabel*)letters[i]).alpha = 1.0f;
+                        [self clearLetters];
+                    }];
+                }];
+            }];
+        }];
 }
 
 - (void)unHidePiece:(UILabel*)square {
@@ -336,6 +337,7 @@
     square.backgroundColor = letterBackColor;
     square.layer.borderColor = [[UIColor clearColor] CGColor];
     square.textColor = [UIColor blackColor];
+    square.font = letterFont;
 }
 
 - (void)makePiecesFlash:(CGFloat)duration :(CGFloat)delay {

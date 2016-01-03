@@ -220,9 +220,9 @@
 - (uint)getRowDelayForNumRows:(uint)nrows {
     
     if(nrows == 0 || nrows == 1)
-        return 4;
+        return 3;
     else if(nrows == 2)
-        return 10;
+        return 9;
     
     return timeInterval;
 }
