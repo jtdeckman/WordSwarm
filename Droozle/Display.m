@@ -314,6 +314,10 @@
     } ];
 }
 
+- (void)makePiecesExplode:(CGFloat)duration :(CGFloat*)delay {
+    
+}
+
 - (void)resetForNextLevel {
 
     [animations.textBox2 removeFromSuperview];

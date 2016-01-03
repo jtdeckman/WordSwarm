@@ -511,19 +511,16 @@
                 
                 animating = YES;
                 
-                int newScore = [gamePlay updateScore:[board sumRow:selectedSpace.iind :NO]];
-            /*
-                [board getPiecesInRow:display.piecesToAnimate :selectedSpace.iind :YES :0];
-                [board hideBackPiecesInRow:selectedSpace.iind];
+                [board getAllVisiblePieces:display.piecesToAnimate];
+                [board hideAllBackPieces];
+                [board hideOccupiedPieces];
                 
-                [display makePiecesFlash:NO :0.4];
-                [display animateScore:newScore];
+                [display hideAlertView];
+                [display makePiecesFlash:NO :1.0];
                 
-                [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:0.42];
-            */
-                [display resetNukePiece:NO];
+                [self performSelector:@selector(clearBoardAfterAnimation) withObject:nil afterDelay:1.1f];
                 
-                animating = NO;
+                [display resetNukePiece:YES];
             }
             
             else {
@@ -600,10 +597,7 @@
     
     display.gamePlay = gamePlay;
     
-  //  display.addPiece.text = @"";
-    
     animating = NO;
-    
     prevViewSettings = NO;
     
     bottomRow = board.dimx - 1;
@@ -613,14 +607,9 @@
     
     [display updateScore];
     [display updateLevelValues];
-    
- //   [gamePlay rowOfValues];
 }
 
 - (void)eliminateRowFromBoard:(Space*)space {
-    
-    
-    //[self performSelector:@selector(checkWordRow) withObject:nil afterDelay:0.4f];
    
     [board eliminateRow:space.iind];
     [self checkWordRow];
@@ -774,6 +763,14 @@
 
 - (void)turnAnimatingOff {
     
+}
+
+- (void)clearBoardAfterAnimation {
+
+    [board clearBoard];
+    [display.wordBar clearLetters];
+    
+    animating = NO;
 }
 
 @end

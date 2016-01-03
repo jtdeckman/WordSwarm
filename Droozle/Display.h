@@ -124,6 +124,8 @@
 - (void)updateLevelValues;
 
 - (void)makePiecesFlash:(BOOL)wrongWord :(CGFloat)delay;
+- (void)makePiecesExplode:(CGFloat)duration :(CGFloat*)delay;
+
 - (void)resetAnimatedPieces;
 - (void)animateAlertView;
 - (void)unhideAlertViewWithAlpha:(CGFloat)alpha;
