@@ -15,7 +15,7 @@
 @synthesize menuBar, menuView, gamePlay;
 @synthesize piecesToAnimate, bombPiece;
 @synthesize animations, topOffset, wordBar;
-@synthesize nukePiece;
+@synthesize levelLabel, nukePiece;
 
 - (void)changeFloatPieceLoc: (CGPoint)newLoc {
 
@@ -85,6 +85,8 @@
     frm.size = bombPiece.frame.size;
     
     [bombPiece setFrame:frm];
+    
+    numBombsLabel.hidden = YES;
 }
 
 - (void)configureFloatPiece:(Space*)space {
@@ -271,6 +273,8 @@
 
     bombPiece.frame = baseBombPiece;
     floatPiece.hidden = YES;
+    
+    levelLabel.hidden = NO;
     
     [self updateLevelValues];
 }

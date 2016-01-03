@@ -93,6 +93,7 @@
 @property(nonatomic, strong) UILabel *addPiece;
 @property(nonatomic, strong) UILabel *bombPiece;
 @property(nonatomic, strong) UILabel *nukePiece;
+@property(nonatomic, strong) UILabel *levelLabel;
 
 @property(nonatomic, strong) UIImageView *menuBar;
 

@@ -110,6 +110,8 @@
             
             animating = YES;
             
+            display.levelLabel.hidden = YES;
+            
             [board getAllVisiblePieces:display.piecesToAnimate];
             [board hideAllBackPieces];
         
@@ -598,21 +600,24 @@
     int nletters = [display.wordBar numOccupied];
     int maxSize = [display.wordBar lettersInLevel];
     
+   // NSMutableArray *piecesToAnimate = [[NSMutableArray alloc] initWithCapacity:3];
+    
     for(uint j=0; j<board.dimy && nletters < maxSize; j++) {
             
         space = [board getSpaceForIndices:spaceInRow.iind:j];
         
         if(space.backPieceVal > 1 && ![space.value isEqualToString:@""]) {
             
-            [display.wordBar animatePieceToEmptySpace:space.piece :duration :delay];
+          //  [display.wordBar animatePieceToEmptySpace:space.piece :duration :delay];
+          
+         //   [piecesToAnimate addObject:space.piece];
             
-            totalTime += duration;
-            delay += duration + 0.2;
+            [display.wordBar animatePieceToSpace:space.piece :duration :delay :nletters];
+            [display.wordBar addLetterToBox:space.value withDelay:duration];
             
             ++nletters;
-            
-            [display.wordBar addLetterToBox:space.value withDelay:delay];
-          //  [display.wordBar addLetterToBox:space.value after:duration];
+         
+            totalTime += duration;
         }
     }
     

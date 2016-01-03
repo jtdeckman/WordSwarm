@@ -55,6 +55,7 @@
 
 - (NSString*)makeWordFromLetters;
 
+- (BOOL)animatePieceToSpace:(UILabel*)origin :(CGFloat)duration :(CGFloat)delay :(uint)ind;
 - (BOOL)animatePieceToEmptySpace:(UILabel*)origin :(CGFloat)duration :(CGFloat)delay;
 
 - (void)deconstruct;

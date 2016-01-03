@@ -249,6 +249,49 @@
     
 }
 
+- (BOOL)animatePieceToSpace:(UILabel*)origin :(CGFloat)duration :(CGFloat)delay :(uint)ind {
+    
+    UILabel *piece;
+    UILabel *destinationBox = letters[ind];
+    
+    CGRect frm = origin.frame;
+    frm.origin = destinationBox.frame.origin;
+    
+    piece = [[UILabel alloc] initWithFrame:frm];
+    
+    piece.clipsToBounds = YES;
+    piece.opaque = NO;
+    
+    [piece setTextAlignment:NSTextAlignmentCenter];
+    piece.font = origin.font;
+    piece.textColor = origin.textColor;
+    piece.layer.borderColor = origin.layer.borderColor;
+    piece.layer.cornerRadius = origin.layer.cornerRadius;
+    
+    piece.frame = origin.frame;
+    piece.backgroundColor = origin.backgroundColor;
+    piece.text = origin.text;
+    piece.textColor = origin.textColor;
+    
+    piece.hidden = NO;
+    
+    [rootView addSubview:piece];
+    
+    [UIView animateWithDuration:duration delay:delay options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        piece.frame = frm;
+        
+    } completion:^(BOOL finished) {
+        
+        piece.hidden = YES;
+        [piece removeFromSuperview];
+    }];
+    
+    piece = nil;
+    
+    return NO;
+}
+
 - (BOOL)animatePieceToEmptySpace:(UILabel*)origin :(CGFloat)duration :(CGFloat)delay {
 
     if(letterPosition >= lettersInLevel || boxesFilled)
