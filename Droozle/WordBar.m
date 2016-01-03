@@ -234,7 +234,7 @@
     UILabel *destinationBox = letters[letterPosition];
     CGRect frm = origin.frame;
     
-    __block NSString *letterToAdd;
+  //  __block NSString *letterToAdd;
     
     frm.origin = destinationBox.frame.origin;
     
@@ -247,7 +247,7 @@
     
     [rootView addSubview:animatePiece];
     
-    letterToAdd = origin.text;
+ //   letterToAdd = origin.text;
     
     [UIView animateWithDuration:duration delay:delay options:UIViewAnimationOptionCurveEaseIn animations:^{
         
@@ -258,7 +258,7 @@
         animatePiece.hidden = YES;
         [animatePiece removeFromSuperview];
         
-        [self addLetterToBox:letterToAdd];
+      //  [self addLetterToBox:letterToAdd];
        // letterToAdd = @"";
     }];
     

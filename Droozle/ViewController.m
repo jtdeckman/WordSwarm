@@ -595,7 +595,10 @@
     CGFloat delay = 0.0f;
     CGFloat totalTime = 0.0f;
     
-    for(uint j=0; j<board.dimy; j++) {
+    int nletters = [display.wordBar numOccupied];
+    int maxSize = [display.wordBar lettersInLevel];
+    
+    for(uint j=0; j<board.dimy && nletters < maxSize; j++) {
             
         space = [board getSpaceForIndices:spaceInRow.iind:j];
         
@@ -605,6 +608,10 @@
             
             totalTime += duration;
             delay += duration + 0.2;
+            
+            ++nletters;
+            
+            [display.wordBar addLetterToBox:space.value];
         }
     }
     
