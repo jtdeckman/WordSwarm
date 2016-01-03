@@ -646,12 +646,21 @@
                     [display.wordBar animatePieceBackToBoard:(UILabel*)pieceLocations[i] :0.8 :0.0 :i];
                 
                 [display.wordBar makeBarPiecesFlash:1.0];
-                [board addWordToTopUnOccupiedRow:word :display.wordBar.wordCategory];
+                
+                animating = YES;
+                
+                [self performSelector:@selector(addWordToTopOfStack:) withObject:word afterDelay:0.8];
             }
         }
     }
     
     [display updateScore];
+}
+
+- (void)addWordToTopOfStack:(NSString*)word {
+ 
+    [board addWordToTopUnOccupiedRow:word :display.wordBar.wordCategory];
+    animating = NO;
 }
 
 - (void)resetRow {
