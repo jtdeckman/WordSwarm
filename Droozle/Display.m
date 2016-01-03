@@ -581,6 +581,20 @@
     [rootView bringSubviewToFront:level];
     
     [self setUpColors] ;
+    
+    CGRect tmpFrm;
+    
+    tmpFrm = scoreBox.frame;
+    scoreBox.frame = nextBox.frame;
+    nextBox.frame = tmpFrm;
+    
+    tmpFrm = scoreLabel.frame;
+    scoreLabel.frame = nextScoreLabel.frame;
+    nextScoreLabel.frame = tmpFrm;
+    
+    tmpFrm = score.frame;
+    score.frame = nextScore.frame;
+    nextScore.frame = tmpFrm;
 }
 
 - (void)setUpColors {
@@ -670,7 +684,7 @@
     nextScore.opaque = NO;
     
     [nextScore setTextAlignment:NSTextAlignmentCenter];
-    [nextScore setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.1*FONT_FACT*score.frame.size.height]];
+    [nextScore setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.2*FONT_FACT*score.frame.size.height]];
     
     nextScore.textColor = score.textColor; //[UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
     

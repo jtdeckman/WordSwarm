@@ -600,7 +600,7 @@
         if(space.backPieceVal > 1 && ![space.value isEqualToString:@""]) {
             
             [display.wordBar animatePieceToSpace:space.piece :duration :delay :nletters];
-            [display.wordBar addLetterToBox:space.value withDelay:duration];
+            [display.wordBar addLetterToBox:space.value withDelay:duration+0.1];
             
             ++nletters;
          
@@ -634,7 +634,6 @@
 
 - (void)resetRow {
 
-  //  [display resetAnimatedPieces];
     [board unHideBackPiecesInRow:touchedSpace.iind];
     [board unHidePiecesInRow:touchedSpace.iind];
     
