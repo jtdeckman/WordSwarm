@@ -20,7 +20,7 @@
     
     frm = frame;
     
-    frm.size.width *= 0.65;
+    frm.size.width *= 0.75;
     frm.size.height *= 0.20;
     frm.origin.x = (frame.size.width - frm.size.width)/2.0;
     frm.origin.y = origy;
@@ -34,7 +34,7 @@
     textBox1.opaque = NO;
     
     [textBox1 setTextAlignment:NSTextAlignmentCenter];
-    [textBox1 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.45*FONT_FACT*textBox1.frame.size.height]];
+    [textBox1 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.55*FONT_FACT*textBox1.frame.size.height]];
     
     textBox1.textColor = [UIColor yellowColor];
     textBox1.backgroundColor = [UIColor clearColor];
@@ -59,7 +59,7 @@
     textBox2.opaque = NO;
     
     [textBox2 setTextAlignment:NSTextAlignmentCenter];
-    [textBox2 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.45*FONT_FACT*textBox2.frame.size.height]];
+    [textBox2 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.65*FONT_FACT*textBox2.frame.size.height]];
     
     textBox2.textColor = [UIColor colorWithRed:0.9 green:0.2 blue:0.2 alpha:1.0];
     textBox2.backgroundColor = [UIColor clearColor];

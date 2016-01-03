@@ -173,8 +173,6 @@
     frm.origin.y -= wordBar.barBackground.frame.size.height;
     frm.size.height += wordBar.barBackground.frame.size.height;
     
-  //  frm.origin.y += 0.025*frm.origin.y;
-    
     alertView.hidden = NO;
     alertView.alpha = alpha;
     alertView.frame = frm;
@@ -268,13 +266,11 @@
     
     [self performSelector:@selector(setUpWordBarForLevel) withObject:nil afterDelay:0.41f];
     
-  //  wordBar.wordCategory = [gamePlay getRandomCategoryForLevel:gamePlay.gameData.level];
-  //  [wordBar setUpForLevel:gamePlay.gameData.level];
-
     bombPiece.frame = baseBombPiece;
     floatPiece.hidden = YES;
     
     levelLabel.hidden = NO;
+    level.hidden = NO;
     
     [self updateLevelValues];
 }
@@ -284,48 +280,6 @@
     wordBar.wordCategory = [gamePlay getRandomCategoryForLevel:gamePlay.gameData.level];
     [wordBar setUpForLevel:gamePlay.gameData.level];
 }
-
-/*- (void)makePiecesFlash:(BOOL)wrongWord :(CGFloat)duration {
-    
-    NSArray *pieces = [[NSArray alloc] initWithArray:piecesToAnimate];
-    
-    UILabel *savedPiece, *iPiece;
-    
-    CGFloat dur2 = duration/2.0;
-    
-    for(uint i=0; i<[pieces count]; i++) {
-        
-        savedPiece = [animationPieces.pieces objectAtIndex:i];
-        iPiece = [pieces objectAtIndex:i];
-        
-        savedPiece.frame = iPiece.frame;
-        savedPiece.backgroundColor = iPiece.backgroundColor;
-        savedPiece.alpha = iPiece.alpha;
-        
-        if(!wrongWord)
-            iPiece.backgroundColor = [UIColor whiteColor];
-        else
-            iPiece.backgroundColor = [UIColor colorWithRed:colors.redFlashColor.red green:colors.redFlashColor.green blue:colors.redFlashColor.blue alpha:0.8f];
-        
-        iPiece.alpha = 0.8;
-    }
-    
-    [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
-        
-        for(UILabel* piece in pieces)
-            piece.alpha = 0.0;
-        
-        
-    } completion:^(BOOL finished) {
-        
-        [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            
-            for(UILabel* piece in pieces)
-                piece.alpha = 0.8;
-            
-        } completion:nil];
-    }];
-} */
 
 - (void)resetAnimatedPieces {
     
@@ -416,7 +370,7 @@
         
     } completion:^(BOOL finished) {
         
-        level.hidden = NO;
+      //  level.hidden = NO;
         levelBackgroundPiece.text = @"";
         [rootView bringSubviewToFront:levelLabel];
         [rootView bringSubviewToFront:level];
@@ -704,7 +658,7 @@
     level.opaque = NO;
     
     [level setTextAlignment:NSTextAlignmentCenter];
-    [level setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.0*FONT_FACT*score.frame.size.height]];
+    [level setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.2*FONT_FACT*score.frame.size.height]];
     
     level.textColor = [UIColor colorWithRed:colors.levelColor.red green:colors.levelColor.green blue:colors.levelColor.blue alpha:0.8f];
     
@@ -752,7 +706,7 @@
     levelBackgroundPiece.opaque = NO;
     
     [levelBackgroundPiece setTextAlignment:NSTextAlignmentCenter];
-    [levelBackgroundPiece setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.35*FONT_FACT*score.frame.size.height]];
+    [levelBackgroundPiece setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.2*FONT_FACT*score.frame.size.height]];
     
     levelBackgroundPiece.text = @"";
     levelBackgroundPiece.textColor = [UIColor colorWithRed:colors.levelColor.red green:colors.levelColor.green blue:colors.levelColor.blue alpha:1.0f];

@@ -335,7 +335,7 @@
     
     square.backgroundColor = letterBackColor;
     square.layer.borderColor = [[UIColor clearColor] CGColor];
-    square.textColor = [UIColor whiteColor];
+    square.textColor = [UIColor blackColor];
 }
 
 - (void)makePiecesFlash:(CGFloat)duration :(CGFloat)delay {

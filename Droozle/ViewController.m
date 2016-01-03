@@ -73,7 +73,9 @@
             [display checkAlertView:nRowsOcc];
             
             if(!animating && !swiping && gamePlay.gameData.timer % timeInterval == 0) {
-
+            
+                [gamePlay resetTimer];
+                
                 if([board shiftRowsUp] == YES) {
                 
                     gamePlay.gameState = gameOver;
@@ -207,8 +209,8 @@
                         
                         int bonusScore = FULL_WORD_BONUS;
                         
-                        [display.animations animateTextBox1:0.8f :0.35*self.view.frame.size.height :0.4f
-                                                                 :[NSString stringWithFormat:@"Full Word Bonus! +%d", bonusScore*gamePlay.gameData.level]];
+                        [display.animations animateTextBox1:0.8f :0.3*self.view.frame.size.height :0.4f
+                                                                 :[NSString stringWithFormat:@"Full Word Bonus!  +%d", bonusScore*gamePlay.gameData.level]];
                         
                         NSNumber *newScore = [NSNumber numberWithInt:bonusScore];
                         

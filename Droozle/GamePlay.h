@@ -55,6 +55,7 @@
 - (void)rowOfValues;
 - (void)newGame;
 - (void)incrementTimer;
+- (void)resetTimer;
 
 - (int)updateScore:(int)newPoints;
 

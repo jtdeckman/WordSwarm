@@ -174,7 +174,7 @@
     
     if(rnum == 5 || rnum == 11)
         space.backPieceVal = 2;
-    else if(rnum == 17 || rnum == 3)
+    else if(rnum == 17)
         space.backPieceVal = 3;
     else
         space.backPieceVal = 1;
