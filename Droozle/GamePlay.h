@@ -16,7 +16,8 @@
 #define MAX_NUKES 1
 
 #define FULL_WORD_BONUS 10
-#define BOMB_BONUS_SCORE 35
+#define BOMB_BONUS_SCORE 30
+#define NUKE_BONUS_SCORE 50
 
 @interface GamePlay : NSObject {
     
@@ -31,6 +32,7 @@
     GameState gameState;
     GameData gameData;
     PlaceMode placeMode;
+  //  MoveType moveType;
     
     WordLogic *wordLogic;
     
@@ -45,6 +47,7 @@
 @property (nonatomic) GameState gameState;
 @property (nonatomic) GameData gameData;
 @property (nonatomic) PlaceMode placeMode;
+//@property (nonatomic) MoveType moveType;
 
 @property (nonatomic, strong) WordLogic *wordLogic;
 
@@ -71,6 +74,10 @@
 
 - (void)decrementNumBombs;
 - (void)incrementBombs;
+
+- (void)decrementNumNukes;
+- (void)incrementNukes;
+
 - (void)levelUp;
 
 - (uint)getRowDelayForNumRows:(uint)nrows;

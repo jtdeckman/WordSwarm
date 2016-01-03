@@ -120,6 +120,7 @@
     gameData.level += 1;
     
     [self incrementBombs];
+    [self incrementNukes];
     
     [wordLogic initWordTypesForLevel:gameData.level];
 }
@@ -151,6 +152,7 @@
     gameData.highestWordScore = (int)[defaults integerForKey:@"highestWordScore"];
     
     gameData.numBombs = (int)[defaults integerForKey:@"numBombs"];
+    gameData.numNukes = (int)[defaults integerForKey:@"numNukes"];
     
     if(gameData.difficulty > 0)
         timeInterval = TIME_FACTOR - 3;
@@ -210,6 +212,17 @@
     
     if(gameData.numBombs < MAX_BOMBS)
         ++gameData.numBombs;
+}
+
+- (void)decrementNumNukes {
+    
+    --gameData.numNukes;
+}
+
+- (void)incrementNukes {
+    
+    if(gameData.numNukes < MAX_NUKES)
+        ++gameData.numNukes;
 }
 
 - (void)resetTimer {

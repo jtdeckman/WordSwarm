@@ -21,6 +21,9 @@
 		8C9303B11C378812008B1839 /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C9303B01C378812008B1839 /* rightArrow.png */; };
 		8CD640911C2F4F8800C9E6CF /* stars1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD640901C2F4F8800C9E6CF /* stars1.png */; };
 		8CD640B81C2F7E4A00C9E6CF /* TileImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD640B71C2F7E4A00C9E6CF /* TileImages.m */; };
+		8CE2806D1C39BA6100199940 /* nuke.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CE2806C1C39BA6100199940 /* nuke.png */; };
+		8CE280711C39BF9700199940 /* nuke2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8CE280701C39BF9700199940 /* nuke2.jpg */; };
+		8CE280731C39C51500199940 /* nuke2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CE280721C39C51500199940 /* nuke2.png */; };
 		8CEBF8E71C30B93B0055861A /* topLabels.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBF8E61C30B93B0055861A /* topLabels.png */; };
 		8CEBF8F71C30E7810055861A /* menuBars.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBF8F61C30E7810055861A /* menuBars.png */; };
 		8CEBF9241C31C56D0055861A /* AnimationPieces.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF9231C31C56D0055861A /* AnimationPieces.m */; };
@@ -77,6 +80,9 @@
 		8CD640901C2F4F8800C9E6CF /* stars1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars1.png; sourceTree = "<group>"; };
 		8CD640B61C2F7E4A00C9E6CF /* TileImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileImages.h; sourceTree = "<group>"; };
 		8CD640B71C2F7E4A00C9E6CF /* TileImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileImages.m; sourceTree = "<group>"; };
+		8CE2806C1C39BA6100199940 /* nuke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nuke.png; sourceTree = "<group>"; };
+		8CE280701C39BF9700199940 /* nuke2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nuke2.jpg; sourceTree = "<group>"; };
+		8CE280721C39C51500199940 /* nuke2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nuke2.png; sourceTree = "<group>"; };
 		8CEBF8E61C30B93B0055861A /* topLabels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topLabels.png; sourceTree = "<group>"; };
 		8CEBF8F61C30E7810055861A /* menuBars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBars.png; sourceTree = "<group>"; };
 		8CEBF9221C31C56D0055861A /* AnimationPieces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationPieces.h; sourceTree = "<group>"; };
@@ -227,6 +233,9 @@
 				8CEBF9351C33B8AA0055861A /* times3.png */,
 				8C9303B01C378812008B1839 /* rightArrow.png */,
 				8CEBF9401C35261E0055861A /* bomb.png */,
+				8CE2806C1C39BA6100199940 /* nuke.png */,
+				8CE280701C39BF9700199940 /* nuke2.jpg */,
+				8CE280721C39C51500199940 /* nuke2.png */,
 				A8166A631B99E84700F47146 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -330,10 +339,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C85F4F11C36620400908313 /* p7.png in Resources */,
+				8CE280731C39C51500199940 /* nuke2.png in Resources */,
 				8C85F4EE1C36620400908313 /* p3.png in Resources */,
 				8C85F4EF1C36620400908313 /* p4.png in Resources */,
 				8C85F4F01C36620400908313 /* p5.png in Resources */,
 				8CEBF8E71C30B93B0055861A /* topLabels.png in Resources */,
+				8CE280711C39BF9700199940 /* nuke2.jpg in Resources */,
 				A8166A6D1B99E84700F47146 /* Main.storyboard in Resources */,
 				8CF092C81BFBEE1A00AC3599 /* LexicontextAssets.bundle in Resources */,
 				8C9303A91C374A97008B1839 /* p10.png in Resources */,
@@ -343,6 +354,7 @@
 				8C85F4F31C36620400908313 /* p12.png in Resources */,
 				8CEBF8F71C30E7810055861A /* menuBars.png in Resources */,
 				8C9303B11C378812008B1839 /* rightArrow.png in Resources */,
+				8CE2806D1C39BA6100199940 /* nuke.png in Resources */,
 				8C85F4E11C35C18C00908313 /* topBar.png in Resources */,
 				A8166A6F1B99E84700F47146 /* Images.xcassets in Resources */,
 				8CEBF9341C33B81D0055861A /* times2.png in Resources */,

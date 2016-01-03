@@ -39,6 +39,14 @@
         numBombsLabel.hidden = NO;
         numBombsLabel.text = [NSString stringWithFormat:@"x %d",gamePlay.gameData.numBombs];
     }
+    
+    if(gamePlay.gameData.numNukes > 0) {
+        
+        nukePiece.hidden = NO;
+        numNukesLabel.hidden = NO;
+        numNukesLabel.text = [NSString stringWithFormat:@"x %d",gamePlay.gameData.numNukes];
+    }
+
 }
 
 - (void)updateLevelValues {
@@ -51,7 +59,9 @@
     else {
         
         level.text = [NSString stringWithFormat:@"%d",gamePlay.gameData.level];
+        
         numBombsLabel.text = [NSString stringWithFormat:@"x %d",gamePlay.gameData.numBombs];
+        numNukesLabel.text = [NSString stringWithFormat:@"x %d", gamePlay.gameData.numNukes];
     }
     
     nextScore.text = wordBar.wordCategory;
@@ -60,6 +70,12 @@
         
         bombPiece.hidden = NO;
         numBombsLabel.hidden = NO;
+    }
+    
+    if(gamePlay.gameData.numNukes > 0) {
+        
+        nukePiece.hidden = NO;
+        numNukesLabel.hidden = NO;
     }
 }
 
@@ -87,6 +103,20 @@
     [bombPiece setFrame:frm];
     
     numBombsLabel.hidden = YES;
+}
+
+- (void)changeNukePieceLoc:(CGPoint)newLoc {
+    
+    CGRect frm;
+    
+    frm.origin.x = newLoc.x - addPieceOffSet.width;
+    frm.origin.y = newLoc.y - addPieceOffSet.height;
+    
+    frm.size = nukePiece.frame.size;
+    
+    [nukePiece setFrame:frm];
+    
+    numNukesLabel.hidden = YES;
 }
 
 - (void)configureFloatPiece:(Space*)space {
@@ -125,6 +155,7 @@
         numBombsLabel.text = [NSString stringWithFormat:@"x %d",gamePlay.gameData.numBombs];
         
         if(gamePlay.gameData.numBombs < 1) {
+            
             bombPiece.hidden = YES;
             numBombsLabel.hidden = YES;
         }
@@ -132,6 +163,29 @@
             
             bombPiece.hidden = NO;
             numBombsLabel.hidden = NO;
+        }
+    }
+}
+
+- (void)resetNukePiece:(BOOL)nukeUsed {
+    
+    [nukePiece setFrame:baseNukePiece];
+    
+    if(nukeUsed) {
+        
+        [gamePlay decrementNumNukes];
+        
+        numNukesLabel.text = [NSString stringWithFormat:@"x %d",gamePlay.gameData.numNukes];
+        
+        if(gamePlay.gameData.numNukes < 1) {
+            
+            nukePiece.hidden = YES;
+            numNukesLabel.hidden = YES;
+        }
+        else {
+            
+            nukePiece.hidden = NO;
+            numNukesLabel.hidden = NO;
         }
     }
 }
@@ -268,8 +322,10 @@
     
     [self performSelector:@selector(setUpWordBarForLevel) withObject:nil afterDelay:0.41f];
     
-    bombPiece.frame = baseBombPiece;
     floatPiece.hidden = YES;
+
+    bombPiece.frame = baseBombPiece;
+    nukePiece.frame = baseNukePiece;
     
     levelLabel.hidden = NO;
     level.hidden = NO;
@@ -896,6 +952,54 @@
     
     numBombsLabel.hidden = YES;
 
+ // Nuke piece
+    
+    pcFrm = bombPiece.frame;
+    pcFrm.size.width *= 1.2;
+    pcFrm.size.height = pcFrm.size.width;
+    pcFrm.origin.x -= pcFrm.size.width + addPiece.frame.origin.x - (bombPiece.frame.origin.x + bombPiece.frame.size.width);
+
+    pcFrm.origin.y = bottomBar.frame.origin.y + (bottomBar.frame.size.height - pcFrm.size.height)/2.0;
+    nukePiece = [[UILabel alloc] initWithFrame:pcFrm];
+    
+    UIGraphicsBeginImageContext(pcFrm.size);
+    
+    tmpImage = [UIImage imageNamed:@"nuke2.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, pcFrm.size.width, pcFrm.size.height)];
+    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    nukePiece.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
+    
+    [rootView addSubview:nukePiece];
+    
+    nukePiece.layer.cornerRadius = 5.0f;
+    nukePiece.clipsToBounds = YES;
+    nukePiece.opaque = YES;
+    
+    nukePiece.hidden = YES;
+    baseNukePiece = nukePiece.frame;
+    
+ // Num nukes label
+    
+    pcFrm = nukePiece.frame;
+    pcFrm.origin.y += 0.135*pcFrm.size.height;
+    
+    numNukesLabel = [[UILabel alloc] initWithFrame:pcFrm];
+    [rootView addSubview:numNukesLabel];
+    
+    numNukesLabel.layer.cornerRadius = numBombsLabel.layer.cornerRadius;
+    numNukesLabel.clipsToBounds = numBombsLabel.clipsToBounds;
+    numNukesLabel.opaque = numBombsLabel.opaque;
+    
+    [numNukesLabel setTextAlignment:NSTextAlignmentCenter];
+    numNukesLabel.font = numBombsLabel.font;
+    numNukesLabel.textColor = numBombsLabel.textColor;
+    numNukesLabel.text = @"";
+    
+    numNukesLabel.hidden = YES;
+
+ // Float score label
+    
     pcFrm = addPiece.frame;
     pcFrm.size.width *= 2.0;
     pcFrm.size.height *= 1.5;
@@ -984,6 +1088,10 @@
     
     floatScore = nil;
     bombPiece = nil;
+    nukePiece = nil;
+    
+    numBombsLabel = nil;
+    numNukesLabel = nil;
     
     colors = nil;
     

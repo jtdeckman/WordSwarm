@@ -116,7 +116,7 @@
             
            // [board getAllVisiblePieces:display.piecesToAnimate];
             [board hideAllBackPieces];
-        
+            [board hideOccupiedPieces];
          //   [display.animations animateTextBox2:1.0f :0.90*self.view.frame.size.height :0.3*self.view.frame.size.height :0.0f
            //                                    :[NSString stringWithFormat:@"Level %d",gamePlay.gameData.level+1]];
             
@@ -251,6 +251,7 @@
                 swiping = YES;
                 
                 gamePlay.placeMode = swipeMove;
+        
                 [display configureFloatPiece:touchedSpace];
             }
         }
@@ -272,11 +273,19 @@
                 swiping = YES;
                 gamePlay.placeMode = addMove;
             }
+            
             else if(gamePlay.placeMode == freeState && CGRectContainsPoint(display.bombPiece.frame, location)) {
                 
                 swiping = YES;
                 gamePlay.placeMode = bombMove;
             }
+            
+            else if(gamePlay.placeMode == freeState && CGRectContainsPoint(display.nukePiece.frame, location)) {
+                
+                swiping = YES;
+                gamePlay.placeMode = nukeMove;
+            }
+
         }
     }
     
@@ -359,6 +368,11 @@
             [display changeBombPieceLoc:location];
         }
         
+        else if(gamePlay.placeMode == nukeMove) {
+            
+            [display changeNukePieceLoc:location];
+        }
+
         else {
             
             [display changeFloatPieceLoc:location];
@@ -369,8 +383,6 @@
     else {
         
         swiping = NO;
-      //  display.floatPiece.hidden = YES;
-      //  [display resetAddPiece];
     }
 }
 
@@ -485,12 +497,46 @@
                 [display resetBombPiece:NO];
             }
             
-           
+            
             
             touchedSpace = NULL;
             gamePlay.placeMode = freeState;
         }
+        
+        else if(gamePlay.placeMode == nukeMove) {
+            
+            Space *selectedSpace = [board getSpaceFromPoint:location];
+            
+            if(selectedSpace.isOccupied && !selectedSpace.refPiece) {
+                
+                animating = YES;
+                
+                int newScore = [gamePlay updateScore:[board sumRow:selectedSpace.iind :NO]];
+            /*
+                [board getPiecesInRow:display.piecesToAnimate :selectedSpace.iind :YES :0];
+                [board hideBackPiecesInRow:selectedSpace.iind];
+                
+                [display makePiecesFlash:NO :0.4];
+                [display animateScore:newScore];
+                
+                [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:0.42];
+            */
+                [display resetNukePiece:NO];
+                
+                animating = NO;
+            }
+            
+            else {
+                
+                [display resetNukePiece:NO];
+            }
+            
+            touchedSpace = NULL;
+            gamePlay.placeMode = freeState;
+        }
+
     }
+    
     
     else {
         display.floatPiece.hidden = YES;

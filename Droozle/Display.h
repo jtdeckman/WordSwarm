@@ -112,9 +112,11 @@
 
 - (void)changeAddPieceLoc:(CGPoint)newLoc;
 - (void)changeBombPieceLoc:(CGPoint)newLoc;
+- (void)changeNukePieceLoc:(CGPoint)newLoc;
 
 - (void)resetAddPiece;
 - (void)resetBombPiece:(BOOL)bombUsed;
+- (void)resetNukePiece:(BOOL)nukeUsed;
 
 - (void)deconstruct;
 - (void)updateScore;

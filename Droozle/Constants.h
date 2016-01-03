@@ -60,7 +60,9 @@ typedef struct {
     PlayMode gamePlay;
     
     uint difficulty;
+    
     uint numBombs;
+    uint numNukes;
     
 } GameData;
 
@@ -79,24 +81,31 @@ typedef enum : NSUInteger {
     
 } GameState;
 
-typedef enum : NSUInteger {
+/*typedef enum : NSUInteger {
     
     placeMove,
     splitMove,
+    swipeMove,
     addMove,
     overtakeMove,
-    bombMove
+    bombMove,
+    nukeMove
     
-} MoveType;
+} MoveType; */
 
 typedef enum : NSUInteger {
     
     freeState,
     pieceSelected,
     spaceSelected,
-    overTake,
+    overTakeMove,
     placeTile,
+    placeMove,
+    splitMove,
+    addMove,
     swipeMove,
+    bombMove,
+    nukeMove
     
 } PlaceMode;
 
