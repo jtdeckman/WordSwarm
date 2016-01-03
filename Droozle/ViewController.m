@@ -645,7 +645,7 @@
                 [board getPiecesInRow:pieceLocations :topUnOccupiedRow :NO :display.wordBar.lettersInLevel];
                 
                 for(uint i=0; i<display.wordBar.lettersInLevel; i++)
-                    [display.wordBar animatePieceBackToBoard:(UILabel*)pieceLocations[i] :1.0 :0.0 :i];
+                    [display.wordBar animatePieceBackToBoard:(UILabel*)pieceLocations[i] :0.8 :0.0 :i];
                 
                 [display.wordBar makeBarPiecesFlash:1.0];
                 [board addWordToTopUnOccupiedRow:word :display.wordBar.wordCategory];

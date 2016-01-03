@@ -601,18 +601,21 @@
 - (BOOL)addWordToTopUnOccupiedRow:(NSString*)word :(NSString*)category {
 
     int topUnOccupiedRow = dimx - [self numRowsOccupied] - 1;
-
+    
+    uint cnt=0;
+    
     if(topUnOccupiedRow < 0)
         return NO;
     
-    NSMutableArray *items = [[NSMutableArray alloc] initWithObjects:@"",@"",@"",@"",@"",@"",@"",@"",@"",@"", nil];
+    for(int i=0; i < [word length]; i++) {
+        [self addPiece:topUnOccupiedRow :i :[word substringWithRange:NSMakeRange(i, 1)]];
+        ++cnt;
+    }
     
-    for(int i=0; i < [word length]; i++)
-        [items addObject:[word substringWithRange:NSMakeRange(i, 1)]];
+    for(int i=cnt; i<dimy; i++)
+        [self addPiece:topUnOccupiedRow :i :@""];
     
-    items[dimy] = category;
-    
-    [self addBottomRow:items];
+    [self addRefPiece:topUnOccupiedRow :category];
     
     return YES;
 }
