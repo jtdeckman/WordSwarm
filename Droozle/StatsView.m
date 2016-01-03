@@ -42,8 +42,8 @@
  // High score
     
     frm.size.width = 0.6*self.view.frame.size.width;
-    frm.size.height = 0.4*frm.size.width;
-    frm.origin.y = 1.25*frm.size.height;
+    frm.size.height = 0.3*frm.size.width;
+    frm.origin.y = 1.4*frm.size.height;
     frm.origin.x = (self.view.frame.size.width - frm.size.width)/2.0;
     
     highScoreBox = [[UILabel alloc] initWithFrame:frm];
@@ -57,6 +57,14 @@
     [highScoreBox.layer setBorderColor:[[UIColor clearColor] CGColor]];
     highScoreBox.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
     
+    UIGraphicsBeginImageContext(highScoreBox.frame.size);
+    
+    tmpImage = [UIImage imageNamed:@"blueSquare.png"];
+    [tmpImage drawInRect:CGRectMake(0, 0, highScoreBox.frame.size.width, highScoreBox.frame.size.height)];
+    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    highScoreBox.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
+
     [self.view addSubview:highScoreBox];
     
     frm.size.height *= 0.25;
@@ -70,9 +78,9 @@
     highScoreLabel.opaque = NO;
     
     [highScoreLabel setTextAlignment:NSTextAlignmentCenter];
-    [highScoreLabel setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:2.0*FONT_FACT*highScoreLabel.frame.size.height]];
+    [highScoreLabel setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:3.0*FONT_FACT*highScoreLabel.frame.size.height]];
     
-    highScoreLabel.textColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.2 alpha:1.0];
+    highScoreLabel.textColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1.0];
     highScoreLabel.backgroundColor = [UIColor clearColor];
     
     highScoreLabel.text = @"High Score";
@@ -90,9 +98,9 @@
     highScore.opaque = NO;
     
     [highScore setTextAlignment:NSTextAlignmentCenter];
-    [highScore setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:1.0*FONT_FACT*highScore.frame.size.height]];
+    [highScore setFont:[UIFont fontWithName:@"Helvetica" size:1.25*FONT_FACT*highScore.frame.size.height]];
     
-    highScore.textColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+    highScore.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     highScoreLabel.backgroundColor = [UIColor clearColor];
     
     
@@ -113,7 +121,7 @@
     highestWordScoreBox.layer.borderWidth = 0.75f;
     
     [highestWordScoreBox.layer setBorderColor:[[UIColor clearColor] CGColor]];
-    highestWordScoreBox.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
+    highestWordScoreBox.backgroundColor = highScoreBox.backgroundColor;//[UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
     
     [self.view addSubview:highestWordScoreBox];
     
@@ -128,9 +136,10 @@
     highestWordScoreLabel.opaque = NO;
     
     [highestWordScoreLabel setTextAlignment:NSTextAlignmentCenter];
-    [highestWordScoreLabel setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:2.0*FONT_FACT*highestWordScoreLabel.frame.size.height]];
+ //   [highestWordScoreLabel setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:2.0*FONT_FACT*highestWordScoreLabel.frame.size.height]];
+    highestWordScoreLabel.font = highScoreLabel.font;
     
-    highestWordScoreLabel.textColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.2 alpha:1.0];
+    highestWordScoreLabel.textColor = highScoreLabel.textColor; //[UIColor colorWithRed:0.8 green:0.8 blue:0.2 alpha:1.0];
     highestWordScoreLabel.backgroundColor = [UIColor clearColor];
     
     highestWordScoreLabel.text = @"Highest Word Score";
@@ -148,9 +157,10 @@
     highestWordScore.opaque = NO;
     
     [highestWordScore setTextAlignment:NSTextAlignmentCenter];
-    [highestWordScore setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:1.0*FONT_FACT*highestWordScore.frame.size.height]];
+   // [highestWordScore setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:1.0*FONT_FACT*highestWordScore.frame.size.height]];
+    highestWordScore.font = highScore.font;
     
-    highestWordScore.textColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+    highestWordScore.textColor = highScore.textColor; //[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
     highestWordScoreLabel.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview:highestWordScore];
@@ -170,7 +180,7 @@
     highestLevelBox.layer.borderWidth = 0.75f;
     
     [highestLevelBox.layer setBorderColor:[[UIColor clearColor] CGColor]];
-    highestLevelBox.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
+    highestLevelBox.backgroundColor = highScoreBox.backgroundColor;//[UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
     
     [self.view addSubview:highestLevelBox];
     
@@ -185,9 +195,10 @@
     highestLevelLabel.opaque = NO;
     
     [highestLevelLabel setTextAlignment:NSTextAlignmentCenter];
-    [highestLevelLabel setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:2.0*FONT_FACT*highestLevelLabel.frame.size.height]];
+    //[highestLevelLabel setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:2.0*FONT_FACT*highestLevelLabel.frame.size.height]];
+    highestLevelLabel.font = highScoreLabel.font;
     
-    highestLevelLabel.textColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.2 alpha:1.0];
+    highestLevelLabel.textColor = highScoreLabel.textColor; //[UIColor colorWithRed:0.8 green:0.8 blue:0.2 alpha:1.0];
     highestLevelLabel.backgroundColor = [UIColor clearColor];
     
     highestLevelLabel.text = @"Highest Level";
@@ -205,9 +216,10 @@
     highestLevel.opaque = NO;
     
     [highestLevel setTextAlignment:NSTextAlignmentCenter];
-    [highestLevel setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:1.5*FONT_FACT*highestLevel.frame.size.height]];
+    //[highestLevel setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:1.5*FONT_FACT*highestLevel.frame.size.height]];
+    highestLevel.font = highScore.font;
     
-    highestLevel.textColor = [UIColor colorWithRed:0.2 green:0.6 blue:1.0 alpha:1.0];
+    highestLevel.textColor = highScore.textColor; //[UIColor colorWithRed:0.2 green:0.6 blue:1.0 alpha:1.0];
     highestLevelLabel.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview:highestLevel];

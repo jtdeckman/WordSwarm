@@ -45,20 +45,22 @@
     
     if(gamePlay.gameData.gamePlay == FREE_PLAY) {
         
-       // nextScore.text = @"--";
         level.text = @"--";
     }
     
     else {
         
-      //  nextScore.text = [gamePlay getPointsForLevel:gamePlay.gameData.level + 1];
         level.text = [NSString stringWithFormat:@"%d",gamePlay.gameData.level];
+        numBombsLabel.text = [NSString stringWithFormat:@"x %d",gamePlay.gameData.numBombs];
     }
     
     nextScore.text = wordBar.wordCategory;
 
-    if(gamePlay.gameData.numBombs > 0)
+    if(gamePlay.gameData.numBombs > 0) {
+        
         bombPiece.hidden = NO;
+        numBombsLabel.hidden = NO;
+    }
 }
 
 - (void)changeAddPieceLoc: (CGPoint)newLoc {
@@ -952,9 +954,7 @@
 - (void)setUpAnimations {
     
     animations = [[Animations alloc] init];
-    [animations setUp:rootView.frame :topBar.frame.size.height/2.5];
-    [rootView addSubview:animations.textBox1];
-    [rootView bringSubviewToFront:animations.textBox1];
+    [animations setUp:rootView.frame :topBar.frame.size.height/2.5 :rootView];
 }
 
 - (void)deconstruct {

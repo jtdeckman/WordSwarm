@@ -78,7 +78,10 @@
                 
                     gamePlay.gameState = gameOver;
                     
+                    [display.animations animateTextBox2:2.0f :0.90*self.view.frame.size.height :0.3*self.view.frame.size.height :0.4f
+                                                       :@"GAME OVER"];
                     [board hideOccupiedPieces];
+                    [display hideAlertView];
                 }
             
                 else {
@@ -288,6 +291,16 @@
                 [self presentViewController:statsView animated:NO completion:nil];
             }
 
+            else if(CGRectContainsPoint(display.menuView.settingsLabel.frame, location)) {
+                
+                prevViewSettings = YES;
+                
+                SettingsViewController *settingsView = [[SettingsViewController alloc] init];
+                [self presentViewController:settingsView animated:NO completion:nil];
+                
+                settingsView = nil;
+            }
+
             else {
                 
                 display.menuView.hidden = YES;
@@ -297,6 +310,9 @@
         
         else {
             
+            display.animations.textBox2.hidden = YES;
+            [display.animations.textBox2 removeFromSuperview];
+
             display.menuView.hidden = YES;
             [board unHideOccupiedPieces];
         }
