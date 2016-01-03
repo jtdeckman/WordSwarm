@@ -575,11 +575,9 @@
     
     
     //[self performSelector:@selector(checkWordRow) withObject:nil afterDelay:0.4f];
-    [self checkWordRow];
-    
+   
     [board eliminateRow:space.iind];
-    
-    [display updateScore];
+    [self checkWordRow];
  
     animating = NO;
 }
@@ -652,6 +650,8 @@
             }
         }
     }
+    
+    [display updateScore];
 }
 
 - (void)resetRow {
