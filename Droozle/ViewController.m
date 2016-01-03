@@ -571,15 +571,6 @@
 
 - (void)eliminateRowFromBoard:(Space*)space {
     
-  //  [display resetAnimatedPieces];
-    
-   // [self populateWordBarFromRow:space.iind];
- 
-  //  if(display.wordBar.boxesFilled) {
-        
-   //     [display.wordBar clearLetters];
-  //  }
-    
     [self checkWordRow];
     
     [board eliminateRow:space.iind];
@@ -600,17 +591,11 @@
     int nletters = [display.wordBar numOccupied];
     int maxSize = [display.wordBar lettersInLevel];
     
-   // NSMutableArray *piecesToAnimate = [[NSMutableArray alloc] initWithCapacity:3];
-    
     for(uint j=0; j<board.dimy && nletters < maxSize; j++) {
             
         space = [board getSpaceForIndices:spaceInRow.iind:j];
         
         if(space.backPieceVal > 1 && ![space.value isEqualToString:@""]) {
-            
-          //  [display.wordBar animatePieceToEmptySpace:space.piece :duration :delay];
-          
-         //   [piecesToAnimate addObject:space.piece];
             
             [display.wordBar animatePieceToSpace:space.piece :duration :delay :nletters];
             [display.wordBar addLetterToBox:space.value withDelay:duration];
@@ -620,8 +605,6 @@
             totalTime += duration;
         }
     }
-    
-  //  [self eliminateRowFromBoard:spaceInRow];
     
     [self performSelector:@selector(eliminateRowFromBoard:) withObject:spaceInRow afterDelay:totalTime + 0.1];
 }
