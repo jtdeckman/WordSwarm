@@ -114,14 +114,10 @@
             
             display.levelLabel.hidden = YES;
             
-           // [board getAllVisiblePieces:display.piecesToAnimate];
             [board hideAllBackPieces];
             [board hideOccupiedPieces];
-         //   [display.animations animateTextBox2:1.0f :0.90*self.view.frame.size.height :0.3*self.view.frame.size.height :0.0f
-           //                                    :[NSString stringWithFormat:@"Level %d",gamePlay.gameData.level+1]];
             
             [display hideAlertView];
-         //   [display makePiecesFlash:NO :1.0];
         
             [display animateLevelTile:1.0];
         
@@ -767,6 +763,8 @@
 }
 
 - (void)setUpForNextLevel {
+    
+   // [display animateLevelTile:1.0];
     
     [gamePlay levelUp];
     
