@@ -24,6 +24,9 @@
 		8CE2806D1C39BA6100199940 /* nuke.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CE2806C1C39BA6100199940 /* nuke.png */; };
 		8CE280711C39BF9700199940 /* nuke2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8CE280701C39BF9700199940 /* nuke2.jpg */; };
 		8CE280731C39C51500199940 /* nuke2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CE280721C39C51500199940 /* nuke2.png */; };
+		8CE2807E1C3AD7D100199940 /* HowToScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE2807D1C3AD7D100199940 /* HowToScreen.m */; };
+		8CE280901C3ADEEE00199940 /* howToScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CE2808F1C3ADEEE00199940 /* howToScreen.png */; };
+		8CE280921C3ADEF300199940 /* howToScreen-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CE280911C3ADEF300199940 /* howToScreen-2.png */; };
 		8CEBF8E71C30B93B0055861A /* topLabels.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBF8E61C30B93B0055861A /* topLabels.png */; };
 		8CEBF8F71C30E7810055861A /* menuBars.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBF8F61C30E7810055861A /* menuBars.png */; };
 		8CEBF9241C31C56D0055861A /* AnimationPieces.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF9231C31C56D0055861A /* AnimationPieces.m */; };
@@ -83,6 +86,10 @@
 		8CE2806C1C39BA6100199940 /* nuke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nuke.png; sourceTree = "<group>"; };
 		8CE280701C39BF9700199940 /* nuke2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nuke2.jpg; sourceTree = "<group>"; };
 		8CE280721C39C51500199940 /* nuke2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nuke2.png; sourceTree = "<group>"; };
+		8CE2807C1C3AD7D100199940 /* HowToScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HowToScreen.h; path = ../HowToScreen.h; sourceTree = "<group>"; };
+		8CE2807D1C3AD7D100199940 /* HowToScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HowToScreen.m; path = ../HowToScreen.m; sourceTree = "<group>"; };
+		8CE2808F1C3ADEEE00199940 /* howToScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = howToScreen.png; sourceTree = "<group>"; };
+		8CE280911C3ADEF300199940 /* howToScreen-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "howToScreen-2.png"; sourceTree = "<group>"; };
 		8CEBF8E61C30B93B0055861A /* topLabels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topLabels.png; sourceTree = "<group>"; };
 		8CEBF8F61C30E7810055861A /* menuBars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBars.png; sourceTree = "<group>"; };
 		8CEBF9221C31C56D0055861A /* AnimationPieces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationPieces.h; sourceTree = "<group>"; };
@@ -200,6 +207,8 @@
 				8CEBF9281C33574E0055861A /* StatsView.m */,
 				8CEBF92A1C33669F0055861A /* SettingsViewController.h */,
 				8CEBF92B1C33669F0055861A /* SettingsViewController.m */,
+				8CE2807C1C3AD7D100199940 /* HowToScreen.h */,
+				8CE2807D1C3AD7D100199940 /* HowToScreen.m */,
 				8CEBF9371C34E4120055861A /* Animations.h */,
 				8CEBF9381C34E4120055861A /* Animations.m */,
 				8C85F4DD1C35AEC000908313 /* WordBar.h */,
@@ -236,6 +245,8 @@
 				8CE2806C1C39BA6100199940 /* nuke.png */,
 				8CE280701C39BF9700199940 /* nuke2.jpg */,
 				8CE280721C39C51500199940 /* nuke2.png */,
+				8CE2808F1C3ADEEE00199940 /* howToScreen.png */,
+				8CE280911C3ADEF300199940 /* howToScreen-2.png */,
 				A8166A631B99E84700F47146 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -358,11 +369,13 @@
 				8C85F4E11C35C18C00908313 /* topBar.png in Resources */,
 				A8166A6F1B99E84700F47146 /* Images.xcassets in Resources */,
 				8CEBF9341C33B81D0055861A /* times2.png in Resources */,
+				8CE280921C3ADEF300199940 /* howToScreen-2.png in Resources */,
 				8C85F4EC1C36620400908313 /* p1.png in Resources */,
 				8C85F4ED1C36620400908313 /* p2.png in Resources */,
 				8CEBF9411C35261E0055861A /* bomb.png in Resources */,
 				8CD640911C2F4F8800C9E6CF /* stars1.png in Resources */,
 				8CEBF9361C33B8AA0055861A /* times3.png in Resources */,
+				8CE280901C3ADEEE00199940 /* howToScreen.png in Resources */,
 				A8166A951B99EEB200F47146 /* blueSquare.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8166A8C1B99E8C200F47146 /* Space.m in Sources */,
+				8CE2807E1C3AD7D100199940 /* HowToScreen.m in Sources */,
 				A8166A6A1B99E84700F47146 /* ViewController.m in Sources */,
 				A831F6111BB0B8B70001E1BC /* Colors.m in Sources */,
 				A831F60D1BB0B0190001E1BC /* Display.m in Sources */,

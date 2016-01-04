@@ -160,6 +160,14 @@
                 settingsView = nil;
             }
 
+            if(CGRectContainsPoint(display.menuView.howToLabel.frame, location)) {
+                
+                HowToScreen *howToScreen = [[HowToScreen alloc] init];
+                [self presentViewController:howToScreen animated:NO completion:nil];
+                
+                howToScreen = nil;
+            }
+
             else {
                 
                 display.menuView.hidden = YES;
@@ -193,7 +201,7 @@
                 
             //    [board hideBackPiecesInRow:touchedSpace.iind];
                 
-                if([gamePlay checkWord:word :type]) {
+                if([word length] > 1 && [gamePlay checkWord:word :type]) {
                     
                     int newScore = [gamePlay updateScore:[board sumRow:touchedSpace.iind :NO]];
                     
@@ -222,14 +230,14 @@
                         
                         [gamePlay incrementNukes];
                         
-                        [display.animations animateTextBox3:1.0f :0.50*self.view.frame.size.height :0.3*self.view.frame.size.height :0.0f :[NSString stringWithFormat:@"> %d Points, +1 Nukes!", BOMB_BONUS_SCORE]];
+                        [display.animations animateTextBox3:1.0f :0.30*self.view.frame.size.height :0.0*self.view.frame.size.height :0.0f :[NSString stringWithFormat:@"> %d Points, +1 Nukes!", BOMB_BONUS_SCORE]];
                     }
                     
                     else if(newScore >= BOMB_BONUS_SCORE) {
                     
                         [gamePlay incrementBombs];
                         
-                        [display.animations animateTextBox3:1.0f :0.50*self.view.frame.size.height :0.3*self.view.frame.size.height :0.0f :[NSString stringWithFormat:@"> %d Points, +1 Bombs!", BOMB_BONUS_SCORE]];
+                        [display.animations animateTextBox3:1.0f :0.30*self.view.frame.size.height :0.0*self.view.frame.size.height :0.0f :[NSString stringWithFormat:@"> %d Points, +1 Bombs!", BOMB_BONUS_SCORE]];
 
                     }
                     
@@ -694,7 +702,7 @@
                 
               //  uint count = display.wordBar.lettersInLevel;
                 
-                
+                [display.animations animateTextBox3:1.0f :0.30*self.view.frame.size.height :0.0*self.view.frame.size.height :0.0f :[NSString stringWithFormat:@"Not a %@", display.wordBar.wordCategory]];
                 
                 for(uint i=0; i<[word length]; i++)
                     [display.wordBar animatePieceBackToBoard:(UILabel*)pieceLocations[i] :1.0 :0.0 :i];

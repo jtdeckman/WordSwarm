@@ -13,6 +13,7 @@
 #import "GamePlay.h"
 #import "StatsView.h"
 #import "SettingsViewController.h"
+#import "HowToScreen.h"
 
 @interface ViewController : UIViewController {
 

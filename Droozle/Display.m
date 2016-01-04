@@ -38,6 +38,7 @@
         bombPiece.hidden = NO;
         numBombsLabel.hidden = NO;
         numBombsLabel.text = [NSString stringWithFormat:@"x %d",gamePlay.gameData.numBombs];
+        [rootView bringSubviewToFront:numBombsLabel];
     }
     
     if(gamePlay.gameData.numNukes > 0) {
@@ -45,6 +46,7 @@
         nukePiece.hidden = NO;
         numNukesLabel.hidden = NO;
         numNukesLabel.text = [NSString stringWithFormat:@"x %d",gamePlay.gameData.numNukes];
+        [rootView bringSubviewToFront:numNukesLabel];
     }
 
 }
@@ -995,7 +997,7 @@
     floatBackImage = UIGraphicsGetImageFromCurrentImageContext();
     
     addPiece = [[UILabel alloc] initWithFrame:pcFrm];
-    addPiece.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.4];
+    addPiece.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.3];
     
     addPiece.layer.cornerRadius = 10.0f;
     addPiece.clipsToBounds = YES;
@@ -1082,8 +1084,8 @@
     pcFrm.size.width *= 1.2;
     pcFrm.size.height = pcFrm.size.width;
     pcFrm.origin.x -= pcFrm.size.width + addPiece.frame.origin.x - (bombPiece.frame.origin.x + bombPiece.frame.size.width);
-
-    pcFrm.origin.y = bottomBar.frame.origin.y + (bottomBar.frame.size.height - pcFrm.size.height)/2.0;
+    
+    pcFrm.origin.y = bottomBar.frame.origin.y + (bottomBar.frame.size.height - pcFrm.size.height)/2.0 - 0.05*pcFrm.size.height;
     nukePiece = [[UILabel alloc] initWithFrame:pcFrm];
     
     UIGraphicsBeginImageContext(pcFrm.size);
@@ -1107,6 +1109,7 @@
     
     pcFrm = nukePiece.frame;
     pcFrm.origin.y += 0.135*pcFrm.size.height;
+    
     
     numNukesLabel = [[UILabel alloc] initWithFrame:pcFrm];
     [rootView addSubview:numNukesLabel];
