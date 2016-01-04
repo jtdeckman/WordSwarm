@@ -201,7 +201,7 @@
                     
                     int newScore = [gamePlay updateScore:[board sumRow:touchedSpace.iind :NO]];
                     
-                    CGFloat flashDuration = 0.6f;
+                    CGFloat flashDuration = 0.4f;
                     
                     [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind :YES :0];
                     [board hideBackPiecesInRow:touchedSpace.iind];
@@ -488,13 +488,13 @@
                 [board hideBackPiecesInRow:selectedSpace.iind];
                 [board hideOccupiedPiecesInRow:selectedSpace.iind];
                
-                [display makePiecesExplode:0.6 :0.0];
+                [display makePiecesExplode:1.5 :0.0];
                 
              // [display makePiecesFlash:NO :0.4];
                 
                 [display animateScore:newScore];
                 
-                [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:0.62];
+                [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:1.6];
                 
                 [display resetBombPiece:YES];
             }
@@ -522,9 +522,9 @@
                 
                 [display hideAlertView];
              //   [display makePiecesFlash:NO :1.0];
-                [display makePiecesExplode:0.85 :0.0];
+                [display makePiecesExplode:1.5 :0.0];
                 
-                [self performSelector:@selector(clearBoardAfterAnimation) withObject:nil afterDelay:0.86f];
+                [self performSelector:@selector(clearBoardAfterAnimation) withObject:nil afterDelay:1.6f];
                 
                 [display resetNukePiece:YES];
             }

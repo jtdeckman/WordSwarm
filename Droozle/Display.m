@@ -254,11 +254,13 @@
     
     UILabel *iPiece;
     
-    CGFloat dur2 = duration/2.0;
+    CGFloat dur4 = duration/4.0;
     
     __block UILabel *movePiece;
     
-    for(uint i=0; i<[piecesToAnimate count]; i++) {
+    uint count = (uint)[piecesToAnimate count];
+    
+    for(uint i=0; i<count; i++) {
         
         movePiece = [animationPieces.pieces objectAtIndex:i];
         
@@ -279,7 +281,7 @@
         [rootView addSubview:movePiece];
     }
     
-   [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+  /* [UIView animateWithDuration:dur2 delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
         
        for(int i=0; i<[piecesToAnimate count]; i++) {
             movePiece = [animationPieces.pieces objectAtIndex:i];
@@ -310,6 +312,46 @@
             }
         }];
     } ];
+    */
+    [UIView animateWithDuration:dur4 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        
+        for(int i=0; i<count; i++)
+            ((UILabel*)animationPieces.pieces[i]).alpha = 0.2f;
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:dur4 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+            for(int i=0; i<count; i++)
+                ((UILabel*)animationPieces.pieces[i]).alpha = 0.8f;
+            
+        } completion:^(BOOL finished) {
+            
+            [UIView animateWithDuration:dur4 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                
+                for(int i=0; i<count; i++)
+                    ((UILabel*)animationPieces.pieces[i]).alpha = 0.2f;
+                
+            } completion:^(BOOL finished) {
+                
+                [UIView animateWithDuration:dur4 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                    
+                    for(int i=0; i<count; i++)
+                        ((UILabel*)animationPieces.pieces[i]).alpha = 0.8f;
+                    
+                } completion:^(BOOL finished) {
+                    
+                    for(int i=0; i<count; i++) {
+                        
+                        movePiece = [animationPieces.pieces objectAtIndex:i];
+                        movePiece.alpha = 1.0;
+                        movePiece.hidden = YES;
+                        [movePiece removeFromSuperview];
+                    }
+                }];
+            }];
+        }];
+    }];
 }
 
 - (void)makePiecesExplode:(CGFloat)duration :(CGFloat)delay {
@@ -349,13 +391,13 @@
             
             rvec = [self randomVector];
 
-            frame.origin.x = rvec.x*rootView.frame.size.height;
-            frame.origin.y = rvec.y*rootView.frame.size.height;
+            frame.origin.x = rvec.x;//*rootView.frame.size.height;
+            frame.origin.y = rvec.y;//*rootView.frame.size.height;
             
             if(frame.origin.x < 0) rnum = -1.0;
             else rnum = 1.0;
             
-            frame.origin.x += 1.0*rnum*rootView.frame.size.height;
+            frame.origin.x += 1.0*rnum*rootView.frame.size.width;
             
             if(frame.origin.y < 0) rnum = -1.0;
             else rnum = 1.0;
@@ -391,7 +433,7 @@
     rnum = arc4random() % 11;
     vec.y = pow(-1, rnum)*(arc4random() % 100)/100;
     
-    NSLog(@"x: %f, y:%f",vec.x, vec.y);
+  //  NSLog(@"x: %f, y:%f",vec.x, vec.y);
 
     return vec;
 }
