@@ -16,8 +16,8 @@
 #define MAX_NUKES 1
 
 #define FULL_WORD_BONUS 10
-#define BOMB_BONUS_SCORE 30
-#define NUKE_BONUS_SCORE 50
+#define BOMB_BONUS_SCORE 10
+#define NUKE_BONUS_SCORE 12
 
 @interface GamePlay : NSObject {
     

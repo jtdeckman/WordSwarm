@@ -14,9 +14,11 @@
     
     UILabel *textBox1;
     UILabel *textBox2;
+    UILabel *textBox3;
     
     CGRect baseLocBox1;
     CGRect baseLocBox2;
+    CGRect baseLocBox3;
     
     UIView *rootView;
 }
@@ -28,6 +30,7 @@
 
 - (void)animateTextBox1:(CGFloat)duration :(CGFloat)startLoc :(CGFloat)delay :(NSString*)text;
 - (void)animateTextBox2:(CGFloat)duration :(CGFloat)startLoc :(CGFloat)endLoc :(CGFloat)delay :(NSString*)text;
+- (void)animateTextBox3:(CGFloat)duration :(CGFloat)startLoc :(CGFloat)endLoc :(CGFloat)delay :(NSString*)text;
 
 - (void)deconstruct;
 

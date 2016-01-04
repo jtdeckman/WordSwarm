@@ -61,10 +61,33 @@
     [textBox2 setTextAlignment:NSTextAlignmentCenter];
     [textBox2 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.65*FONT_FACT*textBox2.frame.size.height]];
     
-    textBox2.textColor = [UIColor colorWithRed:0.9 green:0.2 blue:0.2 alpha:1.0];
+    textBox2.textColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1.0];
     textBox2.backgroundColor = [UIColor clearColor];
     
     textBox2.hidden = YES;
+    
+    frm = textBox1.frame;
+    
+    frm.size.width *= 1.15;
+    frm.size.height *= 1.15;
+    frm.origin.x = (frame.size.width - frm.size.width)/2.0;
+    frm.origin.y = 3.0*origy;
+    
+    baseLocBox3 = frm;
+    
+    textBox3 = [[UILabel alloc] initWithFrame: frm];
+    
+    textBox3.layer.cornerRadius = 5.0;
+    textBox3.clipsToBounds = YES;
+    textBox3.opaque = NO;
+    
+    [textBox3 setTextAlignment:NSTextAlignmentCenter];
+    [textBox3 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.5*FONT_FACT*textBox3.frame.size.height]];
+    
+    textBox3.textColor = [UIColor colorWithRed:0.9 green:0.2 blue:0.2 alpha:1.0];
+    textBox3.backgroundColor = [UIColor clearColor];
+    
+    textBox3.hidden = YES;
 }
 
 - (void)deconstruct {
@@ -131,6 +154,41 @@
        // [textBox2 removeFromSuperview];
         
     }];
+}
+
+- (void)animateTextBox3:(CGFloat)duration :(CGFloat)startLoc :(CGFloat)endLoc :(CGFloat)delay :(NSString*)text {
+    
+    CGRect frm = textBox3.frame;
+    CGRect endFrm = textBox3.frame;
+    
+    endFrm.origin.y = endLoc;
+    
+    frm.origin.x = baseLocBox2.origin.x;
+    frm.origin.y = startLoc;
+    
+    textBox3.frame = frm;
+    textBox3.text = text;
+ //   textBox3.alpha = 0.2f;
+    
+    textBox3.hidden = NO;
+    
+    [rootView addSubview:textBox3];
+    
+    [UIView animateWithDuration:duration delay:delay options:NO animations:^{
+        
+        textBox3.frame = endFrm;
+   //     textBox3.alpha = 1.0f;
+        
+    } completion:^(BOOL finished) {
+        
+        [self performSelector:@selector(hideTextBox3) withObject:nil afterDelay:0.4f];
+    }];
+}
+
+- (void)hideTextBox3 {
+    
+     textBox3.hidden = YES;
+     [textBox3 removeFromSuperview];
 }
 
 @end

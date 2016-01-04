@@ -222,9 +222,19 @@
                       // flashDuration += 1.2;
                     }
                     
-                    if(newScore > BOMB_BONUS_SCORE) {
+                    if(newScore >= NUKE_BONUS_SCORE) {
+                        
+                        [gamePlay incrementBombs];
+                        
+                        [display.animations animateTextBox3:1.0f :0.50*self.view.frame.size.height :0.3*self.view.frame.size.height :0.0f :[NSString stringWithFormat:@"> %d Points, +1 Nukes!", BOMB_BONUS_SCORE]];
+                    }
+                    
+                    else if(newScore >= BOMB_BONUS_SCORE) {
                     
                         [gamePlay incrementBombs];
+                        
+                        [display.animations animateTextBox3:1.0f :0.50*self.view.frame.size.height :0.3*self.view.frame.size.height :0.0f :[NSString stringWithFormat:@"> %d Points, +1 Bombs!", BOMB_BONUS_SCORE]];
+
                     }
                     
                  //   [board hideOccupiedPiecesInRow:touchedSpace.iind];
