@@ -689,11 +689,18 @@
             
             else {
                 
-                NSMutableArray *pieceLocations = [[NSMutableArray alloc] initWithCapacity:display.wordBar.lettersInLevel];
+                NSMutableArray *pieceLocations = [[NSMutableArray alloc] initWithCapacity:board.dimy];
                 
-                [board getPiecesInRow:pieceLocations :topUnOccupiedRow :NO :display.wordBar.lettersInLevel];
+                if([word length] > board.dimy)
+                    word = [word substringToIndex:board.dimy-1];
                 
-                for(uint i=0; i<display.wordBar.lettersInLevel; i++)
+                [board getPiecesInRow:pieceLocations :topUnOccupiedRow :NO :(uint)[word length]];
+                
+              //  uint count = display.wordBar.lettersInLevel;
+                
+                
+                
+                for(uint i=0; i<[word length]; i++)
                     [display.wordBar animatePieceBackToBoard:(UILabel*)pieceLocations[i] :1.0 :0.0 :i];
                 
                 [display.wordBar makeBarPiecesFlash:1.0];

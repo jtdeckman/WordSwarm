@@ -211,12 +211,18 @@
     
     if(level == 1)
         return 3;
-    else if(level == 2 || level == 3)
+    else if(level == 2)
+        return 3;
+    else if(level == 3 || level == 4 || level == 5 || level == 6)
         return 4;
-    else if(level == 4 || level == 5 || level == 6)
-        return 5;
     else if(level == 7 || level == 8 || level == 9)
-        return 6; 
+        return 5;
+    else if(level == 10 || level == 11 || level == 12 || level == 13)
+        return 6;
+    else if(level == 14 || level == 15 || level == 16 || level == 17)
+        return 7;
+    else if(level == 18 || level == 19 || level == 20 || level == 21)
+        return 8;
     
     return numLetters;
 }

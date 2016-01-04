@@ -155,8 +155,12 @@
     else if(level == 5) {
         
         [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Word"];
         [wordTypes addObject:@"Noun"];
         [wordTypes addObject:@"Verb"];
+        [wordTypes addObject:@"Adj"];
+
     }
     
     else if(level == 6) {
@@ -197,6 +201,8 @@
     else if(level == 10) {
         
         [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Word"];
         [wordTypes addObject:@"Noun"];
         [wordTypes addObject:@"Verb"];
         [wordTypes addObject:@"Adj"];
@@ -204,6 +210,8 @@
     
     else if(level == 11) {
         
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Word"];
         [wordTypes addObject:@"Word"];
         [wordTypes addObject:@"Noun"];
         [wordTypes addObject:@"Verb"];
@@ -214,7 +222,13 @@
     else {
         
         [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Word"];
+        [wordTypes addObject:@"Word"];
         [wordTypes addObject:@"Noun"];
+        [wordTypes addObject:@"Noun"];
+        [wordTypes addObject:@"Verb"];
         [wordTypes addObject:@"Verb"];
         [wordTypes addObject:@"Adj"];
         [wordTypes addObject:@"Adj"];
