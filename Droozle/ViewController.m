@@ -504,7 +504,7 @@
                 
             //    [display animateScore:newScore];
                 
-                [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:0.3];
+                [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:1.0];
                 
                 [display resetBombPiece:YES];
             }
@@ -637,7 +637,7 @@
 
     Space *space;
 
-    CGFloat duration = 0.6f;
+    CGFloat duration = 0.5f;
     CGFloat delay = 0.0f;
     CGFloat totalTime = 0.0f;
     
@@ -651,7 +651,7 @@
         if(space.backPieceVal > 1 && ![space.value isEqualToString:@""]) {
             
             [display.wordBar animatePieceToSpace:space.piece :duration :delay :nletters];
-            [display.wordBar addLetterToBox:space.value withDelay:0];//duration+0.1];
+            [display.wordBar addLetterToBox:space.value withDelay:duration+0.1];
             
             ++nletters;
          
@@ -659,7 +659,7 @@
         }
     }
     
-    [self performSelector:@selector(eliminateRowFromBoard:) withObject:spaceInRow afterDelay:0];
+    [self performSelector:@selector(eliminateRowFromBoard:) withObject:spaceInRow afterDelay:totalTime];
 }
 
 - (void)checkWordRow {
@@ -694,13 +694,13 @@
                 [board getPiecesInRow:pieceLocations :topUnOccupiedRow :NO :display.wordBar.lettersInLevel];
                 
                 for(uint i=0; i<display.wordBar.lettersInLevel; i++)
-                    [display.wordBar animatePieceBackToBoard:(UILabel*)pieceLocations[i] :0.8 :0.0 :i];
+                    [display.wordBar animatePieceBackToBoard:(UILabel*)pieceLocations[i] :1.0 :0.0 :i];
                 
                 [display.wordBar makeBarPiecesFlash:1.0];
                 
                 animating = YES;
                 
-                [self performSelector:@selector(addWordToTopOfStack:) withObject:word afterDelay:0.8];
+                [self performSelector:@selector(addWordToTopOfStack:) withObject:word afterDelay:1.1];
             }
         }
     }
