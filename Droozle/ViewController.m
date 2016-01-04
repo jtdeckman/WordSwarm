@@ -230,14 +230,14 @@
                         
                         [gamePlay incrementNukes];
                         
-                        [display.animations animateTextBox3:1.0f :0.30*self.view.frame.size.height :0.0*self.view.frame.size.height :0.0f :[NSString stringWithFormat:@"> %d Points, +1 Nukes!", BOMB_BONUS_SCORE]];
+                        [display.animations animateTextBox3:1.0f :0.4*self.view.frame.size.height :0.75*display.boardView.frame.origin.y :0.0f :@"Nuke Bonus!, +1 nuke"];
                     }
                     
                     else if(newScore >= BOMB_BONUS_SCORE) {
                     
                         [gamePlay incrementBombs];
                         
-                        [display.animations animateTextBox3:1.0f :0.30*self.view.frame.size.height :0.0*self.view.frame.size.height :0.0f :[NSString stringWithFormat:@"> %d Points, +1 Bombs!", BOMB_BONUS_SCORE]];
+                        [display.animations animateTextBox3:1.0f :0.40*self.view.frame.size.height :0.75*display.boardView.frame.origin.y :0.0f :@"Bomb Bonus!, +1 bomb"];
 
                     }
                     
@@ -702,7 +702,7 @@
                 
               //  uint count = display.wordBar.lettersInLevel;
                 
-                [display.animations animateTextBox3:1.0f :0.30*self.view.frame.size.height :0.0*self.view.frame.size.height :0.0f :[NSString stringWithFormat:@"Not a %@", display.wordBar.wordCategory]];
+                [display.animations animateTextBox3:1.0f :0.2*self.view.frame.size.height :0.75*display.boardView.frame.origin.y :0.0f :[NSString stringWithFormat:@"Not a %@", display.wordBar.wordCategory]];
                 
                 for(uint i=0; i<[word length]; i++)
                     [display.wordBar animatePieceBackToBoard:(UILabel*)pieceLocations[i] :1.0 :0.0 :i];

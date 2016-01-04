@@ -47,7 +47,7 @@
     
     frm.size.width *= 0.85;
     frm.size.height *= 0.40;
-    frm.origin.x = (frame.size.width - frm.size.width)/2.0;
+    frm.origin.x = (rootView.frame.size.width - frm.size.width)/2.0;
     frm.origin.y = 2.0*origy;
     
     baseLocBox2 = frm;
@@ -68,9 +68,9 @@
     
     frm = textBox1.frame;
     
-    frm.size.width *= 1.1;
-    frm.size.height *= 1.1;
-    frm.origin.x = (frame.size.width - frm.size.width)/2.0;
+    frm.size.width *= 1.25;
+    frm.size.height *= 1.25;
+    frm.origin.x = (rootView.frame.size.width - frm.size.width)/2.0;
     frm.origin.y = 3.0*origy;
     
     baseLocBox3 = frm;
@@ -82,7 +82,7 @@
     textBox3.opaque = NO;
     
     [textBox3 setTextAlignment:NSTextAlignmentCenter];
-    [textBox3 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.4*FONT_FACT*textBox3.frame.size.height]];
+    [textBox3 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.55*FONT_FACT*textBox3.frame.size.height]];
     
     textBox3.textColor = [UIColor colorWithRed:0.9 green:0.2 blue:0.2 alpha:1.0];
     textBox3.backgroundColor = [UIColor clearColor];
@@ -163,7 +163,7 @@
     
     endFrm.origin.y = endLoc;
     
-    frm.origin.x = baseLocBox2.origin.x;
+    frm.origin.x = baseLocBox3.origin.x;
     frm.origin.y = startLoc;
     
     textBox3.frame = frm;

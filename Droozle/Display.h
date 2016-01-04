@@ -66,6 +66,7 @@
     CGRect baseLevelLabel;
     CGRect baseLevel;
     
+    
     CGRect topOffset;
     
     GamePlay *gamePlay;
