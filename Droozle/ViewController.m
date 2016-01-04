@@ -224,7 +224,7 @@
                     
                     if(newScore >= NUKE_BONUS_SCORE) {
                         
-                        [gamePlay incrementBombs];
+                        [gamePlay incrementNukes];
                         
                         [display.animations animateTextBox3:1.0f :0.50*self.view.frame.size.height :0.3*self.view.frame.size.height :0.0f :[NSString stringWithFormat:@"> %d Points, +1 Nukes!", BOMB_BONUS_SCORE]];
                     }
@@ -242,7 +242,7 @@
                  //   [display makePiecesExplode:0.6 :0.0];
                     [display makePiecesFlash:NO :flashDuration];
                     
-                    [self performSelector:@selector(populateWordBarFromRow:) withObject:touchedSpace afterDelay:0.2f];
+                    [self performSelector:@selector(populateWordBarFromRow:) withObject:touchedSpace afterDelay:0.4f];
                 }
                 
                 else {
@@ -492,7 +492,7 @@
                 
                 animating = YES;
                 
-                int newScore = [gamePlay updateScore:[board sumRow:selectedSpace.iind :NO]];
+             //   int newScore = [gamePlay updateScore:[board sumRow:selectedSpace.iind :NO]];
                 
                 [board getPiecesInRow:display.piecesToAnimate :selectedSpace.iind :NO :0];
                 [board hideBackPiecesInRow:selectedSpace.iind];
@@ -502,9 +502,9 @@
                 
              // [display makePiecesFlash:NO :0.4];
                 
-                [display animateScore:newScore];
+            //    [display animateScore:newScore];
                 
-                [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:1.6];
+                [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:0.3];
                 
                 [display resetBombPiece:YES];
             }
@@ -534,7 +534,7 @@
              //   [display makePiecesFlash:NO :1.0];
                 [display makePiecesExplode:1.5 :0.0];
                 
-                [self performSelector:@selector(clearBoardAfterAnimation) withObject:nil afterDelay:1.6f];
+                [self performSelector:@selector(clearBoardAfterAnimationNotWordBar) withObject:nil afterDelay:1.6f];
                 
                 [display resetNukePiece:YES];
             }
@@ -651,7 +651,7 @@
         if(space.backPieceVal > 1 && ![space.value isEqualToString:@""]) {
             
             [display.wordBar animatePieceToSpace:space.piece :duration :delay :nletters];
-            [display.wordBar addLetterToBox:space.value withDelay:duration+0.1];
+            [display.wordBar addLetterToBox:space.value withDelay:0];//duration+0.1];
             
             ++nletters;
          
@@ -659,7 +659,7 @@
         }
     }
     
-    [self performSelector:@selector(eliminateRowFromBoard:) withObject:spaceInRow afterDelay:totalTime + 0.1];
+    [self performSelector:@selector(eliminateRowFromBoard:) withObject:spaceInRow afterDelay:0];
 }
 
 - (void)checkWordRow {
@@ -675,7 +675,7 @@
             else
                 gamePlay.gameState = levelUp;
             
-            [display.wordBar makePiecesFlash:0.5f :0.0f];
+          //  [display.wordBar makePiecesFlash:0.5f :0.0f];
         }
         
         else {
@@ -785,6 +785,15 @@
 
     [board clearBoard];
     [display.wordBar clearLetters];
+    
+    animating = NO;
+}
+
+- (void)fart {}
+
+- (void)clearBoardAfterAnimationNotWordBar {
+    
+    [board clearBoard];
     
     animating = NO;
 }

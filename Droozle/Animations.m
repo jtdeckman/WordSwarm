@@ -68,8 +68,8 @@
     
     frm = textBox1.frame;
     
-    frm.size.width *= 1.15;
-    frm.size.height *= 1.15;
+    frm.size.width *= 1.1;
+    frm.size.height *= 1.1;
     frm.origin.x = (frame.size.width - frm.size.width)/2.0;
     frm.origin.y = 3.0*origy;
     
@@ -82,7 +82,7 @@
     textBox3.opaque = NO;
     
     [textBox3 setTextAlignment:NSTextAlignmentCenter];
-    [textBox3 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.5*FONT_FACT*textBox3.frame.size.height]];
+    [textBox3 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.4*FONT_FACT*textBox3.frame.size.height]];
     
     textBox3.textColor = [UIColor colorWithRed:0.9 green:0.2 blue:0.2 alpha:1.0];
     textBox3.backgroundColor = [UIColor clearColor];
