@@ -18,8 +18,16 @@
     
     [super viewDidLoad];
     
-    screen = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"howToScreen.png"]];
-    screen.frame = self.view.frame;
+    CGRect frame = self.view.frame;
+    
+    if(self.view.frame.size.width/self.view.frame.size.height > 0.74) {
+    
+        frame.size.width = 0.5625*frame.size.height;
+        frame.origin.x = (self.view.frame.size.width - frame.size.width)/2.0;
+    }
+    
+    screen = [[UIImageView alloc] initWithFrame:frame];
+    screen.image = [UIImage imageNamed:@"howToScreen.png"];
     
     [self.view addSubview:screen];
 
@@ -47,6 +55,11 @@
 - (void)deconstruct {
 
     screen = nil;
+}
+
+- (BOOL)prefersStatusBarHidden {
+    
+    return YES;
 }
 
 @end
