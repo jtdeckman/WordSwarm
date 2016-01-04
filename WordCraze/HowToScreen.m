@@ -21,8 +21,9 @@
     screen = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"howToScreen.png"]];
     screen.frame = self.view.frame;
     
+   // screen.hidden = NO;
     [self.view addSubview:screen];
-
+   // self.view.backgroundColor = [UIColor clearColor];
     touchCount = 0;
 }
 
@@ -35,18 +36,12 @@
 
     if(touchCount > 0) {
         
-        [self deconstruct];
         [self dismissViewControllerAnimated:NO completion:nil];
     }
     
     screen.image = [UIImage imageNamed:@"howToScreen-2.png"];
     
     ++touchCount;
-}
-
-- (void)deconstruct {
-
-    screen = nil;
 }
 
 @end
