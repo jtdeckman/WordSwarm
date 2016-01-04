@@ -391,8 +391,8 @@
             
             rvec = [self randomVector];
 
-            frame.origin.x = rvec.x;//*rootView.frame.size.height;
-            frame.origin.y = rvec.y;//*rootView.frame.size.height;
+            frame.origin.x = rvec.x; //*rootView.frame.size.height;
+            frame.origin.y = rvec.y; //*rootView.frame.size.height;
             
             if(frame.origin.x < 0) rnum = -1.0;
             else rnum = 1.0;
