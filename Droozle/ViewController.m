@@ -201,7 +201,7 @@
                     
                     int newScore = [gamePlay updateScore:[board sumRow:touchedSpace.iind :NO]];
                     
-                    CGFloat flashDuration = 0.4f;
+                    CGFloat flashDuration = 0.6f;
                     
                     [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind :YES :0];
                     [board hideBackPiecesInRow:touchedSpace.iind];
@@ -227,6 +227,9 @@
                         [gamePlay incrementBombs];
                     }
                     
+                 //   [board hideOccupiedPiecesInRow:touchedSpace.iind];
+                    
+                 //   [display makePiecesExplode:0.6 :0.0];
                     [display makePiecesFlash:NO :flashDuration];
                     
                     [self performSelector:@selector(populateWordBarFromRow:) withObject:touchedSpace afterDelay:0.2f];
@@ -481,13 +484,17 @@
                 
                 int newScore = [gamePlay updateScore:[board sumRow:selectedSpace.iind :NO]];
                 
-                [board getPiecesInRow:display.piecesToAnimate :selectedSpace.iind :YES :0];
+                [board getPiecesInRow:display.piecesToAnimate :selectedSpace.iind :NO :0];
                 [board hideBackPiecesInRow:selectedSpace.iind];
+                [board hideOccupiedPiecesInRow:selectedSpace.iind];
+               
+                [display makePiecesExplode:0.6 :0.0];
                 
-                [display makePiecesFlash:NO :0.4];
+             // [display makePiecesFlash:NO :0.4];
+                
                 [display animateScore:newScore];
                 
-                [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:0.42];
+                [self performSelector:@selector(eliminateRowFromBoard:) withObject:selectedSpace afterDelay:0.62];
                 
                 [display resetBombPiece:YES];
             }
@@ -496,8 +503,6 @@
                 
                 [display resetBombPiece:NO];
             }
-            
-            
             
             touchedSpace = NULL;
             gamePlay.placeMode = freeState;
@@ -511,14 +516,15 @@
                 
                 animating = YES;
                 
-                [board getAllVisiblePieces:display.piecesToAnimate];
+                [board getAllVisiblePieces:display.piecesToAnimate :NO];
                 [board hideAllBackPieces];
                 [board hideOccupiedPieces];
                 
                 [display hideAlertView];
-                [display makePiecesFlash:NO :1.0];
+             //   [display makePiecesFlash:NO :1.0];
+                [display makePiecesExplode:0.85 :0.0];
                 
-                [self performSelector:@selector(clearBoardAfterAnimation) withObject:nil afterDelay:1.1f];
+                [self performSelector:@selector(clearBoardAfterAnimation) withObject:nil afterDelay:0.86f];
                 
                 [display resetNukePiece:YES];
             }

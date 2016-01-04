@@ -458,7 +458,7 @@
 }
 
 - (void)hideOccupiedPieces {
-
+    
     Space *space;
     
     for(int i=0; i<dimx; i++) {
@@ -476,6 +476,26 @@
             
             space.pointsLabel.hidden = YES;
         }
+    }
+}
+
+
+- (void)hideOccupiedPiecesInRow:(uint)row {
+
+    Space *space;
+        
+    space = rowTypes[row];
+        
+    if(space.isOccupied) space.piece.hidden = YES;
+        
+    for(int j=0; j<dimy; j++) {
+            
+        space = spaces[row][j];
+            
+        if(space.isOccupied) space.piece.hidden = YES;
+        if(space.backPieceVal > 1) space.backPiece.hidden = YES;
+            
+        space.pointsLabel.hidden = YES;
     }
 }
 
@@ -620,7 +640,7 @@
     return YES;
 }
 
-- (void)getAllVisiblePieces:(NSMutableArray*)allPieces {
+- (void)getAllVisiblePieces:(NSMutableArray*)allPieces :(BOOL)getRefPiece {
 
     Space *space;
     
@@ -628,10 +648,13 @@
     
     for(int i=0; i<dimx; i++) {
         
-        space = [rowTypes objectAtIndex:i];
+        if(getRefPiece) {
+            
+            space = [rowTypes objectAtIndex:i];
         
         if(space.isOccupied)
             [allPieces addObject:space.piece];
+        }
         
         for(int j=0; j<dimy; j++) {
             

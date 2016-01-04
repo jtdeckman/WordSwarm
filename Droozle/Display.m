@@ -265,8 +265,6 @@
         iPiece = [piecesToAnimate objectAtIndex:i];
         iPiece.hidden = YES;
         
-      //  if(wrongWord)iPiece.hidden = NO;
-        
         movePiece.frame = iPiece.frame;
         
         if(!wrongWord)
@@ -314,8 +312,88 @@
     } ];
 }
 
-- (void)makePiecesExplode:(CGFloat)duration :(CGFloat*)delay {
+- (void)makePiecesExplode:(CGFloat)duration :(CGFloat)delay {
+
+    __block UILabel *piece;
+    __block UILabel *gamePiece;
     
+    __block CGRect frame;
+    __block CGPoint rvec;
+    __block CGFloat rnum;
+    
+    for(int i=0; i<[piecesToAnimate count]; i++) {
+        
+        gamePiece = piecesToAnimate[i];
+        piece = animationPieces.pieces[i];
+        
+        [rootView addSubview:piece];
+
+        piece.frame = gamePiece.frame;
+        
+        piece.hidden = NO;
+        piece.backgroundColor = gamePiece.backgroundColor;
+        piece.alpha = gamePiece.alpha;
+        
+        piece.text = gamePiece.text;
+        piece.textColor = gamePiece.textColor;
+        piece.font = gamePiece.font;
+    }
+    
+    [UIView animateWithDuration:duration delay:delay options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+        for(int i=0; i<[piecesToAnimate count]; i++) {
+                
+            piece = animationPieces.pieces[i];
+            
+            frame = piece.frame;
+            
+            rvec = [self randomVector];
+
+            frame.origin.x = rvec.x*rootView.frame.size.height;
+            frame.origin.y = rvec.y*rootView.frame.size.height;
+            
+            if(frame.origin.x < 0) rnum = -1.0;
+            else rnum = 1.0;
+            
+            frame.origin.x += 1.0*rnum*rootView.frame.size.height;
+            
+            if(frame.origin.y < 0) rnum = -1.0;
+            else rnum = 1.0;
+            
+            frame.origin.y += 1.0*rnum*rootView.frame.size.height;
+            
+            piece.frame = frame;
+        }
+            
+    } completion:^(BOOL finished) {
+            
+        for(int i=0; i<[piecesToAnimate count]; i++) {
+                
+            piece = animationPieces.pieces[i];
+            [piece removeFromSuperview];
+        }
+    }];
+}
+
+- (int)signum:(int) n {
+    
+    return (n < 0) ? -1 : (n > 0) ? +1 : 0;
+}
+
+- (CGPoint)randomVector {
+
+    CGPoint vec;
+    
+    int rnum = arc4random() % 11;
+    
+    vec.x = pow(-1, rnum)*(arc4random() % 100)/100;
+    
+    rnum = arc4random() % 11;
+    vec.y = pow(-1, rnum)*(arc4random() % 100)/100;
+    
+    NSLog(@"x: %f, y:%f",vec.x, vec.y);
+
+    return vec;
 }
 
 - (void)resetForNextLevel {
