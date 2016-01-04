@@ -88,6 +88,21 @@
     textBox3.backgroundColor = [UIColor clearColor];
     
     textBox3.hidden = YES;
+    
+    textBox4 = [[UILabel alloc] initWithFrame: frm];
+    
+    textBox4.layer.cornerRadius = 5.0;
+    textBox4.clipsToBounds = YES;
+    textBox4.opaque = NO;
+    
+    [textBox4 setTextAlignment:NSTextAlignmentCenter];
+    [textBox4 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.55*FONT_FACT*textBox3.frame.size.height]];
+    
+    textBox4.textColor = [UIColor colorWithRed:0.9 green:0.2 blue:0.2 alpha:1.0];
+    textBox4.backgroundColor = [UIColor clearColor];
+    
+    textBox4.hidden = YES;
+
 }
 
 - (void)deconstruct {
@@ -97,6 +112,12 @@
     
     [textBox2 removeFromSuperview];
     textBox2 = nil;
+    
+    [textBox3 removeFromSuperview];
+    textBox3 = nil;
+    
+    [textBox4 removeFromSuperview];
+    textBox4 = nil;
 }
 
 - (void)animateTextBox1:(CGFloat)duration :(CGFloat)startLoc :(CGFloat)delay :(NSString*)text {
@@ -185,10 +206,45 @@
     }];
 }
 
+- (void)animateTextBox4:(CGFloat)duration :(CGFloat)startLoc :(CGFloat)endLoc :(CGFloat)delay :(NSString*)text {
+    
+    CGRect frm = textBox4.frame;
+    CGRect endFrm = textBox4.frame;
+    
+    endFrm.origin.y = endLoc;
+    
+    frm.origin.x = baseLocBox3.origin.x;
+    frm.origin.y = startLoc;
+    
+    textBox4.frame = frm;
+    textBox4.text = text;
+    
+    textBox4.hidden = NO;
+    
+    [rootView addSubview:textBox4];
+    
+    [UIView animateWithDuration:duration delay:delay options:NO animations:^{
+        
+        textBox4.frame = endFrm;
+        //     textBox3.alpha = 1.0f;
+        
+    } completion:^(BOOL finished) {
+        
+        [self performSelector:@selector(hideTextBox4) withObject:nil afterDelay:0.4f];
+    }];
+}
+
 - (void)hideTextBox3 {
     
      textBox3.hidden = YES;
      [textBox3 removeFromSuperview];
 }
+
+- (void)hideTextBox4 {
+    
+    textBox4.hidden = YES;
+    [textBox4 removeFromSuperview];
+}
+
 
 @end

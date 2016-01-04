@@ -40,7 +40,7 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:tmpImage];
     
- // Play mode items
+/* // Play mode items
     
     frm.size.width = 0.7*self.view.frame.size.width;
     frm.size.height = 0.35*frm.size.width;
@@ -92,13 +92,18 @@
     [playModeControl setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
     
     playModeControl.tintColor = [UIColor lightGrayColor];
-    [self.view addSubview:playModeControl];
+    [self.view addSubview:playModeControl]; */
     
     
 // Difficulty items
     
-    frm = playModeBox.frame;
-    frm.origin.y += frm.size.height + 0.5*frm.size.height;
+    frm.size.width = 0.7*self.view.frame.size.width;
+    frm.size.height = 0.35*frm.size.width;
+    frm.origin.y = 0.7*frm.size.height;
+    frm.origin.x = (self.view.frame.size.width - frm.size.width)/2.0;
+
+  //  frm = playModeBox.frame;
+    //frm.origin.y += frm.size.height + 0.5*frm.size.height;
     
     difficultyBox = [[UILabel alloc] initWithFrame:frm];
     
@@ -148,7 +153,7 @@
     
     [self.view addSubview:difficultyControl];
     
-    frm = playModeBox.frame;
+    frm = difficultyBox.frame;
     frm.size.width /= 3.0;
     frm.size.height /= 2.0;
     
@@ -179,14 +184,15 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    if(controlItem == playModeControl) {
+ /*   if(controlItem == playModeControl) {
         
         if(controlItem.selectedSegmentIndex == 1)
             [defaults setInteger:1 forKey:@"gamePlay"];
         else
             [defaults setInteger:0 forKey:@"gamePlay"];
-    }
-    else if(controlItem == difficultyControl) {
+    } */
+    
+    if(controlItem == difficultyControl) {
         
         if(controlItem.selectedSegmentIndex == 1)
             [defaults setInteger:1 forKey:@"difficulty"];
@@ -213,7 +219,7 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    [playModeControl setSelectedSegmentIndex:[defaults integerForKey:@"gamePlay"]];
+ //   [playModeControl setSelectedSegmentIndex:[defaults integerForKey:@"gamePlay"]];
     [difficultyControl setSelectedSegmentIndex:[defaults integerForKey:@"difficulty"]];
     
     [defaults synchronize];
@@ -234,13 +240,13 @@
     
     acceptButton = nil;
     
-    playModeBox = nil;
+  //  playModeBox = nil;
     difficultyBox = nil;
     
-    playModeLabel = nil;
+  //  playModeLabel = nil;
     difficultyLabel = nil;
     
-    playModeControl = nil;
+  //  playModeControl = nil;
     difficultyControl = nil;
 }
 

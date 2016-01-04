@@ -13,13 +13,13 @@
     
     UILabel *acceptButton;
     
-    UILabel *playModeBox;
+  //  UILabel *playModeBox;
     UILabel *difficultyBox;
     
-    UILabel *playModeLabel;
+  //  UILabel *playModeLabel;
     UILabel *difficultyLabel;
     
-    UISegmentedControl *playModeControl;
+ //   UISegmentedControl *playModeControl;
     UISegmentedControl *difficultyControl;
 }
 

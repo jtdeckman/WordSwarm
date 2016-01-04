@@ -155,17 +155,18 @@
         [gamePlay decrementNumBombs];
     
         numBombsLabel.text = [NSString stringWithFormat:@"x %d",gamePlay.gameData.numBombs];
+    }
+    
+    if(gamePlay.gameData.numBombs < 1) {
         
-        if(gamePlay.gameData.numBombs < 1) {
+        bombPiece.hidden = YES;
+        numBombsLabel.hidden = YES;
+    }
+    
+    else {
             
-            bombPiece.hidden = YES;
-            numBombsLabel.hidden = YES;
-        }
-        else {
-            
-            bombPiece.hidden = NO;
-            numBombsLabel.hidden = NO;
-        }
+        bombPiece.hidden = NO;
+        numBombsLabel.hidden = NO;
     }
 }
 
@@ -178,17 +179,18 @@
         [gamePlay decrementNumNukes];
         
         numNukesLabel.text = [NSString stringWithFormat:@"x %d",gamePlay.gameData.numNukes];
-        
-        if(gamePlay.gameData.numNukes < 1) {
+    }
+    
+    if(gamePlay.gameData.numNukes < 1) {
             
-            nukePiece.hidden = YES;
-            numNukesLabel.hidden = YES;
-        }
-        else {
+        nukePiece.hidden = YES;
+        numNukesLabel.hidden = YES;
+    }
+    
+    else {
             
-            nukePiece.hidden = NO;
-            numNukesLabel.hidden = NO;
-        }
+        nukePiece.hidden = NO;
+        numNukesLabel.hidden = NO;
     }
 }
 
