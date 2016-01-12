@@ -423,7 +423,7 @@
     levelLabel.hidden = NO;
     level.hidden = NO;
     
-    [self updateLevelValues];
+    level.text = [NSString stringWithFormat:@"%d",gamePlay.gameData.level];
 }
 
 - (void)setUpWordBarForLevel {
@@ -431,7 +431,7 @@
     wordBar.wordCategory = [gamePlay getRandomCategoryForLevel:gamePlay.gameData.level];
     [wordBar setUpForLevel:gamePlay.gameData.level];
     
-   // [self updateLevelValues];
+    [self updateLevelValues];
 }
 
 - (void)resetAnimatedPieces {
