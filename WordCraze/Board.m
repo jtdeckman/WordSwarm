@@ -42,13 +42,12 @@
     spcFrm.size.height = spaceHeight;
     
     pcFrm.size.width = pieceWidth - offset/2.0;
-    pcFrm.size.height = pieceHeight - offset;
+    pcFrm.size.height = pieceHeight - offset/2.0;
     
     spaces = [[NSMutableArray alloc] initWithCapacity:dimx];
-    rowTypes = [[NSMutableArray alloc] initWithCapacity:dimx];
     
-    xini = bvFrame.origin.x;
-    yini = bvFrame.origin.y;
+    xini = bvFrame.origin.x+buffer/2.0;
+    yini = bvFrame.origin.y+buffer/2.0;
     
     for(int i=0; i<dimx; i++) {
         
@@ -60,7 +59,7 @@
             spcFrm.origin.y = yini + i*spaceHeight;
             
             pcFrm.origin.x = spcFrm.origin.x + os2/2.0;
-            pcFrm.origin.y = spcFrm.origin.y + os2;
+            pcFrm.origin.y = spcFrm.origin.y + os2/2.0;
             
             newSpace = [[Space alloc] init];
             
@@ -72,7 +71,7 @@
         [spaces addObject:row];
     }
     
-    spcFrm.size.width = 1.35*spcFrm.size.width;
+ /*   spcFrm.size.width = 1.35*spcFrm.size.width;
     spcFrm.size.height -= offset;
     
     for(int i=0; i<dimx; i++) {
@@ -87,7 +86,7 @@
         [newSpace initSpace:i :-1 :spcFrm :spcFrm];
         
         [rowTypes addObject:newSpace];
-    }
+    } */
     
     [self findNeighbors];
     
@@ -184,7 +183,7 @@
     space.piece.hidden = false;
 }
 
-- (void)addRefPiece: (int)ival :(NSString*)val {
+/*- (void)addRefPiece: (int)ival :(NSString*)val {
     
     Space *space = rowTypes[ival];
     
@@ -194,7 +193,7 @@
     [space configurePiece:YES :nil];
     
     space.piece.hidden = NO;
-}
+} */
 
 - (void)addBottomRow: (NSMutableArray*)vals {
 
@@ -205,8 +204,8 @@
         [self addPiece:dimx-1 :i :value];
     }
     
-    value = [vals objectAtIndex:dimy];
-    [self addRefPiece:dimx-1 :value];
+ //   value = [vals objectAtIndex:dimy];
+ //   [self addRefPiece:dimx-1 :value];
 }
 
 - (Space*)getSpaceForIndices: (int)ii : (int)ji {
@@ -214,10 +213,10 @@
     return spaces[ii][ji];
 }
 
-- (Space*)getRefSpaceFromIndex:(int)loc {
+//- (Space*)getRefSpaceFromIndex:(int)loc {
 
-    return rowTypes[loc];
-}
+//    return rowTypes[loc];
+//}
 
 - (Space*)getSpaceFromPoint: (CGPoint)loc {
     
@@ -232,12 +231,12 @@
         }
     }
     
-    for(int i=0; i<dimx; i++) {
+//    for(int i=0; i<dimx; i++) {
             
-            space = rowTypes[i];
+ //           space = rowTypes[i];
             
-            if(CGRectContainsPoint(space.spaceFrame, loc)) return space;
-    }
+   //         if(CGRectContainsPoint(space.spaceFrame, loc)) return space;
+   // }
 
     return NULL;
 }
@@ -283,9 +282,9 @@
     
     for(int i=0; i<dimx; i++) {
         
-        space = rowTypes[i];
-        space.isOccupied = NO;
-        space.piece.hidden = YES;
+     //   space = rowTypes[i];
+      //  space.isOccupied = NO;
+      //  space.piece.hidden = YES;
         
         for(int j=0; j<dimy; j++) {
             
@@ -331,14 +330,14 @@
             [space configurePiece:NO :[tileImages backgroundImageForIndex:space.pointValue]];
         }
         
-        space = rowTypes[i];
-        spaceBelow = rowTypes[i+1];
+  //      space = rowTypes[i];
+  //      spaceBelow = rowTypes[i+1];
         
-        space.value = spaceBelow.value;
-        space.isOccupied = spaceBelow.isOccupied;
-        space.piece.hidden = spaceBelow.piece.hidden;
+ //       space.value = spaceBelow.value;
+  //      space.isOccupied = spaceBelow.isOccupied;
+  //      space.piece.hidden = spaceBelow.piece.hidden;
         
-        [space configurePiece:YES :nil];
+    //    [space configurePiece:YES :nil];
     }
     
     return NO;
@@ -348,8 +347,13 @@
     
     Space *space;
 
-    space = rowTypes[0];
-        if(space.isOccupied) return YES;
+    for(int i=0; i<dimy; i++) {
+        
+        space = spaces[0][i];
+       
+        if(space.isOccupied || !space.piece.hidden)
+            return YES;
+    }
 
     return NO;
 }
@@ -375,13 +379,13 @@
             [space configurePiece:NO :[tileImages backgroundImageForIndex:space.pointValue]];
         }
 
-        space = rowTypes[i];
-        spaceAbove = rowTypes[i-1];
+  //      space = rowTypes[i];
+  //      spaceAbove = rowTypes[i-1];
         
-        space.value = spaceAbove.value;
-        space.isOccupied = spaceAbove.isOccupied;
-        space.piece.hidden = spaceAbove.piece.hidden;
-        [space configurePiece:YES :nil];
+  //      space.value = spaceAbove.value;
+  //      space.isOccupied = spaceAbove.isOccupied;
+  //      space.piece.hidden = spaceAbove.piece.hidden;
+  //      [space configurePiece:YES :nil];
     }
     
     for(int j=0; j<dimy; j++) {
@@ -397,12 +401,12 @@
         [space configurePiece:NO :0];
     }
     
-    space = rowTypes[0];
-    space.value = 0;
-    space.isOccupied = NO;
-    space.piece.hidden = YES;
+ //  space = rowTypes[0];
+ //   space.value = 0;
+ //   space.isOccupied = NO;
+  //  space.piece.hidden = YES;
     
-    [space configurePiece:YES :nil];
+  //  [space configurePiece:YES :nil];
 }
 
 - (NSString*)makeWordFromRow: (uint)row {
@@ -449,7 +453,8 @@
     
     for(int i=0; i<dimx; i++) {
         
-        space = rowTypes[i];
+        for(int j=0; j<dimy; j++)
+            space = spaces[i][j];
         
         if(space.isOccupied && !space.piece.hidden) ++nOcc;
     }
@@ -463,9 +468,9 @@
     
     for(int i=0; i<dimx; i++) {
         
-        space = rowTypes[i];
+    //    space = rowTypes[i];
         
-        if(space.isOccupied) space.piece.hidden = YES;
+  //      if(space.isOccupied) space.piece.hidden = YES;
         
         for(int j=0; j<dimy; j++) {
             
@@ -484,9 +489,9 @@
 
     Space *space;
         
-    space = rowTypes[row];
+  //  space = rowTypes[row];
         
-    if(space.isOccupied) space.piece.hidden = YES;
+  //  if(space.isOccupied) space.piece.hidden = YES;
         
     for(int j=0; j<dimy; j++) {
             
@@ -505,9 +510,9 @@
     
     for(int i=0; i<dimx; i++) {
         
-        space = rowTypes[i];
+   //     space = rowTypes[i];
         
-        if(space.isOccupied) space.piece.hidden = NO;
+   //     if(space.isOccupied) space.piece.hidden = NO;
         
         for(int j=0; j<dimy; j++) {
             
@@ -535,8 +540,8 @@
         space.pointsLabel.hidden = NO;
     }
 
-    space = rowTypes[row];
-    space.piece.hidden = NO;
+//    space = rowTypes[row];
+//    space.piece.hidden = NO;
 }
 
 - (void)hideBackPiecesInRow:(uint)row { 
@@ -611,11 +616,11 @@
         [pieces addObject:space.piece];
     }
     
-    if(getCatPiece) {
-        
-        space = [rowTypes objectAtIndex:row];
-        [pieces addObject:space.piece];
-    }
+ //   if(getCatPiece) {
+ //
+ //       space = [rowTypes objectAtIndex:row];
+ //       [pieces addObject:space.piece];
+  //  }
 }
 
 - (BOOL)addWordToTopUnOccupiedRow:(NSString*)word :(NSString*)category {
@@ -635,7 +640,7 @@
     for(int i=cnt; i<dimy; i++)
         [self addPiece:topUnOccupiedRow :i :@""];
     
-    [self addRefPiece:topUnOccupiedRow :category];
+  //  [self addRefPiece:topUnOccupiedRow :category];
     
     return YES;
 }
@@ -648,13 +653,13 @@
     
     for(int i=0; i<dimx; i++) {
         
-        if(getRefPiece) {
+ //       if(getRefPiece) {
             
-            space = [rowTypes objectAtIndex:i];
+   //         space = [rowTypes objectAtIndex:i];
         
-        if(space.isOccupied)
-            [allPieces addObject:space.piece];
-        }
+ //       if(space.isOccupied)
+ //           [allPieces addObject:space.piece];
+  //      }
         
         for(int j=0; j<dimy; j++) {
             
@@ -666,7 +671,7 @@
     }
 }
 
-- (BOOL)isCategoryRow:(uint)row {
+/*- (BOOL)isCategoryRow:(uint)row {
 
     Space *space = rowTypes[row];
     
@@ -674,7 +679,7 @@
         return NO;
     
     return YES;
-}
+} */
 
 - (void)deconstruct {
     
@@ -682,8 +687,8 @@
     
     for(int i=0; i<dimx; i++) {
         
-        space = rowTypes[i];
-        [space deconstruct];
+   //     space = rowTypes[i];
+   //     [space deconstruct];
         
         for(int j=0; j<dimy; j++) {
             space = spaces[i][j];
@@ -692,11 +697,11 @@
     }
     
     [spaces removeAllObjects];
-    [rowTypes removeAllObjects];
+  //  [rowTypes removeAllObjects];
     [rows removeAllObjects];
     
     spaces = nil;
-    rowTypes = nil;
+//    rowTypes = nil;
     rows = nil;
     
     [tileImages deconstruct];

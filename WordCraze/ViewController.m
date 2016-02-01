@@ -193,7 +193,7 @@
             
             touchedSpace = [board getSpaceFromPoint:location];
             
-            if(touchedSpace.refPiece && touchedSpace.isOccupied) {
+        /*    if(touchedSpace.refPiece && touchedSpace.isOccupied) {
                 
                 NSString *word = [board makeWordFromRow:touchedSpace.iind];
                 NSString *type = touchedSpace.piece.text;
@@ -262,9 +262,9 @@
                     
                     [self performSelector:@selector(resetRow) withObject:nil afterDelay:0.41];
                 }
-            }
+            } */
             
-            else if(touchedSpace.isOccupied) {
+             if(touchedSpace.isOccupied) {
                 
                 swiping = YES;
                 
@@ -274,7 +274,7 @@
             }
         }
         
-        else if(touch.view == display.bottomBar && gamePlay.placeMode == freeState) {
+        if(touch.view == display.bottomBar && gamePlay.placeMode == freeState) {
             
             if(CGRectContainsPoint(display.menuBar.frame, location)) {
                 
@@ -461,8 +461,8 @@
                     touchedSpace.value = val;
                     touchedSpace.piece.text = touchedSpace.value;
                     
-                    if(![board isCategoryRow:touchedSpace.iind] && touchedSpace.pointValue == 0)
-                        [board removePiece:touchedSpace];
+                  //  if(![board isCategoryRow:touchedSpace.iind] && touchedSpace.pointValue == 0)
+                  //      [board removePiece:touchedSpace];
                 }
             }
             
@@ -571,8 +571,8 @@
     
     for(int i=0; i<gamePlay.dimx; i++) {
         
-        space = [board getRefSpaceFromIndex:i];
-        [self.view addSubview:space.piece];
+      //  space = [board getRefSpaceFromIndex:i];
+      //  [self.view addSubview:space.piece];
         
         for(int j=0; j<gamePlay.dimy; j++) {
             

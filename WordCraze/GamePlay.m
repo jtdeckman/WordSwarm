@@ -22,11 +22,11 @@
     if(iPad)
         dimy = 7;
     else
-        dimy = 6;
+        dimy = 7;
     
     pw = (frm.size.width-buffer)/dimy;
     
-    dimx = (int)(frm.size.height/pw);
+    dimx = (int)((frm.size.height-buffer)/pw);
     
     if(iPad) --dimx;
     

@@ -16,7 +16,7 @@
     
     NSMutableArray *spaces;
     NSMutableArray *rows;
-    NSMutableArray *rowTypes;
+  //  NSMutableArray *rowTypes;
     
     int dimx;
     int dimy;
@@ -48,7 +48,7 @@
 
 - (Space*)getSpaceForIndices: (int)ival : (int)jval;
 - (Space*)getSpaceFromPoint: (CGPoint)loc;
-- (Space*)getRefSpaceFromIndex: (int)loc;
+// (Space*)getRefSpaceFromIndex: (int)loc;
 
 - (int)nbrNearestOccupied: (Space*)space;
 - (int)nbrOccupied: (Space*)space;
@@ -64,7 +64,7 @@
 - (void)deconstruct;
 
 - (BOOL)shiftRowsUp;
-- (BOOL)isCategoryRow:(uint)row;
+//- (BOOL)isCategoryRow:(uint)row;
 
 - (void)eliminateRow:(uint)row;
 - (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row :(BOOL)getCatPiece :(uint)numPieces;
