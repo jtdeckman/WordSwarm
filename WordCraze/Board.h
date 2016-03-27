@@ -60,10 +60,12 @@
 - (void)clearBoard;
 - (void)hideOccupiedPieces;
 - (void)unHideOccupiedPieces;
+- (void)shiftColumnsDown;
 
 - (void)deconstruct;
 
 - (BOOL)shiftRowsUp;
+
 //- (BOOL)isCategoryRow:(uint)row;
 
 - (void)eliminateRow:(uint)row;

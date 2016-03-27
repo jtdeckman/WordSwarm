@@ -391,7 +391,7 @@
         }
         else {
             
-            gamePlay.placeMode = freeState;
+           // gamePlay.placeMode = freeState;
         }
         
     }
@@ -417,10 +417,12 @@
         
         else if(gamePlay.placeMode == swipeMove) {
             
-            if([gamePlay checkWord:currentWord :@"Word"]) {
+            if(currentWord.length > 1 && [gamePlay checkWord:currentWord :@"Word"]) {
                 
                 for(Space *space in highlightedPieces)
                     [board removePiece:space];
+                
+                [board shiftColumnsDown];
             }
             
             [self clearCurrentWord];
@@ -481,6 +483,7 @@
             
             touchedSpace = NULL;
             gamePlay.placeMode = freeState;
+            [self clearCurrentWord];
         }
         
         else if(gamePlay.placeMode == nukeMove) {

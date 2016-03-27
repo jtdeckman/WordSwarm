@@ -394,6 +394,46 @@
   //  [space configurePiece:YES :nil];
 }
 
+- (void)shiftColumnsDown {
+
+    int emptyRow;
+    int occRow;
+    
+    for(int i=0; i<dimy; i++) {
+        
+        [self findEmptySpaces:&emptyRow :&occRow :i];
+    }
+}
+
+- (void)findEmptySpaces:(int*) emptyRow :(int*)occRow :(int)column {
+
+    Space* space;
+    
+    *occRow = -1;
+    *emptyRow = -1;
+    
+    for(int i=dimx-1; i>-1; i--) {
+        
+        space = spaces[i][column];
+        
+        if(!space.isOccupied) {
+            *emptyRow = i;
+            break;
+        }
+    }
+    
+    for(int i=*emptyRow; i>-1; i--) {
+        
+        space = spaces[i][column];
+        
+        if(space.isOccupied) {
+ 
+            *occRow = i;
+            break;
+        }
+    }
+}
+
 - (NSString*)makeWordFromRow: (uint)row {
     
     NSMutableString *word = [[NSMutableString alloc] initWithString:@""];

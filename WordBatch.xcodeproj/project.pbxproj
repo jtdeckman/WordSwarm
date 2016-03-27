@@ -526,7 +526,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jason Deckman (CQCHSY77P3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/WordCraze/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -537,7 +537,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "JTD.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = WordBatch;
-				PROVISIONING_PROFILE = "88c77a2d-c8f1-4e45-8124-ff0922eb4e1e";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -546,7 +546,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Jason Deckman (CQCHSY77P3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/WordCraze/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -557,7 +557,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "JTD.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = WordBatch;
-				PROVISIONING_PROFILE = "88c77a2d-c8f1-4e45-8124-ff0922eb4e1e";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
