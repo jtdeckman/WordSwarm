@@ -72,6 +72,8 @@
             
             [display checkAlertView:nRowsOcc];
             
+            [board refreshBackPieces];
+            
             if(!animating && !swiping && gamePlay.gameData.timer % timeInterval == 0) {
             
                 [gamePlay resetTimer];
@@ -245,21 +247,19 @@
                 [self.view bringSubviewToFront:display.menuView];
             }
             
-            else if(gamePlay.placeMode == freeState && CGRectContainsPoint(display.addPiece.frame, location)) {
+         //   else if(gamePlay.placeMode == freeState && CGRectContainsPoint(display.addPiece.frame, location)) {
                 
-                swiping = YES;
-                gamePlay.placeMode = addMove;
-            }
+         //       swiping = YES;
+        //        gamePlay.placeMode = addMove;
+        //    }
             
             else if(gamePlay.placeMode == freeState && CGRectContainsPoint(display.bombPiece.frame, location)) {
                 
-                swiping = YES;
                 gamePlay.placeMode = bombMove;
             }
             
             else if(gamePlay.placeMode == freeState && CGRectContainsPoint(display.nukePiece.frame, location)) {
                 
-                swiping = YES;
                 gamePlay.placeMode = nukeMove;
             }
 
@@ -366,11 +366,11 @@
             }
         }
         
-        else if(gamePlay.placeMode == addMove) {
+     //   else if(gamePlay.placeMode == addMove) {
             
-            [display changeAddPieceLoc:location];
-        }
-        
+     //       [display changeAddPieceLoc:location];
+     //   }
+    
         else if(gamePlay.placeMode == bombMove) {
             
             [display changeBombPieceLoc:location];
@@ -432,8 +432,14 @@
                 
                 [self performSelector:@selector(shiftColumnsDownAfterDelay) withObject:touchedSpace afterDelay:0.4f];
                 
-               
-              //  [board shiftColumnsDown];
+                int wordScore  = [self calcScoreFromSelectedPieces];
+                
+                [gamePlay updateScore:wordScore];
+                
+                [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind :YES :0];
+                [board hideBackPiecesInRow:touchedSpace.iind];
+                
+                [display animateScore:wordScore];
             }
             
             else {
@@ -444,7 +450,7 @@
             gamePlay.placeMode = freeState;
         }
         
-        else if(gamePlay.placeMode == addMove) {
+   /*     else if(gamePlay.placeMode == addMove) {
             
             Space *selectedSpace = [board getSpaceFromPoint:location];
             
@@ -468,7 +474,7 @@
             [display resetAddPiece];
             touchedSpace = NULL;
             gamePlay.placeMode = freeState;
-        }
+        } */
         
         else if(gamePlay.placeMode == bombMove) {
             
@@ -832,6 +838,16 @@
         
     spc2.value = val;
     spc2.piece.text = spc2.value;
+}
+
+- (int)calcScoreFromSelectedPieces {
+
+    int score = 0;
+    
+    for(Space *space in highlightedPieces)
+        score += space.pointValue;
+    
+    return score;
 }
 
 - (void)clearHighlightedSpaces {

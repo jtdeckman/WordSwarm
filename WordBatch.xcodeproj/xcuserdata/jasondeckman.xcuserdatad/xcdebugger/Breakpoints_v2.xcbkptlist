@@ -1753,11 +1753,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WordCraze/ViewController.m"
-            timestampString = "480813572.710861"
+            timestampString = "480815530.669353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "745"
-            endingLineNumber = "745"
+            startingLineNumber = "751"
+            endingLineNumber = "751"
             landmarkName = "-setUpNewGame"
             landmarkType = "5">
          </BreakpointContent>
@@ -1881,11 +1881,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WordCraze/ViewController.m"
-            timestampString = "480813572.710861"
+            timestampString = "480815530.669353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "579"
-            endingLineNumber = "579"
+            startingLineNumber = "585"
+            endingLineNumber = "585"
             landmarkName = "-setUpViewController"
             landmarkType = "5">
          </BreakpointContent>
@@ -1913,11 +1913,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WordCraze/ViewController.m"
-            timestampString = "480813572.710861"
+            timestampString = "480815530.669353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "704"
-            endingLineNumber = "704"
+            startingLineNumber = "710"
+            endingLineNumber = "710"
             landmarkName = "-checkWordRow"
             landmarkType = "5">
          </BreakpointContent>
@@ -1945,71 +1945,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WordCraze/ViewController.m"
-            timestampString = "480813572.710861"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "-touchesBegan:withEvent:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WordCraze/ViewController.m"
-            timestampString = "480813572.710861"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "-touchesBegan:withEvent:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WordCraze/ViewController.m"
-            timestampString = "480813572.710861"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
-            landmarkName = "-touchesBegan:withEvent:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WordCraze/ViewController.m"
-            timestampString = "480813572.710861"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
-            landmarkName = "-touchesBegan:withEvent:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WordCraze/ViewController.m"
-            timestampString = "480813572.710861"
+            timestampString = "480815530.669353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "206"
@@ -2025,7 +1961,71 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WordCraze/ViewController.m"
-            timestampString = "480813572.710861"
+            timestampString = "480815530.669353"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "-touchesBegan:withEvent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WordCraze/ViewController.m"
+            timestampString = "480815530.669353"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "-touchesBegan:withEvent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WordCraze/ViewController.m"
+            timestampString = "480815530.669353"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
+            landmarkName = "-touchesBegan:withEvent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WordCraze/ViewController.m"
+            timestampString = "480815530.669353"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "-touchesBegan:withEvent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WordCraze/ViewController.m"
+            timestampString = "480815530.669353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "426"
@@ -2041,7 +2041,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WordCraze/ViewController.m"
-            timestampString = "480813572.710861"
+            timestampString = "480815530.669353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "425"
@@ -2057,7 +2057,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WordCraze/ViewController.m"
-            timestampString = "480813572.710861"
+            timestampString = "480815530.669353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "386"
@@ -2153,11 +2153,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WordCraze/ViewController.m"
-            timestampString = "480813572.710861"
+            timestampString = "480815530.669353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "630"
-            endingLineNumber = "630"
+            startingLineNumber = "636"
+            endingLineNumber = "636"
             landmarkName = "-populateWordBarFromSpaces"
             landmarkType = "5">
          </BreakpointContent>
@@ -2169,11 +2169,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WordCraze/ViewController.m"
-            timestampString = "480813572.710861"
+            timestampString = "480815530.669353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "637"
-            endingLineNumber = "637"
+            startingLineNumber = "643"
+            endingLineNumber = "643"
             landmarkName = "-populateWordBarFromSpaces"
             landmarkType = "5">
          </BreakpointContent>
@@ -2185,11 +2185,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WordCraze/ViewController.m"
-            timestampString = "480813572.710861"
+            timestampString = "480815530.669353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "676"
-            endingLineNumber = "676"
+            startingLineNumber = "682"
+            endingLineNumber = "682"
             landmarkName = "-checkWordRow"
             landmarkType = "5">
          </BreakpointContent>
@@ -2201,13 +2201,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WordCraze/ViewController.m"
-            timestampString = "480813572.710861"
+            timestampString = "480815530.669353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "674"
-            endingLineNumber = "674"
+            startingLineNumber = "680"
+            endingLineNumber = "680"
             landmarkName = "-checkWordRow"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WordCraze/Board.h"
+            timestampString = "480815350.872666"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-refreshBackPieces"
+            landmarkType = "4">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

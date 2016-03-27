@@ -545,7 +545,7 @@
         space = spaces[row][j];
             
         if(space.isOccupied) space.piece.hidden = YES;
-        if(space.backPieceVal > 1) space.backPiece.hidden = YES;
+       // if(space.backPieceVal > 1) space.backPiece.hidden = YES;
             
         space.pointsLabel.hidden = YES;
     }
@@ -654,6 +654,19 @@
             
             space = spaces[i][j];
             [space setBackhighlightClear];
+        }
+    }
+}
+
+- (void)refreshBackPieces {
+
+    Space *space;
+    
+    for(int i=0; i<dimx; i++) {
+        for(int j=0; j<dimy; j++) {
+            
+            space = spaces[i][j];
+            [space refreshBackgroundBorder];
         }
     }
 }

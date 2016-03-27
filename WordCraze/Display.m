@@ -971,9 +971,10 @@
     [addPiece setTextAlignment:NSTextAlignmentCenter];
     [addPiece setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.5*FONT_FACT*pcFrm.size.width]];
     addPiece.textColor = [UIColor colorWithRed:0.7 green:0.3 blue:0.3 alpha:0.7];
+ 
     addPiece.text = @"";
     
-    [rootView addSubview:addPiece];
+  //  [rootView addSubview:addPiece];
     
     addPieceOffSet.width = pcFrm.size.width/2.0;
     addPieceOffSet.height = pcFrm.size.height/2.0;

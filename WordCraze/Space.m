@@ -201,6 +201,15 @@
     backPiece.backgroundColor = [UIColor clearColor];
 }
 
+- (void)refreshBackgroundBorder {
+
+    if(backPieceVal > 1 && isOccupied) {
+        
+        backPiece.hidden = NO;
+        backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.8] CGColor];
+    }
+}
+
 - (void)deconstruct {
     
     [piece removeFromSuperview];

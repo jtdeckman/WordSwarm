@@ -68,6 +68,7 @@
 - (void)setBackhighlightRed;
 - (void)setBackhighlightBlue;
 - (void)setBackhighlightClear;
+- (void)refreshBackgroundBorder;
 
 - (bool)isNearestNearestNbrOf: (Space*)space;
 
