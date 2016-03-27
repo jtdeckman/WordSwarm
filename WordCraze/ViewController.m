@@ -417,7 +417,11 @@
         
         else if(gamePlay.placeMode == swipeMove) {
             
-            [gamePlay checkWord:currentWord :@"Word"];
+            if([gamePlay checkWord:currentWord :@"Word"]) {
+                
+                for(Space *space in highlightedPieces)
+                    [board removePiece:space];
+            }
             
             [self clearCurrentWord];
             gamePlay.placeMode = freeState;
