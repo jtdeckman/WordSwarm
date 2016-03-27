@@ -419,12 +419,17 @@
             
             if(currentWord.length > 1 && [gamePlay checkWord:currentWord :@"Word"]) {
                 
+                animating = YES;
                // for(Space *space in highlightedPieces)
                //     [board removePiece:space];
+                
+                [self checkWordRow];
                 
                 [self performSelector:@selector(populateWordBarFromSpaces) withObject:touchedSpace afterDelay:0.4f];
                 
                 [self performSelector:@selector(shiftColumnsDownAfterDelay) withObject:touchedSpace afterDelay:0.5f];
+                
+               
               //  [board shiftColumnsDown];
             }
             
@@ -639,9 +644,11 @@
     
 }
 
--(void)shiftColumnsDownAfterDelay {
+- (void)shiftColumnsDownAfterDelay {
 
     Space *space;
+    
+  //  [self checkWordRow];
     
     for(int i=0; i<highlightedPieces.count; i++) {
         space = highlightedPieces[i];
@@ -652,6 +659,8 @@
         [board shiftColumnsDown];
     
     [self clearCurrentWord];
+    
+    animating = NO;
 }
 
 - (void)checkWordRow {

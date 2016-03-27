@@ -696,8 +696,8 @@
         ++cnt;
     }
     
-    for(int i=cnt; i<dimy; i++)
-        [self addPiece:topUnOccupiedRow :i :@""];
+   // for(int i=cnt; i<dimy; i++)
+     //   [self addPiece:topUnOccupiedRow :i :@""];
     
   //  [self addRefPiece:topUnOccupiedRow :category];
     
