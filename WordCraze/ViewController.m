@@ -83,6 +83,8 @@
                 
                     gamePlay.gameState = gameOver;
                     
+                    animating = YES;
+                    
                     [display.animations animateTextBox2:2.0f :0.90*self.view.frame.size.height :0.3*self.view.frame.size.height :0.4f :@"Game Over"];
                     
                     [board hideOccupiedPieces];
@@ -107,6 +109,9 @@
         }
         
         [gamePlay incrementTimer];
+        
+       // for(int i=0; i<board.dimx; i++)
+         //   [board shiftColumnsDown];
     }
     
     if(gamePlay.gameState == levelUp) {
@@ -423,11 +428,9 @@
                // for(Space *space in highlightedPieces)
                //     [board removePiece:space];
                 
-                [self checkWordRow];
-                
                 [self performSelector:@selector(populateWordBarFromSpaces) withObject:touchedSpace afterDelay:0.4f];
                 
-                [self performSelector:@selector(shiftColumnsDownAfterDelay) withObject:touchedSpace afterDelay:0.5f];
+                [self performSelector:@selector(shiftColumnsDownAfterDelay) withObject:touchedSpace afterDelay:0.4f];
                 
                
               //  [board shiftColumnsDown];
@@ -450,7 +453,7 @@
                 selectedSpace.value = display.addPiece.text;
                 selectedSpace.piece.text = display.addPiece.text;
                 
-                selectedSpace.piece.backgroundColor = display.addPiece.backgroundColor;
+                selectedSpace.piece.backgroundColor = [UIColor clearColor];//display.addPiece.backgroundColor;
                 //selectedSpace.pointValue *= -1;
                 selectedSpace.pointValue = 0;
                 selectedSpace.pointsLabel.text = @"";//[NSString stringWithFormat:@"%d",selectedSpace.pointValue];
@@ -626,29 +629,32 @@
   
     for(int j=0; j<highlightedPieces.count; j++) {
         
-            if(nletters < maxSize) {
+        if(nletters < maxSize) {
                 
-                space = [highlightedPieces objectAtIndex:j];
+            space = [highlightedPieces objectAtIndex:j];
         
-                if(space.backPieceVal > 1 && ![space.value isEqualToString:@""]) {
+            if(space.backPieceVal > 1 && ![space.value isEqualToString:@""]) {
                     
-                    [display.wordBar animatePieceToSpace:space.piece :duration :delay :nletters];
-                    [display.wordBar addLetterToBox:space.value withDelay:duration+0.1];
+                [display.wordBar animatePieceToSpace:space.piece :duration :delay :nletters];
+                [display.wordBar addLetterToBox:space.value withDelay:duration+0.1];
                 
-                    ++nletters;
+                ++nletters;
          
-                    totalTime += duration;
-                }
+                totalTime += duration;
             }
+        }
     }
-    
 }
 
 - (void)shiftColumnsDownAfterDelay {
-
-    Space *space;
     
-  //  [self checkWordRow];
+    [self checkWordRow];
+    [self performSelector:@selector(shiftColumns) withObject:nil afterDelay:0.51];
+   }
+
+- (void)shiftColumns {
+    
+    Space *space;
     
     for(int i=0; i<highlightedPieces.count; i++) {
         space = highlightedPieces[i];
@@ -683,28 +689,31 @@
             
             if(topUnOccupiedRow < 1) {
             
-                gamePlay.gameState = gameOver;
+              //  gamePlay.gameState = gameOver;
             }
             
             else {
                 
-                NSMutableArray *pieceLocations = [[NSMutableArray alloc] initWithCapacity:board.dimy];
+            //    NSMutableArray *pieceLocations = [[NSMutableArray alloc] initWithCapacity:board.dimy];
                 
-                if([word length] > board.dimy)
-                    word = [word substringToIndex:board.dimy-1];
+            //    if([word length] > board.dimy)
+            //        word = [word substringToIndex:board.dimy-1];
                 
-                [board getPiecesInRow:pieceLocations :topUnOccupiedRow :NO :(uint)[word length]];
+              //  [board getPiecesInRow:pieceLocations :topUnOccupiedRow :NO :(uint)[word length]];
                 
-                [display.animations animateTextBox4:1.0f :0.125*self.view.frame.size.height :0.75*display.boardView.frame.origin.y :0.0f :[NSString stringWithFormat:@"Not a %@!", display.wordBar.wordCategory]];
+             //   [display.animations animateTextBox4:1.0f :0.125*self.view.frame.size.height :0.75*display.boardView.frame.origin.y :0.0f :[NSString stringWithFormat:@"Not a %@!", display.wordBar.wordCategory]];
                 
-                for(uint i=0; i<[word length]; i++)
-                    [display.wordBar animatePieceBackToBoard:(UILabel*)pieceLocations[i] :1.0 :0.0 :i];
+             //   for(uint i=0; i<[word length]; i++)
+              //      [display.wordBar animatePieceBackToBoard:(UILabel*)pieceLocations[i] :1.0 :0.0 :i];
                 
                 [display.wordBar makeBarPiecesFlash:1.0];
                 
-                animating = YES;
+          //      animating = YES;
                 
-                [self performSelector:@selector(addWordToTopOfStack:) withObject:word afterDelay:1.1];
+         //       [self performSelector:@selector(addWordToTopOfStack:) withObject:word afterDelay:1.1];
+                
+             //   for(int i=0; i<board.dimx; i++)
+                 //   [board shiftColumnsDown];
             }
         }
     }
@@ -714,8 +723,8 @@
 
 - (void)addWordToTopOfStack:(NSString*)word {
  
-    [board addWordToTopUnOccupiedRow:word :display.wordBar.wordCategory];
-    animating = NO;
+   // [board addWordToTopUnOccupiedRow:word :display.wordBar.wordCategory];
+  //  animating = NO;
 }
 
 - (void)resetRow {
