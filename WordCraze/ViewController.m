@@ -419,13 +419,20 @@
             
             if(currentWord.length > 1 && [gamePlay checkWord:currentWord :@"Word"]) {
                 
-                for(Space *space in highlightedPieces)
-                    [board removePiece:space];
+               // for(Space *space in highlightedPieces)
+               //     [board removePiece:space];
                 
-                [board shiftColumnsDown];
+                [self performSelector:@selector(populateWordBarFromSpaces) withObject:touchedSpace afterDelay:0.4f];
+                
+                [self performSelector:@selector(shiftColumnsDownAfterDelay) withObject:touchedSpace afterDelay:0.5f];
+              //  [board shiftColumnsDown];
             }
             
-            [self clearCurrentWord];
+            else {
+                
+                [self clearCurrentWord];
+            }
+            
             gamePlay.placeMode = freeState;
         }
         
@@ -588,7 +595,7 @@
     [display updateScore];
     [display updateLevelValues];
     
-    highlightedPieces = [[NSMutableSet alloc] initWithCapacity:board.dimx*board.dimy];
+    highlightedPieces = [[NSMutableArray alloc] initWithCapacity:board.dimx*board.dimy];
     
     currentWord = [[NSMutableString alloc] initWithString:@""];
 }
@@ -601,7 +608,7 @@
     animating = NO;
 }
 
-- (void)populateWordBarFromRow:(Space*)spaceInRow {
+- (void)populateWordBarFromSpaces {
 
     Space *space;
 
@@ -611,23 +618,40 @@
     
     int nletters = [display.wordBar numOccupied];
     int maxSize = [display.wordBar lettersInLevel];
-    
-    for(uint j=0; j<board.dimy && nletters < maxSize; j++) {
-            
-        space = [board getSpaceForIndices:spaceInRow.iind:j];
+  
+    for(int j=0; j<highlightedPieces.count; j++) {
         
-        if(space.backPieceVal > 1 && ![space.value isEqualToString:@""]) {
-            
-            [display.wordBar animatePieceToSpace:space.piece :duration :delay :nletters];
-            [display.wordBar addLetterToBox:space.value withDelay:duration+0.1];
-            
-            ++nletters;
+            if(nletters < maxSize) {
+                
+                space = [highlightedPieces objectAtIndex:j];
+        
+                if(space.backPieceVal > 1 && ![space.value isEqualToString:@""]) {
+                    
+                    [display.wordBar animatePieceToSpace:space.piece :duration :delay :nletters];
+                    [display.wordBar addLetterToBox:space.value withDelay:duration+0.1];
+                
+                    ++nletters;
          
-            totalTime += duration;
-        }
+                    totalTime += duration;
+                }
+            }
     }
     
-    [self performSelector:@selector(eliminateRowFromBoard:) withObject:spaceInRow afterDelay:totalTime];
+}
+
+-(void)shiftColumnsDownAfterDelay {
+
+    Space *space;
+    
+    for(int i=0; i<highlightedPieces.count; i++) {
+        space = highlightedPieces[i];
+        [board removePiece:space];
+    }
+    
+    for(int i=0; i<board.dimx; i++)
+        [board shiftColumnsDown];
+    
+    [self clearCurrentWord];
 }
 
 - (void)checkWordRow {

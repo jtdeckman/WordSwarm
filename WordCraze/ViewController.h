@@ -40,7 +40,7 @@
     
     NSMutableString *currentWord;
     
-    NSMutableSet *highlightedPieces;
+    NSMutableArray *highlightedPieces;
 }
 
 - (void)saveDefaults;
