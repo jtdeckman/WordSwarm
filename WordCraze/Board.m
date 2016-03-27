@@ -396,12 +396,34 @@
 
 - (void)shiftColumnsDown {
 
+    Space *space, *spaceAbove;
+    
     int emptyRow;
     int occRow;
     
     for(int i=0; i<dimy; i++) {
         
         [self findEmptySpaces:&emptyRow :&occRow :i];
+        
+        if(emptyRow > -1 && occRow > -1) {
+            
+            for(int j=occRow; j>-1; j--) {
+                
+                space = spaces[emptyRow][i];
+                spaceAbove = spaces[j][i];
+                
+                space.value = spaceAbove.value;
+                space.isOccupied = spaceAbove.isOccupied;
+                space.piece.hidden = spaceAbove.piece.hidden;
+                space.pointValue = spaceAbove.pointValue;
+                space.backPieceVal = spaceAbove.backPieceVal;
+                space.pointsLabel.hidden = spaceAbove.pointsLabel.hidden;
+                
+                [space configurePiece:NO :[tileImages backgroundImageForIndex:space.pointValue]];
+                
+                --emptyRow;
+            }
+        }
     }
 }
 
