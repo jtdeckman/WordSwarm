@@ -574,12 +574,24 @@
     Space *space;
     
     for(int i=0; i<dimx; i++) {
-        
         for(int j=0; j<dimy; j++) {
             
             space = spaces[i][j];
             space.backPiece.hidden = YES;
             space.pointsLabel.hidden = YES;
+        }
+    }
+}
+
+- (void)clearAllBackPieces {
+
+    Space *space;
+    
+    for(int i=0; i<dimx; i++) {
+        for(int j=0; j<dimy; j++) {
+            
+            space = spaces[i][j];
+            [space setBackhighlightClear];
         }
     }
 }

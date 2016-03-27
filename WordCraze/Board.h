@@ -75,6 +75,8 @@
 - (void)hideBackPiecesInRow:(uint)row;
 - (void)unHideBackPiecesInRow:(uint)row;
 - (void)hideAllBackPieces;
+- (void)clearAllBackPieces;
+
 - (void)unHidePiecesInRow:(uint)row;
 - (void)hidePointsLabelInRow:(uint)row;
 - (void)hideOccupiedPiecesInRow:(uint)row;

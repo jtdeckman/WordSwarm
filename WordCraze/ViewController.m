@@ -76,6 +76,9 @@
             
                 [gamePlay resetTimer];
                 
+                [self clearHighlightedSpaces];
+                [self clearCurrentWord];
+                
                 if([board shiftRowsUp] == YES) {
                 
                     gamePlay.gameState = gameOver;
@@ -189,17 +192,13 @@
     
     else if(gamePlay.gameState == gameRunning && !animating) {
         
+        [self clearCurrentWord];
+        
         if(touch.view == display.boardView && gamePlay.placeMode == freeState) {
             
             touchedSpace = [board getSpaceFromPoint:location];
             
             if(touchedSpace.isOccupied) {
-                
-                //swiping = YES;
-                
-                //gamePlay.placeMode = swipeMove;
-        
-                //[display configureFloatPiece:touchedSpace];
                 
                 if(touchedSpace == highlightedSpace1) {
                     
@@ -224,6 +223,7 @@
             
             else
                 [self clearHighlightedSpaces];
+               
         }
         
         if(touch.view == display.bottomBar && gamePlay.placeMode == freeState) {
@@ -335,7 +335,30 @@
         
         if(gamePlay.placeMode == swipeMove) {
             
-           // [display changeFloatPieceLoc:location];
+            if(touch.view == display.boardView) {
+            
+                Space *currentSpace = [board getSpaceFromPoint:location];
+            
+                if(currentSpace != nil) {
+                    
+                    [currentSpace setBackhighlightBlue];
+            
+                    if(currentSpace != touchedSpace) {
+                        touchedSpace = currentSpace;
+                
+                        if(touchedSpace.piece.text != nil && ![touchedSpace.piece.text isEqualToString:@""])
+                        [currentWord appendString:touchedSpace.piece.text];
+                
+                        [highlightedPieces addObject:touchedSpace];
+                    }
+                }
+            }
+            
+            else {
+                
+                gamePlay.gameState = freeState;
+                [self clearCurrentWord];
+            }
         }
         
         else if(gamePlay.placeMode == addMove) {
@@ -353,16 +376,24 @@
             [display changeNukePieceLoc:location];
         }
 
+        else if((highlightedSpace1 != nil || gamePlay.placeMode == swapMove) && touch.view == display.boardView) {
+            
+            [self clearHighlightedSpaces];
+            [touchedSpace setBackhighlightBlue];
+            
+            if(touchedSpace.piece.text != nil && ![touchedSpace.piece.text isEqualToString:@""])
+                [currentWord appendString:touchedSpace.piece.text];
+            
+            [highlightedPieces addObject:touchedSpace];
+            
+            gamePlay.placeMode = swipeMove;
+
+        }
         else {
             
-            [display changeFloatPieceLoc:location];
+            gamePlay.placeMode = freeState;
         }
         
-        swiping = YES;
-    }
-    else {
-        
-        swiping = NO;
     }
 }
 
@@ -381,6 +412,14 @@
             [self swapPieces:highlightedSpace1 :highlightedSpace2];
             [self clearHighlightedSpaces];
             
+            gamePlay.placeMode = freeState;
+        }
+        
+        else if(gamePlay.placeMode == swipeMove) {
+            
+            [gamePlay checkWord:currentWord :@"Word"];
+            
+            [self clearCurrentWord];
             gamePlay.placeMode = freeState;
         }
         
@@ -541,6 +580,10 @@
     
     [display updateScore];
     [display updateLevelValues];
+    
+    highlightedPieces = [[NSMutableSet alloc] initWithCapacity:board.dimx*board.dimy];
+    
+    currentWord = [[NSMutableString alloc] initWithString:@""];
 }
 
 - (void)eliminateRowFromBoard:(Space*)space {
@@ -749,6 +792,14 @@
     
     highlightedSpace1 = nil;
     highlightedSpace2 = nil;
+}
+
+- (void)clearCurrentWord {
+
+    [board clearAllBackPieces];
+    [highlightedPieces removeAllObjects];
+    
+    [currentWord setString:@""];
 }
 
 - (void)saveDefaults {

@@ -38,7 +38,9 @@
     BOOL prevViewSettings;
     BOOL swiping;
     
-    NSMutableArray *touchedSpaces;
+    NSMutableString *currentWord;
+    
+    NSMutableSet *highlightedPieces;
 }
 
 - (void)saveDefaults;
