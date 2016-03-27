@@ -378,6 +378,7 @@
       
         if(gamePlay.placeMode == swapMove) {
             
+            [self swapPieces:highlightedSpace1 :highlightedSpace2];
             [self clearHighlightedSpaces];
             
             gamePlay.placeMode = freeState;
@@ -706,7 +707,41 @@
     
     animating = NO;
 }
-           
+
+- (void)swapPieces:(Space*)spc1 :(Space*)spc2 {
+
+    rowNew = spc1.iind;
+    rowOrig = spc2.iind;
+    
+    NSString *val = spc1.value;
+        
+    int pVal = spc1.pointValue;
+        
+    tmpColor = spc1.piece.backgroundColor;
+        
+    spc1.piece.backgroundColor = touchedSpace.piece.backgroundColor;
+    spc1.pointValue = spc2.pointValue;
+        
+    if(spc2.pointValue == 0)
+        spc1.pointsLabel.text = @"";
+    else
+        spc1.pointsLabel.text = [NSString stringWithFormat:@"%d",spc2.pointValue];
+        
+    spc2.pointValue = pVal;
+    spc2.piece.backgroundColor = tmpColor;
+        
+    if(pVal == 0)
+        spc2.pointsLabel.text = @"";
+    else
+        spc2.pointsLabel.text = [NSString stringWithFormat:@"%d",pVal];
+        
+    spc1.value = spc2.value;
+    spc1.piece.text = spc1.value;
+        
+    spc2.value = val;
+    spc2.piece.text = spc2.value;
+}
+
 - (void)clearHighlightedSpaces {
 
     [highlightedSpace1 setBackhighlightClear];
