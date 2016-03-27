@@ -617,8 +617,9 @@
     wordBar = [[WordBar alloc] init];
     
     frm = topBar.frame;
+    frm.size.height *= 1.225;
     frm.origin.y = viewFrame.size.height - frm.size.height;//topBar.frame.size.height;
-    
+
     bottomBar = [[UIView alloc] initWithFrame:frm];
     
     [rootView addSubview:bottomBar];

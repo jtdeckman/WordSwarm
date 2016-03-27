@@ -173,8 +173,6 @@
     
     if(rnum == 5 || rnum == 11 || rnum == 21)
         space.backPieceVal = 2;
-    else if(rnum == 3 || rnum == 15)
-       space.backPieceVal = 3;
     else
         space.backPieceVal = 1;
     
@@ -182,19 +180,6 @@
     
     space.piece.hidden = false;
 }
-
-/*- (void)addRefPiece: (int)ival :(NSString*)val {
-    
-    Space *space = rowTypes[ival];
-    
-    space.isOccupied = YES;
-    space.value = val;
-    
-    [space configurePiece:YES :nil];
-    
-    space.piece.hidden = NO;
-} */
-
 - (void)addBottomRow: (NSMutableArray*)vals {
 
     NSString *value;
@@ -437,9 +422,9 @@
         space = spaces[row][i];
         
         if(absValue)
-            sum += abs(space.pointValue*space.backPieceVal);
+            sum += abs(space.pointValue);//*space.backPieceVal);
         else
-            sum += space.pointValue*space.backPieceVal;
+            sum += space.pointValue;//*space.backPieceVal;
     }
     
     return sum;

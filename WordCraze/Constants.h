@@ -104,6 +104,7 @@ typedef enum : NSUInteger {
     splitMove,
     addMove,
     swipeMove,
+    swapMove,
     bombMove,
     nukeMove
     

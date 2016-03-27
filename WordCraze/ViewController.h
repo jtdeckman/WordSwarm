@@ -20,7 +20,10 @@
     Display *display;
     Board *board;
     GamePlay *gamePlay;
+    
     Space *touchedSpace;
+    Space *highlightedSpace1;
+    Space *highlightedSpace2;
     
     NSTimer *gameTimer;
     NSTimer *alertTimer;
@@ -34,6 +37,8 @@
     BOOL animating;
     BOOL prevViewSettings;
     BOOL swiping;
+    
+    NSMutableArray *touchedSpaces;
 }
 
 - (void)saveDefaults;

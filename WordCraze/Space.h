@@ -65,6 +65,10 @@
 - (void)setColor: (CGFloat)red : (CGFloat)green : (CGFloat)blue : (CGFloat)alpha;
 - (void)configurePiece: (bool)isRefPiece :(UIColor*)bckImg;
 
+- (void)setBackhighlightRed;
+- (void)setBackhighlightBlue;
+- (void)setBackhighlightClear;
+
 - (bool)isNearestNearestNbrOf: (Space*)space;
 
 - (void)deconstruct;

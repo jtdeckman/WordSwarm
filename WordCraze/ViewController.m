@@ -80,8 +80,8 @@
                 
                     gamePlay.gameState = gameOver;
                     
-                    [display.animations animateTextBox2:2.0f :0.90*self.view.frame.size.height :0.3*self.view.frame.size.height :0.4f
-                                                       :@"Game Over"];
+                    [display.animations animateTextBox2:2.0f :0.90*self.view.frame.size.height :0.3*self.view.frame.size.height :0.4f :@"Game Over"];
+                    
                     [board hideOccupiedPieces];
                     [display hideAlertView];
                 }
@@ -193,88 +193,42 @@
             
             touchedSpace = [board getSpaceFromPoint:location];
             
-        /*    if(touchedSpace.refPiece && touchedSpace.isOccupied) {
+            if(touchedSpace.isOccupied) {
                 
-                NSString *word = [board makeWordFromRow:touchedSpace.iind];
-                NSString *type = touchedSpace.piece.text;
+                //swiping = YES;
                 
-                animating = YES;
-                
-            //    [board hideBackPiecesInRow:touchedSpace.iind];
-                
-                if([word length] > 1 && [gamePlay checkWord:word :type]) {
-                    
-                    int newScore = [gamePlay updateScore:[board sumRow:touchedSpace.iind :NO]];
-                    
-                    CGFloat flashDuration = 0.4f;
-                    
-                    [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind :YES :0];
-                    [board hideBackPiecesInRow:touchedSpace.iind];
-                    
-                    [display animateScore:newScore];
-                    
-                    if([word length] == board.dimy) {
-                        
-                        int bonusScore = FULL_WORD_BONUS;
-                        
-                        [display.animations animateTextBox1:0.8f :0.3*self.view.frame.size.height :0.4f
-                                                                 :[NSString stringWithFormat:@"Full Word Bonus!  +%d", bonusScore*gamePlay.gameData.level]];
-                        
-                        NSNumber *newScore = [NSNumber numberWithInt:bonusScore];
-                        
-                        [self performSelector:@selector(updateGameScoreAfterDelay:) withObject:newScore afterDelay:1.2f];
-                        
-                      // flashDuration += 1.2;
-                    }
-                    
-                    if(newScore >= NUKE_BONUS_SCORE) {
-                        
-                        [gamePlay incrementNukes];
-                        
-                        [display.animations animateTextBox3:1.0f :0.25*self.view.frame.size.height :0.75*display.boardView.frame.origin.y :0.0f :@"Nuke Bonus!, +1 nuke"];
-                    }
-                    
-                    else if(newScore >= BOMB_BONUS_SCORE) {
-                    
-                        [gamePlay incrementBombs];
-                        
-                        [display.animations animateTextBox3:1.0f :0.25*self.view.frame.size.height :0.75*display.boardView.frame.origin.y :0.0f :@"Bomb Bonus!, +1 bomb"];
-
-                    }
-                    
-                 //   [board hideOccupiedPiecesInRow:touchedSpace.iind];
-                    
-                 //   [display makePiecesExplode:0.6 :0.0];
-                    [display makePiecesFlash:NO :flashDuration];
-                    
-                    [self performSelector:@selector(populateWordBarFromRow:) withObject:touchedSpace afterDelay:0.4f];
-                }
-                
-                else {
-                    
-                    int newScore = [gamePlay updateScore:-1.0*[board sumRow:touchedSpace.iind :YES]];
-                     
-                    [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind :YES :0];
-                    [board hidePointsLabelInRow:touchedSpace.iind];
-                    
-                    [display animateScore:newScore];
-                    [display makePiecesFlash:YES :0.4];
-                    
-                    [self performSelector:@selector(resetRow) withObject:nil afterDelay:0.41];
-                }
-            } */
-            
-             if(touchedSpace.isOccupied) {
-                
-                swiping = YES;
-                
-                gamePlay.placeMode = swipeMove;
+                //gamePlay.placeMode = swipeMove;
         
-                [display configureFloatPiece:touchedSpace];
+                //[display configureFloatPiece:touchedSpace];
+                
+                if(touchedSpace == highlightedSpace1) {
+                    
+                    highlightedSpace1 = nil;
+                    [touchedSpace setBackhighlightClear];
+                }
+                
+                else if(highlightedSpace1 == nil) {
+                    
+                    highlightedSpace1 = touchedSpace;
+                    [highlightedSpace1 setBackhighlightRed];
+                }
+                
+                else if(highlightedSpace2 == nil) {
+                    
+                    highlightedSpace2 = touchedSpace;
+                    [highlightedSpace2 setBackhighlightBlue];
+                    
+                    gamePlay.placeMode = swapMove;
+                }
             }
+            
+            else
+                [self clearHighlightedSpaces];
         }
         
         if(touch.view == display.bottomBar && gamePlay.placeMode == freeState) {
+            
+            [self clearHighlightedSpaces];
             
             if(CGRectContainsPoint(display.menuBar.frame, location)) {
                 
@@ -381,7 +335,7 @@
         
         if(gamePlay.placeMode == swipeMove) {
             
-            [display changeFloatPieceLoc:location];
+           // [display changeFloatPieceLoc:location];
         }
         
         else if(gamePlay.placeMode == addMove) {
@@ -422,52 +376,10 @@
     
     if(gamePlay.gameState == gameRunning && !animating) {
       
-        if(gamePlay.placeMode == swipeMove) {
+        if(gamePlay.placeMode == swapMove) {
             
-            Space *selectedSpace = [board getSpaceFromPoint:location];
+            [self clearHighlightedSpaces];
             
-             if(selectedSpace != NULL && !selectedSpace.refPiece) {
-                 
-                rowNew = selectedSpace.iind;
-                rowOrig = touchedSpace.iind;
-                
-                if(selectedSpace.isOccupied) {
-                    
-                    NSString *val = selectedSpace.value;
-                    
-                    int pVal = selectedSpace.pointValue;
-                
-                    tmpColor = selectedSpace.piece.backgroundColor;
-                    
-                    selectedSpace.piece.backgroundColor = touchedSpace.piece.backgroundColor;
-                    selectedSpace.pointValue = touchedSpace.pointValue;
-                    
-                    if(touchedSpace.pointValue == 0)
-                        selectedSpace.pointsLabel.text = @"";
-                    else
-                        selectedSpace.pointsLabel.text = [NSString stringWithFormat:@"%d",touchedSpace.pointValue];
-                    
-                    touchedSpace.pointValue = pVal;
-                    touchedSpace.piece.backgroundColor = tmpColor;
-                    
-                    if(pVal == 0)
-                        touchedSpace.pointsLabel.text = @"";
-                    else
-                        touchedSpace.pointsLabel.text = [NSString stringWithFormat:@"%d",pVal];
-                    
-                    selectedSpace.value = touchedSpace.value;
-                    selectedSpace.piece.text = selectedSpace.value;
-                    
-                    touchedSpace.value = val;
-                    touchedSpace.piece.text = touchedSpace.value;
-                    
-                  //  if(![board isCategoryRow:touchedSpace.iind] && touchedSpace.pointValue == 0)
-                  //      [board removePiece:touchedSpace];
-                }
-            }
-            
-            display.floatPiece.hidden = YES;
-            touchedSpace = NULL;
             gamePlay.placeMode = freeState;
         }
         
@@ -570,9 +482,6 @@
     Space *space;
     
     for(int i=0; i<gamePlay.dimx; i++) {
-        
-      //  space = [board getRefSpaceFromIndex:i];
-      //  [self.view addSubview:space.piece];
         
         for(int j=0; j<gamePlay.dimy; j++) {
             
@@ -796,6 +705,15 @@
     [board clearBoard];
     
     animating = NO;
+}
+           
+- (void)clearHighlightedSpaces {
+
+    [highlightedSpace1 setBackhighlightClear];
+    [highlightedSpace2 setBackhighlightClear];
+    
+    highlightedSpace1 = nil;
+    highlightedSpace2 = nil;
 }
 
 - (void)saveDefaults {
