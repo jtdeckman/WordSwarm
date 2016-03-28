@@ -437,7 +437,7 @@
                 [gamePlay updateScore:wordScore];
                 
                 [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind :YES :0];
-                [board hideBackPiecesInRow:touchedSpace.iind];
+             //   [board hideBackPiecesInRow:touchedSpace.iind];
                 
            //     [highlightLabels removeAllObjects];
                 

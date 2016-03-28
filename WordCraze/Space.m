@@ -187,7 +187,7 @@
 - (void)setBackhighlightRed {
 
     backPiece.hidden = NO;
-    backPiece.backgroundColor = [UIColor colorWithRed:0.8 green:0.1 blue:0.1 alpha:0.5];
+    backPiece.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:0.8];
 }
 
 - (void)setBackhighlightBlue {
