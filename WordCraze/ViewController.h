@@ -41,6 +41,7 @@
     NSMutableString *currentWord;
     
     NSMutableArray *highlightedPieces;
+    NSMutableArray *highlightLabels;
 }
 
 - (void)saveDefaults;

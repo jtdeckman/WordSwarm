@@ -325,6 +325,78 @@
     }];
 }
 
+- (void)makePiecesFlashExt:(BOOL)wrongWord :(CGFloat)duration :(NSMutableArray*)animPieces {
+    
+    UILabel *iPiece;
+    
+    CGFloat dur4 = duration/4.0;
+    
+    __block UILabel *movePiece;
+    
+    uint count = (uint)[animPieces count];
+    
+    for(uint i=0; i<count; i++) {
+        
+        movePiece = [animPieces objectAtIndex:i];
+        
+        iPiece = [animPieces objectAtIndex:i];
+        iPiece.hidden = YES;
+        
+        movePiece.frame = iPiece.frame;
+        
+        if(!wrongWord)
+            movePiece.backgroundColor = [UIColor whiteColor];
+        else
+            movePiece.backgroundColor = [UIColor colorWithRed:colors.redFlashColor.red
+                                                        green:colors.redFlashColor.green
+                                                         blue:colors.redFlashColor.blue alpha:0.8f];
+        movePiece.hidden = NO;
+        movePiece.alpha = 0.8f;
+        
+        [rootView addSubview:movePiece];
+    }
+    
+    [UIView animateWithDuration:dur4 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        
+        for(int i=0; i<count; i++)
+            ((UILabel*)animPieces[i]).alpha = 0.2f;
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:dur4 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+            for(int i=0; i<count; i++)
+                ((UILabel*)animPieces[i]).alpha = 0.8f;
+            
+        } completion:^(BOOL finished) {
+            
+            [UIView animateWithDuration:dur4 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                
+                for(int i=0; i<count; i++)
+                    ((UILabel*)animPieces).alpha = 0.2f;
+                
+            } completion:^(BOOL finished) {
+                
+                [UIView animateWithDuration:dur4 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                    
+                    for(int i=0; i<count; i++)
+                        ((UILabel*)animPieces[i]).alpha = 0.8f;
+                    
+                } completion:^(BOOL finished) {
+                    
+                    for(int i=0; i<count; i++) {
+                        
+                        movePiece = [animPieces objectAtIndex:i];
+                        movePiece.alpha = 1.0;
+                        movePiece.hidden = YES;
+                        [movePiece removeFromSuperview];
+                    }
+                }];
+            }];
+        }];
+    }];
+}
+
 - (void)makePiecesExplode:(CGFloat)duration :(CGFloat)delay {
 
     __block UILabel *piece;

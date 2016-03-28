@@ -439,6 +439,13 @@
                 [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind :YES :0];
                 [board hideBackPiecesInRow:touchedSpace.iind];
                 
+           //     [highlightLabels removeAllObjects];
+                
+           //     for(Space* space in highlightedPieces)
+           //         [highlightLabels addObject:space.piece];
+                
+           //     [display makePiecesFlashExt:NO :0.4f :highlightLabels];
+                
                 [display animateScore:wordScore];
             }
             
@@ -610,6 +617,7 @@
     [display updateLevelValues];
     
     highlightedPieces = [[NSMutableArray alloc] initWithCapacity:board.dimx*board.dimy];
+    highlightLabels = [[NSMutableArray alloc] initWithCapacity:board.dimx*board.dimy];
     
     currentWord = [[NSMutableString alloc] initWithString:@""];
 }
@@ -755,6 +763,9 @@
     touchedSpace = nil;
     gameTimer = nil;
     alertTimer = nil;
+    
+    highlightedPieces = nil;
+    highlightLabels = nil;
     
     [self dismissViewControllerAnimated:NO completion:nil];
     
