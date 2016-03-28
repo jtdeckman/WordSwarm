@@ -20,6 +20,7 @@
     [super viewDidLoad];
     
     [self setUpViewController];
+  
 }
 
 - (void)didReceiveMemoryWarning {
@@ -885,6 +886,10 @@
 - (BOOL)prefersStatusBarHidden {
     
     return YES;
+}
+
+-(BOOL)shouldAutorotate {
+    return NO;
 }
 
 @end

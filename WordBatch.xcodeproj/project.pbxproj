@@ -310,6 +310,7 @@
 				TargetAttributes = {
 					A8166A5D1B99E84700F47146 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = CQCHSY77P3;
 					};
 					A8166A761B99E84700F47146 = {
 						CreatedOnToolsVersion = 6.4;
@@ -527,6 +528,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/WordCraze/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -547,6 +549,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/WordCraze/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

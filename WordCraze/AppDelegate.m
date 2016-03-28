@@ -41,6 +41,11 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 - (void)resetApp {
     
     _window.rootViewController = nil;

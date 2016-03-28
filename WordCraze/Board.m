@@ -420,6 +420,7 @@
                 space.pointsLabel.hidden = spaceAbove.pointsLabel.hidden;
                 
                 [space configurePiece:NO :[tileImages backgroundImageForIndex:space.pointValue]];
+                [self removePiece:spaceAbove];
                 
                 --emptyRow;
             }
