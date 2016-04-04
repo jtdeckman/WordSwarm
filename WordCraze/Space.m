@@ -30,7 +30,8 @@
     
     spaceFrame = spaceFrm;
     
-    piece = [[UILabel alloc] initWithFrame:labelframe];
+    piece = [[UILabel alloc] initWithFrame:spaceFrm];
+   // piece = [[UILabel alloc] initWithFrame:labelframe];
     piece.hidden = YES;
     piece.layer.cornerRadius = 10.0;
     piece.clipsToBounds = YES;

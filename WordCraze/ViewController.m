@@ -577,7 +577,9 @@
     board = [[Board alloc] init];
     gamePlay = [[GamePlay alloc] init];
     
-    boardFrm = [display initBoardView:self.view.frame];
+  //  boardFrm = [display initBoardView:self.view.frame];
+    
+    boardFrm = display.boardView.frame;
     
     if(aRatio > 0.74)
         iPad = YES;

@@ -29,11 +29,11 @@
     
     numSpaces = dimx*dimy;
     
-    spaceWidth = (bvFrame.size.width - buffer)/(CGFloat)dy;
-    spaceHeight = spaceWidth;//(bvFrame.size.height - offset)/(CGFloat)dx;
-    
+    spaceWidth = (bvFrame.size.width - buffer - offset*(dy-1))/(CGFloat)dy;
+  //  spaceHeight = spaceWidth;//(bvFrame.size.height - offset)/(CGFloat)dx;
+    spaceHeight = (bvFrame.size.height - buffer - offset*(dx-1))/(CGFloat)dx;
     pieceWidth = spaceWidth;
-    pieceHeight = pieceWidth; //spaceHeight - offset;
+    pieceHeight = spaceHeight;// pieceWidth; //spaceHeight - offset;
     
     pw2 = pieceWidth/2.0;
     ph2 = pieceWidth/2.0;

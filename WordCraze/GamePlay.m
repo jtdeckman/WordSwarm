@@ -19,16 +19,20 @@
     CGFloat buffer = frm.size.width*PIECE_BUFFER;
     CGFloat pw;
     
-    if(iPad)
+  /*  if(iPad)
         dimy = 7;
     else
         dimy = 7;
     
     pw = (frm.size.width-buffer)/dimy;
     
-    dimx = (int)((frm.size.height-buffer)/pw);
+    dimx = (int)((frm.size.height-buffer)/pw); */
     
-    if(iPad) --dimx;
+    dimx = 9;
+    dimy = 7;
+    
+    
+   // if(iPad) --dimx;
     
     board = brd;
     

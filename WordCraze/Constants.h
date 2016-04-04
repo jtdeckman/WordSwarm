@@ -20,7 +20,7 @@
 #define BUTTON_SPACING_FACT 0.1
 
 #define SPACING_FACT 0.025
-#define PIECE_BUFFER 0.035
+#define PIECE_BUFFER 0.065
 #define LINE_THICK_FACT 0.015
 
 #define DIMX 10

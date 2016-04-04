@@ -699,7 +699,8 @@
     wordBar = [[WordBar alloc] init];
     
     frm = topBar.frame;
-    frm.size.height *= 1.225;
+   // frm.size.height *= 1.225;
+    frm.size.height *= 0.9;
     frm.origin.y = viewFrame.size.height - frm.size.height;//topBar.frame.size.height;
 
     bottomBar = [[UIView alloc] initWithFrame:frm];
@@ -999,10 +1000,11 @@
     if(aRatio > 0.74)
         boardFrm.origin.x *= 2.5;
     
-    boardFrm.origin.y = boardView.frame.origin.y + boardFrm.origin.x;// 0.03*viewFrame.size.width;
+    boardFrm.origin.y = boardView.frame.origin.y;// + boardFrm.origin.x;// 0.03*viewFrame.size.width;
     boardFrm.size.height = boardView.frame.size.height;// - 0.5*boardFrm.origin.x;
-    boardFrm.size.width = viewFrame.size.width - 2.0*boardFrm.origin.x;
+    boardFrm.size.width = viewFrame.size.width;// - 2.0*boardFrm.origin.x;
     
+    NSLog(@"%f %f %f", wordBar.barBackground.frame.origin.y + wordBar.barBackground.frame.size.height, boardView.frame.origin.y, boardView.frame.size.height);
     return boardFrm;
 }
 
