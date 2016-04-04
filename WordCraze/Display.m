@@ -622,7 +622,7 @@
         
         if(fromTop) {
             
-            startFrm[i].origin.y = topBar.frame.origin.y;
+            startFrm[i].origin.y = wordBar.barBackground.frame.origin.y;
             movePiece.alpha = 0.0;
         }
         else {
