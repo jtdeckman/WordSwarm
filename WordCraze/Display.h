@@ -126,6 +126,7 @@
 - (void)updateLevelValues;
 
 - (void)makePiecesFlash:(BOOL)wrongWord :(CGFloat)delay;
+- (void)makePiecesFlashExt:(BOOL)wrongWord :(CGFloat)duration :(NSMutableArray*)animPieces;
 - (void)makePiecesExplode:(CGFloat)duration :(CGFloat)delay;
 
 - (void)resetAnimatedPieces;
@@ -135,7 +136,7 @@
 
 - (void)animateScore:(int)addedPoints;
 - (void)animateLevelTile:(CGFloat)duration;
-- (void)animatePiecesToBottomRow:(CGFloat)duration;
+- (void)animatePiecesToBottomRow:(CGFloat)duration :(BOOL)fromTop;
 
 - (CGRect)initBoardView:(CGRect)viewFrame;
 

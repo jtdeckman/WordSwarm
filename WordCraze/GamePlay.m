@@ -19,16 +19,20 @@
     CGFloat buffer = frm.size.width*PIECE_BUFFER;
     CGFloat pw;
     
-    if(iPad)
+  /*  if(iPad)
         dimy = 7;
     else
-        dimy = 6;
+        dimy = 7;
     
     pw = (frm.size.width-buffer)/dimy;
     
-    dimx = (int)(frm.size.height/pw);
+    dimx = (int)((frm.size.height-buffer)/pw); */
     
-    if(iPad) --dimx;
+    dimx = 9;
+    dimy = 7;
+    
+    
+   // if(iPad) --dimx;
     
     board = brd;
     
@@ -71,6 +75,21 @@
     
     [vals removeAllObjects];
     vals = nil;
+}
+
+- (void)generateRandomLetterOfCount:(int)numLetters :(NSMutableArray*)letters {
+
+    [letters removeAllObjects];
+    
+    if(numLetters > dimy)
+        numLetters = dimy;
+    
+    if(wordLogic.nArraySelections == 0)
+        [wordLogic reinitLetters];
+    
+    for(int i=0; i<dimy; i++) {
+        [letters addObject:[wordLogic getLetter]];
+    }
 }
 
 - (void)incrementTimer {

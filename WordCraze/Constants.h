@@ -20,7 +20,7 @@
 #define BUTTON_SPACING_FACT 0.1
 
 #define SPACING_FACT 0.025
-#define PIECE_BUFFER 0.2
+#define PIECE_BUFFER 0.0595
 #define LINE_THICK_FACT 0.015
 
 #define DIMX 10
@@ -104,6 +104,7 @@ typedef enum : NSUInteger {
     splitMove,
     addMove,
     swipeMove,
+    swapMove,
     bombMove,
     nukeMove
     

@@ -325,6 +325,78 @@
     }];
 }
 
+- (void)makePiecesFlashExt:(BOOL)wrongWord :(CGFloat)duration :(NSMutableArray*)animPieces {
+    
+    UILabel *iPiece;
+    
+    CGFloat dur4 = duration/4.0;
+    
+    __block UILabel *movePiece;
+    
+    uint count = (uint)[animPieces count];
+    
+    for(uint i=0; i<count; i++) {
+        
+        movePiece = [animPieces objectAtIndex:i];
+        
+        iPiece = [animPieces objectAtIndex:i];
+        iPiece.hidden = YES;
+        
+        movePiece.frame = iPiece.frame;
+        
+        if(!wrongWord)
+            movePiece.backgroundColor = [UIColor whiteColor];
+        else
+            movePiece.backgroundColor = [UIColor colorWithRed:colors.redFlashColor.red
+                                                        green:colors.redFlashColor.green
+                                                         blue:colors.redFlashColor.blue alpha:0.8f];
+        movePiece.hidden = NO;
+        movePiece.alpha = 0.8f;
+        
+        [rootView addSubview:movePiece];
+    }
+    
+    [UIView animateWithDuration:dur4 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        
+        for(int i=0; i<count; i++)
+            ((UILabel*)animPieces[i]).alpha = 0.2f;
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:dur4 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+            for(int i=0; i<count; i++)
+                ((UILabel*)animPieces[i]).alpha = 0.8f;
+            
+        } completion:^(BOOL finished) {
+            
+            [UIView animateWithDuration:dur4 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                
+                for(int i=0; i<count; i++)
+                    ((UILabel*)animPieces).alpha = 0.2f;
+                
+            } completion:^(BOOL finished) {
+                
+                [UIView animateWithDuration:dur4 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                    
+                    for(int i=0; i<count; i++)
+                        ((UILabel*)animPieces[i]).alpha = 0.8f;
+                    
+                } completion:^(BOOL finished) {
+                    
+                    for(int i=0; i<count; i++) {
+                        
+                        movePiece = [animPieces objectAtIndex:i];
+                        movePiece.alpha = 1.0;
+                        movePiece.hidden = YES;
+                        [movePiece removeFromSuperview];
+                    }
+                }];
+            }];
+        }];
+    }];
+}
+
 - (void)makePiecesExplode:(CGFloat)duration :(CGFloat)delay {
 
     __block UILabel *piece;
@@ -423,7 +495,7 @@
     levelLabel.hidden = NO;
     level.hidden = NO;
     
-    [self updateLevelValues];
+    level.text = [NSString stringWithFormat:@"%d",gamePlay.gameData.level];
 }
 
 - (void)setUpWordBarForLevel {
@@ -431,7 +503,7 @@
     wordBar.wordCategory = [gamePlay getRandomCategoryForLevel:gamePlay.gameData.level];
     [wordBar setUpForLevel:gamePlay.gameData.level];
     
-   // [self updateLevelValues];
+    [self updateLevelValues];
 }
 
 - (void)resetAnimatedPieces {
@@ -531,7 +603,7 @@
     }];
 }
 
-- (void)animatePiecesToBottomRow:(CGFloat)duration {
+- (void)animatePiecesToBottomRow:(CGFloat)duration :(BOOL)fromTop {
     
     UILabel *iPiece;
 
@@ -547,8 +619,18 @@
         iPiece.hidden = YES;
         
         startFrm[i] = iPiece.frame;
-        startFrm[i].origin.y += iPiece.frame.size.height;
-         
+        
+        if(fromTop) {
+            
+            startFrm[i].origin.y = wordBar.barBackground.frame.origin.y;
+            movePiece.alpha = 0.0;
+        }
+        else {
+            
+            startFrm[i].origin.y += iPiece.frame.size.height;
+            movePiece.alpha = 0.2f;
+        }
+        
         movePiece.frame = startFrm[i];
          
         movePiece.backgroundColor = iPiece.backgroundColor;
@@ -617,8 +699,10 @@
     wordBar = [[WordBar alloc] init];
     
     frm = topBar.frame;
+   // frm.size.height *= 1.225;
+    frm.size.height *= 0.9;
     frm.origin.y = viewFrame.size.height - frm.size.height;//topBar.frame.size.height;
-    
+
     bottomBar = [[UIView alloc] initWithFrame:frm];
     
     [rootView addSubview:bottomBar];
@@ -916,10 +1000,11 @@
     if(aRatio > 0.74)
         boardFrm.origin.x *= 2.5;
     
-    boardFrm.origin.y = boardView.frame.origin.y + boardFrm.origin.x;// 0.03*viewFrame.size.width;
+    boardFrm.origin.y = boardView.frame.origin.y;// + boardFrm.origin.x;// 0.03*viewFrame.size.width;
     boardFrm.size.height = boardView.frame.size.height;// - 0.5*boardFrm.origin.x;
-    boardFrm.size.width = viewFrame.size.width - 2.0*boardFrm.origin.x;
+    boardFrm.size.width = viewFrame.size.width;// - 2.0*boardFrm.origin.x;
     
+    NSLog(@"%f %f %f", wordBar.barBackground.frame.origin.y + wordBar.barBackground.frame.size.height, boardView.frame.origin.y, boardView.frame.size.height);
     return boardFrm;
 }
 
@@ -970,9 +1055,10 @@
     [addPiece setTextAlignment:NSTextAlignmentCenter];
     [addPiece setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.5*FONT_FACT*pcFrm.size.width]];
     addPiece.textColor = [UIColor colorWithRed:0.7 green:0.3 blue:0.3 alpha:0.7];
+ 
     addPiece.text = @"";
     
-    [rootView addSubview:addPiece];
+  //  [rootView addSubview:addPiece];
     
     addPieceOffSet.width = pcFrm.size.width/2.0;
     addPieceOffSet.height = pcFrm.size.height/2.0;

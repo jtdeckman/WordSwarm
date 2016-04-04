@@ -30,7 +30,8 @@
     
     spaceFrame = spaceFrm;
     
-    piece = [[UILabel alloc] initWithFrame:labelframe];
+    piece = [[UILabel alloc] initWithFrame:spaceFrm];
+   // piece = [[UILabel alloc] initWithFrame:labelframe];
     piece.hidden = YES;
     piece.layer.cornerRadius = 10.0;
     piece.clipsToBounds = YES;
@@ -42,7 +43,7 @@
     piece.backgroundColor = [UIColor clearColor];
     
     backPiece = [[UILabel alloc] initWithFrame:labelframe];
-    backPiece.hidden = YES;
+    backPiece.hidden = NO;
     backPiece.layer.cornerRadius = 10.0;
     backPiece.clipsToBounds = YES;
     backPiece.opaque = NO;
@@ -50,8 +51,8 @@
     backPiece.alpha = 1.0;
     backPiece.text = @"";
     
-    backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:0.1 blue:0.1 alpha:0.8] CGColor];
-    backPiece.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];;
+   // backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:0.1 blue:0.1 alpha:0.8] CGColor];
+   // backPiece.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];;
     
     [backPiece setTextAlignment:NSTextAlignmentCenter];
     [backPiece setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:1.0*FONT_FACT*spaceFrame.size.width]];
@@ -111,16 +112,16 @@
     
     if(isRefPiece) {
         
-        [piece setFont:[UIFont fontWithName:@"Arial" size:0.6*FONT_FACT*spaceFrame.size.width]];
+      //  [piece setFont:[UIFont fontWithName:@"Arial" size:0.6*FONT_FACT*spaceFrame.size.width]];
         
-        if(!isOccupied) {
-            piece.backgroundColor = [UIColor clearColor];
-            value = @"";
-        }
-        else
-            piece.backgroundColor = [UIColor colorWithPatternImage:p1Img];
+     //   if(!isOccupied) {
+     //       piece.backgroundColor = [UIColor clearColor];
+     //       value = @"";
+     //   }
+     //   else
+     //       piece.backgroundColor = [UIColor colorWithPatternImage:p1Img];
         
-        backPiece = nil;
+     //   backPiece = nil;
     }
     else {
         
@@ -148,27 +149,14 @@
         
         if(backPieceVal == 2) {
          
-            backPiece.hidden = NO;
+          //  backPiece.hidden = NO;
             backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.8] CGColor];
-            backPiece.textColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:0.8];
-            backPiece.backgroundColor = [UIColor colorWithPatternImage:p2Img];
-        }
-        
-        else if(backPieceVal == 3) {
-        
-            backPiece.hidden = NO;
-            backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.8] CGColor];
-            backPiece.textColor = [UIColor clearColor];
-            backPiece.backgroundColor = [UIColor colorWithPatternImage:p3Img];
-        }
-        
-        else if(backPieceVal == 7) {
-            
         }
         
         else {
             
-            backPiece.hidden = YES;
+         //   backPiece.hidden = NO;
+            backPiece.layer.borderColor = [[UIColor clearColor] CGColor];
             backPieceVal = 1;
             piece.alpha = 1.0;
         }
@@ -195,6 +183,32 @@
     if([nearestNbrs containsObject:space]) return YES;
     
     return NO;
+}
+
+- (void)setBackhighlightRed {
+
+    backPiece.hidden = NO;
+    backPiece.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:0.8];
+}
+
+- (void)setBackhighlightBlue {
+
+    backPiece.hidden = NO;
+    backPiece.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.8 alpha:0.5];
+}
+
+- (void)setBackhighlightClear {
+    
+    backPiece.backgroundColor = [UIColor clearColor];
+}
+
+- (void)refreshBackgroundBorder {
+
+    if(backPieceVal > 1 && isOccupied) {
+        
+        backPiece.hidden = NO;
+        backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.8] CGColor];
+    }
 }
 
 - (void)deconstruct {

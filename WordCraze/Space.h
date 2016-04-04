@@ -1,6 +1,6 @@
 //
 //  Space.h
-//  Droozle
+//  WordApp
 //
 //  Created by Jason Deckman on 9/4/15.
 //  Copyright (c) 2015 JDeckman. All rights reserved.
@@ -64,6 +64,11 @@
 - (void)initSpace: (int)ival : (int)jval : (CGRect)spaceFrm : (CGRect)labelframe;
 - (void)setColor: (CGFloat)red : (CGFloat)green : (CGFloat)blue : (CGFloat)alpha;
 - (void)configurePiece: (bool)isRefPiece :(UIColor*)bckImg;
+
+- (void)setBackhighlightRed;
+- (void)setBackhighlightBlue;
+- (void)setBackhighlightClear;
+- (void)refreshBackgroundBorder;
 
 - (bool)isNearestNearestNbrOf: (Space*)space;
 

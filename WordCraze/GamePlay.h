@@ -80,6 +80,7 @@
 
 - (void)levelUp;
 
+- (void)generateRandomLetterOfCount:(int)numLetters :(NSMutableArray*)letters;
 - (uint)getRowDelayForNumRows:(uint)nrows;
 
 @end
