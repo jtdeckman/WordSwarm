@@ -603,7 +603,7 @@
     }];
 }
 
-- (void)animatePiecesToBottomRow:(CGFloat)duration {
+- (void)animatePiecesToBottomRow:(CGFloat)duration :(BOOL)fromTop {
     
     UILabel *iPiece;
 
@@ -619,8 +619,18 @@
         iPiece.hidden = YES;
         
         startFrm[i] = iPiece.frame;
-        startFrm[i].origin.y += iPiece.frame.size.height;
-         
+        
+        if(fromTop) {
+            
+            startFrm[i].origin.y = topBar.frame.origin.y;
+            movePiece.alpha = 0.0;
+        }
+        else {
+            
+            startFrm[i].origin.y += iPiece.frame.size.height;
+            movePiece.alpha = 0.2f;
+        }
+        
         movePiece.frame = startFrm[i];
          
         movePiece.backgroundColor = iPiece.backgroundColor;

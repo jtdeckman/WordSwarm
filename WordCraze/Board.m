@@ -428,6 +428,56 @@
     }
 }
 
+- (int)findTopUnoccupiedRowForColumn:(int)column {
+
+    Space *space;
+    
+    int row = -1;
+    
+    for(int i=0; i<dimx; i++) {
+        
+        space = spaces[i][column];
+        
+        if(space.isOccupied)
+            return row;
+        else
+            row = i;
+    }
+    
+    return row;
+    
+}
+
+- (void)getTopUnOccupiedSpaces:(NSMutableArray*)topSpaces {
+    
+    [topSpaces removeAllObjects];
+    
+    int row;
+    
+    for(int j=0; j<dimy; j++) {
+        
+        row = [self findTopUnoccupiedRowForColumn:j];
+        
+        if(row > -1)
+            [topSpaces addObject:spaces[row][j]];
+    }
+}
+
+- (void)addSpacesToBoard:(NSMutableArray*)newSpaces :(NSMutableArray*)letters {
+ 
+    Space *space;
+    
+    NSString *newLetter;
+    
+    for(int i=0; i<[newSpaces count]; i++) {
+        
+        space = newSpaces[i];
+        newLetter = letters[i];
+        
+        [self addPiece:space.iind :space.jind :newLetter];
+    }
+}
+
 - (void)findEmptySpaces:(int*) emptyRow :(int*)occRow :(int)column {
 
     Space* space;
@@ -670,6 +720,18 @@
             [space refreshBackgroundBorder];
         }
     }
+}
+
+- (void)hidePointsLabelForSpacesInArray:(NSMutableArray*)pieces {
+
+    for(Space* space in pieces)
+        space.pointsLabel.hidden = YES;
+}
+
+- (void)unHidePointsLabelForSpaces:(NSMutableArray*)pieces {
+    
+    for(Space* space in pieces)
+        space.pointsLabel.hidden = YES;
 }
 
 - (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row :(BOOL)getCatPiece :(uint)numPieces {

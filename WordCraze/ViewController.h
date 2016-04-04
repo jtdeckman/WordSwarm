@@ -42,6 +42,9 @@
     
     NSMutableArray *highlightedPieces;
     NSMutableArray *highlightLabels;
+    
+    NSMutableArray *topSpaces;
+    NSMutableArray *newLetters;
 }
 
 - (void)saveDefaults;

@@ -73,6 +73,21 @@
     vals = nil;
 }
 
+- (void)generateRandomLetterOfCount:(int)numLetters :(NSMutableArray*)letters {
+
+    [letters removeAllObjects];
+    
+    if(numLetters > dimy)
+        numLetters = dimy;
+    
+    if(wordLogic.nArraySelections == 0)
+        [wordLogic reinitLetters];
+    
+    for(int i=0; i<dimy; i++) {
+        [letters addObject:[wordLogic getLetter]];
+    }
+}
+
 - (void)incrementTimer {
 
     ++gameData.timer;

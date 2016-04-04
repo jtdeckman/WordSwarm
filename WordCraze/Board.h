@@ -45,6 +45,7 @@
 
 - (void)addBottomRow: (NSMutableArray*)vals;
 - (BOOL)addWordToTopUnOccupiedRow:(NSString*)word :(NSString*)category;
+- (BOOL)topRowOccupied;
 
 - (Space*)getSpaceForIndices: (int)ival : (int)jval;
 - (Space*)getSpaceFromPoint: (CGPoint)loc;
@@ -71,6 +72,8 @@
 - (void)eliminateRow:(uint)row;
 - (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row :(BOOL)getCatPiece :(uint)numPieces;
 - (void)getAllVisiblePieces:(NSMutableArray*)allPieces :(BOOL)getRefPiece;
+- (void)getTopUnOccupiedSpaces:(NSMutableArray*)topSpaces;
+- (void)addSpacesToBoard:(NSMutableArray*)newSpaces :(NSMutableArray*)letters;
 
 - (NSString*)makeWordFromRow: (uint)row;
 
@@ -83,5 +86,7 @@
 - (void)unHidePiecesInRow:(uint)row;
 - (void)hidePointsLabelInRow:(uint)row;
 - (void)hideOccupiedPiecesInRow:(uint)row;
+- (void)hidePointsLabelForSpacesInArray:(NSMutableArray*)pieces;
+- (void)unHidePointsLabelForSpaces:(NSMutableArray*)pieces;
 
 @end
