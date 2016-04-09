@@ -114,6 +114,15 @@
         square.text = letter;
     }
 }
+- (BOOL)boxesAreFilled {
+
+    if(letterPosition >= lettersInLevel) {
+        boxesFilled = YES;
+        return YES;
+    }
+    
+    return NO;
+}
 
 - (void)addLetterToBox:(NSString*)letter withDelay:(CGFloat)delay {
     
@@ -328,7 +337,7 @@
 
 - (void)makeBarPiecesFlash:(CGFloat)duration {
     
-    UILabel *box;
+    __block UILabel *box;
     
     CGFloat dur4 = duration/4.0;
     
@@ -372,14 +381,15 @@
                 } completion:^(BOOL finished) {
                     
                     for(int i=0; i<lettersInLevel; i++)
-                        
                         ((UILabel*)letters[i]).alpha = 1.0f;
-                        [self clearLetters];
+                   
+                    [self clearLetters];
                     }];
                 }];
             }];
         }];
 }
+
 
 - (void)unHidePiece:(UILabel*)square {
     

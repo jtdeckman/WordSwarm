@@ -30,8 +30,8 @@
     
     spaceFrame = spaceFrm;
     
-    piece = [[UILabel alloc] initWithFrame:spaceFrm];
-   // piece = [[UILabel alloc] initWithFrame:labelframe];
+   // piece = [[UILabel alloc] initWithFrame:spaceFrm];
+    piece = [[UILabel alloc] initWithFrame:labelframe];
     piece.hidden = YES;
     piece.layer.cornerRadius = 10.0;
     piece.clipsToBounds = YES;
@@ -155,7 +155,7 @@
         
         else {
             
-         //   backPiece.hidden = NO;
+            backPiece.hidden = YES;
             backPiece.layer.borderColor = [[UIColor clearColor] CGColor];
             backPieceVal = 1;
             piece.alpha = 1.0;
@@ -208,6 +208,11 @@
         
         backPiece.hidden = NO;
         backPiece.layer.borderColor = [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.8] CGColor];
+    }
+    else {
+        
+        backPiece.hidden = YES;
+        backPiece.layer.borderColor = [[UIColor clearColor] CGColor];
     }
 }
 

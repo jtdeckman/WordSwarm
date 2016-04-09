@@ -363,14 +363,6 @@
             
             [space configurePiece:NO :[tileImages backgroundImageForIndex:space.pointValue]];
         }
-
-  //      space = rowTypes[i];
-  //      spaceAbove = rowTypes[i-1];
-        
-  //      space.value = spaceAbove.value;
-  //      space.isOccupied = spaceAbove.isOccupied;
-  //      space.piece.hidden = spaceAbove.piece.hidden;
-  //      [space configurePiece:YES :nil];
     }
     
     for(int j=0; j<dimy; j++) {
@@ -547,17 +539,22 @@
     
     Space *space;
     
-    uint nOcc = 0;
+    uint nOcc = dimx;
     
     for(int i=0; i<dimx; i++) {
-        
-        for(int j=0; j<dimy; j++)
+        for(int j=0; j<dimy; j++) {
+            
             space = spaces[i][j];
+            
+            if(space.isOccupied && !space.piece.hidden) {
+                return nOcc;
+            }
+        }
         
-        if(space.isOccupied && !space.piece.hidden) ++nOcc;
+        --nOcc;
     }
     
-    return nOcc;
+    return 0;
 }
 
 - (void)hideOccupiedPieces {
@@ -575,7 +572,8 @@
             space = spaces[i][j];
             
             if(space.isOccupied) space.piece.hidden = YES;
-            if(space.backPieceVal > 1) space.backPiece.hidden = YES;
+            //if(space.backPieceVal > 1)
+            space.backPiece.hidden = YES;
             
             space.pointsLabel.hidden = YES;
         }
@@ -731,7 +729,7 @@
 - (void)unHidePointsLabelForSpaces:(NSMutableArray*)pieces {
     
     for(Space* space in pieces)
-        space.pointsLabel.hidden = YES;
+        space.pointsLabel.hidden = NO;
 }
 
 - (void)getPiecesInRow:(NSMutableArray*)pieces :(uint)row :(BOOL)getCatPiece :(uint)numPieces {

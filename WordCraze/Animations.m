@@ -32,6 +32,8 @@
     textBox1.layer.cornerRadius = 5.0;
     textBox1.clipsToBounds = YES;
     textBox1.opaque = NO;
+    textBox1.numberOfLines = 2;
+    textBox1.lineBreakMode = NSLineBreakByWordWrapping;
     
     [textBox1 setTextAlignment:NSTextAlignmentCenter];
     [textBox1 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.55*FONT_FACT*textBox1.frame.size.height]];
@@ -57,9 +59,10 @@
     textBox2.layer.cornerRadius = 5.0;
     textBox2.clipsToBounds = YES;
     textBox2.opaque = NO;
+    //textBox2.numberOfLines = 0;
     
     [textBox2 setTextAlignment:NSTextAlignmentCenter];
-    [textBox2 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.65*FONT_FACT*textBox2.frame.size.height]];
+    [textBox2 setFont:[UIFont fontWithName:@"Copperplate" size:0.45*FONT_FACT*textBox2.frame.size.height]];
     
     textBox2.textColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1.0];
     textBox2.backgroundColor = [UIColor clearColor];
@@ -82,7 +85,7 @@
     textBox3.opaque = NO;
     
     [textBox3 setTextAlignment:NSTextAlignmentCenter];
-    [textBox3 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.45*FONT_FACT*textBox3.frame.size.height]];
+    [textBox3 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.5*FONT_FACT*textBox3.frame.size.height]];
     
     textBox3.textColor = [UIColor yellowColor];//[UIColor colorWithRed:0.9 green:0.2 blue:0.2 alpha:1.0];
     textBox3.backgroundColor = [UIColor clearColor];

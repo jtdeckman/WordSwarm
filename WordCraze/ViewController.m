@@ -63,18 +63,11 @@
             [gamePlay generateRandomLetterOfCount:(int)[topSpaces count] :newLetters];
             
             [board addSpacesToBoard:topSpaces :newLetters];
-          //  animating = YES;
-          //  [gamePlay rowOfValues];
-            
-          //  [board getPiecesInRow:display.piecesToAnimate :bottomRow :YES :0];
-          //  [board hidePointsLabelInRow:bottomRow];
-            
-          //  [display animatePiecesToBottomRow:0.7f];
-            
-          //  [self performSelector:@selector(rowAddAnimatingOff) withObject:nil afterDelay:0.8f];
         }
         
         else {
+            
+          //  [self checkWordRow];
             
             timeInterval = [gamePlay getRowDelayForNumRows:nRowsOcc];
             
@@ -96,7 +89,7 @@
                     animating = YES;
                     
                     [display.animations animateTextBox2:2.0f :0.90*self.view.frame.size.height :0.3*self.view.frame.size.height :0.4f :@"Game Over"];
-                    
+                  
                     [board hideOccupiedPieces];
                     [display hideAlertView];
                 }
@@ -119,15 +112,17 @@
                     
                     [board hidePointsLabelForSpacesInArray:topSpaces];
                     
-                    [display animatePiecesToBottomRow:0.7f :YES];
+                    [display animatePiecesToBottomRow:1.0f :YES];
                     
-                    [self performSelector:@selector(rowAddAnimatingOff) withObject:nil afterDelay:0.8f];
+                    [self performSelector:@selector(rowAddAnimatingOff) withObject:nil afterDelay:1.1f];
+                    
+                    [board refreshBackPieces];
                 }
             }
         }
         
         [gamePlay incrementTimer];
-        
+    //    [board refreshBackPieces];
        // for(int i=0; i<board.dimx; i++)
          //   [board shiftColumnsDown];
     }
@@ -680,14 +675,17 @@
 
 - (void)checkWordRow {
     
-    if(display.wordBar.boxesFilled) {
+    [display checkAlertView:[board numRowsOccupied]];
+    
+    if([display.wordBar boxesFilled]) {
         
         NSString *word = [display.wordBar makeWordFromLetters];
         
         if([gamePlay checkWord:word :display.wordBar.wordCategory]) {
             
-            if(gamePlay.gameData.gamePlay == FREE_PLAY)
+            if(gamePlay.gameData.gamePlay == FREE_PLAY) {
                 [self performSelector:@selector(clearLettersWithDelay) withObject:nil afterDelay:0.51];
+            }
             else
                 gamePlay.gameState = levelUp;
         }
@@ -715,7 +713,9 @@
              //   for(uint i=0; i<[word length]; i++)
               //      [display.wordBar animatePieceBackToBoard:(UILabel*)pieceLocations[i] :1.0 :0.0 :i];
                 
+                animating = YES;
                 [display.wordBar makeBarPiecesFlash:1.0];
+                [self performSelector:@selector(turnAnimatingOff) withObject:nil afterDelay:1.1];
                 
           //      animating = YES;
                 
@@ -728,6 +728,11 @@
     }
     
     [display updateScore];
+}
+
+- (void)turnAnimationOff {
+
+    animating = NO;
 }
 
 - (void)addWordToTopOfStack:(NSString*)word {
