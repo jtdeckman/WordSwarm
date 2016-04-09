@@ -648,11 +648,13 @@
             }
         }
     }
+    
+    [self performSelector:@selector(checkWordRow) withObject:nil afterDelay:totalTime];
 }
 
 - (void)shiftColumnsDownAfterDelay {
     
-    [self checkWordRow];
+   // [self checkWordRow];
     [self performSelector:@selector(shiftColumns) withObject:nil afterDelay:0.51];
    }
 
@@ -692,11 +694,18 @@
         
         else {
     
-            uint topUnOccupiedRow = board.dimx - [board numRowsOccupied] - 1;
+          //  uint topUnOccupiedRow = board.dimx - [board numRowsOccupied] - 1;
             
-            if(topUnOccupiedRow < 1) {
+            if([board topRowOccupied]) {
             
-              //  gamePlay.gameState = gameOver;
+                gamePlay.gameState = gameOver;
+                
+                animating = YES;
+                
+                [display.animations animateTextBox2:2.0f :0.90*self.view.frame.size.height :0.3*self.view.frame.size.height :0.4f :@"Game Over"];
+                
+                [board hideOccupiedPieces];
+                [display hideAlertView];
             }
             
             else {
@@ -714,8 +723,8 @@
               //      [display.wordBar animatePieceBackToBoard:(UILabel*)pieceLocations[i] :1.0 :0.0 :i];
                 
                 animating = YES;
-                [display.wordBar makeBarPiecesFlash:1.0];
-                [self performSelector:@selector(turnAnimatingOff) withObject:nil afterDelay:1.1];
+                [display.wordBar makeBarPiecesFlash:1.5];
+            //    [self performSelector:@selector(turnAnimatingOff) withObject:nil afterDelay:2.0];
                 
           //      animating = YES;
                 
