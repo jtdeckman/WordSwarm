@@ -39,6 +39,7 @@
     BOOL prevViewSettings;
     BOOL swiping;
     BOOL howToSeen;
+    BOOL initView;
     
     NSMutableString *currentWord;
     

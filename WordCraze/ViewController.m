@@ -29,6 +29,7 @@
     
     self.view.backgroundColor = [UIColor blackColor];
     
+    initView = NO;
     
    // [self setUpViewController];
 }
@@ -43,7 +44,7 @@
     
     [super viewDidAppear:NO];
     
-    [self howToPlayInitView];
+  //  [self howToPlayInitView];
     
     if(prevViewSettings) {
         
@@ -55,6 +56,18 @@
         [gamePlay checkDifficulty];
         
         prevViewSettings = NO;
+    }
+    
+    else if(!howToSeen) {
+        
+        [self howToPlayInitView];
+        howToSeen = YES;
+    }
+    
+    else if(!initView) {
+        
+        [self setUpViewController];
+        initView = YES;
     }
 }
 
@@ -163,21 +176,10 @@
     
     if(!howToSeen && ![defaults boolForKey:@"howToScreenSeen"]) {
         
-        self.view.backgroundColor = [UIColor blackColor];
-        
         HowToScreenInit *howToScreen = [[HowToScreenInit alloc] init];
         [self presentViewController:howToScreen animated:NO completion:nil];
-     //   [self presentViewController:howToScreen animated:NO completion:^{
-      //      [self setUpViewController];
-      //  }];
         
         howToScreen = nil;
-        howToSeen = YES;
-        
-    }
-    else {
-        
-        [self setUpViewController];
     }
 }
 
