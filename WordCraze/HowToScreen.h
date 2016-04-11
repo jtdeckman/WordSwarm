@@ -10,12 +10,7 @@
 
 @interface HowToScreen : UIViewController {
     
-  //  UIColor *screen1;
-  //  UIColor *screen2;
-    
     UIImageView *screen;
-    
-    uint touchCount;
 }
 
 @end

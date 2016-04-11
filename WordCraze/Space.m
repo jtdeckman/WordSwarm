@@ -39,6 +39,7 @@
     
     [piece setTextAlignment:NSTextAlignmentCenter];
     [piece setFont:[UIFont fontWithName:@"Arial" size:1.0*FONT_FACT*spaceFrame.size.width]];
+   // [piece setFont:[UIFont fontWithName:@"Copperplate" size:1.0*FONT_FACT*spaceFrame.size.width]];
     
     piece.backgroundColor = [UIColor clearColor];
     
@@ -75,6 +76,7 @@
 
     [pointsLabel setTextAlignment:NSTextAlignmentCenter];
     [pointsLabel setFont:[UIFont fontWithName:@"Helvetica" size:0.5*FONT_FACT*spaceFrame.size.width]];
+  //  [pointsLabel setFont:[UIFont fontWithName:@"Copperplate" size:0.5*FONT_FACT*spaceFrame.size.width]];
     
     nearestNbrs = [[NSMutableSet alloc] initWithCapacity:4];
     neighbors = [[NSMutableSet alloc] initWithCapacity:10];

@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		8C08AD9C1C3B5D4D0015C6C4 /* Launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C08AD9B1C3B5D4D0015C6C4 /* Launch.png */; };
-		8C45A7CD1C3B606A008C589A /* howToScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C45A7CC1C3B606A008C589A /* howToScreen.png */; };
+		8C37441D1CBB42A1003FAB42 /* HowToScreen-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C37441C1CBB42A1003FAB42 /* HowToScreen-2.png */; };
+		8C3744201CBB437F003FAB42 /* HowToScreenInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C37441F1CBB437F003FAB42 /* HowToScreenInit.m */; };
+		8C3744221CBB45E6003FAB42 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C3744211CBB45E6003FAB42 /* checked.png */; };
+		8C3744241CBB45EC003FAB42 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C3744231CBB45EC003FAB42 /* unchecked.png */; };
+		8C4DF3891CBB4F42006F408F /* HowToScreen-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C4DF3881CBB4F42006F408F /* HowToScreen-1.png */; };
 		8C85F4DF1C35AEC000908313 /* WordBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85F4DE1C35AEC000908313 /* WordBar.m */; };
 		8C85F4EC1C36620400908313 /* p1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C85F4E41C36620400908313 /* p1.png */; };
 		8C85F4ED1C36620400908313 /* p2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C85F4E51C36620400908313 /* p2.png */; };
@@ -23,7 +27,6 @@
 		8CD640911C2F4F8800C9E6CF /* stars1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD640901C2F4F8800C9E6CF /* stars1.png */; };
 		8CD640B81C2F7E4A00C9E6CF /* TileImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD640B71C2F7E4A00C9E6CF /* TileImages.m */; };
 		8CE280731C39C51500199940 /* nuke2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CE280721C39C51500199940 /* nuke2.png */; };
-		8CE280921C3ADEF300199940 /* howToScreen-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CE280911C3ADEF300199940 /* howToScreen-2.png */; };
 		8CEBF8F71C30E7810055861A /* menuBars.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEBF8F61C30E7810055861A /* menuBars.png */; };
 		8CEBF9241C31C56D0055861A /* AnimationPieces.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF9231C31C56D0055861A /* AnimationPieces.m */; };
 		8CEBF9291C33574E0055861A /* StatsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEBF9281C33574E0055861A /* StatsView.m */; };
@@ -63,7 +66,12 @@
 
 /* Begin PBXFileReference section */
 		8C08AD9B1C3B5D4D0015C6C4 /* Launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launch.png; sourceTree = "<group>"; };
-		8C45A7CC1C3B606A008C589A /* howToScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = howToScreen.png; sourceTree = "<group>"; };
+		8C37441C1CBB42A1003FAB42 /* HowToScreen-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HowToScreen-2.png"; sourceTree = "<group>"; };
+		8C37441E1CBB437F003FAB42 /* HowToScreenInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowToScreenInit.h; sourceTree = "<group>"; };
+		8C37441F1CBB437F003FAB42 /* HowToScreenInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToScreenInit.m; sourceTree = "<group>"; };
+		8C3744211CBB45E6003FAB42 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
+		8C3744231CBB45EC003FAB42 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
+		8C4DF3881CBB4F42006F408F /* HowToScreen-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HowToScreen-1.png"; sourceTree = "<group>"; };
 		8C85F4DD1C35AEC000908313 /* WordBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordBar.h; sourceTree = "<group>"; };
 		8C85F4DE1C35AEC000908313 /* WordBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordBar.m; sourceTree = "<group>"; };
 		8C85F4E41C36620400908313 /* p1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p1.png; sourceTree = "<group>"; };
@@ -83,7 +91,6 @@
 		8CD640B71C2F7E4A00C9E6CF /* TileImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileImages.m; sourceTree = "<group>"; };
 		8CE280721C39C51500199940 /* nuke2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nuke2.png; sourceTree = "<group>"; };
 		8CE2807D1C3AD7D100199940 /* WordCraze */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = WordCraze; path = /Users/jasondeckman/Dropbox/Code/iOS/WordCraze/WordCraze; sourceTree = "<absolute>"; };
-		8CE280911C3ADEF300199940 /* howToScreen-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "howToScreen-2.png"; path = "../Images/howToScreen-2.png"; sourceTree = "<group>"; };
 		8CE280931C3AECA400199940 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CEBF8F61C30E7810055861A /* menuBars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBars.png; sourceTree = "<group>"; };
 		8CEBF9221C31C56D0055861A /* AnimationPieces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationPieces.h; sourceTree = "<group>"; };
@@ -203,6 +210,8 @@
 				8CEBF92B1C33669F0055861A /* SettingsViewController.m */,
 				8CAF06651C3B032600A2DD9A /* HowToScreen.h */,
 				8CAF06681C3B044400A2DD9A /* HowToScreen.m */,
+				8C37441E1CBB437F003FAB42 /* HowToScreenInit.h */,
+				8C37441F1CBB437F003FAB42 /* HowToScreenInit.m */,
 				8CE2807D1C3AD7D100199940 /* WordCraze */,
 				8CEBF9371C34E4120055861A /* Animations.h */,
 				8CEBF9381C34E4120055861A /* Animations.m */,
@@ -237,8 +246,10 @@
 				8CEBF9351C33B8AA0055861A /* times3.png */,
 				8CEBF9401C35261E0055861A /* bomb.png */,
 				8CE280721C39C51500199940 /* nuke2.png */,
-				8C45A7CC1C3B606A008C589A /* howToScreen.png */,
-				8CE280911C3ADEF300199940 /* howToScreen-2.png */,
+				8C4DF3881CBB4F42006F408F /* HowToScreen-1.png */,
+				8C37441C1CBB42A1003FAB42 /* HowToScreen-2.png */,
+				8C3744211CBB45E6003FAB42 /* checked.png */,
+				8C3744231CBB45EC003FAB42 /* unchecked.png */,
 				A8166A631B99E84700F47146 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -342,8 +353,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C3744221CBB45E6003FAB42 /* checked.png in Resources */,
+				8C37441D1CBB42A1003FAB42 /* HowToScreen-2.png in Resources */,
 				8C08AD9C1C3B5D4D0015C6C4 /* Launch.png in Resources */,
 				8C85F4F11C36620400908313 /* p7.png in Resources */,
+				8C3744241CBB45EC003FAB42 /* unchecked.png in Resources */,
+				8C4DF3891CBB4F42006F408F /* HowToScreen-1.png in Resources */,
 				8CE280731C39C51500199940 /* nuke2.png in Resources */,
 				8C85F4EE1C36620400908313 /* p3.png in Resources */,
 				8C85F4EF1C36620400908313 /* p4.png in Resources */,
@@ -358,10 +373,8 @@
 				8CEBF8F71C30E7810055861A /* menuBars.png in Resources */,
 				A8166A6F1B99E84700F47146 /* Images.xcassets in Resources */,
 				8CEBF9341C33B81D0055861A /* times2.png in Resources */,
-				8CE280921C3ADEF300199940 /* howToScreen-2.png in Resources */,
 				8C85F4EC1C36620400908313 /* p1.png in Resources */,
 				8C85F4ED1C36620400908313 /* p2.png in Resources */,
-				8C45A7CD1C3B606A008C589A /* howToScreen.png in Resources */,
 				8CEBF9411C35261E0055861A /* bomb.png in Resources */,
 				8CD640911C2F4F8800C9E6CF /* stars1.png in Resources */,
 				8CEBF9361C33B8AA0055861A /* times3.png in Resources */,
@@ -384,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8166A8C1B99E8C200F47146 /* Space.m in Sources */,
+				8C3744201CBB437F003FAB42 /* HowToScreenInit.m in Sources */,
 				8CAF06691C3B044400A2DD9A /* HowToScreen.m in Sources */,
 				A8166A6A1B99E84700F47146 /* ViewController.m in Sources */,
 				A831F6111BB0B8B70001E1BC /* Colors.m in Sources */,

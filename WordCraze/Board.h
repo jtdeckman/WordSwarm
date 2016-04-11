@@ -40,7 +40,7 @@
 @property (nonatomic) int dimx;
 @property (nonatomic) int dimy;
 
-- (void)initBoard: (CGRect)bvFrame :(int)dimx :(int)dimy :(CGFloat)offset :(CGFloat)buffer :(WordLogic*)wl;
+- (void)initBoard: (CGRect)bvFrame :(int)dimx :(int)dimy :(CGFloat)offset :(CGFloat)buffer :(WordLogic*)wl :(BOOL)iPad;
 - (void)addPiece: (int)ival :(int)jval :(NSString*)val;
 
 - (void)addBottomRow: (NSMutableArray*)vals;

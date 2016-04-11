@@ -13,14 +13,19 @@
 @synthesize selectedSpace, spaces;
 @synthesize rows, dimx, dimy;
 
-- (void)initBoard: (CGRect)bvFrame : (int)dx : (int)dy : (CGFloat)offset : (CGFloat)buffer :(WordLogic*)wl {
+- (void)initBoard: (CGRect)bvFrame : (int)dx : (int)dy : (CGFloat)offset : (CGFloat)buffer :(WordLogic*)wl :(BOOL)iPad {
     
     NSMutableArray *row;
     
     Space *newSpace;
     
     CGFloat os2 = offset/2.0;
-    CGFloat xini, yini;
+    CGFloat xini, yini, xbuffer;
+    
+    if(iPad)
+        xbuffer = 3*buffer;
+    else
+        xbuffer = buffer;
     
     CGRect spcFrm, pcFrm;
     
@@ -29,7 +34,8 @@
     
     numSpaces = dimx*dimy;
     
-    spaceWidth = (bvFrame.size.width - buffer - offset*(dy-1))/(CGFloat)dy;
+    
+    spaceWidth = (bvFrame.size.width - xbuffer - offset*(dy-1))/(CGFloat)dy;
   //  spaceHeight = spaceWidth;//(bvFrame.size.height - offset)/(CGFloat)dx;
     spaceHeight = (bvFrame.size.height - buffer - offset*(dx-1))/(CGFloat)dx;
     pieceWidth = spaceWidth;
@@ -46,7 +52,7 @@
     
     spaces = [[NSMutableArray alloc] initWithCapacity:dimx];
     
-    xini = bvFrame.origin.x+buffer/2.0;
+    xini = bvFrame.origin.x+xbuffer/2.0;
     yini = bvFrame.origin.y+buffer/2.0;
     
     for(int i=0; i<dimx; i++) {

@@ -892,7 +892,7 @@
     score.opaque = NO;
     
     [score setTextAlignment:NSTextAlignmentCenter];
-    [score setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.1*FONT_FACT*score.frame.size.height]];
+    [score setFont:[UIFont fontWithName:@"Copperplate" size:1.1*FONT_FACT*score.frame.size.height]];
     
     score.textColor = [UIColor colorWithRed:colors.scoreColor.red green:colors.scoreColor.green blue:colors.scoreColor.blue alpha:1.0f];
     score.backgroundColor = [UIColor clearColor];
@@ -903,7 +903,7 @@
     level.opaque = NO;
     
     [level setTextAlignment:NSTextAlignmentCenter];
-    [level setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.2*FONT_FACT*score.frame.size.height]];
+    [level setFont:[UIFont fontWithName:@"Copperplate" size:1.2*FONT_FACT*score.frame.size.height]];
     
     level.textColor = [UIColor colorWithRed:colors.levelColor.red green:colors.levelColor.green blue:colors.levelColor.blue alpha:0.8f];
     
@@ -915,7 +915,7 @@
     nextScore.opaque = NO;
     
     [nextScore setTextAlignment:NSTextAlignmentCenter];
-    [nextScore setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.2*FONT_FACT*score.frame.size.height]];
+    [nextScore setFont:[UIFont fontWithName:@"Copperplate" size:1.2*FONT_FACT*score.frame.size.height]];
     
     nextScore.textColor = score.textColor; //[UIColor colorWithRed:colors.bottomBarBackgroundColor.red green:colors.bottomBarBackgroundColor.green blue:colors.bottomBarBackgroundColor.blue alpha:1.0f];
     
@@ -927,7 +927,7 @@
     scoreLabel.opaque = NO;
     
     [scoreLabel setTextAlignment:NSTextAlignmentCenter];
-    [scoreLabel setFont:[UIFont fontWithName:@"Helvetica" size:0.75*FONT_FACT*score.frame.size.height]];
+    [scoreLabel setFont:[UIFont fontWithName:@"Copperplate" size:0.75*FONT_FACT*score.frame.size.height]];
     
     scoreLabel.textColor = [UIColor whiteColor];
     scoreLabel.backgroundColor = [UIColor clearColor];
@@ -951,7 +951,7 @@
     levelBackgroundPiece.opaque = NO;
     
     [levelBackgroundPiece setTextAlignment:NSTextAlignmentCenter];
-    [levelBackgroundPiece setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.2*FONT_FACT*score.frame.size.height]];
+    [levelBackgroundPiece setFont:[UIFont fontWithName:@"Copperplate" size:1.2*FONT_FACT*score.frame.size.height]];
     
     levelBackgroundPiece.text = @"";
     levelBackgroundPiece.textColor = [UIColor colorWithRed:colors.levelColor.red green:colors.levelColor.green blue:colors.levelColor.blue alpha:1.0f];
@@ -965,7 +965,7 @@
     levelLabel.opaque = NO;
     
     [levelLabel setTextAlignment:NSTextAlignmentCenter];
-    [levelLabel setFont:[UIFont fontWithName:@"Helvetica" size:0.75*FONT_FACT*score.frame.size.height]];
+    [levelLabel setFont:[UIFont fontWithName:@"Copperplate" size:0.75*FONT_FACT*score.frame.size.height]];
     
     levelLabel.textColor = [UIColor whiteColor];
     levelLabel.backgroundColor = [UIColor clearColor];
@@ -981,7 +981,7 @@
     nextScoreLabel.opaque = NO;
     
     [nextScoreLabel setTextAlignment:NSTextAlignmentCenter];
-    [nextScoreLabel setFont:[UIFont fontWithName:@"Helvetica" size:0.75*FONT_FACT*score.frame.size.height]];
+    [nextScoreLabel setFont:[UIFont fontWithName:@"Copperplate" size:0.75*FONT_FACT*score.frame.size.height]];
     
     nextScoreLabel.textColor = [UIColor whiteColor];
     nextScoreLabel.backgroundColor = [UIColor clearColor];
@@ -1053,7 +1053,7 @@
     addPiece.hidden = NO;
     
     [addPiece setTextAlignment:NSTextAlignmentCenter];
-    [addPiece setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.5*FONT_FACT*pcFrm.size.width]];
+    [addPiece setFont:[UIFont fontWithName:@"Copperplate" size:1.5*FONT_FACT*pcFrm.size.width]];
     addPiece.textColor = [UIColor colorWithRed:0.7 green:0.3 blue:0.3 alpha:0.7];
  
     addPiece.text = @"";
@@ -1122,7 +1122,7 @@
     numBombsLabel.opaque = YES;
     
     [numBombsLabel setTextAlignment:NSTextAlignmentCenter];
-    [numBombsLabel setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.8*FONT_FACT*pcFrm.size.width]];
+    [numBombsLabel setFont:[UIFont fontWithName:@"Copperplate" size:0.8*FONT_FACT*pcFrm.size.width]];
     numBombsLabel.textColor = [UIColor colorWithRed:0.8 green:0.3 blue:0.3 alpha:0.7];
     numBombsLabel.text = @"";
     
@@ -1190,7 +1190,7 @@
     floatScore.opaque = NO;
     
     [floatScore setTextAlignment:NSTextAlignmentCenter];
-    [floatScore setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:1.25*FONT_FACT*floatScore.frame.size.height]];
+    [floatScore setFont:[UIFont fontWithName:@"Copperplate" size:1.25*FONT_FACT*floatScore.frame.size.height]];
     
     floatScore.textColor = [UIColor whiteColor];
     floatScore.backgroundColor = [UIColor clearColor];

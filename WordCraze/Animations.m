@@ -36,7 +36,7 @@
     textBox1.lineBreakMode = NSLineBreakByWordWrapping;
     
     [textBox1 setTextAlignment:NSTextAlignmentCenter];
-    [textBox1 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.55*FONT_FACT*textBox1.frame.size.height]];
+    [textBox1 setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.65*FONT_FACT*textBox1.frame.size.height]];
     
     textBox1.textColor = [UIColor yellowColor];
     textBox1.backgroundColor = [UIColor clearColor];

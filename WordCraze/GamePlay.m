@@ -17,22 +17,12 @@
 - (CGFloat)setUp:(Board*)brd :(CGRect)frm :(BOOL)iPad{
    
     CGFloat buffer = frm.size.width*PIECE_BUFFER;
-    CGFloat pw;
-    
-  /*  if(iPad)
-        dimy = 7;
-    else
-        dimy = 7;
-    
-    pw = (frm.size.width-buffer)/dimy;
-    
-    dimx = (int)((frm.size.height-buffer)/pw); */
     
     dimx = 9;
     dimy = 7;
     
     
-   // if(iPad) --dimx;
+    if(iPad) ++dimy;
     
     board = brd;
     

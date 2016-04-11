@@ -75,6 +75,8 @@
         [defaults setInteger:1 forKey:@"numBombs"];
         [defaults setInteger:1 forKey:@"numNukes"];
         
+        [defaults setBool:NO forKey:@"howToScreenSeen"];
+        
         [defaults setBool:YES forKey:@"initialized"];
     }
 }

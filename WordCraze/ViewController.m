@@ -580,7 +580,7 @@
         iPad = YES;
     
     CGFloat buffer = [gamePlay setUp:board :boardFrm :iPad];
-    [board initBoard:boardFrm :gamePlay.dimx :gamePlay.dimy :0.00075*self.view.frame.size.width :buffer :gamePlay.wordLogic];
+    [board initBoard:boardFrm :gamePlay.dimx :gamePlay.dimy :0.00075*self.view.frame.size.width :buffer :gamePlay.wordLogic :iPad];
     
     [self addPiecesToView];
     
@@ -724,6 +724,8 @@
                 
                 animating = YES;
                 [display.wordBar makeBarPiecesFlash:1.5];
+                [self performSelector:@selector(turnAnimatingOff) withObject:nil afterDelay:1.0];
+                
             //    [self performSelector:@selector(turnAnimatingOff) withObject:nil afterDelay:2.0];
                 
           //      animating = YES;
