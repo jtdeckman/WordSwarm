@@ -28,10 +28,6 @@
     [self startSpinner];
     
     self.view.backgroundColor = [UIColor blackColor];
-    
-    initView = NO;
-    
-   // [self setUpViewController];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,7 +40,11 @@
     
     [super viewDidAppear:NO];
     
-  //  [self howToPlayInitView];
+    if(!initView) {
+        
+        [self setUpViewController];
+        initView = YES;
+    }
     
     if(prevViewSettings) {
         
@@ -58,17 +58,6 @@
         prevViewSettings = NO;
     }
     
-    else if(!howToSeen) {
-        
-        [self howToPlayInitView];
-        howToSeen = YES;
-    }
-    
-    else if(!initView) {
-        
-        [self setUpViewController];
-        initView = YES;
-    }
 }
 
 - (void)gameLoop {
@@ -197,6 +186,8 @@
             location = [touch locationInView:display.menuView];
             
             if(CGRectContainsPoint(display.menuView.nwGameLabel.frame, location)) {
+                
+                [self startSpinner];
                 
                 [self setUpNewGame];
             }
