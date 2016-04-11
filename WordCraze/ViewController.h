@@ -14,6 +14,7 @@
 #import "StatsView.h"
 #import "SettingsViewController.h"
 #import "HowToScreen.h"
+#import "HowToScreenInit.h"
 
 @interface ViewController : UIViewController {
 
@@ -37,6 +38,7 @@
     BOOL animating;
     BOOL prevViewSettings;
     BOOL swiping;
+    BOOL howToSeen;
     
     NSMutableString *currentWord;
     
@@ -45,6 +47,8 @@
     
     NSMutableArray *topSpaces;
     NSMutableArray *newLetters;
+    
+    UIActivityIndicatorView *spinner;
 }
 
 - (void)saveDefaults;

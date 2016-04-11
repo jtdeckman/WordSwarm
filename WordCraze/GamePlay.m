@@ -22,7 +22,7 @@
     dimy = 7;
     
     
-    if(iPad) ++dimy;
+  //  if(iPad) ++dimy;
     
     board = brd;
     

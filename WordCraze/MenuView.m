@@ -25,34 +25,33 @@
     clr.green = 0.8;
     clr.blue = 0.8;
     
-    viewFrame.size.width = 0.3*self.frame.size.width;
+    viewFrame.size.width = 0.4*self.frame.size.width;
     viewFrame.size.height = 0.12*self.frame.size.height;
     viewFrame.origin.x = (self.frame.size.width - viewFrame.size.width)/2.0;
     viewFrame.origin.y = 0.075*self.frame.size.height;
     
     settingsLabel = [[UILabel alloc] initWithFrame:viewFrame];
     
-    UIGraphicsBeginImageContext(viewFrame.size);
+  //  UIGraphicsBeginImageContext(viewFrame.size);
     
-    UIImage *tmpImage = [UIImage imageNamed:@"redSquare.png"];
-    [tmpImage drawInRect:CGRectMake(0, 0, viewFrame.size.width, viewFrame.size.height)];
-    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
+   // UIImage *tmpImage = [UIImage imageNamed:@"redSquare.png"];
+   // [tmpImage drawInRect:CGRectMake(0, 0, viewFrame.size.width, viewFrame.size.height)];
+   // tmpImage = UIGraphicsGetImageFromCurrentImageContext();
 
     settingsLabel.hidden = NO;
     settingsLabel.layer.cornerRadius = 3.0;
     settingsLabel.clipsToBounds = YES;
-    settingsLabel.backgroundColor = [UIColor colorWithPatternImage:tmpImage];//[UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];[UIColor clearColor];
-    //   settingsLabel.layer.borderColor = [[UIColor redColor] CGColor];
+    settingsLabel.backgroundColor = [UIColor clearColor];//[UIColor colorWithPatternImage:tmpImage];//[UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];[UIColor clearColor];
+    settingsLabel.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     
-    settingsLabel.layer.borderColor = [[UIColor clearColor] CGColor];//[[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
+    //settingsLabel.layer.borderColor = [[UIColor clearColor] CGColor];//[[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
     
     settingsLabel.layer.borderWidth = 1.0f;
-    //  settingsLabel.textColor = [UIColor redColor];
-    settingsLabel.textColor = [UIColor colorWithRed:0.9f green:0.6f blue:0.3f alpha:1.0];//[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0];
+    settingsLabel.textColor = [UIColor lightGrayColor];//[UIColor colorWithRed:0.9f green:0.6f blue:0.3f alpha:1.0];//[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0];
     settingsLabel.text = @"Settings";
     
     [settingsLabel setTextAlignment:NSTextAlignmentCenter];
-    [settingsLabel setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.4*FONT_FACT*viewFrame.size.width]];
+    [settingsLabel setFont:[UIFont fontWithName:@"Copperplate" size:0.3*FONT_FACT*viewFrame.size.width]];
     
     [self addSubview:settingsLabel];
     
@@ -66,7 +65,7 @@
     nwGameLabel.backgroundColor = settingsLabel.backgroundColor; //[UIColor clearColor];
    
     
-    nwGameLabel.layer.borderColor = [[UIColor clearColor] CGColor]; //[[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
+    nwGameLabel.layer.borderColor = settingsLabel.layer.borderColor;//[[UIColor whiteColor] CGColor]; //[[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
     
     nwGameLabel.layer.borderWidth = 1.0f;
     nwGameLabel.textColor = settingsLabel.textColor;//[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0];
@@ -87,7 +86,7 @@
     howToLabel.layer.cornerRadius = 3.0;
     howToLabel.clipsToBounds = YES;
     howToLabel.backgroundColor = settingsLabel.backgroundColor;// [UIColor clearColor];
-    howToLabel.layer.borderColor = [[UIColor clearColor] CGColor]; //[[UIColor redColor] CGColor];
+    howToLabel.layer.borderColor = settingsLabel.layer.borderColor;//[[UIColor whiteColor] CGColor]; //[[UIColor redColor] CGColor];
     
   //  howToLabel.layer.borderColor = [[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
     
@@ -114,7 +113,7 @@
     statsLabel.layer.cornerRadius = 3.0;
     statsLabel.clipsToBounds = YES;
     statsLabel.backgroundColor = settingsLabel.backgroundColor;//[UIColor clearColor];
-    statsLabel.layer.borderColor = [[UIColor clearColor] CGColor];
+    statsLabel.layer.borderColor = settingsLabel.layer.borderColor;//[[UIColor whiteColor] CGColor];
     
   //  statsLabel.layer.borderColor = [[UIColor colorWithRed:clr.red green:clr.green blue:clr.blue alpha:1.0] CGColor];
     

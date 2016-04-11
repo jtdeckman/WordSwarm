@@ -41,9 +41,9 @@
     
  // High score
     
-    frm.size.width = 0.6*self.view.frame.size.width;
+    frm.size.width = 0.7*self.view.frame.size.width;
     frm.size.height = 0.45*frm.size.width;
-    frm.origin.y = frm.size.height;
+    frm.origin.y = 0.5*frm.size.height;
     frm.origin.x = (self.view.frame.size.width - frm.size.width)/2.0;
     
     highScoreBox = [[UILabel alloc] initWithFrame:frm];
@@ -57,13 +57,13 @@
     [highScoreBox.layer setBorderColor:[[UIColor clearColor] CGColor]];
     highScoreBox.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.15];
     
-    UIGraphicsBeginImageContext(highScoreBox.frame.size);
+  //  UIGraphicsBeginImageContext(highScoreBox.frame.size);
     
-    tmpImage = [UIImage imageNamed:@"redSquare.png"];
-    [tmpImage drawInRect:CGRectMake(0, 0, highScoreBox.frame.size.width, highScoreBox.frame.size.height)];
-    tmpImage = UIGraphicsGetImageFromCurrentImageContext();
+  //  tmpImage = [UIImage imageNamed:@"redSquare.png"];
+  //  [tmpImage drawInRect:CGRectMake(0, 0, highScoreBox.frame.size.width, highScoreBox.frame.size.height)];
+  //  tmpImage = UIGraphicsGetImageFromCurrentImageContext();
     
-    highScoreBox.backgroundColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.1 alpha:0.5];//[UIColor colorWithPatternImage:tmpImage];
+   // highScoreBox.backgroundColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.1 alpha:0.5];//[UIColor colorWithPatternImage:tmpImage];
 
     [self.view addSubview:highScoreBox];
     
@@ -78,7 +78,7 @@
     highScoreLabel.opaque = NO;
     
     [highScoreLabel setTextAlignment:NSTextAlignmentCenter];
-    [highScoreLabel setFont:[UIFont fontWithName:@"Helvetica" size:1.95*FONT_FACT*highScoreLabel.frame.size.height]];
+    [highScoreLabel setFont:[UIFont fontWithName:@"Copperplate" size:1.7*FONT_FACT*highScoreLabel.frame.size.height]];
     
     highScoreLabel.textColor = [UIColor whiteColor];
     highScoreLabel.backgroundColor = [UIColor clearColor];
@@ -98,9 +98,9 @@
     highScore.opaque = NO;
     
     [highScore setTextAlignment:NSTextAlignmentCenter];
-    [highScore setFont:[UIFont fontWithName:@"MarkerFelt-Thin" size:0.8*FONT_FACT*highScore.frame.size.height]];
+    [highScore setFont:[UIFont fontWithName:@"Copperplate" size:0.9*FONT_FACT*highScore.frame.size.height]];
     
-    highScore.textColor = [UIColor colorWithRed:1.0 green:0.8 blue:0.1 alpha:1.0];//[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    highScore.textColor = [UIColor lightGrayColor];//[UIColor colorWithRed:1.0 green:0.8 blue:0.1 alpha:1.0];//[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     highScoreLabel.backgroundColor = [UIColor clearColor];
     
     

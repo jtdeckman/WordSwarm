@@ -30,7 +30,7 @@
     }
     
     screen = [[UIImageView alloc] initWithFrame:frame];
-    screen.image = [UIImage imageNamed:@"HowToScreen-1.png"];
+    screen.image = [UIImage imageNamed:@"HowToScreen-2.png"];
     
     [self.view addSubview:screen];
     

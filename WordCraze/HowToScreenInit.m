@@ -7,6 +7,13 @@
 //
 
 #import "HowToScreenInit.h"
+#import "Constants.h"
+
+@interface HowToScreenInit ()
+
+@property(nonatomic,strong) UILabel *doneLabel;
+
+@end
 
 @implementation HowToScreenInit
 
@@ -22,30 +29,51 @@
     
     CGRect frame;
     
-    frame.size.width = 0.1*self.view.frame.size.width;
+    frame.size.width = 0.05*self.view.frame.size.width;
     frame.size.height = frame.size.width;
     
-    frame.origin.x = 0.4*self.view.frame.size.width;
-    frame.origin.y = 0.95*self.view.frame.size.height;
+    frame.origin.x = 0.35*self.view.frame.size.width;
+    frame.origin.y = 0.9*self.view.frame.size.height;
     
-    checkBox = [[UIImageView alloc] initWithFrame:frame];
+    checkBox = [[UILabel alloc] initWithFrame:frame];
     
-    UIGraphicsBeginImageContext(frame.size);
+    checkBox.layer.cornerRadius = 2.50;
+    checkBox.clipsToBounds = YES;
+    checkBox.opaque = NO;
     
-    UIImage *tmpImage = [UIImage imageNamed:@"unchecked.png"];
-    [tmpImage drawInRect:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-    
-    boxUncheckedImg = UIGraphicsGetImageFromCurrentImageContext();
-    
-    tmpImage = [UIImage imageNamed:@"checked.png"];
-    [tmpImage drawInRect:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-    
-    boxCheckedImg = UIGraphicsGetImageFromCurrentImageContext();
-    
-    checkBox.image = boxUncheckedImg;
+    checkBox.textColor = [UIColor blackColor];
+    checkBox.layer.borderColor = [[UIColor whiteColor] CGColor];
+    checkBox.layer.borderWidth = 0.85;
+    checkBox.backgroundColor = [UIColor whiteColor];
     checkBox.hidden = NO;
+    checkBox.text = @"";
+    [checkBox setTextAlignment:NSTextAlignmentCenter];
+    [checkBox setFont:[UIFont fontWithName:@"Copperplate" size:3.0*FONT_FACT*frame.size.width]];
     
     [self.view addSubview:checkBox];
+    
+    frame.size.width = 0.15*self.view.frame.size.width;
+    frame.size.height = 0.5*frame.size.width;
+    frame.origin.x = self.view.frame.size.width - 1.25*frame.size.width; //(self.view.frame.size.width - frame.size.width)/2.0;
+    frame.origin.y = self.view.frame.size.height - 1.5*frame.size.height;
+    
+    _doneLabel = [[UILabel alloc] initWithFrame:frame];
+    
+    _doneLabel.layer.cornerRadius = 2.50;
+    _doneLabel.clipsToBounds = YES;
+    _doneLabel.opaque = NO;
+    
+    _doneLabel.textColor = [UIColor whiteColor];
+    _doneLabel.layer.borderColor = [[UIColor whiteColor] CGColor];
+    _doneLabel.layer.borderWidth = 0.85;
+    _doneLabel.hidden = NO;
+    _doneLabel.text = @"Done";
+    
+    [_doneLabel setTextAlignment:NSTextAlignmentCenter];
+    [_doneLabel setFont:[UIFont fontWithName:@"Copperplate" size:0.7*FONT_FACT*frame.size.width]];
+    
+    [self.view addSubview:_doneLabel];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,21 +93,27 @@
         if(boxChecked) {
             
             boxChecked = NO;
-            checkBox.image = boxUncheckedImg;
+            checkBox.text = @"";
             
             [defaults setBool:NO forKey:@"howToScreenSeen"];
         }
         else {
             
             boxChecked = YES;
-            checkBox.image = boxCheckedImg;
+            checkBox.text = @"x";
             
             [defaults setBool:YES forKey:@"howToScreenSeen"];
         }
         
         [defaults synchronize];
     }
-   // else if(CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>))
+    
+    if(CGRectContainsPoint(_doneLabel.frame, location)) {
+        
+        [self deconstruct];
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }
+
 }
 
 - (void)deconstruct {

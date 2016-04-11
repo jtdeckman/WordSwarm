@@ -11,11 +11,8 @@
 @interface HowToScreenInit : HowToScreen {
     
     BOOL boxChecked;
-    
-    UIImage *boxUncheckedImg;
-    UIImage *boxCheckedImg;
 }
 
-@property(nonatomic, strong) UIImageView *checkBox;
+@property(nonatomic, strong) UILabel *checkBox;
 
 @end
