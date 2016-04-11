@@ -347,7 +347,7 @@
         
         box.backgroundColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.15 alpha:0.8];
         box.textColor = [UIColor colorWithRed:0.9 green:0.2 blue:0.15 alpha:0.8];
-        box.font = [UIFont fontWithName:@"MarkerFelt-Thin" size:1.5*FONT_FACT*box.frame.size.height];
+        box.font = [UIFont fontWithName:@"Copperplate" size:1.5*FONT_FACT*box.frame.size.height];
         
         box.text = @"X";
     }

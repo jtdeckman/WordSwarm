@@ -85,7 +85,7 @@
             
             [display checkAlertView:nRowsOcc];
             
-           // [board refreshBackPieces];
+          //  [board refreshBackPieces];
             
             if(!animating && !swiping && gamePlay.gameData.timer % timeInterval == 0) {
             
@@ -683,7 +683,7 @@
     
     [self clearCurrentWord];
     
-    animating = NO;
+    [self turnAnimationOff];
 }
 
 - (void)checkWordRow {
@@ -722,8 +722,7 @@
                 animating = YES;
                 
                 [display.wordBar makeBarPiecesFlash:1.5];
-                [self performSelector:@selector(turnAnimatingOff) withObject:nil afterDelay:1.6];
-                
+                [self performSelector:@selector(turnAnimationOff) withObject:nil afterDelay:1.6];
             }
         }
     }
@@ -734,6 +733,7 @@
 - (void)turnAnimationOff {
 
     animating = NO;
+    [board refreshBackPieces];
 }
 
 - (void)addWordToTopOfStack:(NSString*)word {
@@ -797,10 +797,6 @@
 
     [board unHidePointsLabelForSpaces:topSpaces];
     animating = NO;
-}
-
-- (void)turnAnimatingOff {
-    
 }
 
 - (void)clearBoardAfterAnimation {
@@ -903,6 +899,7 @@
 }
 
 -(BOOL)shouldAutorotate {
+    
     return NO;
 }
 
