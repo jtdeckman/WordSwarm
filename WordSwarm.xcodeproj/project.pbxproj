@@ -109,7 +109,7 @@
 		8CF092C91BFBEE4600AC3599 /* libLexicontext.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLexicontext.a; path = lexicontext/libLexicontext.a; sourceTree = "<group>"; };
 		8CF7E9761BEBED1F00BF3D4B /* WordLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordLogic.h; sourceTree = "<group>"; };
 		8CF7E9771BEBED1F00BF3D4B /* WordLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordLogic.m; sourceTree = "<group>"; };
-		A8166A5E1B99E84700F47146 /* WordBatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordBatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8166A5E1B99E84700F47146 /* WordSwarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordSwarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8166A631B99E84700F47146 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A8166A651B99E84700F47146 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A8166A661B99E84700F47146 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 		A8166A6C1B99E84700F47146 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A8166A6E1B99E84700F47146 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A8166A711B99E84700F47146 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		A8166A771B99E84700F47146 /* WordBatch.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordBatch.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8166A771B99E84700F47146 /* WordSwarm.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordSwarm.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8166A7C1B99E84700F47146 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8166A7D1B99E84700F47146 /* DroozleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DroozleTests.m; sourceTree = "<group>"; };
 		A8166A871B99E86300F47146 /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
@@ -170,8 +170,8 @@
 		A8166A5F1B99E84700F47146 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A8166A5E1B99E84700F47146 /* WordBatch.app */,
-				A8166A771B99E84700F47146 /* WordBatch.xctest */,
+				A8166A5E1B99E84700F47146 /* WordSwarm.app */,
+				A8166A771B99E84700F47146 /* WordSwarm.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -275,9 +275,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A8166A5D1B99E84700F47146 /* WordBatch */ = {
+		A8166A5D1B99E84700F47146 /* WordSwarm */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A8166A811B99E84700F47146 /* Build configuration list for PBXNativeTarget "WordBatch" */;
+			buildConfigurationList = A8166A811B99E84700F47146 /* Build configuration list for PBXNativeTarget "WordSwarm" */;
 			buildPhases = (
 				A8166A5A1B99E84700F47146 /* Sources */,
 				A8166A5B1B99E84700F47146 /* Frameworks */,
@@ -287,14 +287,14 @@
 			);
 			dependencies = (
 			);
-			name = WordBatch;
+			name = WordSwarm;
 			productName = Droozle;
-			productReference = A8166A5E1B99E84700F47146 /* WordBatch.app */;
+			productReference = A8166A5E1B99E84700F47146 /* WordSwarm.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A8166A761B99E84700F47146 /* WordBatchTests */ = {
+		A8166A761B99E84700F47146 /* WordSwarmTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A8166A841B99E84700F47146 /* Build configuration list for PBXNativeTarget "WordBatchTests" */;
+			buildConfigurationList = A8166A841B99E84700F47146 /* Build configuration list for PBXNativeTarget "WordSwarmTests" */;
 			buildPhases = (
 				A8166A731B99E84700F47146 /* Sources */,
 				A8166A741B99E84700F47146 /* Frameworks */,
@@ -305,9 +305,9 @@
 			dependencies = (
 				A8166A791B99E84700F47146 /* PBXTargetDependency */,
 			);
-			name = WordBatchTests;
+			name = WordSwarmTests;
 			productName = DroozleTests;
-			productReference = A8166A771B99E84700F47146 /* WordBatch.xctest */;
+			productReference = A8166A771B99E84700F47146 /* WordSwarm.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -329,7 +329,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A8166A591B99E84700F47146 /* Build configuration list for PBXProject "WordBatch" */;
+			buildConfigurationList = A8166A591B99E84700F47146 /* Build configuration list for PBXProject "WordSwarm" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -342,8 +342,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A8166A5D1B99E84700F47146 /* WordBatch */,
-				A8166A761B99E84700F47146 /* WordBatchTests */,
+				A8166A5D1B99E84700F47146 /* WordSwarm */,
+				A8166A761B99E84700F47146 /* WordSwarmTests */,
 			);
 		};
 /* End PBXProject section */
@@ -429,7 +429,7 @@
 /* Begin PBXTargetDependency section */
 		A8166A791B99E84700F47146 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A8166A5D1B99E84700F47146 /* WordBatch */;
+			target = A8166A5D1B99E84700F47146 /* WordSwarm */;
 			targetProxy = A8166A781B99E84700F47146 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -551,8 +551,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lexicontext",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "JTD.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = WordBatch;
+				PRODUCT_BUNDLE_IDENTIFIER = JTD.WordBatch;
+				PRODUCT_NAME = WordSwarm;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -572,8 +572,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lexicontext",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "JTD.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = WordBatch;
+				PRODUCT_BUNDLE_IDENTIFIER = JTD.WordBatch;
+				PRODUCT_NAME = WordSwarm;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -594,8 +594,8 @@
 				INFOPLIST_FILE = DroozleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JTD.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = WordBatch;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WordBatch.app/WordBatch";
+				PRODUCT_NAME = WordSwarm;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WordSwarm.app/WordSwarm";
 			};
 			name = Debug;
 		};
@@ -610,15 +610,15 @@
 				INFOPLIST_FILE = DroozleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JTD.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = WordBatch;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WordBatch.app/WordBatch";
+				PRODUCT_NAME = WordSwarm;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WordSwarm.app/WordSwarm";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A8166A591B99E84700F47146 /* Build configuration list for PBXProject "WordBatch" */ = {
+		A8166A591B99E84700F47146 /* Build configuration list for PBXProject "WordSwarm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A8166A7F1B99E84700F47146 /* Debug */,
@@ -627,7 +627,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A8166A811B99E84700F47146 /* Build configuration list for PBXNativeTarget "WordBatch" */ = {
+		A8166A811B99E84700F47146 /* Build configuration list for PBXNativeTarget "WordSwarm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A8166A821B99E84700F47146 /* Debug */,
@@ -636,7 +636,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A8166A841B99E84700F47146 /* Build configuration list for PBXNativeTarget "WordBatchTests" */ = {
+		A8166A841B99E84700F47146 /* Build configuration list for PBXNativeTarget "WordSwarmTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A8166A851B99E84700F47146 /* Debug */,
