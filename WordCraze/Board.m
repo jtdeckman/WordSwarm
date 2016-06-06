@@ -426,6 +426,87 @@
     }
 }
 
+- (void)moveColumns {
+    
+    bool leftColumn = false;
+    
+    int stopVal = (int)(dimy/2);
+    
+    for(int i=0; i<stopVal; i++) {
+        if([self checkColumn:i]) {
+            [self shiftColumnsLeft:i];
+            leftColumn = true;
+        }
+    }
+    
+    if(!leftColumn) {
+        for(int i=dimy-1; i>stopVal; i--) {
+            if([self checkColumn:i]) {
+                [self shiftColumnsRight:i];
+            }
+        }
+    }
+}
+
+- (BOOL)checkColumn:(int)col {
+    
+    Space *space;
+    
+    for(int i=0; i<dimx; i++) {
+        space = spaces[i][col];
+        if(space.isOccupied)
+            return NO;
+    }
+    
+    return YES;
+}
+
+- (void)shiftColumnsLeft:(int)index {
+    
+    Space *space, *spaceRight;
+    
+    for(int col=index; col<dimy-1; col++) {
+        for(int row=0; row<dimx; row++) {
+            space = spaces[row][col];
+            spaceRight = spaces[row][col+1];
+            
+            space.value = spaceRight.value;
+            space.isOccupied = spaceRight.isOccupied;
+            space.piece.hidden = spaceRight.piece.hidden;
+            space.pointValue = spaceRight.pointValue;
+            space.backPieceVal = spaceRight.backPieceVal;
+            space.pointsLabel.hidden = spaceRight.pointsLabel.hidden;
+            
+            [space configurePiece:NO :[tileImages backgroundImageForIndex:space.pointValue]];
+            [self removePiece:spaceRight];
+
+        }
+    }
+}
+
+- (void)shiftColumnsRight:(int)index {
+    
+    Space *space, *spaceLeft;
+    
+    for(int col=index; col>0; col--) {
+        for(int row=0; row<dimx; row++) {
+            space = spaces[row][col];
+            spaceLeft = spaces[row][col-1];
+            
+            space.value = spaceLeft.value;
+            space.isOccupied = spaceLeft.isOccupied;
+            space.piece.hidden = spaceLeft.piece.hidden;
+            space.pointValue = spaceLeft.pointValue;
+            space.backPieceVal = spaceLeft.backPieceVal;
+            space.pointsLabel.hidden = spaceLeft.pointsLabel.hidden;
+            
+            [space configurePiece:NO :[tileImages backgroundImageForIndex:space.pointValue]];
+            [self removePiece:spaceLeft];
+            
+        }
+    }
+}
+
 - (int)findTopUnoccupiedRowForColumn:(int)column {
 
     Space *space;

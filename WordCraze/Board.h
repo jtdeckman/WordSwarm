@@ -62,6 +62,7 @@
 - (void)hideOccupiedPieces;
 - (void)unHideOccupiedPieces;
 - (void)shiftColumnsDown;
+- (void)moveColumns;
 
 - (void)deconstruct;
 

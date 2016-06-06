@@ -674,6 +674,8 @@
     for(int i=0; i<board.dimx; i++)
         [board shiftColumnsDown];
     
+    [board moveColumns];
+    
     [self clearCurrentWord];
     
     [self turnAnimationOff];
