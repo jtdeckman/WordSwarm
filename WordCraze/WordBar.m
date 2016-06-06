@@ -45,7 +45,7 @@
     barBackground.opaque = NO;
     barBackground.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.8];
     
-    [rootView addSubview:barBackground];
+ //   [rootView addSubview:barBackground];
     
     letters = [[NSMutableArray alloc] initWithCapacity:nLetters];
     
@@ -71,7 +71,7 @@
         
         letterLabel = [[UILabel alloc] initWithFrame:frm];
         
-        [rootView addSubview:letterLabel];
+       // [rootView addSubview:letterLabel];
         [letters addObject:letterLabel];
 
         letterLabel.hidden = NO;
@@ -274,7 +274,7 @@
     
     piece.hidden = NO;
     
-    [rootView addSubview:piece];
+  //  [rootView addSubview:piece];
     
     [UIView animateWithDuration:duration delay:delay options:UIViewAnimationOptionCurveEaseIn animations:^{
         
@@ -316,7 +316,7 @@
     
     piece.hidden = NO;
     
-    [rootView addSubview:piece];
+   // [rootView addSubview:piece];
     
     frm.origin = destination.frame.origin;
     

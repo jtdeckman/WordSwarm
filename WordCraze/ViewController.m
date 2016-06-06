@@ -451,7 +451,7 @@
                 
                 animating = YES;
                 
-                [self performSelector:@selector(populateWordBarFromSpaces) withObject:touchedSpace afterDelay:0.4f];
+             //   [self performSelector:@selector(populateWordBarFromSpaces) withObject:touchedSpace afterDelay:0.4f];
                 
                 [self performSelector:@selector(shiftColumnsDownAfterDelay) withObject:touchedSpace afterDelay:0.4f];
                 
@@ -619,7 +619,7 @@
 - (void)eliminateRowFromBoard:(Space*)space {
    
     [board eliminateRow:space.iind];
-    [self checkWordRow];
+   // [self checkWordRow];
  
     animating = NO;
 }
