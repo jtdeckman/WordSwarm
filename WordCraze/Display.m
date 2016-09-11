@@ -768,8 +768,8 @@
     score = [[UILabel alloc] initWithFrame:frm];
     [rootView addSubview:score];
     
-    frm = score.frame;
-    frm.origin.x = nextBox.frame.origin.x;
+  //  frm = score.frame;
+  //  frm.origin.x = nextBox.frame.origin.x;
     
   //  nextScore = [[UILabel alloc] initWithFrame:frm];
  //   [rootView addSubview:nextScore];
@@ -841,8 +841,8 @@
  
     topBar.layer.borderColor = [[UIColor clearColor] CGColor];
     
-    [wordBar setUp:NUM_WORDBAR_LETTERS :topBar.frame :scoreBox.frame.origin.x :rootView];
-    wordBar.barBackground.backgroundColor = [UIColor clearColor];//topBar.backgroundColor;
+ //   [wordBar setUp:NUM_WORDBAR_LETTERS :topBar.frame :scoreBox.frame.origin.x :rootView];
+ //   wordBar.barBackground.backgroundColor = [UIColor clearColor];//topBar.backgroundColor;
     
     menuView.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.5];
     

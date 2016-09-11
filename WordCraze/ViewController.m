@@ -19,7 +19,7 @@
     
     [super viewDidLoad];
     
-    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     spinner.frame = CGRectMake(0, 0, 40, 40);
     spinner.center = self.view.center;
     
