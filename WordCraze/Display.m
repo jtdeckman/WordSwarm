@@ -746,22 +746,22 @@
     frm.size.width = 0.3333*(topBar.frame.size.width - 2.0*frm.origin.y);
     frm.origin.x = frm.origin.y;
     
-    scoreBox = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:scoreBox];
+  //  scoreBox = [[UILabel alloc] initWithFrame:frm];
+   // [rootView addSubview:scoreBox];
     
-    frm.origin.x += frm.size.width + 1.5*frm.origin.y;
-    frm.size.width = frm.size.width - 3.0*frm.origin.y;
+  //  frm.origin.x += frm.size.width + 1.5*frm.origin.y;
+  //  frm.size.width = frm.size.width - 3.0*frm.origin.y;
     
-    levelBox = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:levelBox];
+  //  levelBox = [[UILabel alloc] initWithFrame:frm];
+   // [rootView addSubview:levelBox];
     
-    frm.origin.x += frm.size.width + 1.5*frm.origin.y;
-    frm.size.width = scoreBox.frame.size.width;
+  //  frm.origin.x += frm.size.width + 1.5*frm.origin.y;
+  //  frm.size.width = scoreBox.frame.size.width;
     
-    nextBox = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:nextBox];
+   // nextBox = [[UILabel alloc] initWithFrame:frm];
+  //  [rootView addSubview:nextBox];
     
-    frm = scoreBox.frame;
+ //   frm = scoreBox.frame;
     frm.size.height *= 0.80;
     frm.origin.y = frm.origin.y + 1.25*(scoreBox.frame.size.height - frm.size.height);///2.0;
     
@@ -771,8 +771,8 @@
     frm = score.frame;
     frm.origin.x = nextBox.frame.origin.x;
     
-    nextScore = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:nextScore];
+  //  nextScore = [[UILabel alloc] initWithFrame:frm];
+ //   [rootView addSubview:nextScore];
     
     frm = score.frame;
     frm.origin.y = topBar.frame.origin.y + 0.05*frm.size.height;
@@ -780,45 +780,45 @@
     scoreLabel = [[UILabel alloc] initWithFrame:frm];
     [rootView addSubview:scoreLabel];
     
-    frm = levelBox.frame;
-    frm.origin.y = scoreLabel.frame.origin.y + 0.075*scoreLabel.frame.size.height;
-    frm.size.height = scoreLabel.frame.size.height;
+  //  frm = levelBox.frame;
+  //  frm.origin.y = scoreLabel.frame.origin.y + 0.075*scoreLabel.frame.size.height;
+  //  frm.size.height = scoreLabel.frame.size.height;
     
-    levelLabel = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:levelLabel];
+  //  levelLabel = [[UILabel alloc] initWithFrame:frm];
+  //  [rootView addSubview:levelLabel];
     
-    frm = levelBox.frame;
-    frm.size.height *= 0.8;
-    frm.origin.y = levelLabel.frame.origin.y + 0.45*levelLabel.frame.size.height;
+  //  frm = levelBox.frame;
+  //  frm.size.height *= 0.8;
+  //  frm.origin.y = levelLabel.frame.origin.y + 0.45*levelLabel.frame.size.height;
     
-    level = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:level];
+  //  level = [[UILabel alloc] initWithFrame:frm];
+  //  [rootView addSubview:level];
     
-    frm = levelBox.frame;
-    frm.size.width *= 0.85;
-    frm.size.height *= 0.825;
-    frm.origin.x = frm.origin.x + (levelBox.frame.size.width - frm.size.width)/2.0;
-    frm.origin.y = frm.origin.y + (levelBox.frame.size.height - frm.size.height)/2.0 + 0.01*frm.size.height;
+//    frm = levelBox.frame;
+ //   frm.size.width *= 0.85;
+ //   frm.size.height *= 0.825;
+//    frm.origin.x = frm.origin.x + (levelBox.frame.size.width - frm.size.width)/2.0;
+//    frm.origin.y = frm.origin.y + (levelBox.frame.size.height - frm.size.height)/2.0 + 0.01*frm.size.height;
     
-    levelBackgroundPiece = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:levelBackgroundPiece];
+  //  levelBackgroundPiece = [[UILabel alloc] initWithFrame:frm];
+ //   [rootView addSubview:levelBackgroundPiece];
     
-    frm = scoreLabel.frame;
-    frm.origin.x = nextBox.frame.origin.x;
+ //   frm = scoreLabel.frame;
+ //   frm.origin.x = nextBox.frame.origin.x;
     
-    nextScoreLabel = [[UILabel alloc] initWithFrame:frm];
-    [rootView addSubview:nextScoreLabel];
+ //   nextScoreLabel = [[UILabel alloc] initWithFrame:frm];
+ //   [rootView addSubview:nextScoreLabel];
     
-    baseLevel = level.frame;
-    baseLevelBackPiece = levelBackgroundPiece.frame;
-    baseLevelLabel = levelLabel.frame;
+ //   baseLevel = level.frame;
+ //   baseLevelBackPiece = levelBackgroundPiece.frame;
+ //   baseLevelLabel = levelLabel.frame;
     
-    [rootView bringSubviewToFront:levelLabel];
-    [rootView bringSubviewToFront:level];
+  //  [rootView bringSubviewToFront:levelLabel];
+  //  [rootView bringSubviewToFront:level];
     
     [self setUpColors] ;
     
-    CGRect tmpFrm;
+   /* CGRect tmpFrm;
     
     tmpFrm = scoreBox.frame;
     scoreBox.frame = nextBox.frame;
@@ -830,7 +830,7 @@
     
     tmpFrm = score.frame;
     score.frame = nextScore.frame;
-    nextScore.frame = tmpFrm;
+    nextScore.frame = tmpFrm; */
 }
 
 - (void)setUpColors {
@@ -856,7 +856,7 @@
     
  // Boxes
     
-    scoreBox.hidden = NO;
+  /*  scoreBox.hidden = NO;
     scoreBox.layer.cornerRadius = 5.0;
     scoreBox.clipsToBounds = YES;
     scoreBox.opaque = NO;
@@ -986,7 +986,7 @@
     nextScoreLabel.textColor = [UIColor whiteColor];
     nextScoreLabel.backgroundColor = [UIColor clearColor];
     
-    nextScoreLabel.text = @"Word Type";
+    nextScoreLabel.text = @"Word Type"; */
 }
 
 - (CGRect)initBoardView: (CGRect)viewFrame{

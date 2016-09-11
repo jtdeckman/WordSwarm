@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C2875581D8530AA0068073F /* LetterBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2875571D8530AA0068073F /* LetterBar.m */; };
 		8C3744201CBB437F003FAB42 /* HowToScreenInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C37441F1CBB437F003FAB42 /* HowToScreenInit.m */; };
 		8C3744221CBB45E6003FAB42 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C3744211CBB45E6003FAB42 /* checked.png */; };
 		8C3744241CBB45EC003FAB42 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C3744231CBB45EC003FAB42 /* unchecked.png */; };
 		8C4DF38B1CBB605B006F408F /* HowToScreen-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C4DF38A1CBB605B006F408F /* HowToScreen-1.png */; };
 		8C4DF38D1CBB6067006F408F /* HowToScreen-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C4DF38C1CBB6067006F408F /* HowToScreen-2.png */; };
 		8C4DF38F1CBC1186006F408F /* Launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C4DF38E1CBC1186006F408F /* Launch.png */; };
+		8C7B78BA1D276BBD0094D11C /* phraseBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B78B91D276BBD0094D11C /* phraseBar.m */; };
 		8C85F4DF1C35AEC000908313 /* WordBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85F4DE1C35AEC000908313 /* WordBar.m */; };
 		8C85F4EC1C36620400908313 /* p1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C85F4E41C36620400908313 /* p1.png */; };
 		8C85F4ED1C36620400908313 /* p2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C85F4E51C36620400908313 /* p2.png */; };
@@ -65,6 +67,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C2875561D8530AA0068073F /* LetterBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LetterBar.h; sourceTree = "<group>"; };
+		8C2875571D8530AA0068073F /* LetterBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LetterBar.m; sourceTree = "<group>"; };
 		8C37441E1CBB437F003FAB42 /* HowToScreenInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowToScreenInit.h; sourceTree = "<group>"; };
 		8C37441F1CBB437F003FAB42 /* HowToScreenInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToScreenInit.m; sourceTree = "<group>"; };
 		8C3744211CBB45E6003FAB42 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 		8C4DF38A1CBB605B006F408F /* HowToScreen-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HowToScreen-1.png"; sourceTree = "<group>"; };
 		8C4DF38C1CBB6067006F408F /* HowToScreen-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HowToScreen-2.png"; sourceTree = "<group>"; };
 		8C4DF38E1CBC1186006F408F /* Launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launch.png; sourceTree = "<group>"; };
+		8C7B78B81D276BBD0094D11C /* phraseBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = phraseBar.h; sourceTree = "<group>"; };
+		8C7B78B91D276BBD0094D11C /* phraseBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = phraseBar.m; sourceTree = "<group>"; };
 		8C85F4DD1C35AEC000908313 /* WordBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordBar.h; sourceTree = "<group>"; };
 		8C85F4DE1C35AEC000908313 /* WordBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordBar.m; sourceTree = "<group>"; };
 		8C85F4E41C36620400908313 /* p1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p1.png; sourceTree = "<group>"; };
@@ -217,6 +223,10 @@
 				8CEBF9381C34E4120055861A /* Animations.m */,
 				8C85F4DD1C35AEC000908313 /* WordBar.h */,
 				8C85F4DE1C35AEC000908313 /* WordBar.m */,
+				8C7B78B81D276BBD0094D11C /* phraseBar.h */,
+				8C7B78B91D276BBD0094D11C /* phraseBar.m */,
+				8C2875561D8530AA0068073F /* LetterBar.h */,
+				8C2875571D8530AA0068073F /* LetterBar.m */,
 				8CE280931C3AECA400199940 /* Info.plist */,
 				A8166A6E1B99E84700F47146 /* Images.xcassets */,
 				A8166A701B99E84700F47146 /* LaunchScreen.xib */,
@@ -403,6 +413,7 @@
 				A831F6111BB0B8B70001E1BC /* Colors.m in Sources */,
 				A831F60D1BB0B0190001E1BC /* Display.m in Sources */,
 				8CF7E9781BEBED1F00BF3D4B /* WordLogic.m in Sources */,
+				8C2875581D8530AA0068073F /* LetterBar.m in Sources */,
 				8C85F4DF1C35AEC000908313 /* WordBar.m in Sources */,
 				A8166A671B99E84700F47146 /* AppDelegate.m in Sources */,
 				A8699DD01BB6FD9B00CCC1FD /* GamePlay.m in Sources */,
@@ -414,6 +425,7 @@
 				8CEBF9391C34E4120055861A /* Animations.m in Sources */,
 				8C8DA7131C2DEB590083CCE1 /* MenuView.m in Sources */,
 				8CEBF92C1C33669F0055861A /* SettingsViewController.m in Sources */,
+				8C7B78BA1D276BBD0094D11C /* phraseBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

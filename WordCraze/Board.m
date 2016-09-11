@@ -432,7 +432,7 @@
     
     int stopVal = (int)(dimy/2);
     
-    for(int i=0; i<stopVal; i++) {
+    for(int i=0; i<=stopVal; i++) {
         if([self checkColumn:i]) {
             [self shiftColumnsLeft:i];
             leftColumn = true;
