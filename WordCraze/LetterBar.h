@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TileImages.h"
+#import "WordLogic.h"
+#import "Constants.h"
 
-@interface LetterBar : UIView
+@interface LetterBar : UIView {
+    
+    NSMutableArray *letters;    
+}
+
+- (void)setUp:(CGRect)frm :(NSArray*)letterArry :(CGFloat)maxDim :(CGFloat)offset :(WordLogic*)wl;
 
 @end

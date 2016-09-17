@@ -15,6 +15,7 @@
 #import "SettingsViewController.h"
 #import "HowToScreen.h"
 #import "HowToScreenInit.h"
+#import "LetterBar.h"
 
 @interface ViewController : UIViewController {
 
@@ -50,6 +51,8 @@
     NSMutableArray *newLetters;
     
     UIActivityIndicatorView *spinner;
+    
+    LetterBar *letterBox;
 }
 
 - (void)saveDefaults;

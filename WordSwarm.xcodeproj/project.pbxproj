@@ -26,6 +26,7 @@
 		8C8DA7131C2DEB590083CCE1 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8DA7121C2DEB590083CCE1 /* MenuView.m */; };
 		8C9303A91C374A97008B1839 /* p10.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C9303A81C374A97008B1839 /* p10.png */; };
 		8CAF06691C3B044400A2DD9A /* HowToScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAF06681C3B044400A2DD9A /* HowToScreen.m */; };
+		8CBE692C1D8D2479001F89F7 /* whiteBars.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CBE692B1D8D2479001F89F7 /* whiteBars.png */; };
 		8CD640911C2F4F8800C9E6CF /* stars1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD640901C2F4F8800C9E6CF /* stars1.png */; };
 		8CD640B81C2F7E4A00C9E6CF /* TileImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD640B71C2F7E4A00C9E6CF /* TileImages.m */; };
 		8CE280731C39C51500199940 /* nuke2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CE280721C39C51500199940 /* nuke2.png */; };
@@ -92,6 +93,7 @@
 		8C9303A81C374A97008B1839 /* p10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p10.png; sourceTree = "<group>"; };
 		8CAF06651C3B032600A2DD9A /* HowToScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HowToScreen.h; sourceTree = "<group>"; };
 		8CAF06681C3B044400A2DD9A /* HowToScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HowToScreen.m; path = ../HowToScreen.m; sourceTree = "<group>"; };
+		8CBE692B1D8D2479001F89F7 /* whiteBars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteBars.png; sourceTree = "<group>"; };
 		8CD640901C2F4F8800C9E6CF /* stars1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars1.png; sourceTree = "<group>"; };
 		8CD640B61C2F7E4A00C9E6CF /* TileImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileImages.h; sourceTree = "<group>"; };
 		8CD640B71C2F7E4A00C9E6CF /* TileImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileImages.m; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				8CEBF9401C35261E0055861A /* bomb.png */,
 				8CE280721C39C51500199940 /* nuke2.png */,
 				8C3744211CBB45E6003FAB42 /* checked.png */,
+				8CBE692B1D8D2479001F89F7 /* whiteBars.png */,
 				8C3744231CBB45EC003FAB42 /* unchecked.png */,
 				8C4DF38A1CBB605B006F408F /* HowToScreen-1.png */,
 				8C4DF38C1CBB6067006F408F /* HowToScreen-2.png */,
@@ -363,6 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CBE692C1D8D2479001F89F7 /* whiteBars.png in Resources */,
 				8C4DF38D1CBB6067006F408F /* HowToScreen-2.png in Resources */,
 				8C3744221CBB45E6003FAB42 /* checked.png in Resources */,
 				8C85F4F11C36620400908313 /* p7.png in Resources */,

@@ -77,23 +77,6 @@
         [spaces addObject:row];
     }
     
- /*   spcFrm.size.width = 1.35*spcFrm.size.width;
-    spcFrm.size.height -= offset;
-    
-    for(int i=0; i<dimx; i++) {
-    
-        newSpace = spaces[i][dimy-1];
-        
-        spcFrm.origin.x = newSpace.piece.frame.origin.x + newSpace.piece.frame.size.width + 0.1*buffer + os2;
-        spcFrm.origin.y = newSpace.piece.frame.origin.y + os2;
-      
-        newSpace = [[Space alloc] init];
-        
-        [newSpace initSpace:i :-1 :spcFrm :spcFrm];
-        
-        [rowTypes addObject:newSpace];
-    } */
-    
     [self findNeighbors];
     
     tileImages = [[TileImages alloc] init];

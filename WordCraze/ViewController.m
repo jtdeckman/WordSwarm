@@ -613,7 +613,20 @@
     
     currentWord = [[NSMutableString alloc] initWithString:@""];
     
+    
+    letterBox = [[LetterBar alloc] init];
+    
+    NSArray *letters = [NSArray arrayWithObjects:@"A",@"C", @"F", @"V", @"E", @"O", @"M", @"P", @"U",
+                                                 @"Q", @"E", @"T", @"I", @"N", nil];
+    
+    Space *spc = board.spaces[0][0];
+    CGRect spcFrm = spc.piece.frame;
+    
+    [letterBox setUp:display.topBar.frame :letters :spcFrm.size.width: spcFrm.origin.x :gamePlay.wordLogic];
+    [self.view addSubview:letterBox];
+    
     [self stopSpinner];
+
 }
 
 - (void)eliminateRowFromBoard:(Space*)space {
