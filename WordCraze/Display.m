@@ -541,13 +541,13 @@
     
     else {
         
-        floatScore.textColor = [UIColor whiteColor];
+        floatScore.textColor = [UIColor redColor];
         floatScore.text = [NSString stringWithFormat:@"+ %d",addedPoints];
     }
     
     frm = score.frame;
-    frm.origin.y = scoreBox.frame.origin.y + scoreBox.frame.size.height - 0.25*frm.size.height;
-    frm.origin.x = scoreBox.frame.origin.x - 0.25*frm.size.width;
+    frm.origin.y = score.frame.origin.y + score.frame.size.height - 0.25*frm.size.height;
+    frm.origin.x = score.frame.origin.x;// - 0.25*frm.size.width;
     
     [UIView animateWithDuration:0.75f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
         
@@ -802,7 +802,7 @@
     [score setTextAlignment:NSTextAlignmentRight];
     score.font = level.font;
     
-    score.textColor = [UIColor whiteColor];
+    score.textColor = [UIColor redColor];
     score.backgroundColor = [UIColor clearColor];
 }
 
@@ -1008,7 +1008,7 @@
     [floatScore setTextAlignment:NSTextAlignmentCenter];
     [floatScore setFont:[UIFont fontWithName:@"Copperplate" size:1.25*FONT_FACT*floatScore.frame.size.height]];
     
-    floatScore.textColor = [UIColor whiteColor];
+    floatScore.textColor = [UIColor redColor];
     floatScore.backgroundColor = [UIColor clearColor];
     
     [self setUpAnimations];
