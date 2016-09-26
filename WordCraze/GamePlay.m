@@ -18,7 +18,7 @@
    
     CGFloat buffer = frm.size.width*PIECE_BUFFER;
     
-    dimx = 9;
+    dimx = 10;
     dimy = 7;
     
     

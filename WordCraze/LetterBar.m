@@ -138,7 +138,8 @@
     lbl.textColor = piece.textColor;
     lbl.font = piece.font;
     lbl.clipsToBounds = YES;
-    lbl.layer.cornerRadius = piece.layer.cornerRadius;
+    lbl.layer.cornerRadius = 5.0;
+    lbl.textAlignment = NSTextAlignmentCenter;
     lbl.text = letter.text;
     
     [self.superview addSubview:lbl];

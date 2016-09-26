@@ -616,9 +616,6 @@
     
     bottomRow = board.dimx - 1;
     
-    [display.wordBar setUpForLevel:1];
-    display.wordBar.wordCategory = [gamePlay getRandomCategoryForLevel:gamePlay.gameData.level];
-    
     [display updateScore];
     [display updateLevelValues];
     
@@ -654,38 +651,6 @@
     animating = NO;
 }
 
-- (void)populateWordBarFromSpaces {
-
-    Space *space;
-
-    CGFloat duration = 0.5f;
-    CGFloat delay = 0.0f;
-    CGFloat totalTime = 0.0f;
-    
-    int nletters = [display.wordBar numOccupied];
-    int maxSize = [display.wordBar lettersInLevel];
-  
-    for(int j=0; j<highlightedPieces.count; j++) {
-        
-        if(nletters < maxSize) {
-                
-            space = [highlightedPieces objectAtIndex:j];
-        
-            if(space.backPieceVal > 1 && ![space.value isEqualToString:@""]) {
-                    
-                [display.wordBar animatePieceToSpace:space.piece :duration :delay :nletters];
-                [display.wordBar addLetterToBox:space.value withDelay:duration+0.1];
-                
-                ++nletters;
-         
-                totalTime += duration;
-            }
-        }
-    }
-    
-    [self performSelector:@selector(checkWordRow) withObject:nil afterDelay:totalTime];
-}
-
 - (void)shiftColumnsDownAfterDelay {
     
    // [self checkWordRow];
@@ -711,49 +676,6 @@
     [self turnAnimationOff];
 }
 
-- (void)checkWordRow {
-    
-    [display checkAlertView:[board numRowsOccupied]];
-    
-    if([display.wordBar boxesFilled]) {
-        
-        NSString *word = [display.wordBar makeWordFromLetters];
-        
-        if([gamePlay checkWord:word :display.wordBar.wordCategory]) {
-            
-            if(gamePlay.gameData.gamePlay == FREE_PLAY) {
-                [self performSelector:@selector(clearLettersWithDelay) withObject:nil afterDelay:0.51];
-            }
-            else
-                gamePlay.gameState = levelUp;
-        }
-        
-        else {
-            
-            if([board topRowOccupied]) {
-            
-                gamePlay.gameState = gameOver;
-                
-                animating = YES;
-                
-                [display.animations animateTextBox2:2.0f :0.90*self.view.frame.size.height :0.3*self.view.frame.size.height :0.4f :@"Game Over"];
-                
-                [board hideOccupiedPieces];
-                [display hideAlertView];
-            }
-            
-            else {
-                
-                animating = YES;
-                
-                [display.wordBar makeBarPiecesFlash:1.5];
-                [self performSelector:@selector(turnAnimationOff) withObject:nil afterDelay:1.6];
-            }
-        }
-    }
-    
-    [display updateScore];
-}
 
 - (void)turnAnimationOff {
 
@@ -773,11 +695,6 @@
     [board unHidePiecesInRow:touchedSpace.iind];
     
     animating = NO;
-}
-
-- (void)clearLettersWithDelay {
-
-    [display.wordBar clearLetters];
 }
 
 - (void)setUpNewGame {
@@ -827,7 +744,6 @@
 - (void)clearBoardAfterAnimation {
 
     [board clearBoard];
-    [display.wordBar clearLetters];
     
     animating = NO;
 }

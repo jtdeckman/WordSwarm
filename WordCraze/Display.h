@@ -76,8 +76,6 @@
     AnimationPieces *animationPieces;
     Animations *animations;
     
-    WordBar *wordBar;
-    
     Colors *colors;
 }
 
@@ -102,7 +100,6 @@
 @property(nonatomic, strong) NSMutableArray *piecesToAnimate;
 
 @property(nonatomic, strong) Animations *animations;
-@property(nonatomic, strong) WordBar *wordBar;
 
 - (void)initDisplay:(CGRect)viewFrame :(UIViewController*)rootViewCont;
 - (void)setUpColors;
