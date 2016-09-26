@@ -230,8 +230,8 @@
 
     CGRect frm = boardView.frame;
     
-    frm.origin.y -= wordBar.barBackground.frame.size.height;
-    frm.size.height += wordBar.barBackground.frame.size.height;
+   // frm.origin.y -= wordBar.barBackground.frame.size.height;
+   // frm.size.height += wordBar.barBackground.frame.size.height;
     
     alertView.hidden = NO;
     alertView.alpha = alpha;
@@ -687,7 +687,7 @@
     [colors setUpColors];
     
     frm = viewFrame;
-    frm.size.height *= 0.1325;
+    frm.size.height *= 0.1425;
     
     topBar = [[UIView alloc] initWithFrame:frm];
     
@@ -725,10 +725,10 @@
     [rootView bringSubviewToFront:menuView];
     
     frm = boardView.frame;
-    frm.origin.x = topBar.frame.size.height + topOffset.size.height;
-    frm.size.height = rootView.frame.size.height - topBar.frame.size.height - topOffset.size.height - bottomBar.frame.size.height;
+    frm.origin.y = topBar.frame.size.height + topBar.frame.origin.y;// + topOffset.size.height;
+    frm.size.height = rootView.frame.size.height - topBar.frame.size.height - bottomBar.frame.size.height;
     
-    alertView = [[UIView alloc] initWithFrame:boardView.frame];
+    alertView = [[UIView alloc] initWithFrame:frm];
     
     alertView.backgroundColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:0.75];
     
@@ -1036,7 +1036,6 @@
     boardFrm.size.height = boardView.frame.size.height;// - 0.5*boardFrm.origin.x;
     boardFrm.size.width = viewFrame.size.width;// - 2.0*boardFrm.origin.x;
     
-    NSLog(@"%f %f %f", wordBar.barBackground.frame.origin.y + wordBar.barBackground.frame.size.height, boardView.frame.origin.y, boardView.frame.size.height);
     return boardFrm;
 }
 

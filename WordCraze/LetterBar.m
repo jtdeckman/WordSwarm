@@ -108,4 +108,75 @@
     [self addSubview:piece];
 }
 
+- (void)letterIsInFirstRow:(NSString*)letter :(UILabel*)piece {
+
+    int row = [self firstRow];
+    
+    if(row > -1) {
+    
+        NSArray *letterRow = letters[row];
+        
+        for(int i=0; i<letterRow.count; i++) {
+            
+            UILabel *lett = letterRow[i];
+            
+            if([lett.text isEqualToString:letter]) {
+                
+                [self animatePiece:row :i :piece];
+            }
+        }
+    }
+}
+
+- (void)animatePiece:(int)row :(int)lettInd :(UILabel*)piece {
+
+    UILabel *letter = letters[row][lettInd];
+    
+    __block UILabel *lbl = [[UILabel alloc] initWithFrame:piece.frame];
+    
+    lbl.backgroundColor = piece.backgroundColor;
+    lbl.textColor = piece.textColor;
+    lbl.font = piece.font;
+    lbl.clipsToBounds = YES;
+    lbl.layer.cornerRadius = piece.layer.cornerRadius;
+    lbl.text = letter.text;
+    
+    [self.superview addSubview:lbl];
+    
+    CGRect frm = letter.frame;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        lbl.frame = frm;
+        
+    } completion:^(BOOL finished) {
+        
+        letter.text = @"";
+        letter.hidden = YES;
+        [lbl removeFromSuperview];
+        lbl = nil;
+    }];
+}
+
+- (int)firstRow {
+   
+    for(int i=0; i<letters.count; i++) {
+        
+        NSArray *letterRow = letters[i];
+        
+        for(int j=0; j<letterRow.count; j++) {
+            
+            UILabel *letter = letterRow[j];
+            
+            if(![letter.text isEqualToString:@""]) {
+                
+                return i;
+            }
+        }
+    }
+    
+    return -1;
+}
+
+
 @end

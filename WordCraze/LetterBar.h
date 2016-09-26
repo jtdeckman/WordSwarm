@@ -13,9 +13,10 @@
 
 @interface LetterBar : UIView {
     
-    NSMutableArray *letters;    
+    NSMutableArray *letters;
 }
 
 - (void)setUp:(CGRect)frm :(NSArray*)letterArry :(CGFloat)maxDim :(CGFloat)offset :(WordLogic*)wl;
+- (void)letterIsInFirstRow:(NSString*)letter :(UILabel*)piece;
 
 @end

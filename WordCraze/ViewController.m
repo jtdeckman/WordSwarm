@@ -451,6 +451,8 @@
                 
                 animating = YES;
                 
+                [self checkBoxedLetters];
+                
              //   [self performSelector:@selector(populateWordBarFromSpaces) withObject:touchedSpace afterDelay:0.4f];
                 
                 [self performSelector:@selector(shiftColumnsDownAfterDelay) withObject:touchedSpace afterDelay:0.4f];
@@ -536,6 +538,21 @@
     else {
         display.floatPiece.hidden = YES;
         [display resetAddPiece];
+    }
+}
+
+- (void)checkBoxedLetters {
+    
+    Space *spc;
+    
+    for(int j=0; j<highlightedPieces.count; j++) {
+        
+        spc = [highlightedPieces objectAtIndex:j];
+                
+        if(spc.backPieceVal > 1 && ![spc.value isEqualToString:@""]) {
+            
+            [letterBox letterIsInFirstRow:spc.piece.text :spc.piece];
+        }
     }
 }
 
