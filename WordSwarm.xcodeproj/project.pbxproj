@@ -98,7 +98,6 @@
 		8CD640B61C2F7E4A00C9E6CF /* TileImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileImages.h; sourceTree = "<group>"; };
 		8CD640B71C2F7E4A00C9E6CF /* TileImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileImages.m; sourceTree = "<group>"; };
 		8CE280721C39C51500199940 /* nuke2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nuke2.png; sourceTree = "<group>"; };
-		8CE2807D1C3AD7D100199940 /* WordCraze */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = WordCraze; path = /Users/jasondeckman/Dropbox/Code/iOS/WordCraze/WordCraze; sourceTree = "<absolute>"; };
 		8CE280931C3AECA400199940 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CEBF8F61C30E7810055861A /* menuBars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBars.png; sourceTree = "<group>"; };
 		8CEBF9221C31C56D0055861A /* AnimationPieces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationPieces.h; sourceTree = "<group>"; };
@@ -220,7 +219,6 @@
 				8CAF06681C3B044400A2DD9A /* HowToScreen.m */,
 				8C37441E1CBB437F003FAB42 /* HowToScreenInit.h */,
 				8C37441F1CBB437F003FAB42 /* HowToScreenInit.m */,
-				8CE2807D1C3AD7D100199940 /* WordCraze */,
 				8CEBF9371C34E4120055861A /* Animations.h */,
 				8CEBF9381C34E4120055861A /* Animations.m */,
 				8C85F4DD1C35AEC000908313 /* WordBar.h */,
