@@ -150,11 +150,13 @@
             [board hideOccupiedPieces];
             
             [display hideAlertView];
-            [display animateLevelTile:1.0];
+         //   [display animateLevelTile:1.0];
+            
+             [display.animations animateTextBox2:2.0f :0.90*self.view.frame.size.height :0.3*self.view.frame.size.height :0.4f :[NSString stringWithFormat:@"Level %d", gamePlay.gameData.level + 1]];
         
             display.level.text = @"";
             
-            [self performSelector:@selector(setUpForNextLevel) withObject:nil afterDelay:1.1];
+            [self performSelector:@selector(setUpForNextLevel) withObject:nil afterDelay:3.0];
         }
     }
 }
@@ -455,15 +457,15 @@
                 
              //   [self performSelector:@selector(populateWordBarFromSpaces) withObject:touchedSpace afterDelay:0.4f];
                 
-                [self performSelector:@selector(shiftColumnsDownAfterDelay) withObject:touchedSpace afterDelay:0.4f];
-                
                 int wordScore  = [self calcScoreFromSelectedPieces];
                 
                 [gamePlay updateScore:wordScore];
                 
                 [board getPiecesInRow:display.piecesToAnimate :touchedSpace.iind :YES :0];
-                
+               
                 [display animateScore:wordScore];
+                
+                [self performSelector:@selector(shiftColumnsDownAfterDelay) withObject:touchedSpace afterDelay:0.4f];
             }
             
             else {
@@ -629,9 +631,10 @@
     
     
     letterBox = [[LetterBar alloc] init];
+    letterBox.gamePlay = gamePlay;
     
-    NSArray *letters = [NSArray arrayWithObjects:@"A",@"C", @"F", @"V", @"E", @"O", @"M", @"P", @"U",
-                                                 @"Q", @"E", @"T", @"I", @"N", nil];
+    NSArray *letters = [NSArray arrayWithObjects:@"A",@"C", @"F", @"V", @"E", @"O", @"M", @"P", @"U", nil];
+                                               //  @"Q", @"E", @"T", @"I", @"N", nil];
     
     Space *spc = board.spaces[0][0];
     CGRect spcFrm = spc.piece.frame;
@@ -712,7 +715,7 @@
     
     [self dismissViewControllerAnimated:NO completion:nil];
     
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     [appDelegate resetApp];
 }

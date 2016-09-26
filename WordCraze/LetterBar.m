@@ -156,6 +156,8 @@
         letter.hidden = YES;
         [lbl removeFromSuperview];
         lbl = nil;
+        
+        if([self noLetters]) self.gamePlay.gameState = levelUp;
     }];
 }
 
@@ -169,7 +171,7 @@
             
             UILabel *letter = letterRow[j];
             
-            if(![letter.text isEqualToString:@""]) {
+            if(!letter.hidden) {//![letter.text isEqualToString:@""]) {
                 
                 return i;
             }
@@ -177,6 +179,22 @@
     }
     
     return -1;
+}
+
+- (bool)noLetters {
+    
+    for(int i=0; i<letters.count; i++) {
+        
+        NSArray *letterRow = letters[i];
+        
+        for(int j=0; j<letterRow.count; j++) {
+            
+            if(!((UILabel*)letterRow[j]).hidden) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 

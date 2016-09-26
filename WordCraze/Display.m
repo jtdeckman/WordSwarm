@@ -486,7 +486,7 @@
     levelLabel.hidden = NO;
     level.hidden = NO;
     
-    level.text = [NSString stringWithFormat:@"%d",gamePlay.gameData.level];
+    level.text = [NSString stringWithFormat:@"Level: %d",gamePlay.gameData.level];
 }
 
 - (void)setUpWordBarForLevel {
