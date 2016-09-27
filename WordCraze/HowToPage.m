@@ -36,7 +36,12 @@
     }
 }
 
-- (void)setUp:(CGRect)frm {
+- (void)setUp {
+    
+    CGRect frm = self.frame;
+    
+    self.layer.cornerRadius = 5.0;
+    self.clipsToBounds = YES;
     
     if(self.frame.size.width/self.frame.size.height > 0.74) {
         
@@ -49,18 +54,18 @@
     
     [self addSubview:screen];
     
-    frm.size.width = 0.075*self.frame.size.width;
+    frm.size.width = 0.061*self.frame.size.width;
     frm.size.height = frm.size.width;
     
-    frm.origin.x = 0.335*self.frame.size.width;
-    frm.origin.y = 0.875*self.frame.size.height;
+    frm.origin.x = 0.35*self.frame.size.width;
+    frm.origin.y = 0.895*self.frame.size.height;
     
     checkBox = [[UILabel alloc] initWithFrame:frm];
     
     checkBox.layer.cornerRadius = 2.50;
     checkBox.clipsToBounds = YES;
     
-    checkBox.textColor = [UIColor blackColor];
+    checkBox.textColor = [UIColor redColor];
     checkBox.layer.borderColor = [[UIColor whiteColor] CGColor];
     checkBox.layer.borderWidth = 0.85;
     checkBox.backgroundColor = [UIColor whiteColor];
@@ -83,8 +88,8 @@
     _doneLabel.clipsToBounds = YES;
     _doneLabel.opaque = NO;
     
-    _doneLabel.textColor = [UIColor whiteColor];
-    _doneLabel.layer.borderColor = [[UIColor whiteColor] CGColor];
+    _doneLabel.textColor = [UIColor redColor];
+    _doneLabel.layer.borderColor = [[UIColor redColor] CGColor];
     _doneLabel.layer.borderWidth = 0.85;
     _doneLabel.hidden = NO;
     _doneLabel.text = @"Done";

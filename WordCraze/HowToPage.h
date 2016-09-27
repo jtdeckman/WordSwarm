@@ -16,6 +16,6 @@
 @property(nonatomic, strong) UILabel *doneLabel;
 @property(nonatomic, strong) UILabel *checkBox;
 
-- (void)setUp:(CGRect)frm;
+- (void)setUp;
 
 @end
