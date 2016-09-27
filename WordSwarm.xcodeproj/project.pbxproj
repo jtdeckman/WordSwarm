@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C15B4741D9A408B00B4876F /* HowToPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C15B4731D9A408B00B4876F /* HowToPage.m */; };
 		8C2875581D8530AA0068073F /* LetterBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2875571D8530AA0068073F /* LetterBar.m */; };
 		8C3744201CBB437F003FAB42 /* HowToScreenInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C37441F1CBB437F003FAB42 /* HowToScreenInit.m */; };
 		8C3744221CBB45E6003FAB42 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C3744211CBB45E6003FAB42 /* checked.png */; };
@@ -68,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C15B4721D9A408B00B4876F /* HowToPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowToPage.h; sourceTree = "<group>"; };
+		8C15B4731D9A408B00B4876F /* HowToPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToPage.m; sourceTree = "<group>"; };
 		8C2875561D8530AA0068073F /* LetterBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LetterBar.h; sourceTree = "<group>"; };
 		8C2875571D8530AA0068073F /* LetterBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LetterBar.m; sourceTree = "<group>"; };
 		8C37441E1CBB437F003FAB42 /* HowToScreenInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowToScreenInit.h; sourceTree = "<group>"; };
@@ -217,6 +220,8 @@
 				8CEBF92B1C33669F0055861A /* SettingsViewController.m */,
 				8CAF06651C3B032600A2DD9A /* HowToScreen.h */,
 				8CAF06681C3B044400A2DD9A /* HowToScreen.m */,
+				8C15B4721D9A408B00B4876F /* HowToPage.h */,
+				8C15B4731D9A408B00B4876F /* HowToPage.m */,
 				8C37441E1CBB437F003FAB42 /* HowToScreenInit.h */,
 				8C37441F1CBB437F003FAB42 /* HowToScreenInit.m */,
 				8CEBF9371C34E4120055861A /* Animations.h */,
@@ -414,6 +419,7 @@
 				A8166A6A1B99E84700F47146 /* ViewController.m in Sources */,
 				A831F6111BB0B8B70001E1BC /* Colors.m in Sources */,
 				A831F60D1BB0B0190001E1BC /* Display.m in Sources */,
+				8C15B4741D9A408B00B4876F /* HowToPage.m in Sources */,
 				8CF7E9781BEBED1F00BF3D4B /* WordLogic.m in Sources */,
 				8C2875581D8530AA0068073F /* LetterBar.m in Sources */,
 				8C85F4DF1C35AEC000908313 /* WordBar.m in Sources */,
