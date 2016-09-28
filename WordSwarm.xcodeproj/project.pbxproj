@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		8C15B4741D9A408B00B4876F /* HowToPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C15B4731D9A408B00B4876F /* HowToPage.m */; };
 		8C2875581D8530AA0068073F /* LetterBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2875571D8530AA0068073F /* LetterBar.m */; };
+		8C3667BB1D9B85BA008CCC1A /* PurchasingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3667BA1D9B85BA008CCC1A /* PurchasingViewController.m */; };
+		8C3667BE1D9B863E008CCC1A /* PurchasingViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3667BD1D9B863E008CCC1A /* PurchasingViewDataSource.m */; };
+		8C3667C11D9B86A1008CCC1A /* PurchaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3667C01D9B86A1008CCC1A /* PurchaseController.m */; };
+		8C3667C41D9B8780008CCC1A /* PurchasedDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3667C31D9B8780008CCC1A /* PurchasedDataController.m */; };
 		8C3744201CBB437F003FAB42 /* HowToScreenInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C37441F1CBB437F003FAB42 /* HowToScreenInit.m */; };
 		8C3744221CBB45E6003FAB42 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C3744211CBB45E6003FAB42 /* checked.png */; };
 		8C3744241CBB45EC003FAB42 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C3744231CBB45EC003FAB42 /* unchecked.png */; };
@@ -73,6 +77,14 @@
 		8C15B4731D9A408B00B4876F /* HowToPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToPage.m; sourceTree = "<group>"; };
 		8C2875561D8530AA0068073F /* LetterBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LetterBar.h; sourceTree = "<group>"; };
 		8C2875571D8530AA0068073F /* LetterBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LetterBar.m; sourceTree = "<group>"; };
+		8C3667B91D9B85BA008CCC1A /* PurchasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasingViewController.h; sourceTree = "<group>"; };
+		8C3667BA1D9B85BA008CCC1A /* PurchasingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchasingViewController.m; sourceTree = "<group>"; };
+		8C3667BC1D9B863E008CCC1A /* PurchasingViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasingViewDataSource.h; sourceTree = "<group>"; };
+		8C3667BD1D9B863E008CCC1A /* PurchasingViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchasingViewDataSource.m; sourceTree = "<group>"; };
+		8C3667BF1D9B86A1008CCC1A /* PurchaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseController.h; sourceTree = "<group>"; };
+		8C3667C01D9B86A1008CCC1A /* PurchaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseController.m; sourceTree = "<group>"; };
+		8C3667C21D9B8780008CCC1A /* PurchasedDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasedDataController.h; sourceTree = "<group>"; };
+		8C3667C31D9B8780008CCC1A /* PurchasedDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchasedDataController.m; sourceTree = "<group>"; };
 		8C37441E1CBB437F003FAB42 /* HowToScreenInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowToScreenInit.h; sourceTree = "<group>"; };
 		8C37441F1CBB437F003FAB42 /* HowToScreenInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToScreenInit.m; sourceTree = "<group>"; };
 		8C3744211CBB45E6003FAB42 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
@@ -166,6 +178,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C3667B81D9B7F60008CCC1A /* InAppPurchases */ = {
+			isa = PBXGroup;
+			children = (
+				8C3667B91D9B85BA008CCC1A /* PurchasingViewController.h */,
+				8C3667BA1D9B85BA008CCC1A /* PurchasingViewController.m */,
+				8C3667BC1D9B863E008CCC1A /* PurchasingViewDataSource.h */,
+				8C3667BD1D9B863E008CCC1A /* PurchasingViewDataSource.m */,
+				8C3667BF1D9B86A1008CCC1A /* PurchaseController.h */,
+				8C3667C01D9B86A1008CCC1A /* PurchaseController.m */,
+				8C3667C21D9B8780008CCC1A /* PurchasedDataController.h */,
+				8C3667C31D9B8780008CCC1A /* PurchasedDataController.m */,
+			);
+			name = InAppPurchases;
+			sourceTree = "<group>";
+		};
 		A8166A551B99E84700F47146 = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +260,7 @@
 				8C2875561D8530AA0068073F /* LetterBar.h */,
 				8C2875571D8530AA0068073F /* LetterBar.m */,
 				8CE280931C3AECA400199940 /* Info.plist */,
+				8C3667B81D9B7F60008CCC1A /* InAppPurchases */,
 				A8166A6E1B99E84700F47146 /* Images.xcassets */,
 				A8166A701B99E84700F47146 /* LaunchScreen.xib */,
 				A8166A611B99E84700F47146 /* Supporting Files */,
@@ -417,11 +445,14 @@
 				8C3744201CBB437F003FAB42 /* HowToScreenInit.m in Sources */,
 				8CAF06691C3B044400A2DD9A /* HowToScreen.m in Sources */,
 				A8166A6A1B99E84700F47146 /* ViewController.m in Sources */,
+				8C3667BB1D9B85BA008CCC1A /* PurchasingViewController.m in Sources */,
 				A831F6111BB0B8B70001E1BC /* Colors.m in Sources */,
 				A831F60D1BB0B0190001E1BC /* Display.m in Sources */,
+				8C3667C41D9B8780008CCC1A /* PurchasedDataController.m in Sources */,
 				8C15B4741D9A408B00B4876F /* HowToPage.m in Sources */,
 				8CF7E9781BEBED1F00BF3D4B /* WordLogic.m in Sources */,
 				8C2875581D8530AA0068073F /* LetterBar.m in Sources */,
+				8C3667BE1D9B863E008CCC1A /* PurchasingViewDataSource.m in Sources */,
 				8C85F4DF1C35AEC000908313 /* WordBar.m in Sources */,
 				A8166A671B99E84700F47146 /* AppDelegate.m in Sources */,
 				A8699DD01BB6FD9B00CCC1FD /* GamePlay.m in Sources */,
@@ -433,6 +464,7 @@
 				8CEBF9391C34E4120055861A /* Animations.m in Sources */,
 				8C8DA7131C2DEB590083CCE1 /* MenuView.m in Sources */,
 				8CEBF92C1C33669F0055861A /* SettingsViewController.m in Sources */,
+				8C3667C11D9B86A1008CCC1A /* PurchaseController.m in Sources */,
 				8C7B78BA1D276BBD0094D11C /* phraseBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A8166A5D1B99E84700F47146"
-            BuildableName = "Droozle.app"
-            BlueprintName = "Droozle"
-            ReferencedContainer = "container:Droozle.xcodeproj">
+            BuildableName = "WordSwarm.app"
+            BlueprintName = "WordSwarm"
+            ReferencedContainer = "container:WordSwarm.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A8166A5D1B99E84700F47146"
-            BuildableName = "Droozle.app"
-            BlueprintName = "Droozle"
-            ReferencedContainer = "container:Droozle.xcodeproj">
+            BuildableName = "WordSwarm.app"
+            BlueprintName = "WordSwarm"
+            ReferencedContainer = "container:WordSwarm.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
