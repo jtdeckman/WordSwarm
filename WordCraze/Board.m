@@ -160,7 +160,7 @@
     space.value = val;
     space.pointValue = pVal;
     
-    if(rnum == 5 || rnum == 11 || rnum == 21 || rnum == 15 || rnum == 17)
+    if(rnum == 5 || rnum == 11 || rnum == 21 || rnum == 15 || rnum == 17 || rnum == 1)
         space.backPieceVal = 2;
     else
         space.backPieceVal = 1;
