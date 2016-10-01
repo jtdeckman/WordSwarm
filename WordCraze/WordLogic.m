@@ -116,7 +116,7 @@
         
         
         if(level <= 3) {
-            uint nLett = level + 6;
+            uint nLett = 17 + level;//level + 6;
 
             for(int i=0; i<nLett; i++) {
             
@@ -126,7 +126,7 @@
         
         else if(level <= 5) {
             
-            uint nLett = 3*level + 3;//level + 3;
+            uint nLett = 20 + level;//3*level + 3;//level + 3;
             
             for(int i=0; i<nLett; i++) {
                 
@@ -136,7 +136,7 @@
         
         else {
             
-            uint nLett = 3*level + 6;//level + 3;
+            uint nLett = 23 + level;//level + 3;
             
             for(int i=0; i<nLett; i++) {
                 

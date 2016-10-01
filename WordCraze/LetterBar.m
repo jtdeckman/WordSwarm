@@ -154,7 +154,6 @@
             
             frm.origin.x += maxDim + spcing;
         }
-
     }
 }
 
@@ -181,24 +180,44 @@
 
 - (void)letterIsInFirstRow:(NSString*)letter :(UILabel*)piece {
 
-    int row = [self firstRow];
+  //  int row = [self firstRow];
     
-    if(row > -1) {
+  //  if(row > -1) {
     
- //   for(int row = 0; row < letters.count; row++) {
-        NSArray *letterRow = letters[row];
+    //    NSArray *letterRow = letters[row];
+    
+    uint cnt = 0;
+    
+     for(int row = 0; row < letters.count; row++) {
         
+        NSArray *letterRow = letters[row];
+         
         for(int i=0; i<letterRow.count; i++) {
             
             UILabel *lett = letterRow[i];
             
             if([lett.text isEqualToString:letter]) {
                 
-                [self animatePiece:row :i :piece];
-                break;
+                if(self.gamePlay.gameData.level > 25 && cnt > 0)
+                    break;
+                else
+                    [self animatePiece:row :i :piece];
+                
+                ++cnt;
             }
         }
     }
+}
+
+- (bool)checkLevel:(uint)cnt {
+
+    
+    if(self.gamePlay.gameData.level > 25 && cnt > 0) return true;
+    if(self.gamePlay.gameData.level > 20 && cnt > 1) return true;
+    if(self.gamePlay.gameData.level > 15 && cnt > 2) return true;
+    if(self.gamePlay.gameData.level > 7 && cnt > 3) return false;
+    
+    return false;
 }
 
 - (void)animatePiece:(int)row :(int)lettInd :(UILabel*)piece {

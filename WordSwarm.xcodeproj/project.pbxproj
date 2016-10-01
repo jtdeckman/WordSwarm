@@ -13,11 +13,11 @@
 		8C3667BE1D9B863E008CCC1A /* PurchasingViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3667BD1D9B863E008CCC1A /* PurchasingViewDataSource.m */; };
 		8C3667C11D9B86A1008CCC1A /* PurchaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3667C01D9B86A1008CCC1A /* PurchaseController.m */; };
 		8C3667C41D9B8780008CCC1A /* PurchasedDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3667C31D9B8780008CCC1A /* PurchasedDataController.m */; };
+		8C3667C71D9F84AA008CCC1A /* HowToScreen-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C3667C51D9F84AA008CCC1A /* HowToScreen-1.png */; };
+		8C3667C81D9F84AA008CCC1A /* HowToScreen-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C3667C61D9F84AA008CCC1A /* HowToScreen-2.png */; };
 		8C3744201CBB437F003FAB42 /* HowToScreenInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C37441F1CBB437F003FAB42 /* HowToScreenInit.m */; };
 		8C3744221CBB45E6003FAB42 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C3744211CBB45E6003FAB42 /* checked.png */; };
 		8C3744241CBB45EC003FAB42 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C3744231CBB45EC003FAB42 /* unchecked.png */; };
-		8C4DF38B1CBB605B006F408F /* HowToScreen-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C4DF38A1CBB605B006F408F /* HowToScreen-1.png */; };
-		8C4DF38D1CBB6067006F408F /* HowToScreen-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C4DF38C1CBB6067006F408F /* HowToScreen-2.png */; };
 		8C4DF38F1CBC1186006F408F /* Launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C4DF38E1CBC1186006F408F /* Launch.png */; };
 		8C7B78BA1D276BBD0094D11C /* phraseBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7B78B91D276BBD0094D11C /* phraseBar.m */; };
 		8C85F4DF1C35AEC000908313 /* WordBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85F4DE1C35AEC000908313 /* WordBar.m */; };
@@ -85,12 +85,12 @@
 		8C3667C01D9B86A1008CCC1A /* PurchaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseController.m; sourceTree = "<group>"; };
 		8C3667C21D9B8780008CCC1A /* PurchasedDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasedDataController.h; sourceTree = "<group>"; };
 		8C3667C31D9B8780008CCC1A /* PurchasedDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchasedDataController.m; sourceTree = "<group>"; };
+		8C3667C51D9F84AA008CCC1A /* HowToScreen-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HowToScreen-1.png"; sourceTree = "<group>"; };
+		8C3667C61D9F84AA008CCC1A /* HowToScreen-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HowToScreen-2.png"; sourceTree = "<group>"; };
 		8C37441E1CBB437F003FAB42 /* HowToScreenInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowToScreenInit.h; sourceTree = "<group>"; };
 		8C37441F1CBB437F003FAB42 /* HowToScreenInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToScreenInit.m; sourceTree = "<group>"; };
 		8C3744211CBB45E6003FAB42 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		8C3744231CBB45EC003FAB42 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
-		8C4DF38A1CBB605B006F408F /* HowToScreen-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HowToScreen-1.png"; sourceTree = "<group>"; };
-		8C4DF38C1CBB6067006F408F /* HowToScreen-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HowToScreen-2.png"; sourceTree = "<group>"; };
 		8C4DF38E1CBC1186006F408F /* Launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launch.png; sourceTree = "<group>"; };
 		8C7B78B81D276BBD0094D11C /* phraseBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = phraseBar.h; sourceTree = "<group>"; };
 		8C7B78B91D276BBD0094D11C /* phraseBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = phraseBar.m; sourceTree = "<group>"; };
@@ -285,6 +285,8 @@
 				A8166A8F1B99EE2D00F47146 /* orangeSquare.png */,
 				A8166A941B99EEB200F47146 /* blueSquare.png */,
 				A8166A961B99EEF800F47146 /* redSquare.png */,
+				8C3667C51D9F84AA008CCC1A /* HowToScreen-1.png */,
+				8C3667C61D9F84AA008CCC1A /* HowToScreen-2.png */,
 				8CEBF9331C33B81D0055861A /* times2.png */,
 				8CEBF9351C33B8AA0055861A /* times3.png */,
 				8CEBF9401C35261E0055861A /* bomb.png */,
@@ -292,8 +294,6 @@
 				8C3744211CBB45E6003FAB42 /* checked.png */,
 				8CBE692B1D8D2479001F89F7 /* whiteBars.png */,
 				8C3744231CBB45EC003FAB42 /* unchecked.png */,
-				8C4DF38A1CBB605B006F408F /* HowToScreen-1.png */,
-				8C4DF38C1CBB6067006F408F /* HowToScreen-2.png */,
 				A8166A631B99E84700F47146 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -398,15 +398,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CBE692C1D8D2479001F89F7 /* whiteBars.png in Resources */,
-				8C4DF38D1CBB6067006F408F /* HowToScreen-2.png in Resources */,
 				8C3744221CBB45E6003FAB42 /* checked.png in Resources */,
 				8C85F4F11C36620400908313 /* p7.png in Resources */,
 				8C3744241CBB45EC003FAB42 /* unchecked.png in Resources */,
 				8CE280731C39C51500199940 /* nuke2.png in Resources */,
+				8C3667C71D9F84AA008CCC1A /* HowToScreen-1.png in Resources */,
 				8C85F4EE1C36620400908313 /* p3.png in Resources */,
 				8C85F4EF1C36620400908313 /* p4.png in Resources */,
 				8C85F4F01C36620400908313 /* p5.png in Resources */,
 				A8166A6D1B99E84700F47146 /* Main.storyboard in Resources */,
+				8C3667C81D9F84AA008CCC1A /* HowToScreen-2.png in Resources */,
 				8CF092C81BFBEE1A00AC3599 /* LexicontextAssets.bundle in Resources */,
 				8C9303A91C374A97008B1839 /* p10.png in Resources */,
 				A8166A921B99EE2D00F47146 /* orangeSquare.png in Resources */,
@@ -418,7 +419,6 @@
 				A8166A6F1B99E84700F47146 /* Images.xcassets in Resources */,
 				8CEBF9341C33B81D0055861A /* times2.png in Resources */,
 				8C85F4EC1C36620400908313 /* p1.png in Resources */,
-				8C4DF38B1CBB605B006F408F /* HowToScreen-1.png in Resources */,
 				8C85F4ED1C36620400908313 /* p2.png in Resources */,
 				8CEBF9411C35261E0055861A /* bomb.png in Resources */,
 				8CD640911C2F4F8800C9E6CF /* stars1.png in Resources */,

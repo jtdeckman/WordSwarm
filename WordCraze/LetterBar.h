@@ -15,6 +15,9 @@
 @interface LetterBar : UIView {
     
     NSMutableArray *letters;
+    NSMutableArray *letterBox;
+    
+    NSMutableArray *offsets;
 }
 
 @property GamePlay *gamePlay;
