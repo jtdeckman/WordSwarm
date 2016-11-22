@@ -248,12 +248,17 @@
                     
                     highlightedSpace1 = nil;
                     [touchedSpace setBackhighlightClear];
+                    [self clearCurrentWord];
                 }
                 
                 else if(highlightedSpace1 == nil) {
                     
                     highlightedSpace1 = touchedSpace;
-                    [highlightedSpace1 setBackhighlightRed];
+                    [highlightedSpace1 setBackhighlightBlue];
+                    
+                    [currentWord appendString:touchedSpace.piece.text];
+                    [highlightedPieces addObject:touchedSpace];
+                    
                 }
                 
                 else if(highlightedSpace2 == nil) {
@@ -262,6 +267,7 @@
                     [highlightedSpace2 setBackhighlightBlue];
                     
                     gamePlay.placeMode = swapMove;
+                    [self clearCurrentWord];
                 }
             }
             
@@ -369,22 +375,26 @@
     
     if(gamePlay.gameState ==  gameRunning) { //&& !animating) {
         
-        if(gamePlay.placeMode == swipeMove) {
+        Space *currentSpace = [board getSpaceFromPoint:location];
+        
+        if(touchedSpace != currentSpace && touch.view == display.boardView) {//gamePlay.placeMode == swipeMove) {
+            
+            gamePlay.placeMode = swipeMove;
             
             if(touch.view == display.boardView) {
-            
-                Space *currentSpace = [board getSpaceFromPoint:location];
-            
+                
+                // Space *currentSpace = [board getSpaceFromPoint:location];
+                
                 if(currentSpace != nil) {
                     
                     [currentSpace setBackhighlightBlue];
-            
+                    
                     if(currentSpace != touchedSpace) {
                         touchedSpace = currentSpace;
-                
+                        
                         if(touchedSpace.piece.text != nil && ![touchedSpace.piece.text isEqualToString:@""])
-                        [currentWord appendString:touchedSpace.piece.text];
-                
+                            [currentWord appendString:touchedSpace.piece.text];
+                        
                         [highlightedPieces addObject:touchedSpace];
                     }
                 }
@@ -406,23 +416,23 @@
             
             [display changeNukePieceLoc:location];
         }
-
-        else if((highlightedSpace1 != nil || gamePlay.placeMode == swapMove) && touch.view == display.boardView) {
-            
-            [self clearHighlightedSpaces];
-            [touchedSpace setBackhighlightBlue];
-            
-            if(touchedSpace.piece.text != nil && ![touchedSpace.piece.text isEqualToString:@""])
-                [currentWord appendString:touchedSpace.piece.text];
-            
-            [highlightedPieces addObject:touchedSpace];
-            
-            gamePlay.placeMode = swipeMove;
-
-        }
+        
+        /*   else if((highlightedSpace1 != nil || gamePlay.placeMode == swapMove) && touch.view == display.boardView) {
+         
+         [self clearHighlightedSpaces];
+         [touchedSpace setBackhighlightBlue];
+         
+         if(touchedSpace.piece.text != nil && ![touchedSpace.piece.text isEqualToString:@""])
+         [currentWord appendString:touchedSpace.piece.text];
+         
+         [highlightedPieces addObject:touchedSpace];
+         
+         gamePlay.placeMode = swipeMove;
+         
+         } */
         else {
             
-           // gamePlay.placeMode = freeState;
+            // gamePlay.placeMode = freeState;
         }
         
     }
@@ -468,6 +478,8 @@
                 
                 [self clearCurrentWord];
             }
+            
+      //      [self clearHighlightedSpaces];
             
             gamePlay.placeMode = freeState;
         }
@@ -679,6 +691,8 @@
     [self clearCurrentWord];
     
     [self turnAnimationOff];
+    
+    [self clearHighlightedSpaces];
 }
 
 - (void)checkWordRow {
