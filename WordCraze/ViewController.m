@@ -318,12 +318,17 @@
                     
                     highlightedSpace1 = nil;
                     [touchedSpace setBackhighlightClear];
+                    [self clearCurrentWord];
                 }
                 
                 else if(highlightedSpace1 == nil) {
                     
                     highlightedSpace1 = touchedSpace;
-                    [highlightedSpace1 setBackhighlightRed];
+                    [highlightedSpace1 setBackhighlightBlue];
+                    
+                    [currentWord appendString:touchedSpace.piece.text];
+                    [highlightedPieces addObject:touchedSpace];
+
                 }
                 
                 else if(highlightedSpace2 == nil) {
@@ -332,7 +337,9 @@
                     [highlightedSpace2 setBackhighlightBlue];
                     
                     gamePlay.placeMode = swapMove;
+                    [self clearCurrentWord];
                 }
+                
             }
             
             else
@@ -439,11 +446,15 @@
     
     if(gamePlay.gameState ==  gameRunning) { //&& !animating) {
         
-        if(gamePlay.placeMode == swipeMove) {
+        Space *currentSpace = [board getSpaceFromPoint:location];
+        
+        if(touchedSpace != currentSpace && touch.view == display.boardView) {//gamePlay.placeMode == swipeMove) {
+            
+            gamePlay.placeMode = swipeMove;
             
             if(touch.view == display.boardView) {
             
-                Space *currentSpace = [board getSpaceFromPoint:location];
+               // Space *currentSpace = [board getSpaceFromPoint:location];
             
                 if(currentSpace != nil) {
                     
@@ -477,7 +488,7 @@
             [display changeNukePieceLoc:location];
         }
 
-        else if((highlightedSpace1 != nil || gamePlay.placeMode == swapMove) && touch.view == display.boardView) {
+     /*   else if((highlightedSpace1 != nil || gamePlay.placeMode == swapMove) && touch.view == display.boardView) {
             
             [self clearHighlightedSpaces];
             [touchedSpace setBackhighlightBlue];
@@ -489,7 +500,7 @@
             
             gamePlay.placeMode = swipeMove;
 
-        }
+        } */
         else {
             
            // gamePlay.placeMode = freeState;
@@ -516,6 +527,8 @@
         }
         
         else if(gamePlay.placeMode == swipeMove) {
+            
+            [self clearHighlightedSpaces];
             
             if(currentWord.length > 1 && [gamePlay checkWord:currentWord :@"Word"]) {
                 
